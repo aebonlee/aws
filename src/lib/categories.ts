@@ -9,7 +9,6 @@ export interface CategoryInfo {
 }
 
 export const CATEGORIES: CategoryInfo[] = [
-  { id: 'aif-c01', title: '실전 문제 (424)', icon: '🎯', path: '/practice', questions: 424, weight: '실전', description: 'certi.nxtcloud.kr에서 추출한 실전 기출문제 424개' },
   { id: 'ai-ml-basics', title: 'AI와 ML의 기초', icon: '🤖', path: '/ai-ml-basics', questions: 60, weight: '17.6%', description: 'AI, ML, DL의 개념과 유형, AWS AI 서비스' },
   { id: 'ml-development', title: 'ML 개발', icon: '⚙️', path: '/ml-development', questions: 46, weight: '14.1%', description: 'ML 개발 프로세스, EC2 패밀리, 모델 평가' },
   { id: 'sagemaker', title: 'Amazon SageMaker', icon: '🔧', path: '/sagemaker', questions: 38, weight: '11.9%', description: 'SageMaker 라이프사이클, Ground Truth, JumpStart' },
