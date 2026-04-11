@@ -1,0 +1,2605 @@
+[
+  {
+    "categoryId": "unknown",
+    "number": 1,
+    "question": "한 회사에서 유전자 특성에 따라 인간 유전자를 20가지 범주로 분류하려고 합니다. 이 회사는 모델의 내부 메커니즘이 출력에 미치는 영향을 문서화하기 위한 ML 알고리즘이 필요합니다. 이러한 요구 사항을 충족하는 ML 알고리즘은 무엇입니까?",
+    "options": [
+      "의사결정 트리",
+      "선형 회귀",
+      "로지스틱 회귀",
+      "신경망"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 2,
+    "question": "한 회사에서 사용자가 다음과 같은 질문에 답하는 교육용 게임을 개발하려고 합니다. \"항아리 하나에는 빨간색 구슬 6개, 녹색 구슬 4개, 노란색 구슬 3개가 들어 있습니다. 항아리에서 녹색 구슬을 선택할 확률은 얼마나 되나요?\" 운영 오버헤드를 최소화하면서 이러한 요구 사항을 충족하는 솔루션은 무엇일까요?",
+    "options": [
+      "지도 학습을 사용하여 확률을 예측하는 회귀 모델을 만듭니다.",
+      "강화 학습을 사용하여 확률을 반환하도록 모델을 훈련합니다.",
+      "간단한 규칙과 계산을 사용하여 확률을 계산하는 코드를 사용합니다.",
+      "비지도 학습을 사용하여 확률 밀도를 추정하는 모델을 만듭니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 3,
+    "question": "회사는 광고 캠페인에 사용할 수 있는 페타바이트 규모의 레이블이 지정되지 않은 고객 데이터를 보유하고 있습니다. 이 회사는 고객을 등급별로 분류하여 회사 제품을 광고하고 홍보하려고 합니다. 회사는 이러한 요구 사항을 충족하기 위해 어떤 방법론을 사용해야 할까요?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "인간 피드백을 통한 강화 학습(RLHF)"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 4,
+    "question": "한 회사는 AI를 사용하여 위협으로부터 애플리케이션을 보호하고자 합니다. AI 솔루션은 의심스러운 출처에서 온 IP 주소인지 확인해야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족하나요?",
+    "options": [
+      "음성 인식 시스템을 구축합니다.",
+      "자연어 처리(NLP) 명명된 개체 인식 시스템을 만듭니다.",
+      "이상 탐지 시스템을 개발합니다.",
+      "사기 예측 시스템을 만듭니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 5,
+    "question": "AI 전문가가 동물 사진 데이터베이스를 가지고 있습니다. AI 전문가는 사람의 수작업 없이 사진 속 동물을 자동으로 식별하고 분류하기를 원합니다. 이러한 요구 사항을 충족하는 전략은 무엇일까요?",
+    "options": [
+      "물체 감지",
+      "이상 감지",
+      "명명된 개체 인식",
+      "인페인팅"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 6,
+    "question": "한 회사에서 고객 서비스 챗봇을 만들고 있습니다. 회사에서는 챗봇이 과거의 상호작용과 온라인 리소스를 통해 학습하여 반응을 개선하기를 원합니다. 이러한 자기 개선 기능을 제공하는 AI 학습 전략은 무엇입니까?",
+    "options": [
+      "수동으로 큐레이션한 좋은 반응과 나쁜 반응의 데이터 세트를 사용한 지도 학습",
+      "긍정적인 고객 피드백에 대한 보상을 제공하는 강화 학습",
+      "유사한 고객 문의 클러스터를 찾기 위한 비지도 학습",
+      "지속적으로 업데이트되는 FAQ 데이터베이스를 통한 지도 학습"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 7,
+    "question": "소프트웨어 회사는 고객을 위한 도구를 만듭니다. 이 회사는 AI를 사용하여 소프트웨어 개발 생산성을 높이고자 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "이진 분류 모델을 사용하여 코드 리뷰를 생성합니다.",
+      "회사의 개발자 도구에 코드 추천 소프트웨어를 설치합니다.",
+      "코드 예측 도구를 설치하여 잠재적 코드 문제를 예측합니다.",
+      "자연어 처리(NLP) 도구를 사용하여 코드를 생성합니다."
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 8,
+    "question": "소매점에서 Amazon SageMaker DeepAR 예측 알고리즘을 사용하여 향후 몇 주 동안 특정 제품에 대한 수요를 예측하려고 합니다. 어떤 유형의 데이터가 이 요구 사항을 충족할 수 있을까요?",
+    "options": [
+      "텍스트 데이터",
+      "이미지 데이터",
+      "시계열 데이터",
+      "바이너리 데이터"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 9,
+    "question": "AI 전문가가 꽃잎 길이, 꽃잎 너비, 꽃받침 길이, 꽃받침 너비를 기반으로 꽃의 분류를 예측하려고 합니다. 다음 요구 사항을 충족하는 알고리즘은 무엇입니까?",
+    "options": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Autoregressive Integrated Moving Average (ARIMA)",
+      "Linear regression"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 10,
+    "question": "한 회사는 직원들이 잠재 고객에게 연락할 수 있도록 리드 우선 순위 지정 애플리케이션을 구축하려고 합니다. 애플리케이션은 직원이 도메인 지식과 전문 지식을 기반으로 모델의 다양한 변수에 할당된 가중치를 확인하고 조정할 수 있는 기능을 제공해야 합니다. 어떤 ML 모델 유형이 이러한 요구 사항을 충족합니까?",
+    "options": [
+      "로지스틱 회귀 모델",
+      "주요 구성 요소를 기반으로 구축된 딥러닝 모델",
+      "K-최근접 이웃(k-NN) 모델",
+      "신경망"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 11,
+    "question": "기업은 다양한 동물 유형의 이미지를 분류하기 위해 ML 모델을 학습해야 합니다. 이 회사는 레이블이 지정된 이미지로 구성된 대규모 데이터 세트를 보유하고 있으며 더 이상 데이터에 레이블을 지정하지 않을 예정입니다. 회사에서 모델을 학습할 때 어떤 유형의 학습을 사용해야 할까요?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "능동적 학습"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 12,
+    "question": "제조 회사는 AI를 사용하여 제품을 검사하고 손상이나 결함을 찾아냅니다. 회사는 어떤 유형의 AI 애플리케이션을 사용하고 있나요?",
+    "options": [
+      "추천 시스템",
+      "자연어 처리(NLP)",
+      "컴퓨터 비전",
+      "이미지 프로세싱"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 13,
+    "question": "한 회사가 시각 장애가 있는 사용자를 위한 모바일 앱을 구축하고 있습니다. 앱은 사용자가 말하는 것을 듣고 음성 응답을 제공할 수 있어야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "딥러닝 신경망을 사용하여 음성 인식을 수행합니다.",
+      "숫자형 데이터의 패턴을 검색하기 위한 ML 모델을 구축합니다.",
+      "생성형 AI 요약을 사용하여 인간과 유사한 텍스트를 생성합니다.",
+      "이미지 분류 및 인식을 위한 맞춤형 모델을 구축합니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 14,
+    "question": "한 회사가 비즈니스 운영과 효율성을 개선하기 위해 ML 애플리케이션을 개발하고자 합니다. 다음 목록에서 각 사용 사례에 맞는 ML 패러다임을 선택하세요. 각 ML 패러다임은 한 번 이상 선택해야 합니다. Binary classification -> ? Multi-class classification -> ? K-means clustering -> ? Dimensionality reduction -> ?",
+    "options": [
+      "지도 학습, 지도 학습, 비지도 학습, 비지도 학습",
+      "비지도 학습, 비지도 학습, 지도 학습, 지도 학습",
+      "지도 학습, 비지도 학습, 지도 학습, 비지도 학습",
+      "비지도 학습, 지도 학습, 비지도 학습, 지도 학습"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 15,
+    "question": "어떤 회사는 고객의 인구 통계와 구매 패턴을 기반으로 고객을 위한 그룹을 찾고 싶어합니다. 이 요구 사항을 충족하기 위해 회사는 어떤 알고리즘을 사용해야 할까요?",
+    "options": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Decision tree",
+      "Support vector machine"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 16,
+    "question": "한 회사에서 도메인별 모델을 사용하고 있습니다. 회사는 처음부터 새 모델을 만드는 것을 피하고자 합니다. 대신 회사는 사전 학습된 모델을 조정하여 새로운 관련 작업을 위한 모델을 만들고자 합니다. 어떤 ML 전략이 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "에포크 수를 늘립니다.",
+      "전이 학습을 사용합니다.",
+      "에포크 수를 줄입니다.",
+      "비지도 학습을 사용합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 17,
+    "question": "수치 예측을 수행하는 AI 모델 유형은 무엇입니까?",
+    "options": [
+      "Diffusion",
+      "Regression",
+      "Transformer",
+      "Multi-modal"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 18,
+    "question": "한 금융회사가 거래 데이터를 기반으로 모든 신용카드 활동을 사기 가능성 또는 비사기로 표시하려고 합니다. 이 요구사항을 충족하는 ML 모델 유형은 무엇입니까?",
+    "options": [
+      "Regression",
+      "Diffusion",
+      "Binary classification",
+      "Multi-class classification"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 19,
+    "question": "AWS에서 AI 모델을 훈련할 때 데이터 규정 준수와 개인정보 보호를 보장하는 ML 기법은 무엇입니까?",
+    "options": [
+      "강화 학습",
+      "전이 학습",
+      "연합 학습",
+      "비지도 학습"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 20,
+    "question": "올바른 출력 값으로 레이블이 지정된 훈련 데이터를 사용하는 ML 기법은 무엇입니까?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "전이 학습"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 21,
+    "question": "전자상거래 회사가 회사 애플리케이션의 사용자 경험을 개인화하기 위해 구매 이력과 선호도를 기반으로 고객을 그룹화하려고 합니다. 회사가 사용해야 하는 ML 기법은 무엇입니까?",
+    "options": [
+      "분류",
+      "클러스터링",
+      "회귀",
+      "콘텐츠 생성"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 22,
+    "question": "고객 서비스 팀이 고객 피드백을 분석하고 자동으로 다른 카테고리로 분류하는 애플리케이션을 개발하고 있습니다. 카테고리에는 제품 품질, 고객 서비스, 배송 경험이 포함됩니다. 이 시나리오가 나타내는 AI 개념은 무엇입니까?",
+    "options": [
+      "컴퓨터 비전",
+      "자연어 처리(NLP)",
+      "추천 시스템",
+      "사기 탐지"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 23,
+    "question": "회사는 데이터셋에서 추출한 사용자 지정 특성을 기반으로 다양한 객체의 이미지를 분류하려고 합니다. 최소한의 개발 노력으로 이 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "데이터셋에서 추출한 사용자 지정 특성과 함께 기존 ML 알고리즘을 사용합니다.",
+      "사전 훈련된 딥러닝 모델을 사용합니다. 데이터셋에서 모델을 미세 조정합니다.",
+      "생성적 적대 신경망(GAN) 모델을 사용하여 이미지를 분류합니다.",
+      "분류를 위해 수동으로 엔지니어링된 특성과 함께 서포트 벡터 머신(SVM)을 사용합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 24,
+    "question": "회사는 대출 신청 위험을 평가하기 위한 해석 가능한 ML 모델을 개발하려고 합니다. 이러한 요구 사항을 충족하는 ML 모델 또는 알고리즘 유형은 무엇입니까?",
+    "options": [
+      "딥러닝 모델",
+      "로지스틱 회귀 모델",
+      "K-평균 알고리즘",
+      "랜덤 컷 포레스트 알고리즘"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 25,
+    "question": "회사는 심장 질환 위험을 예측하는 ML 모델을 개발하고 있습니다. 모델은 나이, 콜레스테롤, 혈압, 흡연 상태 및 운동 습관과 같은 환자 데이터를 사용합니다. 데이터셋에는 환자가 심장 질환이 있는지 여부를 나타내는 대상 값이 포함되어 있습니다. 이러한 요구 사항을 충족하는 ML 기술은 무엇입니까?",
+    "options": [
+      "비지도 학습",
+      "지도 학습",
+      "강화 학습",
+      "준지도 학습"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 26,
+    "question": "회사는 센서 데이터에서 비정상적인 패턴을 감지하는 ML 모델을 구축하려고 합니다. 회사는 훈련을 위한 레이블이 지정된 데이터가 없습니다. 이러한 요구 사항을 충족하는 ML 방법은 무엇입니까?",
+    "options": [
+      "선형 회귀",
+      "분류",
+      "의사결정 트리",
+      "오토인코더"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 27,
+    "question": "비지도 학습의 예는 무엇입니까?",
+    "options": [
+      "유사성을 기반으로 데이터 포인트를 그룹으로 클러스터링",
+      "동물 이미지를 인식하도록 모델 훈련",
+      "주택의 특성을 기반으로 주택 가격 예측",
+      "주어진 프롬프트를 기반으로 인간과 같은 텍스트 생성"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 28,
+    "question": "비지도 학습의 예는 무엇입니까?",
+    "options": [
+      "구매 이력을 기반으로 고객을 그룹화하는 모델",
+      "이미지를 개 또는 고양이로 분류하는 모델",
+      "다양한 특성을 기반으로 주택 가격을 예측하는 모델",
+      "시행착오를 사용하여 체스를 배우는 모델"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 29,
+    "question": "다음 목록에서 각 문장에 맞는 올바른 AI 용어를 선택하세요. 각 AI 용어는 한 번씩 선택해야 합니다. 인간 문제 해결 능력을 시뮬레이션합니다. -> ? 예측을 위해 데이터 기반 학습 기술을 적용합니다. -> ? 복잡한 신경망을 통해 데이터를 처리하는 데 중점을 둡니다. -> ?",
+    "options": [
+      "AI, ML, 딥러닝",
+      "AI, 딥러닝, ML",
+      "ML, AI, 딥러닝",
+      "딥러닝, AI, ML"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 30,
+    "question": "회사는 ML 모델을 사용하여 소셜 미디어에서 고객 리뷰를 분석하려고 합니다. 모델은 각 리뷰가 중립, 긍정 또는 부정 감정인지 결정해야 합니다. 이러한 요구 사항을 충족하는 모델 평가 전략은 무엇입니까?",
+    "options": [
+      "개방형 생성",
+      "텍스트 요약",
+      "기계 번역",
+      "분류"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 31,
+    "question": "감정 분석은 AI의 어떤 더 넓은 분야의 하위 집합입니까?",
+    "options": [
+      "컴퓨터 비전",
+      "로보틱스",
+      "자연어 처리(NLP)",
+      "기계 번역"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 32,
+    "question": "회사는 ML 기술을 사용하여 애플리케이션을 구축합니다. 다음 목록에서 각 작업에 맞는 올바른 ML 기술을 선택하세요. 각 ML 기술을 한 번씩 선택합니다. 텍스트 질문을 분석하여 답변이 올바른지 결정합니다. -> ? 생태학적 요인을 분석하여 특정 지역의 종 수를 결정합니다. -> ? 자동차 속성을 분석하여 자동차 모델을 결정합니다. -> ?",
+    "options": [
+      "이진 분류, 회귀, 다중 클래스 분류",
+      "이진 분류, 다중 클래스 분류, 회귀",
+      "다중 클래스 분류, 회귀, 이진 분류",
+      "다중 클래스 분류, 이진 분류, 회귀"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 33,
+    "question": "회사는 고객의 인구 통계 및 구매 패턴을 기반으로 고객 그룹을 식별하려고 합니다. 이 요구 사항을 충족하기 위해 회사가 사용해야 하는 알고리즘은 무엇입니까?",
+    "options": [
+      "K-최근접 이웃(k-NN)",
+      "K-평균",
+      "의사결정 트리",
+      "서포트 벡터 머신"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 34,
+    "question": "회사는 ML 애플리케이션을 개발하고 있습니다. 이 애플리케이션은 특성에 따라 유사한 고객과 제품을 자동으로 그룹화해야 합니다. 이러한 요구 사항을 충족하기 위해 회사는 어떤 ML 전략을 사용해야 합니까?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "준지도 학습"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 35,
+    "question": "한 연구 회사가 미생물 배양체를 키우고 있습니다. 이 회사는 성장 영역에 대한 사전 레이블이 지정된 데이터 없이 배양체의 이미지를 캡처합니다. 이 회사는 배양체 성장을 보여주는 이미지 영역을 식별해야 합니다. 이 요구 사항에 가장 적합한 ML 기법은 무엇입니까?",
+    "options": [
+      "로지스틱 회귀",
+      "의사 결정 트리",
+      "클러스터링",
+      "차원 축소"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 36,
+    "question": "한 회사가 ML을 사용하여 고객 참여도와 매출을 높이려고 합니다. 이 회사는 고객 인구 통계, 구매 이력, 브라우징 패턴 및 제품 평점을 포함하는 대규모 데이터 세트를 수집했습니다. 다음 목록에서 각 사용 사례에 맞는 올바른 ML 접근 방식을 선택하세요. 각 ML 접근 방식은 한 번만 선택하세요. - 고객이 평생 동안 창출할 수익을 추정하여 고객 생애 가치(CLV)를 예측합니다.: ? - 고객이 회사의 서비스 사용을 중단할 가능성을 파악합니다.: ? - 유사한 구매 패턴과 선호도를 기반으로 고객을 그룹화합니다.: ?",
+    "options": [
+      "Regression, Classification, Clustering",
+      "Regression, Clustering, Classification",
+      "Clustering, Regression, Classification",
+      "Classification, Clustering, Regression"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 37,
+    "question": "가장 높은 설명 가능성을 제공하는 ML 기법 유형은 무엇입니까?",
+    "options": [
+      "선형 회귀(Linear regression)",
+      "서포트 벡터 머신(Support vector machines)",
+      "Random cut forest(RCF)",
+      "신경망(Neural network)"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 38,
+    "question": "한 회사에 과거 데이터가 포함된 여러 데이터셋이 있습니다. 회사는 ML 기술을 사용하여 각 데이터셋을 처리하려고 합니다. 다음 목록에서 각 데이터셋에 맞는 올바른 ML 기술을 선택하십시오. 각 기술은 한 번만 선택하거나 선택하지 않을 수 있습니다. - 텍스트 기반 고객 리뷰가 포함된 데이터셋: ? - 종 이름이 레이블된 동물 이미지가 포함된 데이터셋: ? - 제품의 일별 판매량이 포함된 데이터셋: ?",
+    "options": [
+      "Natural language processing (NLP), Computer vision, Time series forecasting",
+      "Natural language processing (NLP), Time series forecasting, Computer vision",
+      "Time series forecasting, Computer vision, Natural language processing (NLP)",
+      "Time series forecasting, Natural language processing (NLP), Computer vision"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 39,
+    "question": "컨택 센터 애플리케이션을 개발 중인 한 회사는 고객 대화를 통해 통찰력을 얻고자 합니다. 이 회사는 고객 통화 음성을 분석하여 주요 정보를 추출하려고 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon Lex를 사용하여 대화형 챗봇을 구축합니다.",
+      "Amazon Transcribe를 사용하여 통화 녹음을 텍스트로 변환합니다.",
+      "Amazon SageMaker Model Monitor를 사용하여 통화 녹음에서 정보를 추출합니다.",
+      "Amazon Comprehend를 사용하여 분류 레이블을 생성합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 40,
+    "question": "한 회사에서 제출된 모든 이력서를 PDF 형식으로 수작업으로 검토합니다. 회사가 성장함에 따라 회사에서는 이력서의 양이 회사의 검토 용량을 초과할 것으로 예상합니다. 이 회사는 추가 처리를 위해 PDF 이력서를 일반 텍스트 형식으로 변환할 수 있는 자동화된 시스템이 필요합니다. 어떤 AWS 서비스가 이 요구 사항을 충족합니까?",
+    "options": [
+      "Amazon Textract",
+      "Amazon Personalize",
+      "Amazon Lex",
+      "Amazon Transcribe"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 41,
+    "question": "한 식품 서비스 회사는 매일 발생하는 음식물 쓰레기를 줄이고 판매 수익을 높이는 데 도움이 되는 ML 모델을 개발하고자 합니다. 회사는 모델의 정확도를 지속적으로 개선해야 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon SageMaker를 사용하여 최신 데이터로 반복합니다.",
+      "Amazon Personalize를 사용하고 과거 데이터로 반복합니다.",
+      "Amazon CloudWatch를 사용하여 고객 주문을 분석합니다.",
+      "Amazon Rekognition을 사용하여 모델을 최적화합니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 42,
+    "question": "한 회사에서 고객 만족도를 예측하기 위한 ML 모델을 만들려고 합니다. 이 회사는 완전 자동화된 모델 튜닝이 필요합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까?",
+    "options": [
+      "Amazon Personalize",
+      "Amazon SageMaker",
+      "Amazon Athena",
+      "Amazon Comprehend"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 43,
+    "question": "한 전자상거래 회사에서 제품에 대한 서면 고객 리뷰를 기반으로 고객 감정을 파악할 수 있는 솔루션을 구축하고자 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까? (2개를 선택하세요.)",
+    "options": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Bedrock",
+      "E. Amazon Rekognition"
+    ],
+    "answer": -1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 44,
+    "question": "전자상거래 회사가 회사 전자상거래 플랫폼의 각 사용자에 대한 결과를 맞춤화하여 검색 엔진 추천을 개선하고자 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까?",
+    "options": [
+      "Amazon Personalize",
+      "Amazon Kendra",
+      "Amazon Rekognition",
+      "Amazon Transcribe"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 45,
+    "question": "어떤 AWS 서비스에서 사용자가 생성형 AI 애플리케이션을 구축하고 확장하는 데 도움이 되는 기초 모델(FM)을 제공합니까?",
+    "options": [
+      "Amazon Q Developer",
+      "Amazon Bedrock",
+      "Amazon Kendra",
+      "Amazon Comprehend"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 46,
+    "question": "한 회사의 직원들은 고객이 고객 서비스 센터에 전화를 걸면 고객에게 제품 설명과 추천을 제공합니다. 이러한 추천은 고객의 위치를 기반으로 합니다. 이 회사는 이 프로세스를 자동화하기 위해 Foundation Models(FM)를 사용하려고 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까?",
+    "options": [
+      "Amazon Macie",
+      "Amazon Transcribe",
+      "Amazon Bedrock",
+      "Amazon Textract"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 47,
+    "question": "어떤 회사는 하루에 수천 건의 고객 지원 상호작용을 하며 이러한 상호작용을 분석하여 자주 묻는 질문을 파악하고, 통찰력을 개발하고자 합니다. 이 요구 사항을 충족하기 위해 회사에서 사용할 수 있는 AWS 서비스는 무엇입니까?",
+    "options": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+      "Amazon Translate"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 48,
+    "question": "한 회사가 ML 모델을 사용하여 소셜 미디어 게시물의 댓글 섹션에서 유해한 언어를 식별하고자 합니다. 이 회사는 레이블이 지정된 데이터를 사용하여 모델을 훈련시키지 않습니다. 이 회사는 유해한 언어를 식별하기 위해 어떤 전략을 사용해야 합니까?",
+    "options": [
+      "Amazon Rekognition 조정 기능을 사용합니다.",
+      "Amazon Comprehend 독성 감지를 사용합니다.",
+      "Amazon SageMaker 내장 알고리즘을 사용하여 모델을 훈련합니다.",
+      "Amazon Polly를 사용하여 댓글을 모니터링합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 49,
+    "question": "제조 회사가 여러 언어로 제품 설명을 만들고 싶어합니다. 어떤 AWS 서비스가 이 작업을 자동화할까요?",
+    "options": [
+      "Amazon Translate",
+      "Amazon Transcribe",
+      "Amazon Kendra",
+      "Amazon Polly"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 50,
+    "question": "한 병원이 임상 노트 작성 시 직원들의 기술 향상을 돕기 위해 음성-텍스트 기능을 갖춘 생성형 AI 솔루션을 사용하려고 합니다. 이 요구사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "options": [
+      "Amazon Q Developer",
+      "Amazon Polly",
+      "Amazon Rekognition",
+      "AWS HealthScribe"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 51,
+    "question": "한 의료회사가 구조화된 환자 기록에 접근하여 관련 정보를 추출하고 간결한 요약을 생성하는 AI 애플리케이션을 개발하려고 합니다. 어떤 솔루션이 이 요구사항을 충족할까요?",
+    "options": [
+      "Amazon Comprehend Medical을 사용하여 관련 의료 엔티티와 관계를 추출합니다. 규칙 기반 로직을 적용하여 요약을 구조화하고 형식화합니다.",
+      "Amazon Personalize를 사용하여 환자 참여 패턴을 분석합니다. 출력을 범용 텍스트 요약 도구와 통합합니다.",
+      "Amazon Textract를 사용하여 스캔 문서를 디지털 텍스트로 변환합니다. 키워드 추출 시스템을 설계하여 요약 생성합니다.",
+      "Amazon Kendra를 구현하여 의료 기록에 대한 검색 가능한 인덱스를 제공합니다. 템플릿 기반 시스템을 사용하여 요약 형식화합니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 52,
+    "question": "애니메이션 회사가 콘텐츠에 자막을 제공하려고 합니다. 이 요구사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "options": [
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Transcribe",
+      "Amazon Translate"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 53,
+    "question": "회사는 사용자가 여행 예약을 할 수 있는 웹사이트를 운영합니다. 회사는 웹사이트의 호텔에 대한 일관된 브랜딩을 만드는 데 도움이 되는 AI 솔루션을 원합니다. AI 솔루션은 일관된 작문 스타일로 웹사이트용 호텔 설명을 생성해야 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "options": [
+      "Amazon Comprehend",
+      "Amazon Personalize",
+      "Amazon Rekognition",
+      "Amazon Bedrock"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 54,
+    "question": "미디어 스트리밍 플랫폼은 사용자의 계정 이력을 기반으로 사용자에게 영화 추천을 제공하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "options": [
+      "Amazon Polly",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+      "Amazon Personalize"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 55,
+    "question": "대량의 교육 자료를 보유한 온라인 학습 회사는 엔터프라이즈 검색을 사용하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "options": [
+      "Amazon Comprehend",
+      "Amazon Kendra",
+      "Amazon Bedrock",
+      "Amazon Personalize"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 56,
+    "question": "금융 회사는 ML 예측에 대한 인적 검토 워크플로를 구축하려고 합니다. 회사는 사용 사례에 대한 신뢰도 임계값을 정의하고 시간이 지남에 따라 임계값을 조정하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "options": [
+      "Amazon Personalize",
+      "Amazon Augmented AI(Amazon A2I)",
+      "Amazon Inspector",
+      "AWS Audit Manager"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 57,
+    "question": "다큐멘터리 영화 제작자는 더 많은 시청자에게 다가가고 싶어합니다. 영화 제작자는 영화에 여러 언어로 자막과 음성 해설을 자동으로 추가하려고 합니다. 이러한 요구 사항을 충족하는 단계의 조합은 무엇입니까? (2개 선택)",
+    "options": [
+      "Amazon Transcribe와 Amazon Translate를 사용하여 다른 언어로 자막을 생성합니다.",
+      "Amazon Textract와 Amazon Translate를 사용하여 다른 언어로 자막을 생성합니다.",
+      "Amazon Polly를 사용하여 다른 언어로 음성 해설을 생성합니다.",
+      "Amazon Translate를 사용하여 다른 언어로 음성 해설을 생성합니다.",
+      "E. Amazon Textract를 사용하여 다른 언어로 음성 해설을 생성합니다."
+    ],
+    "answer": -1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 58,
+    "question": "뉴스 에이전시는 영어로 기사를 발행합니다. 에이전시는 기사를 다른 언어로 제공하려고 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon Transcribe를 회사 웹사이트에 사용합니다.",
+      "Amazon Translate 실시간 번역 기능을 사용합니다.",
+      "Amazon Personalize를 회사 웹사이트에 추가합니다.",
+      "Amazon Textract 실시간 문서 처리 기능을 사용합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 59,
+    "question": "지능형 문서 처리(IDP)의 사용 사례를 설명하는 작업은 무엇입니까?",
+    "options": [
+      "사기 거래 예측",
+      "제품 제공 개인화",
+      "사용자 피드백 분석 및 감성 분석 수행",
+      "스캔된 파일에서 데이터를 자동으로 추출 및 포맷팅"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 60,
+    "question": "한 금융 회사가 사기 행위 패턴을 데이터베이스에 저장하고 있습니다. 회사는 이 데이터를 사용하여 조사를 수행합니다. 회사는 이러한 조사를 지원하는 AI 도구를 개발하기 위해 그래프 기반 ML 솔루션을 사용하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "options": [
+      "Amazon OpenSearch Service",
+      "Amazon Aurora",
+      "Amazon Neptune",
+      "Amazon MemoryDB"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 61,
+    "question": "회사는 세계 외딴 지역의 인터넷 품질을 평가하려고 합니다. 회사는 인터넷 속도 데이터를 수집하고 Amazon RDS에 데이터를 저장해야 합니다. 회사는 하루 종일 인터넷 속도 변동을 분석할 것입니다. 회사는 잠재적인 인터넷 중단을 예측하는 AI 모델을 만들려고 합니다. 이 작업을 위해 회사가 수집해야 하는 데이터 유형은 무엇입니까?",
+    "options": [
+      "테이블 형식 데이터",
+      "텍스트 데이터",
+      "시계열 데이터",
+      "오디오 데이터"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 62,
+    "question": "AI 실무자는 다양한 사용 사례에 적합한 데이터 유형을 결정하고 있습니다. 다음 목록에서 각 사용 사례에 맞는 올바른 데이터 유형을 선택하세요. 각 데이터 유형을 한 번씩 선택합니다. 소셜 미디어 게시물에 대한 감정 분석 모델을 구축합니다. -> ? 자율 주행 자동차가 교통 표지판을 인식하도록 훈련합니다. -> ? 고객 인구 통계 데이터와 구매 이력을 사용하여 광고 캠페인을 최적화합니다. -> ? 과거 가격 데이터를 사용하여 주가를 예측합니다. -> ?",
+    "options": [
+      "텍스트 데이터, 이미지 데이터, 테이블 형식 데이터, 시계열 데이터",
+      "이미지 데이터, 텍스트 데이터, 테이블 형식 데이터, 시계열 데이터",
+      "테이블 형식 데이터, 텍스트 데이터, 이미지 데이터, 시계열 데이터",
+      "시계열 데이터, 텍스트 데이터, 이미지 데이터, 테이블 형식 데이터"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 63,
+    "question": "회사는 특정 콘텐츠 영역에서 AI 어시스턴트를 훈련하기 위해 대규모 데이터셋을 수집해야 합니다. 이 요구 사항을 충족하는 데이터셋은 무엇입니까?",
+    "options": [
+      "관련 용어를 사용하는 다양한 대화",
+      "일반 목적 과거 판매의 시계열 데이터",
+      "뉴스 기사의 감정 분석",
+      "고유 제품 ID 및 해당 사용자 ID"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 64,
+    "question": "정형 데이터의 예는 무엇입니까?",
+    "options": [
+      "온라인 포럼의 텍스트 메시지 파일",
+      "뉴스 방송이 포함된 비디오 파일 모음",
+      "측정 데이터로 구성된 CSV 파일",
+      "콜 센터 상담원과 고객 간의 대화 전사"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 65,
+    "question": "한 회사에서 물체 감지를 위한 딥 러닝 모델을 구축하고 이 모델을 프로덕션에 배포했습니다. 모델이 새 이미지를 분석하여 물체를 식별할 때 어떤 AI 프로세스가 발생합니까?",
+    "options": [
+      "훈련",
+      "추론",
+      "모델 배포",
+      "편향 보정"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 66,
+    "question": "한 회사가 ML 모델을 구축하고 있습니다. 이 회사는 새로운 데이터를 수집하고 상관 매트릭스를 만들고, 통계를 계산하고, 데이터를 시각화하여 데이터를 분석했습니다. 회사가 현재 ML 파이프라인의 어느 단계에 있습니까?",
+    "options": [
+      "데이터 사전 처리",
+      "피처 엔지니어링",
+      "탐색적 데이터 분석",
+      "하이퍼파라미터 조정"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 67,
+    "question": "ML 연구팀은 맞춤형 ML 모델을 개발합니다. 모델 아티팩트는 제품 및 서비스에 통합하기 위해 다른 팀과 공유됩니다. ML 팀은 모델 훈련 코드 및 데이터를 보관합니다. ML 팀은 ML 팀이 모델을 감사하는 데 사용할 수 있는 메커니즘을 구축하고자 합니다. 사용자 지정 ML 모델을 게시할 때 ML 팀은 어떤 솔루션을 사용해야 할까요?",
+    "options": [
+      "관련 정보가 포함된 문서를 생성합니다. 문서를 Amazon S3에 저장합니다.",
+      "투명성과 모델 이해를 위해 AWS AI 서비스 카드를 사용합니다.",
+      "용도와 훈련 및 추론 세부 정보가 포함된 Amazon SageMaker 모델 카드를 생성합니다.",
+      "모델 학습 스크립트를 작성합니다. 모델 학습 스크립트를 Git 리포지토리에 커밋합니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 68,
+    "question": "한 회사에서 ML 애플리케이션을 구축하려고 합니다. 잘 설계된 ML 워크로드를 개발하려면 다음 목록에서 올바른 단계를 선택하고 정렬하세요. 각 단계는 한 번만 선택해야 합니다.",
+    "options": [
+      "비즈니스 목표 및 프레임 ML 문제 정의 -> 모델 모니터링 -> 모델 개발 -> 모델 배포",
+      "비즈니스 목표 및 프레임 ML 문제 정의 -> 모델 개발 -> 모델 배포 -> 모델 모니터링",
+      "비즈니스 목표 및 프레임 ML 문제 정의 -> 모델 개발 -> 모델 모니터링 -> 모델 배포",
+      "비즈니스 목표 및 프레임 ML 문제 정의 -> 모델 배포 -> 모델 모니터링 -> 모델 개발"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 69,
+    "question": "ML 라이프사이클의 어느 단계가 규정 준수 및 규제 요구 사항을 결정합니까?",
+    "options": [
+      "피처 엔지니어링",
+      "모델 훈련",
+      "데이터 수집",
+      "비즈니스 목표 식별"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 70,
+    "question": "회사는 내부 소스에서 수집한 페타바이트의 비구조화 데이터베이스를 보유하고 있습니다. 이 회사는 데이터 과학자들이 기계 학습(ML) 작업을 수행할 수 있도록 이 데이터를 구조화된 형식으로 변환하고자 합니다. 어떤 서비스가 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "Amazon Lex",
+      "Amazon Rekognition",
+      "Amazon Kinesis Data Streams",
+      "AWS Glue"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 71,
+    "question": "머신러닝 운영(MLOps)에서 Infrastructure as Code (IaC)를 사용하는 이점은 무엇입니까?",
+    "options": [
+      "IaC는 하이퍼파라미터 튜닝의 필요성을 제거합니다.",
+      "IaC는 항상 강력한 컴퓨팅 인스턴스를 프로비저닝하여 더 정확한 모델 훈련에 기여합니다.",
+      "IaC는 클라우드 환경에서 확장 가능하고 일관된 ML 워크로드의 배포를 간소화합니다.",
+      "IaC는 저비용 인스턴스만 배포하여 전체 비용을 최소화합니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 72,
+    "question": "생성형 AI 모델 수명 주기의 어느 단계에서 모델의 정확도를 검토하기 위한 테스트가 수행됩니까?",
+    "options": [
+      "배포",
+      "데이터 선택",
+      "파인튜닝",
+      "평가"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 73,
+    "question": "식품 서비스 회사가 고객 음식 선호도를 예측하기 위한 데이터셋을 수집하려고 합니다. 회사는 모든 인구 통계의 음식 선호도가 데이터에 포함되도록 하려고 합니다. 이 시나리오가 나타내는 데이터셋 특성은 무엇입니까?",
+    "options": [
+      "정확성",
+      "다양성",
+      "최신성 편향",
+      "신뢰성"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 74,
+    "question": "의료 회사는 환자 음성을 분석하여 질병 진단을 개선하는 모델을 만들려고 합니다. 회사는 이 프로젝트를 위해 수백 개의 환자 음성을 녹음했습니다. 회사는 현재 지속 시간과 언어에 따라 음성 녹음을 필터링하고 있습니다. 현재 프로젝트 단계를 설명하는 ML 수명 주기 단계는 무엇입니까?",
+    "options": [
+      "데이터 수집",
+      "데이터 전처리",
+      "특성 엔지니어링",
+      "모델 훈련"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 75,
+    "question": "다음 목록에서 단계를 선택하고 순서를 지정하여 새로운 사용자 지정 모델에 대한 ML 수명 주기를 올바르게 설명하세요. 각 단계를 한 번씩 선택합니다.",
+    "options": [
+      "데이터 처리 -> 비즈니스 목표 정의 -> 모델 개발 및 훈련 -> 모델 배포",
+      "비즈니스 목표 정의 -> 데이터 처리 -> 모델 개발 및 훈련 -> 모델 배포",
+      "비즈니스 목표 정의 -> 데이터 처리 -> 모델 배포 -> 모델 개발 및 훈련",
+      "데이터 처리 -> 비즈니스 목표 정의 -> 모델 배포 -> 모델 개발 및 훈련"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 76,
+    "question": "AI의 맥락에서 추론이란 무엇을 의미합니까?",
+    "options": [
+      "새로운 AI 알고리즘을 만드는 프로세스",
+      "훈련된 모델을 사용하여 보이지 않는 데이터에 대한 예측 또는 결정을 내리는 것",
+      "여러 AI 모델을 하나의 모델로 결합하는 프로세스",
+      "AI 시스템을 위한 훈련 데이터를 수집하는 방법"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 77,
+    "question": "회사는 금융 거래 기록을 분석하고 있습니다. 회사는 기록을 개인 또는 비즈니스로 분류합니다. 회사는 거래 기록에 카테고리를 삽입합니다. 이것이 설명하는 데이터 준비 단계는 무엇입니까?",
+    "options": [
+      "데이터 인코딩",
+      "데이터 레이블링",
+      "데이터 정규화",
+      "데이터 균형화"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 78,
+    "question": "회사는 Amazon SageMaker Model Monitor를 사용하여 예측 모델을 모니터링하고 있습니다. 회사는 정의된 임계값을 초과하는 데이터 드리프트를 발견했습니다. 회사는 예측 모델에 대한 잠재적인 부정적인 영향을 완화하려고 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "SageMaker AI 엔드포인트를 다시 시작합니다.",
+      "모니터링 민감도를 조정합니다.",
+      "새로운 데이터로 모델을 재훈련합니다.",
+      "실험 추적을 설정합니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 79,
+    "question": "의료 회사는 환자 퇴원 후 30일 이내에 환자 재입원을 예측하는 AI 솔루션을 구축하고 있습니다. 회사는 의료 기록, 인구 통계 및 치료 사양을 포함한 과거 환자 데이터로 모델을 훈련하여 실시간으로 재입원 예측을 제공합니다. 이 시나리오에서 AI 모델 추론을 설명하는 작업은 무엇입니까?",
+    "options": [
+      "과거 환자 재입원 데이터를 수집합니다.",
+      "적절한 메트릭을 사용하고 모델 성능을 평가합니다.",
+      "데이터를 사용하여 환자 패턴과 상관관계를 식별합니다.",
+      "훈련된 모델을 사용하여 환자 재입원을 예측합니다."
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 80,
+    "question": "회사는 마케팅 운영을 개선하기 위해 생성형 AI 솔루션을 구현하려고 합니다. 회사는 향후 6개월 내에 수익을 늘리고 싶어합니다. 이러한 요구 사항을 충족하는 접근 방식은 무엇입니까?",
+    "options": [
+      "회사의 기존 데이터를 사용하여 즉시 사용자 지정 FM 훈련을 시작합니다.",
+      "이해관계자 인터뷰를 수행하여 사용 사례를 구체화하고 측정 가능한 목표를 설정합니다.",
+      "사전 구축된 AI 어시스턴트 솔루션을 구현하고 고객 만족도에 미치는 영향을 측정합니다.",
+      "업계 AI 구현을 분석하고 가장 성공적인 기능을 복제합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 81,
+    "question": "한 회사가 새로운 ML 솔루션을 구축하려고 합니다. 회사는 이미 데이터를 보유하고 있습니다. 회사는 솔루션을 구축하기 전에 ML 수명 주기를 이해해야 합니다. 다음 목록에서 ML 수명 주기를 올바르게 설명하는 단계를 선택하고 순서를 정하세요. 각 단계는 한 번만 선택하세요. Step 1: ? Step 2: ? Step 3: ? Step 4: ? Options 1. 훈련을 위한 데이터를 준비합니다. 2. 모델을 배포합니다. 3. 모델을 테스트합니다. 4. 모델을 훈련합니다.",
+    "options": [
+      "1, 2, 3, 4",
+      "1, 2, 4, 3",
+      "1, 3, 4, 2",
+      "1, 4, 3, 2"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 82,
+    "question": "한 회사가 차량 충돌 감지 후 30초 이내에 긴급 서비스에 연락하는 AI 솔루션을 통합하려고 합니다. 회사는 추가 훈련 없이 사전 훈련된 모델을 사용하려고 합니다. 이러한 요구 사항을 충족하기 위해 모델을 선택할 때 회사가 우선시해야 하는 요소는 무엇입니까?",
+    "options": [
+      "모델 커스터마이징",
+      "모델 크기",
+      "모델 비용",
+      "모델 temperature"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 83,
+    "question": "한 회사가 새로 출시된 제품에 대한 사용자 감성을 분석하기 위해 open source 사전 훈련 모델을 사용합니다. MLOps 모범 사례에 따라 회사가 수행해야 하는 작업은 무엇입니까?",
+    "options": [
+      "딥 러닝을 사용하여 하이퍼파라미터 튜닝을 수행합니다.",
+      "사용자 리뷰를 수집하고 각 리뷰를 긍정 또는 부정으로 레이블링합니다.",
+      "프로덕션에서 출력을 지속적으로 모니터링합니다.",
+      "입력 데이터 세트에 대해 피처 엔지니어링을 수행합니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 84,
+    "question": "한 부동산 회사가 판매 및 마케팅 데이터를 사용하여 주택 가격을 예측하는 ML 모델을 개발하고 있습니다. 이 회사는 정확한 예측을 하는 모델을 구축하기 위해 특성 엔지니어링을 사용하려고 합니다. 이 요구 사항을 충족하는 접근 방식은 무엇입니까?",
+    "options": [
+      "데이터 시각화를 제공하여 패턴을 이해한다.",
+      "모델의 하이퍼파라미터를 조정한다.",
+      "모델 훈련을 위한 관련 특성을 생성하거나 선택한다.",
+      "여러 소스에서 데이터를 수집한다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 85,
+    "question": "한 회사가 신용카드 거래를 레이블링하는 모델을 만들고 있습니다. 회사는 모델 학습을 위한 대량의 샘플 거래 데이터를 보유하고 있습니다. 거래 데이터의 대부분은 레이블이 지정되지 않았습니다. 데이터에는 기밀 정보가 포함되어 있지 않습니다. 회사는 모델을 파인 튜닝하기 위해 레이블이 지정된 샘플 데이터를 얻어야 합니다. 이 요구 사항을 충족하는 솔루션은 무엇입니까? (2개를 선택하세요.)",
+    "options": [
+      "레이블이 지정되지 않은 데이터에 대해 배치 추론 작업을 실행합니다.",
+      "PyTorch Distributed 라이브러리를 사용하는 Amazon SageMaker AI 학습 작업을 실행하여 데이터를 레이블링합니다.",
+      "Amazon Mechanical Turk 작업자가 포함된 Amazon SageMaker Ground Truth 레이블링 작업을 사용합니다.",
+      "레이블이 지정된 샘플로 학습된 광학 문자 인식 모델을 사용하여 레이블이 지정되지 않은 샘플을 레이블링합니다.",
+      "E. Amazon SageMaker AI 레이블링 작업을 실행합니다."
+    ],
+    "answer": -1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 86,
+    "question": "한 회사에서 식물 잎 사진으로 식물 질병을 예측하는 이미지 분류 모델을 구축했습니다. 이 회사는 모델이 올바르게 분류한 이미지의 수를 평가하려고 합니다. 회사에서 모델의 성능을 측정하기 위해 어떤 평가 지표를 사용해야 할까요?",
+    "options": [
+      "R-제곱 점수",
+      "정확도",
+      "평균 제곱근 오차(RMSE)",
+      "학습률"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 87,
+    "question": "다음 중 운영 AI 모델의 런타임 효율성을 측정하는 지표는 무엇입니까?",
+    "options": [
+      "고객 만족도 점수(CSAT)",
+      "에포크당 훈련 시간",
+      "평균 응답 시간",
+      "훈련 인스턴스 수"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 88,
+    "question": "한 금융회사가 신용카드 거래에서 잠재적 사기 사례를 표시하는 사기 탐지 시스템을 개발하고 있습니다. 직원들이 표시된 사기 사례를 평가할 것입니다. 회사는 직원들이 실제로는 사기가 아니지만 사기로 표시된 사례를 검토하는 데 소요되는 시간을 최소화하려고 합니다. 이 요구사항을 충족하는 평가 지표는 무엇입니까?",
+    "options": [
+      "재현율",
+      "정확도",
+      "정밀도",
+      "리프트 차트"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 89,
+    "question": "한 회사에서 대규모 언어 모델(LLM) 질문 응답 챗봇을 구축하고 있습니다. 이 회사는 콜센터 직원이 고객 질문에 응답하기 위해 취해야 하는 조치의 수를 줄이고자 합니다. LLM 챗봇의 효과를 평가하기 위해 회사에서 사용해야 하는 비즈니스 목표는 무엇입니까?",
+    "options": [
+      "웹사이트 참여율",
+      "평균 통화 시간",
+      "기업의 사회적 책임",
+      "규정 준수"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 90,
+    "question": "회사가 애플리케이션을 구축하기 위해 생성형 AI 모델을 선택해야 합니다. 애플리케이션은 사용자에게 실시간으로 응답을 제공해야 합니다. 이러한 요구사항을 충족하기 위해 회사가 고려해야 할 모델 특성은 무엇입니까?",
+    "options": [
+      "모델 복잡도",
+      "혁신 속도",
+      "추론 속도",
+      "훈련 시간"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 91,
+    "question": "AI 전문가가 이미지 내 재료 유형을 분류하는 딥 러닝 모델을 구축했습니다. 이제 AI 실무자는 모델 성능을 측정하려고 합니다. AI 실무자가 모델의 성능을 평가하는 데 도움이 되는 지표는 무엇입니까?",
+    "options": [
+      "혼동 매트릭스",
+      "상관 행렬",
+      "R2 점수",
+      "평균 제곱 오차(MSE)"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 92,
+    "question": "회사가 고객 이탈을 예측하는 ML 모델을 개발하고 있습니다. 이탈 예측과 같은 이진 분류 작업에서 모델의 성능을 평가할 평가 지표는 무엇입니까?",
+    "options": [
+      "F1 점수",
+      "평균 제곱 오차(MSE)",
+      "R-제곱",
+      "모델 훈련에 사용된 시간"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 93,
+    "question": "AI 실무자가 Amazon SageMaker 모델의 성능을 평가하고 있습니다. AI 실무자는 성능 지표를 선택해야 합니다. 지표는 올바르게 분류된 항목과 잘못 분류된 항목의 총합 대비 올바르게 분류된 항목의 수의 비율을 표시해야 합니다. 이러한 요구사항을 충족하는 지표는 무엇입니까?",
+    "options": [
+      "정확도",
+      "정밀도",
+      "F1 점수",
+      "재현율"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 94,
+    "question": "금융 회사가 고객 이탈을 예측하는 ML 모델을 배포했습니다. 모델은 1주일 동안 프로덕션에서 실행되고 있습니다. 회사는 실제 고객 행동과 비교하여 모델이 이탈을 얼마나 정확하게 예측하는지 평가하려고 합니다. 이러한 요구사항을 충족하는 지표는 무엇입니까?",
+    "options": [
+      "평균 제곱근 오차(RMSE)",
+      "투자 수익률(ROI)",
+      "F1 점수",
+      "BLEU(Bilingual Evaluation Understudy) 점수"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 95,
+    "question": "회사는 사용자에게 실시간 서비스 견적을 제공하기 위해 생성형 AI 모델을 사용할 계획입니다. 이 사용 사례에 올바른 모델을 선택하기 위해 회사가 사용해야 하는 기준은 무엇입니까?",
+    "options": [
+      "모델 크기",
+      "훈련 데이터 품질",
+      "범용 사용 및 고성능 GPU 가용성",
+      "모델 지연 시간 및 최적화된 추론 속도"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 96,
+    "question": "전자상거래 회사는 애플리케이션 사용자를 위한 개인화된 제품 추천을 생성하는 생성형 AI 솔루션을 개발하고 있습니다. 회사는 AI 솔루션이 애플리케이션에서 제품 판매와 사용자 참여를 얼마나 효과적으로 증가시키는지 추적하려고 합니다. 다음 목록에서 각 비즈니스 목표에 맞는 올바른 비즈니스 메트릭을 선택하세요. 각 비즈니스 메트릭은 한 번씩 선택해야 합니다. 제품 추천이 사용자에게 얼마나 매력적인지 측정합니다. -> ? 사용자 구매의 총 가치에 대한 AI 솔루션의 영향을 결정합니다. -> ? 사용자가 플랫폼으로 돌아오도록 장려하는 AI 솔루션의 능력을 평가합니다. -> ?",
+    "options": [
+      "클릭률(CTR), 평균 주문 금액(AOV), 유지율",
+      "클릭률(CTR), 유지율, 평균 주문 금액(AOV)",
+      "평균 주문 금액(AOV), 클릭률(CTR), 유지율",
+      "유지율, 평균 주문 금액(AOV), 클릭률(CTR)"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 97,
+    "question": "회사는 Amazon Bedrock을 사용하여 웹사이트에 생성형 AI 어시스턴트를 구현합니다. AI 어시스턴트는 제품 추천과 구매 결정에 대해 고객을 돕습니다. 회사는 AI 어시스턴트가 판매 성과에 미치는 직접적인 영향을 측정하려고 합니다. 이러한 요구 사항을 충족하는 메트릭은 무엇입니까?",
+    "options": [
+      "AI 어시스턴트 상호작용 후 제품을 구매하는 고객의 전환율",
+      "AI 어시스턴트와의 고객 상호작용 수",
+      "AI 어시스턴트 상호작용 후 고객 피드백의 감정 분석 점수",
+      "자연어 이해 정확도율"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 98,
+    "question": "한 회사가 Amazon Bedrock을 사용하여 생성형 AI 솔루션을 구현하고 있습니다. 이 AI 솔루션은 고객에게 개인화된 제품 추천을 제공합니다. 회사는 AI 솔루션이 매출에 미치는 영향을 평가하려고 합니다. 이 요구 사항을 충족하는 지표는 무엇입니까?",
+    "options": [
+      "교차 도메인 성능",
+      "솔루션 효율성",
+      "사용자 만족도",
+      "전환율"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 99,
+    "question": "회사는 데이터셋에서 ML 모델을 훈련하고 있습니다. 데이터셋에는 다른 클래스보다 더 많은 예제가 있는 일부 클래스가 포함되어 있습니다. 회사는 모델이 클래스를 감지하고 레이블링하는 데 얼마나 균형 있게 작동하는지 측정하려고 합니다. 회사가 사용해야 하는 메트릭은 무엇입니까?",
+    "options": [
+      "정확도",
+      "재현율",
+      "정밀도",
+      "F1 점수"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 100,
+    "question": "한 회사가 고객 문의를 자동으로 관리하여 서비스 상담원을 지원하기 위해 대규모 언어 모델(LLM) 기반 AI 어시스턴트를 구축하고 있습니다. 회사는 지원 전화 중 고객 서비스 상담원에게 필요한 노력을 줄이려고 합니다. 회사는 비즈니스 목표 중 하나에 대해 AI 어시스턴트를 평가할 지표를 선택해야 합니다. 이러한 요구 사항을 충족하는 지표는 무엇입니까?",
+    "options": [
+      "웹사이트 참여율",
+      "평균 통화 시간",
+      "상담원 이직률",
+      "첫 번째 연락 해결률"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 101,
+    "question": "AI 전문가가 다양한 직업에 종사하는 인간의 이미지를 생성하는 모델을 만들고 있습니다. AI 전문가는 입력 데이터가 편향되어 있고 특정 속성이 이미지 생성에 영향을 미치고 모델에 편향을 일으킨다는 사실을 발견했습니다. 어떤 기법으로 문제를 해결할 수 있을까요?",
+    "options": [
+      "불균형 클래스의 데이터 증대",
+      "클래스 분포를 위한 모델 모니터링",
+      "검색 증강 생성(RAG)",
+      "이미지의 워터마크 감지"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 102,
+    "question": "한 회사에서 특정 품목의 가격을 예측하는 새로운 모델을 개발하고 있습니다. 이 모델은 훈련 데이터셋에서 잘 작동했습니다. 회사에서 모델을 프로덕션에 배포했을 때 모델의 성능이 크게 떨어졌습니다. 이 문제를 완화하기 위해 회사는 무엇을 해야 할까요?",
+    "options": [
+      "훈련에 사용되는 데이터의 양을 줄입니다.",
+      "모델에 하이퍼파라미터를 추가합니다.",
+      "학습에 사용되는 데이터의 양을 늘립니다.",
+      "모델 학습 시간을 늘립니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 103,
+    "question": "한 회사에서 고객 이탈을 예측하기 위한 ML 모델을 개발하고 있습니다. 이 모델은 훈련 데이터셋에서 잘 작동하지만 새 데이터의 이탈을 정확하게 예측하지는 못합니다. 어떤 솔루션이 이 문제를 해결할 수 있을까요?",
+    "options": [
+      "정규화 파라미터를 줄여 모델 복잡성을 증가시킵니다.",
+      "정규화 파라미터를 늘려 모델 복잡성을 감소시킵니다.",
+      "입력 데이터에 더 많은 특징을 추가합니다.",
+      "더 많은 에포크만큼 모델을 학습합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 104,
+    "question": "한 회사에서 보안 카메라를 설치했습니다. 이 회사는 ML 모델을 사용하여 보안 카메라 영상의 도난 가능성을 평가합니다. 이 회사는 이 모델이 특정 인종 집단에 속한 사람들을 불균형하게 신고한다는 사실을 발견했습니다. 어떤 유형의 편향이 모델 결과에 영향을 미치나요?",
+    "options": [
+      "측정 편향",
+      "샘플링 편향",
+      "관찰자 편향",
+      "확증 편향"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 105,
+    "question": "한 회사에서 파운데이션 모델(FM)을 훈련하고 있습니다. 회사는 모델의 정확도를 특정 허용 수준까지 높이고자 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "배치 크기를 줄입니다.",
+      "에포크를 늘립니다.",
+      "에포크를 줄입니다.",
+      "온도 파라미터를 높입니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 106,
+    "question": "AI 실무자가 훈련 데이터셋에서 모델을 훈련했습니다. 모델은 훈련 데이터에서 잘 수행됩니다. 그러나 모델은 평가 데이터에서 잘 수행되지 않습니다. 이 문제의 가장 가능성 있는 원인은 무엇입니까?",
+    "options": [
+      "모델이 과소적합되었습니다.",
+      "모델에 프롬프트 엔지니어링이 필요합니다.",
+      "모델에 편향이 있습니다.",
+      "모델이 과적합되었습니다."
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 107,
+    "question": "한 회사에서 프로덕션 환경의 ML 파이프라인으로 Amazon SageMaker를 사용하고 있습니다. 이 회사는 최대 1GB의 대용량 입력 데이터와 최대 1시간의 처리 시간을 제공합니다. 회사에는 실시간에 가까운 지연 시간이 필요합니다. 다음 요구 사항을 충족하는 SageMaker 추론 옵션은 무엇입니까?",
+    "options": [
+      "실시간 추론",
+      "서버리스 추론",
+      "비동기 추론",
+      "배치 변환"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 108,
+    "question": "한 회사에서 보호 안경용 이미지를 생성하는 솔루션을 개발 중입니다. 솔루션은 정확도가 높아야 하며 주석이 잘못될 위험을 최소화해야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "Amazon SageMaker Ground Truth Plus를 사용한 휴먼 인 더 루프 검증",
+      "Amazon Bedrock 지식 베이스를 사용한 데이터 증강",
+      "Amazon Rekognition을 사용한 이미지 인식",
+      "Amazon QuickSight Q를 사용한 데이터 요약"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 109,
+    "question": "한 회사에서 Amazon SageMaker를 사용하여 ML 모델을 구축하려고 합니다. 회사는 여러 팀에서 모델 개발을 위한 변수를 공유하고 관리해야 합니다. 어떤 SageMaker 기능이 이러한 요구 사항을 충족합니까?",
+    "options": [
+      "Amazon SageMaker Feature Store",
+      "Amazon SageMaker Data Wrangler",
+      "Amazon SageMaker Clarify",
+      "Amazon SageMaker Model Cards"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 110,
+    "question": "AI 개발 팀이 팀의 VPC 내에서 기초 모델(FM)을 빠르게 배포하고 사용하는데 도움이 되는 AWS 서비스 또는 기능은 무엇입니까?",
+    "options": [
+      "Amazon Personalize",
+      "Amazon SageMaker JumpStart",
+      "PartyRock, an Amazon Bedrock Playground",
+      "Amazon SageMaker endpoints"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 111,
+    "question": "한 회사에서 이미지 분류를 위한 ML 모델을 개발했습니다. 이 회사는 웹 애플리케이션에서 모델을 사용할 수 있도록 모델을 프로덕션에 배포하려고 합니다. 회사는 기본 인프라를 전혀 관리하지 않고도 모델을 호스팅하고 예측을 제공하는 솔루션을 구현해야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "Amazon SageMaker 서버리스 추론을 사용하여 모델을 배포합니다.",
+      "Amazon CloudFront를 사용하여 모델을 배포합니다.",
+      "Amazon API 게이트웨이를 사용하여 모델을 호스팅하고 예측을 제공합니다.",
+      "AWS Batch를 사용하여 모델을 호스팅하고 예측을 제공합니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 112,
+    "question": "한 디지털 기기 회사에서 메모리 하드웨어에 대한 고객 수요를 예측하려고 합니다. 이 회사는 코딩 경험이나 ML 알고리즘에 대한 지식이 없으므로 데이터 기반 예측 모델을 개발해야 합니다. 회사는 내부 데이터와 외부 데이터에 대한 분석을 수행해야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "Amazon S3에 데이터를 저장합니다. Amazon S3의 데이터를 사용하는 Amazon SageMaker 내장 알고리즘을 사용하여 ML 모델을 생성하고 수요 예측을 예측할 수 있습니다.",
+      "데이터를 Amazon SageMaker Data Wrangler로 가져옵니다. SageMaker에 내장된 알고리즘을 사용하여 ML 모델을 생성하고 수요 예측을 예측할 수 있습니다.",
+      "데이터를 Amazon SageMaker Data Wrangler로 가져옵니다. Amazon Personalize Trending-Now 레시피를 사용하여 ML 모델을 구축하고 수요 예측을 예측합니다.",
+      "데이터를 Amazon SageMaker Canvas로 가져옵니다. SageMaker Canvas에서 데이터의 값을 선택하여 ML 모델 및 수요 예측을 구축합니다."
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 113,
+    "question": "한 회사에서 아카이브 데이터를 분석하기 위한 ML 모델을 구축하고 있습니다. 회사는 크기가 수 GB 이상인 대규모 데이터 세트에 대한 추론을 수행해야 합니다. 회사는 모델 예측에 즉시 액세스할 필요가 없습니다. 다음 요구 사항을 충족하는 Amazon SageMaker 추론 옵션은 무엇입니까?",
+    "options": [
+      "배치 변환",
+      "실시간 추론",
+      "서버리스 추론",
+      "비동기 추론"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 114,
+    "question": "한 회사가 부동산 매매 가격을 예측하기 위한 ML 모델을 개발했습니다. 이 회사는 서버나 인프라를 관리하지 않고도 모델을 배포하여 예측을 수행하고자 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon EC2 인스턴스에 모델을 배포합니다.",
+      "모델을 아마존 엘라스틱 쿠버네티스 서비스(Amazon EKS) 클러스터에 배포합니다.",
+      "Amazon S3와 통합된 Amazon CloudFront를 사용하여 모델을 배포합니다.",
+      "Amazon SageMaker 엔드포인트를 사용하여 모델을 배포합니다."
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 115,
+    "question": "한 회사에서 대규모 언어 모델(LLM)을 개발했으며 여러 내부 팀에서 LLM을 사용할 수 있게 하려고 합니다. 회사는 각 팀에 적합한 추론 모드를 선택해야 합니다. 다음 목록에서 각 사용 사례에 맞는 추론 모드를 선택하세요. 각 추론 모드를 한 번 이상 선택해야 합니다. 회사의 챗봇이 지연 시간을 최소화하면서 사용자의 의도를 이해하기 위해 LLM의 예측이 필요합니다. -> ? 데이터 처리 작업을 하려면 LLM에 쿼리하여 주말에 기가바이트의 텍스트 파일을 처리해야 합니다. -> ? 회사의 엔지니어링 팀은 작은 텍스트 콘텐츠를 처리하고 지연 시간이 짧은 예측을 제공할 수 있는 API를 만들어야 합니다. -> ?",
+    "options": [
+      "배치 변환, 실시간 추론, 실시간 추론",
+      "배치 변환, 실시간 추론, 배치 변환",
+      "실시간 추론, 배치 변환, 실시간 추론",
+      "실시간 추론, 실시간 추론, 배치 변환"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 116,
+    "question": "Amazon SageMaker Clarify가 제공하는 기능은 무엇입니까?",
+    "options": [
+      "검색 증강 생성(RAG) 워크플로를 통합합니다.",
+      "생산 중인 ML 모델의 품질을 모니터링합니다.",
+      "ML 모델에 대한 중요한 세부 정보를 문서화합니다.",
+      "데이터 준비 중 발생할 수 있는 편향을 식별합니다."
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 117,
+    "question": "한 소셜 미디어 회사에서 대규모 언어 모델(LLM)을 사용하여 메시지를 요약하려고 합니다. 이 회사는 Amazon SageMaker JumpStart에서 사용할 수 있는 LLM 몇 개를 선택했습니다. 회사에서는 이러한 모델에서 생성된 출력 독성을 비교하려고 합니다. 회사에서 운영 오버헤드를 최소화하면서 LLM을 평가할 수 있는 전략은 무엇입니까?",
+    "options": [
+      "크라우드 소싱 평가",
+      "자동 모델 평가",
+      "인간 작업자를 사용한 모델 평가",
+      "인간 피드백을 통한 강화 학습(RLHF)"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 118,
+    "question": "다음 옵션 중 Amazon SageMaker Model Cards를 사용하여 AI 모델을 문서화할 때의 이점은 무엇인가?",
+    "options": [
+      "모델의 기능에 대한 시각적으로 매력적인 요약을 제공합니다.",
+      "모델의 목적 성능 및 제한 사항에 대한 정보를 표준화합니다.",
+      "모델의 전반적인 계산 요구 사항을 줄입니다.",
+      "보관 목적으로 모델을 물리적으로 저장합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 119,
+    "question": "어떤 AWS 기능이 거버넌스 및 보고를 위해 ML 인스턴스 데이터에 대한 세부 정보를 기록합니까?",
+    "options": [
+      "Amazon SageMaker Model Cards",
+      "Amazon SageMaker Debugger",
+      "Amazon SageMaker Model Monitor",
+      "Amazon SageMaker JumpStart"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 120,
+    "question": "한 의료 회사에서 진단 목적으로 기초 모델(FM)을 사용자 지정하고 있습니다. 회사는 규제 요구 사항을 충족할 수 있도록 투명하고 설명 가능한 모델을 필요로 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "Amazon Inspector를 사용하여 보안 및 규정 준수를 구성합니다.",
+      "Amazon SageMaker Clarify 기능을 사용하여 간단한 지표, 보고서 및 예제를 생성합니다.",
+      "Amazon Macie를 사용하여 훈련 데이터를 암호화하고 보호합니다.",
+      "더 많은 데이터를 수집합니다. Amazon Rekognition을 사용하여 데이터에 사용자 지정 레이블을 추가할 수 있습니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 121,
+    "question": "한 회사가 AWS 서비스를 사용해서 AI/ML 모델을 배포하고 있습니다. 이 회사는 모델의 의사 결정 프로세스에 대한 투명성을 제공하고 모델 출력에 대한 설명을 제공하고자 합니다. 어떤 AWS 서비스 또는 기능이 이러한 요구 사항을 충족합니까?",
+    "options": [
+      "Amazon SageMaker Model Cards",
+      "Amazon Rekognition",
+      "Amazon Comprehend",
+      "Amazon Lex"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 122,
+    "question": "미디어 회사가 시청자 행동과 인구 통계를 분석하여 개인화된 콘텐츠를 추천하고자 합니다. 이 회사는 프로덕션 환경에 맞춤형 ML 모델을 배포하고자 합니다. 또한 이 회사는 모델 품질이 시간이 지남에 따라 변하는지 관찰하고자 합니다. 어떤 AWS 서비스 또는 기능이 이러한 요구 사항을 충족합니까?",
+    "options": [
+      "Amazon Rekognition",
+      "Amazon SageMaker Clarify",
+      "Amazon Comprehend",
+      "Amazon SageMaker Model Monitor"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 123,
+    "question": "한 회사가 다양한 사용 사례에 Amazon SageMaker 기능을 활용하려고 합니다. 각 사용 사례에 맞는 올바른 SageMaker 기능을 다음 목록에서 선택하세요. 각 SageMaker 기능은 한 번만 선택되거나 전혀 선택되지 않을 수 있습니다. 코드 없이 시각적 인터페이스를 통해 데이터를 준비합니다. -> ? 사기 탐지를 위한 사전 구축된 솔루션을 찾아 사용합니다. -> ? 사람의 개입으로 레이블이 지정된 데이터셋을 생성합니다. -> ?",
+    "options": [
+      "SageMaker Canvas, SageMaker JumpStart, SageMaker Ground Truth",
+      "SageMaker Canvas, SageMaker Model Monitor, SageMaker Ground Truth",
+      "SageMaker Feature Store, SageMaker JumpStart, SageMaker Model Monitor",
+      "SageMaker Ground Truth, SageMaker JumpStart, SageMaker Canvas"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 124,
+    "question": "여러 ML 모델을 사용하는 회사가 문제를 해결할 수 있도록 원래 모델 품질의 변화를 식별하려고 합니다. 이 요구사항을 충족하는 AWS 서비스 또는 기능은 무엇입니까?",
+    "options": [
+      "Amazon SageMaker JumpStart",
+      "Amazon SageMaker HyperPod",
+      "Amazon SageMaker Data Wrangler",
+      "Amazon SageMaker Model Monitor"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 125,
+    "question": "한 회사가 여러 연구 기관과 협력하여 AI 모델을 개발하려고 합니다. 회사는 모델 버전 추적과 모델 개발 기록의 표준화된 문서가 필요합니다. 이 요구사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Git을 사용하여 모델 변경사항 추적",
+      "Amazon Fraud Detector를 사용하여 모델 변경사항 추적",
+      "Amazon SageMaker Model Cards를 사용하여 모델 변경사항 추적",
+      "Amazon Comprehend를 사용하여 모델 변경사항 추적"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 126,
+    "question": "한 회사에서 대출 승인을 위한 ML 모델을 개발하고 있습니다. 회사는 모델의 편향을 탐지할 솔루션을 구현해야 합니다. 또한 회사는 모델의 예측을 설명할 수 있어야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "Amazon SageMaker Clarify",
+      "Amazon SageMaker Data Wrangler",
+      "Amazon SageMaker Model Cards",
+      "AWS AI Service Cards"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 127,
+    "question": "전자상거래 회사가 매일 여러 기가바이트의 고객 데이터를 받습니다. 회사는 이 데이터를 사용하여 향후 제품 수요를 예측하는 ML 모델을 훈련합니다. 회사는 하루에 한 번 추론을 수행하는 솔루션이 필요합니다. 이러한 요구사항을 충족하는 추론 유형은 무엇입니까?",
+    "options": [
+      "배치 추론",
+      "비동기 추론",
+      "실시간 추론",
+      "서버리스 추론"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 128,
+    "question": "회사가 고객 세분화를 위한 생성형 AI 모델을 개발했습니다. 모델은 오랫동안 회사의 프로덕션 환경에 배포되어 있었습니다. 회사는 최근 모델 응답에 일부 불일치를 발견했습니다. 회사는 모델 편향과 드리프트를 평가하려고 합니다. 이러한 요구사항을 충족하는 AWS 서비스 또는 기능은 무엇입니까?",
+    "options": [
+      "Amazon SageMaker Model Monitor",
+      "Amazon SageMaker Clarify",
+      "Amazon SageMaker Model Cards",
+      "Amazon SageMaker Feature Store"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 129,
+    "question": "회사가 AI 모델을 개발하기 위해 Amazon SageMaker를 사용하고 있습니다. AI 모델 수명 주기 워크플로의 각 단계에 대해 다음 목록에서 올바른 SageMaker 기능 또는 리소스를 선택하세요. 각 SageMaker 기능 또는 리소스는 한 번 선택되거나 전혀 선택되지 않아야 합니다. 다양한 모델 버전 관리 -> ? 예측을 위해 현재 모델 사용 -> ?",
+    "options": [
+      "SageMaker Clarify, SageMaker Model Registry",
+      "SageMaker Model Registry, SageMaker Serverless Inference",
+      "SageMaker Model Registry, SageMaker Clarify",
+      "SageMaker Serverless Inference, SageMaker Clarify"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 130,
+    "question": "회사가 맞춤형 컴퓨터 비전 모델을 개발했습니다. 회사는 새로운 실제 데이터에서 모델 실수를 최소화하기 위해 데이터 레이블링을 위한 사용자 친화적인 인터페이스가 필요합니다. 이러한 요구사항을 충족하는 AWS 서비스, 기능 또는 도구는 무엇입니까?",
+    "options": [
+      "Amazon SageMaker Ground Truth",
+      "Amazon SageMaker Canvas",
+      "Amazon Bedrock playground",
+      "Amazon Bedrock Agents"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 131,
+    "question": "회사가 공개적으로 사용 가능한 기초 모델(FM)에 대한 직원 액세스를 제어하려고 합니다. 이러한 요구사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "AWS Cost Explorer에서 비용 및 사용 보고서를 분석합니다.",
+      "AWS Artifact에서 AWS 보안 및 규정 준수 문서를 다운로드합니다.",
+      "검색 가능한 FM을 제한하도록 Amazon SageMaker JumpStart를 구성합니다.",
+      "Amazon OpenSearch Service를 사용하여 하이브리드 검색 솔루션을 구축합니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 132,
+    "question": "회사는 여러 ML 모델을 생성했습니다. 회사는 모델을 저장, 관리 및 버전 관리하기 위한 솔루션이 필요합니다. 이러한 요구 사항을 충족하는 AWS 서비스 또는 기능은 무엇입니까?",
+    "options": [
+      "AWS Audit Manager",
+      "Amazon SageMaker Model Monitor",
+      "Amazon SageMaker Model Registry",
+      "Amazon SageMaker Canvas"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 133,
+    "question": "AI 실무자는 텍스트 분류를 위해 오픈 소스 대규모 언어 모델(LLM)을 미세 조정해야 합니다. 데이터셋은 이미 준비되어 있습니다. 최소한의 운영 노력으로 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon Bedrock의 PartyRock에서 사용자 지정 모델 훈련 작업을 만듭니다.",
+      "Amazon SageMaker JumpStart를 사용하여 훈련 작업을 만듭니다.",
+      "Amazon SageMaker AI 모델 훈련 작업을 사용합니다.",
+      "Amazon EC2 인스턴스에 Jupyter 노트북을 만듭니다. 노트북을 사용하여 모델을 훈련합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 134,
+    "question": "의료 회사는 환자 데이터를 분석하려고 합니다. 데이터는 질병 발생 패턴을 감지하기 위해 지난 해에 수집되었습니다. 회사는 공중 보건 관계자에게 제시하기 위해 매월 추세 분석 보고서를 작성해야 합니다. 회사는 현재 연도의 가장 최근 월의 환자 데이터에 대한 통찰력을 제공해야 합니다. 가장 비용 효율적으로 이러한 요구 사항을 충족하는 추론 방법은 무엇입니까?",
+    "options": [
+      "실시간 추론",
+      "배치 변환",
+      "서버리스 추론",
+      "비동기 추론"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 135,
+    "question": "회사는 대출 신청을 승인하거나 거부하는 ML 모델을 개발했습니다. 모델의 의사 결정 프로세스는 규제 요구 사항을 준수하기 위해 투명하고 설명 가능해야 합니다. 회사는 감사 목적으로 의사 결정 프로세스를 문서화해야 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon Textract",
+      "Amazon SageMaker Model Card",
+      "AWS CloudFormation",
+      "Amazon Comprehend"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 136,
+    "question": "회사는 Amazon SageMaker를 사용하여 소셜 미디어 게시물에 특정 주제가 포함되어 있는지 식별하는 모델을 배포하고 있습니다. 회사는 다양한 입력 특성이 모델 동작에 어떻게 영향을 미치는지 보여줘야 합니다. 이러한 요구 사항을 충족하는 SageMaker 기능은 무엇입니까?",
+    "options": [
+      "SageMaker Canvas",
+      "SageMaker Clarify",
+      "SageMaker Feature Store",
+      "SageMaker Ground Truth"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 137,
+    "question": "AI 실무자는 ML 모델을 평가하려고 합니다. AI 실무자는 고객과 이해관계자에게 모델 예측에 대한 설명을 제공하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스 또는 기능은 무엇입니까?",
+    "options": [
+      "Amazon QuickSight",
+      "Amazon Comprehend",
+      "AWS Trusted Advisor",
+      "Amazon SageMaker Clarify"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 138,
+    "question": "회사는 모델을 프로덕션에 배포했습니다. 4개월 후 모델 추론 품질이 저하되었습니다. 회사는 모델 추론 품질이 저하되면 알림을 받기를 원합니다. 회사는 또한 문제가 다시 발생하지 않도록 하려고 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "모델을 재훈련합니다. Amazon SageMaker Clarify를 사용하여 모델 드리프트를 모니터링합니다.",
+      "모델을 재훈련합니다. Amazon SageMaker Model Monitor를 사용하여 모델 드리프트를 모니터링합니다.",
+      "새 모델을 구축합니다. Amazon SageMaker Feature Store를 사용하여 모델 드리프트를 모니터링합니다.",
+      "새 모델을 구축합니다. Amazon SageMaker JumpStart를 사용하여 모델 드리프트를 모니터링합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 139,
+    "question": "회사는 Amazon SageMaker AI를 사용하여 AI 솔루션을 구축하고 있습니다. 회사는 애플리케이션 개발을 용이하게 하기 위해 SageMaker AI 기능을 사용하려고 합니다. 다음 목록에서 각 사용 사례에 맞는 올바른 SageMaker AI 기능을 선택하세요. 각 기능을 한 번씩 선택합니다. 비즈니스 사례에 사용할 가장 적합한 모델을 결정합니다. -> ? 로우코드 또는 노코드 인터페이스를 통해 데이터를 준비합니다. -> ? 데이터의 편향 또는 불균형을 식별합니다. -> ?",
+    "options": [
+      "Model Cards, Data Wrangler, Clarify",
+      "Clarify, Data Wrangler, Model Cards",
+      "Data Wrangler, Clarify, Model Cards",
+      "Clarify, Model Cards, Data Wrangler"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 140,
+    "question": "회사는 파운데이션 모델(FM)을 미세 조정하기 위해 인간 피드백을 사용하여 훈련 데이터셋에 레이블을 지정하려고 합니다. 회사는 레이블링 애플리케이션을 개발하거나 레이블링 인력을 관리하고 싶지 않습니다. 이러한 요구 사항을 충족하는 AWS 서비스 또는 기능은 무엇입니까?",
+    "options": [
+      "Amazon SageMaker Data Wrangler",
+      "Amazon SageMaker Ground Truth Plus",
+      "Amazon Transcribe",
+      "Amazon Macie"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 141,
+    "question": "ML 지식이 최소인 AI 실무자가 코드를 작성하지 않고 직원 이직을 예측하려고 합니다. 이 요구 사항을 충족하는 Amazon SageMaker 기능은 무엇입니까?",
+    "options": [
+      "SageMaker Canvas",
+      "SageMaker Clarify",
+      "SageMaker Model Monitor",
+      "SageMaker Data Wrangler"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 142,
+    "question": "회사는 코드를 작성하지 않고 AWS에서 ML 모델을 구축하고 배포하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스 또는 기능은 무엇입니까?",
+    "options": [
+      "Amazon SageMaker Canvas",
+      "Amazon Rekognition",
+      "AWS DeepRacer",
+      "Amazon Comprehend"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 143,
+    "question": "한 회사가 AWS에서 프로덕션 환경에 AI 애플리케이션을 배포했습니다. 시간이 지남에 따라 애플리케이션의 응답 정확도가 낮아졌습니다. 회사는 애플리케이션 성능이 드리프트할 때 알림을 보내는 솔루션이 필요합니다. 이 요구 사항을 충족하는 AWS 서비스 또는 기능은 무엇입니까?",
+    "options": [
+      "Amazon Augmented AI(Amazon A2I)",
+      "Amazon SageMaker Model Monitor",
+      "Amazon Rekognition",
+      "AWS Trusted Advisor"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 144,
+    "question": "한 회사가 데이터와 AI 개발을 위한 단일 환경을 구현하려고 합니다. 여러 팀의 개발자들이 환경에 접근하고 함께 작업할 수 있어야 합니다. 개발자들은 환경에서 모델과 생성형 AI 애플리케이션을 안전하게 구축하고 공유할 수 있어야 합니다. 이 요구 사항을 충족하는 AWS 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon Lex",
+      "Amazon SageMaker Unified Studio",
+      "Amazon Bedrock PartyRock",
+      "Amazon Q Developer"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 145,
+    "question": "한 회사에서 생성형 AI를 사용하여 개발자 생산성과 소프트웨어 개발을 향상하고자 합니다. 이 회사는 Amazon Q Developer를 사용하려고 합니다. 회사가 이러한 요구 사항을 충족하도록 Amazon Q Developer가 할 수 있는 일은 무엇입니까?",
+    "options": [
+      "소프트웨어 스니펫, 참조 추적 및 오픈 소스 라이선스 추적을 생성합니다.",
+      "서버를 프로비저닝하거나 관리하지 않고도 애플리케이션을 실행할 수 있습니다.",
+      "코딩 및 자연어 검색 제공을 위한 음성 명령을 활성화합니다.",
+      "ML 모델을 사용하여 오디오 파일을 텍스트 문서로 변환합니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 146,
+    "question": "기업에 벡터 데이터베이스 애플리케이션을 구축할 수 있는 기능을 제공하는 Amazon OpenSearch Service의 기능은 무엇입니까?",
+    "options": [
+      "객체 스토리지를 위한 Amazon S3와의 통합",
+      "지리공간 인덱싱 및 쿼리 지원",
+      "확장 가능한 인덱스 관리 및 최근접 이웃 검색 기능",
+      "스트리밍 데이터에 대한 실시간 분석 수행 능력"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 147,
+    "question": "생성형 AI 모델의 사용 사례는 어떤 옵션인가요?",
+    "options": [
+      "침입 탐지 시스템을 사용하여 네트워크 보안을 개선합니다.",
+      "디지털 마케팅을 위한 텍스트 설명을 바탕으로 사실적인 이미지를 만듭니다.",
+      "최적화된 인덱싱을 사용하여 데이터베이스 성능을 향상합니다.",
+      "재무 데이터를 분석하여 주식 시장 동향을 예측합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 148,
+    "question": "Amazon Bedrock을 사용하여 생성형 AI 애플리케이션을 구축하려는 기업에서 기초 모델(FM)을 선택해야 합니다. 이 회사는 하나의 프롬프트에 얼마나 많은 정보를 담을 수 있는지 알고 싶어합니다. 어떤 고려 사항이 회사의 결정에 영향을 미칠까요?",
+    "options": [
+      "온도",
+      "컨텍스트 창",
+      "배치 크기",
+      "모델 크기"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 149,
+    "question": "한 회사가 Amazon Bedrock에서 감정 분석을 위해 대규모 언어 모델(LLM)을 사용하고자 합니다. 이 회사는 하나의 프롬프트에 얼마나 많은 정보를 넣을 수 있는지 알고 싶어합니다. 어떤 고려 사항이 회사의 결정에 영향을 미칠까요?",
+    "options": [
+      "온도",
+      "컨텍스트 창",
+      "배치 크기",
+      "모델 크기"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 150,
+    "question": "한 회사에서 Amazon Bedrock을 사용하여 애플리케이션을 만들려고 합니다. 이 회사는 예산이 제한되어 있고 장기 약정이 없는 유연성을 선호합니다. 이러한 요구 사항을 충족하는 Amazon Bedrock 요금 모델은 무엇입니까?",
+    "options": [
+      "온디맨드",
+      "모델 커스터마이징",
+      "프로비저닝된 처리량",
+      "스팟 인스턴스"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 151,
+    "question": "한 회사가 Amazon Bedrock을 사용하여 Amazon Titan 기초 모델(FM)을 구현하고 있습니다. 회사는 회사의 비공개 데이터 소스에서 가져온 관련 데이터를 사용하여 모델을 보완해야 합니다. 어떤 솔루션이 이 요구 사항을 충족할까요?",
+    "options": [
+      "다른 FM을 사용합니다.",
+      "더 낮은 온도 값을 선택합니다.",
+      "Amazon Bedrock 지식 기반(knowledge base)을 생성합니다.",
+      "모델 호출 로깅을 활성화합니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 152,
+    "question": "한 회사가 대규모 언어 모델(LLM)을 통합하여 애플리케이션에 생성형 AI 기능을 추가하려고 합니다. LLM의 응답은 가능한 한 결정적이고 안정적이어야 합니다. 이러한 요구사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "LLM에 프롬프트를 제출할 때 애플리케이션이 자동으로 온도 매개변수를 0으로 설정하도록 구성합니다.",
+      "LLM에 프롬프트를 제출하기 전에 프롬프트 끝에 \"응답을 결정적으로 만드세요\"를 자동으로 추가하도록 애플리케이션을 구성합니다.",
+      "LLM에 프롬프트를 제출하기 전에 프롬프트 시작 부분에 \"응답을 결정적으로 만드세요\"를 자동으로 추가하도록 애플리케이션을 구성합니다.",
+      "LLM에 프롬프트를 제출할 때 애플리케이션이 자동으로 온도 매개변수를 1로 설정하도록 구성합니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 153,
+    "question": "교육 회사가 애플리케이션을 구축하려고 합니다. 이 애플리케이션은 사용자가 텍스트를 입력하거나 질문의 사진을 제공할 수 있는 기능을 제공합니다. 애플리케이션은 서면 답변과 서면 답변에 대한 설명으로 응답합니다. 이러한 요구사항을 충족하는 모델 유형은 무엇입니까?",
+    "options": [
+      "컴퓨터 비전 모델",
+      "대규모 멀티모달 언어 모델",
+      "확산 모델",
+      "텍스트 음성 변환 모델"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 154,
+    "question": "한 회사에서 Amazon Bedrock 기본 모델을 사용하여 내부 사용 사례에 대한 문서를 요약하고 있습니다. 이 회사는 요약 품질을 개선하기 위해 사용자 지정 모델을 교육했습니다. Amazon Bedrock을 통해 사용자 지정 모델을 사용하려면 회사에서 취해야 하는 조치는 무엇입니까?",
+    "options": [
+      "사용자 지정 모델의 프로비저닝된 처리량을 구매합니다.",
+      "실시간 추론을 위해 Amazon SageMaker 엔드포인트에 사용자 지정 모델을 배포합니다.",
+      "Amazon SageMaker Model Registry에 모델을 등록합니다.",
+      "Amazon Bedrock에서 사용자 지정 모델에 대한 액세스 권한을 부여합니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 155,
+    "question": "회사는 회사의 비공개 데이터만을 기반으로 자체 대규모 언어 모델(LLM)을 구축해야 합니다. 회사는 훈련 과정이 환경에 미치는 영향에 대해 우려하고 있습니다. LLM을 훈련할 때 환경에 미치는 영향이 가장 적은 Amazon EC2 인스턴스 유형은 무엇입니까?",
+    "options": [
+      "Amazon EC2 C series",
+      "Amazon EC2 G series",
+      "Amazon EC2 P series",
+      "Amazon EC2 Trn series"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 156,
+    "question": "한 회사에서 기존 데이터를 기반으로 합성 데이터를 생성해야 하는 애플리케이션을 구축하고 있습니다. 회사에서 이 요구 사항을 충족하기 위해 사용할 수 있는 모델 유형은 무엇입니까?",
+    "options": [
+      "생성적 적대 네트워크(GAN)",
+      "XGBoost",
+      "잔차 신경망",
+      "웨이브넷"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 157,
+    "question": "다음 중 AI 및 자연어 처리(NLP) 모델이 텍스트 정보에 대한 이해를 높이는 데 사용하는 실제 물체와 개념을 수치로 표현한 것을 설명하는 용어는 무엇입니까?",
+    "options": [
+      "임베딩",
+      "토큰",
+      "모델",
+      "바이너리"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 158,
+    "question": "한 회사에서 감정 분석을 위해 Amazon Bedrock에서 대규모 언어 모델(LLM)을 사용하려고 합니다. 회사는 동일한 입력 프롬프트에 대해 보다 일관된 응답을 생성하기 위해 LLM이 필요합니다. 이러한 요구 사항을 충족하기 위해 회사에서 어떤 추론 파라미터를 조정해야 할까요?",
+    "options": [
+      "온도 값을 낮춥니다.",
+      "온도 값을 높입니다.",
+      "출력 토큰의 길이를 줄입니다.",
+      "최대 생성 길이를 늘립니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 159,
+    "question": "한 의료 회사가 Amazon Bedrock에 질병 탐지 모델을 배포했습니다. 개인 정보 보호 정책을 준수하기 위해 이 회사는 모델이 응답에 개인 환자 정보를 포함하지 못하도록 하려고 합니다. 또한 회사는 정책 위반이 발생할 경우 알림을 받고자 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon Macie를 사용하여 모델 출력에서 민감한 데이터를 스캔하고 잠재적 위반에 대한 알림을 설정합니다.",
+      "모델의 응답을 모니터링하고 탐지된 개인 정보에 대한 알림을 생성하도록 AWS CloudTrail을 구성합니다.",
+      "Amazon Bedrock용 가드레일을 사용하여 콘텐츠를 필터링합니다. 정책 위반 알림을 위한 Amazon CloudWatch 경보를 설정합니다.",
+      "Amazon SageMaker 모델 모니터를 구현하여 데이터 드리프트를 감지하고 모델 품질이 저하될 때 알림을 받습니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 160,
+    "question": "한 회사에서 지난 12개월 동안 여러 소매점에서 가장 많이 팔린 제품의 총 판매량을 표시하려고 합니다. 회사에서 그래프 생성을 자동화하려면 어떤 AWS 솔루션을 사용해야 합니까?",
+    "options": [
+      "Amazon Q in Amazon EC2",
+      "Amazon Q Developer",
+      "Amazon Q in Amazon QuickSight",
+      "Amazon Q in AWS Chatbot"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 161,
+    "question": "한 회사에서 Amazon Bedrock에서 호스팅되는 기본 모델에 대해 퓨샷 프롬프팅을 사용하고 있습니다. 이 모델은 현재 프롬프트에서 10개의 예제를 사용합니다. 모델은 하루에 한 번 호출되며 제대로 작동하고 있습니다. 이 회사는 월별 비용을 낮추고자 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "미세 조정을 사용하여 모델을 사용자 지정합니다.",
+      "프롬프트에서 토큰 수를 줄입니다.",
+      "프롬프트의 토큰 수를 늘립니다.",
+      "프로비저닝된 처리량을 사용합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 162,
+    "question": "AI 전문가가 대규모 언어 모델(LLM)을 사용하여 마케팅 캠페인용 콘텐츠를 만들고 있습니다. 생성된 콘텐츠는 그럴듯하고 사실적으로 들리지만 정확하지 않습니다. LLM에 어떤 문제가 있나요?",
+    "options": [
+      "데이터 유출",
+      "환각",
+      "오버피팅",
+      "언더피팅"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 163,
+    "question": "한 대형 소매업체는 매일 수천 건의 제품 관련 고객 지원 문의를 받습니다. 고객 지원 문의는 신속하게 처리하고 응답해야 합니다. 이 회사는 Amazon Bedrock용 에이전트를 구현하고자 합니다. 이 소매업체에 도움이 될 수 있는 Amazon Bedrock 에이전트를 사용하면 얻을 수 있는 주요 이점은 무엇입니까?",
+    "options": [
+      "고객 요구 사항을 예측하기 위한 사용자 지정 기초 모델(FMs) 생성",
+      "반복 작업의 자동화와 복잡한 워크플로의 오케스트레이션",
+      "여러 기초 모델(FMs)을 자동으로 호출하고 결과를 통합합니다.",
+      "사전 정의된 기준 및 지표를 기반으로 기초 모델(FM) 선택"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 164,
+    "question": "생성형 AI 모델의 맥락에서 토큰이란 무엇입니까?",
+    "options": [
+      "토큰은 생성형 AI 모델이 작동하는 기본 입력 및 출력 단위로 단어, 하위 단어 또는 기타 언어 단위를 나타냅니다.",
+      "토큰은 생성형 AI 모델에서 사용되는 단어나 개념을 수학적으로 표현한 것입니다.",
+      "토큰은 특정 작업에 맞게 미세 조정된 생성형 AI 모델의 사전 훈련된 가중치입니다.",
+      "토큰은 출력을 생성하기 위해 생성 AI 모델에 제공되는 특정 프롬프트 또는 지침입니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 165,
+    "question": "한 회사에서 대규모 언어 모델(LLM)을 사용하여 추론하는 데 드는 비용을 평가하려고 합니다. 이 회사는 Amazon Bedrock을 사용하여 생성형 AI 애플리케이션을 구축하고자 합니다. 추론 비용을 높이는 요인은 무엇일까요?",
+    "options": [
+      "소비한 토큰 수",
+      "온도 값",
+      "LLM 학습에 사용된 데이터의 양",
+      "총 훈련 시간"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 166,
+    "question": "한 회사에는 Amazon Bedrock을 사용하여 제품에 대한 고객 쿼리에 답변하도록 사용자 지정된 기초 모델(FM)이 있습니다. 이 회사는 새로운 유형의 쿼리에 대한 모델의 응답을 검증하려고 합니다. 회사는 Amazon Bedrock이 검증에 사용할 수 있는 새 데이터 세트를 업로드해야 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까?",
+    "options": [
+      "Amazon S3",
+      "Amazon Elastic Block Store (Amazon EBS)",
+      "Amazon Elastic File System (Amazon EFS)",
+      "AWS Snowcone"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 167,
+    "question": "한 회사에서 Amazon Bedrock 및 Stable Diffusion과 함께 검색 증강 생성(RAG)을 사용하여 텍스트 설명을 기반으로 제품 이미지를 생성하고 있습니다. 결과는 무작위로 나타나며 구체적인 세부 정보가 없는 경우가 많습니다. 회사는 생성된 이미지의 특수성을 높이고자 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "생성 단계 수를 늘립니다.",
+      "MASK_IMAGE_BLACK 마스크 소스 옵션을 사용합니다.",
+      "분류기 없는 가이던스(CFG) 규모를 늘립니다.",
+      "프롬프트 강도를 높입니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 168,
+    "question": "한 회사에서 AWS Glue를 사용하여 새로운 솔루션을 만들려고 합니다. 이 회사는 AWS Glue를 사용한 프로그래밍 경험이 거의 없습니다. 회사에서 AWS Glue를 사용하는 데 도움이 될 수 있는 AWS 서비스는 무엇입니까?",
+    "options": [
+      "Amazon Q Developer",
+      "AWS Config",
+      "Amazon Personalize",
+      "Amazon Comprehend"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 169,
+    "question": "한 회사에서 대규모 언어 모델(LLM)을 사용하여 자연어 코드 주석으로 코드를 생성하려고 합니다. 이러한 요구 사항을 충족하는 LLM 기능은 무엇입니까?",
+    "options": [
+      "텍스트 요약",
+      "텍스트 생성",
+      "텍스트 완성",
+      "텍스트 분류"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 170,
+    "question": "한 제약회사에서 신약에 대한 사용자 리뷰를 분석하고 각 약물에 대한 간략한 개요를 제공하고자 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon Personalize를 사용하여 시계열 예측 모델을 생성하여 약물 리뷰를 분석할 수 있습니다.",
+      "Amazon Bedrock 대규모 언어 모델(LLM)을 사용하여 약물 검토 요약을 작성합니다.",
+      "Amazon SageMaker를 사용하여 약물을 여러 그룹으로 분류하는 분류 모델을 만듭니다.",
+      "Amazon Rekognition을 사용하여 약물 리뷰 요약을 생성합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 171,
+    "question": "기초 모델(FM)이 비즈니스 목표를 효과적으로 충족하는지 여부를 결정하는 전략은 무엇입니까?",
+    "options": [
+      "벤치마크 데이터 세트에서 모델의 성능을 평가합니다.",
+      "모델의 아키텍처와 하이퍼파라미터를 분석합니다.",
+      "모델이 특정 사용 사례에 부합하는지 평가합니다.",
+      "모델 배포에 필요한 계산 리소스를 측정합니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 172,
+    "question": "한 회사는 직원들이 미해결 고객 클레임을 확인하고, 특정 클레임의 세부 정보를 식별하고, 클레임 문서에 액세스할 수 있도록 AI 애플리케이션을 개발하고자 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon Fraud Detector와 함께 Amazon Bedrock용 에이전트를 사용하여 애플리케이션을 구축합니다.",
+      "Amazon Bedrock 지식 기반과 함께 Amazon Bedrock용 에이전트를 사용하여 애플리케이션을 구축합니다.",
+      "Amazon Bedrock 지식 기반과 함께 Amazon Personalize를 사용하여 애플리케이션을 구축합니다.",
+      "Amazon SageMaker를 사용하여 새로운 ML 모델을 학습시켜 애플리케이션을 구축합니다."
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 173,
+    "question": "한 회사는 고객에게 대화형 검색 경험을 제공하기 위해 지능형 에이전트를 구현하고 있습니다. 이 회사는 생성형 AI 모델의 임베딩을 데이터베이스의 벡터로 저장하고 쿼리를 저장할 수 있는 데이터베이스 서비스가 필요합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족할까요?",
+    "options": [
+      "Amazon Athena",
+      "Amazon Aurora PostgreSQL",
+      "Amazon Redshift",
+      "Amazon EMR"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 174,
+    "question": "한 제조회사가 공개적으로 이용 가능한 소스에서 소비자 불만을 수집하는 애플리케이션을 보유하고 있습니다. 애플리케이션은 복잡한 하드코딩된 로직을 사용하여 불만을 처리합니다. 회사는 이 로직을 시장과 제품 라인 전반에 걸쳐 확장하려고 합니다. 이 시나리오에서 생성형 AI 모델이 제공하는 장점은 무엇입니까?",
+    "options": [
+      "출력의 예측가능성",
+      "적응성",
+      "입력 변화에 대한 민감도 감소",
+      "설명가능성"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 175,
+    "question": "회사의 대규모 언어 모델(LLM)이 환각을 겪고 있습니다. 회사는 어떻게 환각을 줄일 수 있을까요?",
+    "options": [
+      "모델 학습을 감독하기 위해 Amazon Bedrock에 에이전트를 설정합니다.",
+      "데이터 사전 처리를 사용하여 환각을 유발하는 모든 데이터를 제거합니다.",
+      "모델의 온도 추론 매개변수를 감소시킵니다.",
+      "환각을 느끼지 않도록 훈련된 기초 모델(FM)을 사용합니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 176,
+    "question": "한 회사가 다양한 길이의 책을 요약하는 AI 애플리케이션을 구축하고 있습니다. 테스트 중 일부 책의 요약에 실패합니다. 왜 일부 책의 요약에 실패할까요?",
+    "options": [
+      "temperature가 너무 높게 설정되었습니다.",
+      "선택한 모델이 파인튜닝을 지원하지 않습니다.",
+      "Top P 값이 너무 높습니다.",
+      "입력 토큰이 모델의 컨텍스트 크기를 초과했습니다."
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 177,
+    "question": "자연어 처리(NLP)에서 토큰화(tokenization)는 무엇을 위해 사용됩니까?",
+    "options": [
+      "텍스트 데이터를 암호화하기 위해",
+      "텍스트 파일을 압축하기 위해",
+      "처리를 위해 텍스트를 더 작은 단위로 분할하기 위해",
+      "언어 간 텍스트를 번역하기 위해"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 178,
+    "question": "트랜스포머 기반 언어 모델의 특성은 무엇입니까?",
+    "options": [
+      "트랜스포머 기반 언어 모델은 입력에 필터를 적용하여 필터링된 뷰를 통해 지역적 패턴을 캡처하는 컨볼루션 레이어를 사용합니다.",
+      "트랜스포머 기반 언어 모델은 텍스트 데이터만 처리할 수 있습니다.",
+      "트랜스포머 기반 언어 모델은 맥락적 관계를 캡처하기 위해 셀프 어텐션 메커니즘을 사용합니다.",
+      "트랜스포머 기반 언어 모델은 순환적 반복으로 한 번에 하나의 요소씩 데이터 시퀀스를 처리합니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 179,
+    "question": "텍스트 생성 프로세스의 각 단계에서 고려되는 가능한 다음 단어 또는 토큰의 수를 제어하는 대규모 언어 모델(LLM) 매개변수는 무엇입니까?",
+    "options": [
+      "최대 토큰",
+      "Top K",
+      "온도",
+      "배치 크기"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 180,
+    "question": "회사가 챗봇을 만들고 있습니다. 챗봇은 Amazon Lex와 Amazon OpenSearch Service를 사용합니다. 챗봇은 회사의 비공개 데이터를 사용하여 질문에 답합니다. 회사는 데이터를 데이터베이스에 저장하기 전에 벡터 표현으로 변환해야 합니다. 이러한 요구사항을 충족하는 기초 모델(FM) 유형은 무엇입니까?",
+    "options": [
+      "텍스트 완성 모델",
+      "지시 따르기 모델",
+      "텍스트 임베딩 모델",
+      "이미지 생성 모델"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 181,
+    "question": "AI 실무자가 대규모 언어 모델(LLM)에서 더 다양하고 창의적인 출력을 생성하려고 합니다. AI 실무자가 추론 매개변수를 어떻게 조정해야 합니까?",
+    "options": [
+      "온도 값을 증가시킵니다.",
+      "Top K 값을 감소시킵니다.",
+      "응답 길이를 증가시킵니다.",
+      "프롬프트 길이를 감소시킵니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 182,
+    "question": "회사가 Amazon Bedrock에서 사전 훈련된 기초 모델(FM)을 사용하는 생성형 AI 애플리케이션을 보유하고 있습니다. 회사는 FM이 회사 정보를 사용하여 더 많은 컨텍스트를 포함하기를 원합니다. 이러한 요구사항을 가장 비용 효율적으로 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon Bedrock Knowledge Bases를 사용합니다.",
+      "Amazon Bedrock에서 다른 FM을 선택합니다.",
+      "Amazon Bedrock Agents를 사용합니다.",
+      "Amazon Bedrock에 맞춤형 모델을 배포합니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 183,
+    "question": "AI 실무자는 대규모 언어 모델(LLM)이 여러 호출에 걸쳐 동일한 입력에 대해 다른 응답을 생성하고 있음을 발견했습니다. 이것이 설명하는 AI의 위험은 무엇입니까?",
+    "options": [
+      "환각",
+      "비결정성",
+      "편향",
+      "멀티모달리티"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 184,
+    "question": "회사는 생성형 AI 애플리케이션을 구축하고 파운데이션 모델(FM)을 검토하고 있습니다. 회사는 여러 FM 특성을 고려해야 합니다. 다음 목록에서 각 정의에 맞는 올바른 FM 특성을 선택하세요. 각 FM 특성은 한 번씩 선택해야 합니다. 단일 프롬프트에 들어갈 수 있는 정보의 양 -> ? 모델이 출력을 생성하는 데 걸리는 시간 -> ? 애플리케이션 엔드포인트를 동시에 호출하는 여러 사용자 -> ?",
+    "options": [
+      "지연 시간, 컨텍스트 윈도우, 동시성",
+      "컨텍스트 윈도우, 동시성, 지연 시간",
+      "컨텍스트 윈도우, 지연 시간, 동시성",
+      "동시성, 지연 시간, 컨텍스트 윈도우"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 185,
+    "question": "회사는 제품 카탈로그를 위한 이미지와 설명을 생성하는 AI 솔루션을 만들려고 합니다. 회사는 이 솔루션을 위한 파운데이션 모델(FM)을 선택해야 합니다. 회사는 각 FM의 출력 유형을 고려해야 합니다. 회사가 평가하는 FM 특성은 무엇입니까?",
+    "options": [
+      "지연 시간",
+      "모델 크기",
+      "모델 사용자 지정",
+      "모달리티"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 186,
+    "question": "회사는 대규모 언어 모델(LLM)을 작업하고 있으며 LLM의 출력이 예상만큼 다양하지 않다는 것을 발견했습니다. 회사가 조정해야 하는 매개변수는 무엇입니까?",
+    "options": [
+      "온도",
+      "배치 크기",
+      "학습률",
+      "옵티마이저 유형"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 187,
+    "question": "디자인 회사는 Amazon Bedrock의 파운데이션 모델(FM)을 사용하여 다양한 프로젝트를 위한 이미지를 생성하고 있습니다. 회사는 각 생성된 이미지가 얼마나 상세하거나 추상적으로 나타나는지를 제어하려고 합니다. 회사가 수정해야 하는 모델 매개변수는 무엇입니까?",
+    "options": [
+      "모델 체크포인트",
+      "배치 크기",
+      "생성 단계",
+      "토큰 길이"
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 188,
+    "question": "프로덕션 시스템에서 생성형 AI 모델을 사용할 때의 단점은 무엇입니까?",
+    "options": [
+      "높은 정확도와 신뢰성 가능성",
+      "결정론적이고 일관된 동작",
+      "무시할 수 있는 수준의 컴퓨팅 리소스 요구 사항",
+      "환각 및 부정확성"
+    ],
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 189,
+    "question": "사전 훈련된 파운데이션 모델(FM)이 요청을 처리하고 출력을 전달하는 속도를 나타내는 용어는 무엇입니까?",
+    "options": [
+      "모델 크기",
+      "추론 지연 시간",
+      "컨텍스트 윈도우",
+      "파인 튜닝"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 190,
+    "question": "한 회사가 대규모 웹 데이터 컬렉션을 사용하여 대규모 언어 모델(LLM)을 생성하고 있습니다. 이 회사는 모델 가중치의 무작위 초기화를 완료합니다. 다음으로, 언어 모델링 목적 함수를 통해 모델을 데이터에 적합시킵니다. 이 시나리오가 설명하는 모델 훈련 프로세스의 단계는 무엇입니까?",
+    "options": [
+      "파인 튜닝",
+      "사전 훈련",
+      "모델 선택",
+      "배포"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 191,
+    "question": "생성형 AI 모델은 때때로 입력이나 작업과 관련 없는 데이터를 생성합니다. 비즈니스 문제에 생성형 AI를 사용할 때 이러한 단점을 나타내는 용어는 무엇입니까?",
+    "options": [
+      "해석 가능성",
+      "할루시네이션",
+      "데이터 편향",
+      "비결정성"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 192,
+    "question": "한 회사가 애플리케이션에서 Amazon Bedrock 대규모 언어 모델(LLM)을 사용합니다. 테스트 중에 회사는 동일한 입력에서 서로 다른 출력이 생성되는 것을 관찰합니다. 이 문제의 가장 가능성 있는 원인은 무엇입니까?",
+    "options": [
+      "LLM이 비결정적인 방식으로 동작하고 있습니다.",
+      "LLM의 가드레일이 올바르게 구성되지 않았습니다.",
+      "LLM에 보안 취약점이 있습니다.",
+      "LLM이 결정적인 방식으로 동작하고 있습니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 193,
+    "question": "한 회사가 내부 사용자를 위한 콘텐츠를 생성하는 새로운 AI 애플리케이션을 배포하고 있습니다. 애플리케이션 출력을 더 결정론적으로 만드는 전략은 무엇입니까?",
+    "options": [
+      "temperature 낮추기",
+      "학습률 높이기",
+      "중지 시퀀스 설정",
+      "토큰 수 설정"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 194,
+    "question": "한 회사가 파운데이션 모델(FM)을 사용하여 생성형 AI 애플리케이션을 구축하고 있습니다. 이 애플리케이션은 마케팅 이메일을 자동으로 생성해야 합니다. 회사는 애플리케이션의 출력 텍스트가 창의적이고 짧은 길이이기를 원합니다. 이러한 요구 사항을 충족하는 추론 파라미터 구성은 무엇입니까?",
+    "options": [
+      "temperature를 낮추고 응답 길이를 줄입니다.",
+      "temperature를 높이고 응답 길이를 늘립니다.",
+      "temperature를 높이고 응답 길이를 줄입니다.",
+      "temperature를 낮추고 응답 길이를 늘립니다."
+    ],
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 195,
+    "question": "회사의 데이터베이스에는 비즈니스 분석에 사용할 수 있는 테라바이트의 데이터가 있습니다. 이 회사는 직원이 제공하는 입력 텍스트로 SQL 쿼리를 구축할 수 있는 AI 기반 애플리케이션을 구축하고자 합니다. 직원들은 기술에 대한 경험이 거의 없습니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "사전 학습된 생성형 트랜스포머(GPT)",
+      "잔차 신경망",
+      "서포트 벡터 머신",
+      "웨이브넷"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 196,
+    "question": "회사는 샘플 이미지와 슬로건을 포함한 제품 광고 콘텐츠를 생성형 AI를 사용하여 만드는 솔루션을 개발하려고 합니다. 다음 목록에서 각 작업에 맞는 올바른 모델 유형을 선택하세요. 생성된 슬로건과 제품의 영향을 받은 고품질 이미지 생성 -> ? 광고 제품을 기반으로 문맥적으로 관련된 슬로건 생성 -> ? 회사 브랜드 요소가 이미지에 적절하게 배치되도록 보장 -> ?",
+    "options": [
+      "확산 모델, 트랜스포머 기초 모델, 객체 탐지 모델",
+      "확산 모델, 객체 탐지 모델, 트랜스포머 기초 모델",
+      "트랜스포머 기초 모델, 확산 모델, 객체 탐지 모델",
+      "객체 탐지 모델, 트랜스포머 기초 모델, 확산 모델"
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 197,
+    "question": "회사는 전자상거래 웹사이트에 대한 제품 설명을 자동으로 생성하는 생성형 AI 애플리케이션을 개발하고 있습니다. 제품 설명은 스타일과 톤이 일관된 텍스트 단락으로 구성되어야 합니다. 애플리케이션은 매일 수천 개의 고유한 설명을 생성해야 합니다. 이러한 요구 사항을 충족하는 생성 모델 유형은 무엇입니까?",
+    "options": [
+      "변이형 오토인코더(VAE) 모델",
+      "트랜스포머 기초 모델",
+      "확산 모델",
+      "생성적 적대 신경망(GAN) 모델"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 198,
+    "question": "회사는 AWS에서 생성형 AI 애플리케이션을 구축하고 있습니다. 이 애플리케이션은 학생들의 독해력 향상을 도울 것입니다. 애플리케이션은 학생들에게 이야기에 삽화를 추가할 수 있는 기능을 제공해야 합니다. 이 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "options": [
+      "Amazon Bedrock Stable Diffusion 3.5 Large를 사용하여 텍스트 입력을 기반으로 이미지를 생성합니다.",
+      "Amazon Polly를 사용하여 이야기 텍스트를 기반으로 오디오북을 만듭니다.",
+      "Amazon Rekognition을 사용하여 이미지 내용을 분석하고 텍스트 속성을 감지합니다.",
+      "표준 프롬프트 템플릿을 만듭니다. Amazon Q Business를 사용하여 이야기에 삽화를 넣습니다."
+    ],
+    "answer": 0,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 199,
+    "question": "한 교육 회사가 개인 튜터 애플리케이션을 구축하려고 합니다. 이 애플리케이션은 사용자가 텍스트를 입력하거나 질문 사진을 제공할 수 있는 기능을 제공합니다. 애플리케이션은 서면 답변과 서면 답변에 대한 설명으로 응답합니다. 이러한 요구 사항을 충족하는 모델 유형은 무엇입니까?",
+    "options": [
+      "컴퓨터 비전 모델",
+      "Multi-modal LLM",
+      "확산 모델(Diffusion model)",
+      "텍스트 음성 변환 모델(Text-to-speech model)"
+    ],
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "categoryId": "unknown",
+    "number": 200,
+    "question": "Multi-modal 모델의 생성형 AI 사용 사례를 설명하는 문장은 무엇입니까?",
+    "options": [
+      "확장 가능하고 비용 효율적인 여러 버전의 모델을 배포한다.",
+      "여러 모델을 훈련하기 위해 대량의 데이터를 처리한다.",
+      "여러 프로그래밍 언어로 코드를 작성한다.",
+      "이미지, 오디오, 비디오와 같은 다양한 데이터 유형을 처리한다."
+    ],
+    "answer": 3,
+    "explanation": ""
+  }
+]

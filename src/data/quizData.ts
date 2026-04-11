@@ -1,10 +1,12 @@
 import type { QuizQuestion } from '../components/Quiz'
+import { aifC01Questions } from './practice/aifC01'
 
 export interface PracticeQuestion extends QuizQuestion {
   categoryId: string
 }
 
 export const allQuestions: PracticeQuestion[] = [
+  ...aifC01Questions,
   // ai-ml-basics
   { categoryId: 'ai-ml-basics', question: 'AI, ML, DL의 관계를 올바르게 설명한 것은?', options: ['ML은 AI와 DL을 모두 포함한다', 'AI ⊃ ML ⊃ DL 관계이다', 'DL이 가장 넓은 개념이다', '모두 동일한 개념이다'], answer: 1, explanation: 'AI가 가장 넓은 개념이며, ML은 AI의 하위, DL은 ML의 하위 분야입니다.' },
   { categoryId: 'ai-ml-basics', question: '레이블이 있는 데이터를 사용하는 ML 유형은?', options: ['비지도 학습', '강화 학습', '지도 학습', '전이 학습'], answer: 2, explanation: '지도 학습(Supervised Learning)은 입력-정답 쌍으로 모델을 학습시킵니다.' },
