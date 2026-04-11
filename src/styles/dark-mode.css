@@ -1,0 +1,20 @@
+[data-theme="dark"] {
+  --bg: #0d1117;
+  --bg-section: #161b22;
+  --text: #e6edf3;
+  --text-secondary: #8b949e;
+  --border: #30363d;
+}
+[data-theme="dark"] .navbar { background: rgba(13,17,23,0.9); }
+[data-theme="dark"] .category-card { background: var(--bg-section); }
+[data-theme="dark"] .info-table th { background: #1c2129; }
+[data-theme="dark"] .tip-box { background: #1a2332; }
+[data-theme="dark"] .tip-box.warning { background: #2a2010; }
+[data-theme="dark"] .tip-box.important { background: #1f1a2e; }
+[data-theme="dark"] .tip-box.danger { background: #2a1515; }
+[data-theme="dark"] .toggle-header { background: #1c2129; }
+[data-theme="dark"] .toggle-header:hover { background: #222830; }
+[data-theme="dark"] code { background: #1c2129; }
+[data-theme="dark"] .guide-sidebar { background: var(--bg-section); }
+[data-theme="dark"] .quiz-option { background: var(--bg-section); }
+[data-theme="dark"] .theme-toggle { background: var(--bg-section); border-color: var(--border); }

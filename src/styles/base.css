@@ -1,0 +1,113 @@
+:root {
+  --primary: #FF9900;
+  --primary-dark: #EC7211;
+  --accent: #232F3E;
+  --accent-light: #37475A;
+  --bg: #ffffff;
+  --bg-section: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+  --nav-height: 64px;
+  --max-width: 1200px;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --transition: 0.3s ease;
+  --font: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 20px); }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+a { color: var(--primary-dark); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--primary); }
+
+h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 24px; border: none; border-radius: var(--radius);
+  font-family: var(--font); font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; transition: all var(--transition);
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-secondary { background: var(--accent); color: #fff; }
+.btn-secondary:hover { background: var(--accent-light); }
+
+.info-table {
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.88rem; line-height: 1.6;
+}
+.info-table th, .info-table td {
+  padding: 10px 14px; border: 1px solid var(--border); text-align: left; vertical-align: top;
+}
+.info-table th { background: var(--bg-section); font-weight: 600; white-space: nowrap; }
+.info-table tr:hover td { background: rgba(255,153,0,0.03); }
+
+.tip-box {
+  padding: 16px 20px; border-radius: var(--radius); margin: 16px 0;
+  border-left: 4px solid var(--info); background: #eff6ff;
+}
+.tip-box.warning { border-color: var(--warning); background: #fffbeb; }
+.tip-box.important { border-color: #8b5cf6; background: #f5f3ff; }
+.tip-box.danger { border-color: var(--danger); background: #fef2f2; }
+.tip-box-title { font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; }
+
+.toggle-section { border: 1px solid var(--border); border-radius: var(--radius); margin: 12px 0; overflow: hidden; }
+.toggle-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 16px; background: var(--bg-section); cursor: pointer;
+  font-weight: 600; font-size: 0.95rem; user-select: none; transition: background var(--transition);
+}
+.toggle-header:hover { background: #eef2f7; }
+.toggle-arrow { transition: transform var(--transition); font-size: 0.8rem; }
+.toggle-arrow.open { transform: rotate(90deg); }
+.toggle-body { padding: 16px; }
+
+code {
+  background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+  font-size: 0.85em; font-family: 'Consolas', 'Monaco', monospace;
+}
+pre {
+  background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: var(--radius);
+  overflow-x: auto; font-size: 0.85rem; line-height: 1.5; margin: 12px 0;
+}
+pre code { background: none; padding: 0; color: inherit; }
+
+.loading-spinner {
+  display: flex; justify-content: center; align-items: center;
+  min-height: 60vh; font-size: 1.1rem; color: var(--text-secondary);
+}
+
+.site-wrapper { min-height: 100vh; display: flex; flex-direction: column; }
+.site-main { flex: 1; padding-top: var(--nav-height); }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;
+}
+.badge-primary { background: rgba(255,153,0,0.15); color: var(--primary-dark); }
+.badge-success { background: rgba(16,185,129,0.15); color: #059669; }
+.badge-info { background: rgba(59,130,246,0.15); color: #2563eb; }

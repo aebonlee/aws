@@ -1,0 +1,48 @@
+.guide-hero {
+  padding: 40px 0 30px;
+  background: linear-gradient(135deg, #232F3E, #37475A);
+  color: #fff;
+}
+.guide-hero-content { display: flex; align-items: center; gap: 20px; }
+.guide-hero-icon { font-size: 3rem; }
+.guide-hero h1 { font-size: 1.8rem; margin-bottom: 4px; }
+.guide-hero p { opacity: 0.85; font-size: 0.95rem; }
+.guide-hero-badges { display: flex; gap: 8px; margin-top: 8px; }
+
+.guide-layout { display: grid; grid-template-columns: 260px 1fr; gap: 30px; padding: 30px 0 60px; }
+
+.guide-sidebar {
+  position: sticky; top: calc(var(--nav-height) + 20px); align-self: start;
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 16px; max-height: calc(100vh - var(--nav-height) - 40px); overflow-y: auto;
+}
+.sidebar-title { font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; }
+.sidebar-link {
+  display: block; padding: 8px 12px; border-radius: var(--radius);
+  font-size: 0.85rem; color: var(--text-secondary); transition: all var(--transition);
+  margin-bottom: 2px; cursor: pointer; border: none; background: none; width: 100%; text-align: left;
+  font-family: var(--font);
+}
+.sidebar-link:hover { color: var(--primary-dark); background: rgba(255,153,0,0.08); }
+.sidebar-link.active { color: var(--primary-dark); background: rgba(255,153,0,0.12); font-weight: 700; }
+
+.guide-content section { margin-bottom: 40px; scroll-margin-top: calc(var(--nav-height) + 20px); }
+.guide-content h2 {
+  font-size: 1.4rem; padding-bottom: 10px; margin-bottom: 20px;
+  border-bottom: 3px solid var(--primary); color: var(--accent);
+}
+.guide-content h3 { font-size: 1.1rem; margin: 24px 0 12px; padding-left: 12px; border-left: 3px solid var(--primary); }
+.guide-content p { margin-bottom: 12px; }
+.guide-content ul, .guide-content ol { padding-left: 24px; margin-bottom: 12px; }
+.guide-content li { margin-bottom: 6px; }
+
+.guide-nav-btns { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+
+.stamp-status {
+  display: flex; align-items: center; gap: 12px; padding: 20px;
+  background: var(--bg-section); border-radius: var(--radius-lg); margin-bottom: 24px;
+  border: 1px solid var(--border);
+}
+.stamp-icon { font-size: 2.5rem; }
+.stamp-info h3 { font-size: 1rem; margin-bottom: 4px; }
+.stamp-info p { font-size: 0.85rem; color: var(--text-secondary); }

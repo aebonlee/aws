@@ -1,0 +1,42 @@
+.hero {
+  padding: 80px 0 50px; text-align: center;
+  background: linear-gradient(135deg, #232F3E 0%, #37475A 50%, #232F3E 100%);
+  color: #fff;
+}
+.hero h1 { font-size: 2.4rem; margin-bottom: 12px; }
+.hero h1 span { color: var(--primary); }
+.hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 24px; }
+.hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat-value { font-size: 2rem; font-weight: 800; color: var(--primary); }
+.hero-stat-label { font-size: 0.85rem; opacity: 0.8; }
+
+.section { padding: 60px 0; }
+.section-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; text-align: center; }
+.section-subtitle { color: var(--text-secondary); text-align: center; margin-bottom: 40px; }
+
+.categories-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.category-card {
+  display: flex; flex-direction: column; padding: 24px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  border-left: 5px solid var(--primary); transition: all var(--transition);
+  text-decoration: none; color: inherit; position: relative; overflow: hidden;
+}
+.category-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-left-color: var(--primary-dark); }
+.category-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.category-icon { font-size: 2rem; }
+.category-badges { display: flex; gap: 6px; }
+.category-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+.category-desc { font-size: 0.88rem; color: var(--text-secondary); flex: 1; }
+.category-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); }
+.category-stamp { font-size: 1.5rem; opacity: 0.3; }
+.category-stamp.cleared { opacity: 1; }
+
+.progress-section { padding: 40px 0; }
+.progress-bar-container { background: var(--bg-section); border-radius: 20px; height: 24px; overflow: hidden; margin-bottom: 12px; border: 1px solid var(--border); }
+.progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-dark)); border-radius: 20px; transition: width 0.5s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; font-size: 0.75rem; color: #fff; font-weight: 700; min-width: 40px; }
+
+.study-tip { background: var(--bg-section); border-radius: var(--radius-lg); padding: 32px; margin-top: 40px; border: 1px solid var(--border); }
+.study-tip h3 { margin-bottom: 12px; }
+.study-tip ul { padding-left: 20px; }
+.study-tip li { margin-bottom: 8px; color: var(--text-secondary); }

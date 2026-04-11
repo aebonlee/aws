@@ -1,0 +1,31 @@
+@media (max-width: 1024px) {
+  .guide-layout { grid-template-columns: 1fr; }
+  .guide-sidebar { position: static; max-height: none; display: flex; gap: 4px; flex-wrap: wrap; padding: 12px; }
+  .sidebar-title { display: none; }
+  .sidebar-link { padding: 6px 10px; font-size: 0.8rem; }
+}
+@media (max-width: 768px) {
+  .categories-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero-stats { gap: 20px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; align-items: center; justify-content: center; }
+  .nav-mobile {
+    display: none; position: fixed; top: var(--nav-height); left: 0; right: 0;
+    background: var(--bg); border-bottom: 1px solid var(--border); padding: 12px 20px;
+    box-shadow: var(--shadow-lg); z-index: 999; flex-direction: column; gap: 4px;
+  }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile .nav-link { padding: 10px 16px; width: 100%; }
+  .footer-content { grid-template-columns: 1fr; }
+  .footer-links { grid-template-columns: repeat(2, 1fr); }
+  .guide-hero h1 { font-size: 1.4rem; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .hero { padding: 60px 0 40px; }
+  .hero h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.3rem; }
+  .info-table { font-size: 0.82rem; }
+  .info-table th, .info-table td { padding: 8px 10px; }
+}
