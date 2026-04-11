@@ -32,7 +32,7 @@ aws/
 ├── src/
 │   ├── components/
 │   │   ├── layout/
-│   │   │   ├── Navbar.tsx          # 상단 네비게이션 (모바일 햄버거 메뉴)
+│   │   │   ├── Navbar.tsx          # 자격증 레벨별 드롭다운 네비게이션
 │   │   │   └── Footer.tsx          # 하단 푸터
 │   │   ├── GuideLayout.tsx         # 학습 페이지 레이아웃 (사이드바 + 본문)
 │   │   ├── Quiz.tsx                # 퀴즈 컴포넌트 (정답 확인, 도장깨기 연동)
@@ -46,8 +46,10 @@ aws/
 │   ├── layouts/
 │   │   └── PublicLayout.tsx         # Navbar + main + Footer 래퍼
 │   ├── lib/
-│   │   └── categories.ts           # 8개 카테고리 정보 상수
+│   │   ├── categories.ts           # 8개 카테고리 정보 상수
+│   │   └── certifications.ts       # 12개 자격증 정보 (4레벨)
 │   ├── pages/
+│   │   ├── About.tsx               # AWS 자격증 종합 소개
 │   │   ├── Home.tsx                # 메인 페이지 (카테고리 그리드, 진행률)
 │   │   ├── StampBreaking.tsx       # 도장깨기 현황 대시보드
 │   │   ├── Practice.tsx            # 문제풀이 (랜덤 출제, 카테고리 필터)
@@ -64,6 +66,7 @@ aws/
 │   │   ├── base.css                # CSS 변수, 기본 스타일
 │   │   ├── navbar.css              # 네비게이션 스타일
 │   │   ├── home.css                # 홈/도장깨기/문제풀이 스타일
+│   │   ├── about.css               # About 페이지 스타일
 │   │   ├── guide-pages.css         # 학습 페이지 레이아웃 스타일
 │   │   ├── quiz.css                # 퀴즈 컴포넌트 스타일
 │   │   ├── footer.css              # 푸터 스타일
@@ -82,7 +85,14 @@ aws/
 
 ## Features
 
-### 1. 8개 카테고리 학습 가이드
+### 0. AWS 자격증 종합 안내 (About)
+- 자격증 레벨별 구분: Foundational / Associate / Professional / Specialty
+- 12개 AWS 자격증 상세 소개
+- 직무별 추천 자격증 경로 (8개 직무 카테고리, 15+ 직무)
+- 시험 준비 4단계 가이드
+- 자격증 취득 후기
+
+### 1. 8개 카테고리 학습 가이드 (AIF-C01)
 - AI/ML 기초 (17.6%, 60문제)
 - ML 개발 (14.1%, 46문제)
 - Amazon SageMaker (11.9%, 38문제)
@@ -104,8 +114,9 @@ aws/
 - 정답/오답 즉시 확인 및 해설 제공
 
 ### 4. UI/UX
+- 자격증 레벨별 드롭다운 네비게이션 (Foundational/Associate/Professional/Specialty)
 - 다크/라이트 테마 전환
-- 반응형 디자인 (모바일 햄버거 메뉴)
+- 반응형 디자인 (모바일 아코디언 메뉴)
 - IntersectionObserver 기반 사이드바 활성 섹션 추적
 - 코드 스플리팅 (React.lazy)
 

@@ -174,7 +174,7 @@
 
 ### Phase 5: 자격증 체계 메뉴 및 About 페이지
 
-**커밋**: (현재) - feat: Add certification-based nav with dropdowns and About page
+**커밋**: `e2b548a` - feat: Add certification-based nav with dropdowns and About page
 
 #### 변경 사항
 
