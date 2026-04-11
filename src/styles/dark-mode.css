@@ -18,3 +18,9 @@
 [data-theme="dark"] .guide-sidebar { background: var(--bg-section); }
 [data-theme="dark"] .quiz-option { background: var(--bg-section); }
 [data-theme="dark"] .theme-toggle { background: var(--bg-section); border-color: var(--border); }
+[data-theme="dark"] .nav-dropdown-menu { background: var(--bg-section); border-color: var(--border); }
+[data-theme="dark"] .about-cert-card { background: #1c2129; }
+[data-theme="dark"] .about-cert-card.available { background: var(--bg); }
+[data-theme="dark"] .about-cert-code { background: #0d1117; }
+[data-theme="dark"] .about-quote { background: #1c2129; }
+[data-theme="dark"] .about-card { background: var(--bg-section); }

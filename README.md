@@ -1,12 +1,13 @@
-# AWS AIF-C01 Study Site
+# AWS Certification Study Site
 
-AWS Certified AI Practitioner (AIF-C01) 자격증 학습 사이트
+AWS 자격증 학습 사이트 - 현재 AI Practitioner (AIF-C01) 학습 콘텐츠 제공
 
 **Live**: [https://aws.dreamitbiz.com](https://aws.dreamitbiz.com)
 
 ## Overview
 
-AWS AIF-C01 시험 핵심 내용을 8개 카테고리로 정리한 학습 사이트입니다.
+AWS 자격증 체계(Foundational, Associate, Professional, Specialty)를 소개하고,
+AIF-C01 시험 핵심 내용을 8개 카테고리로 정리한 학습 사이트입니다.
 도장깨기 시스템으로 학습 진행률을 추적하고, 퀴즈로 실력을 점검할 수 있습니다.
 
 ## Tech Stack

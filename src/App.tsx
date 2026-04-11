@@ -5,6 +5,7 @@ import { ProgressProvider } from './contexts/ProgressContext'
 import PublicLayout from './layouts/PublicLayout'
 
 const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
 const AiMlBasics = lazy(() => import('./pages/AiMlBasics'))
 const MlDevelopment = lazy(() => import('./pages/MlDevelopment'))
 const SageMaker = lazy(() => import('./pages/SageMaker'))
@@ -25,6 +26,7 @@ function App() {
         <Suspense fallback={<div className="loading-spinner">로딩 중...</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/ai-ml-basics" element={<AiMlBasics />} />
             <Route path="/ml-development" element={<MlDevelopment />} />
             <Route path="/sagemaker" element={<SageMaker />} />

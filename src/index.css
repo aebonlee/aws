@@ -1,6 +1,7 @@
 @import './styles/base.css';
 @import './styles/navbar.css';
 @import './styles/home.css';
+@import './styles/about.css';
 @import './styles/guide-pages.css';
 @import './styles/quiz.css';
 @import './styles/footer.css';

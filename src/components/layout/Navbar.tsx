@@ -1,44 +1,103 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../../contexts/ThemeContext'
+import { CERT_LEVELS } from '../../lib/certifications'
 import { CATEGORIES } from '../../lib/categories'
-
-const EXTRA_LINKS = [
-  { path: '/stamp', title: '도장깨기' },
-  { path: '/practice', title: '문제풀이' },
-]
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [mobileAccordion, setMobileAccordion] = useState<string | null>(null)
+  const dropdownTimeout = useRef<ReturnType<typeof setTimeout>>(null)
+
+  // Close dropdown when route changes
+  useEffect(() => {
+    setOpenDropdown(null)
+    setMobileOpen(false)
+    setMobileAccordion(null)
+  }, [location.pathname])
+
+  const handleMouseEnter = (id: string) => {
+    if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current)
+    setOpenDropdown(id)
+  }
+
+  const handleMouseLeave = () => {
+    dropdownTimeout.current = setTimeout(() => setOpenDropdown(null), 150)
+  }
+
+  const isAifPage = CATEGORIES.some(c => location.pathname === c.path) || location.pathname === '/'
 
   return (
     <nav className="navbar">
       <div className="container">
         <Link to="/" className="nav-logo">
-          <span>AWS</span> AIF-C01
+          <span>AWS</span> Certification
         </Link>
+
+        {/* Desktop Nav */}
         <div className="nav-links">
-          {CATEGORIES.map(cat => (
-            <Link
-              key={cat.id}
-              to={cat.path}
-              className={`nav-link ${location.pathname === cat.path ? 'active' : ''}`}
+          <Link
+            to="/about"
+            className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
+          >
+            About
+          </Link>
+
+          {CERT_LEVELS.map(level => (
+            <div
+              key={level.id}
+              className="nav-dropdown"
+              onMouseEnter={() => handleMouseEnter(level.id)}
+              onMouseLeave={handleMouseLeave}
             >
-              {cat.title}
-            </Link>
+              <button
+                className={`nav-link nav-dropdown-trigger ${
+                  level.id === 'foundational' && isAifPage ? 'active' : ''
+                }`}
+              >
+                {level.title} <span className="nav-arrow">&#9662;</span>
+              </button>
+              {openDropdown === level.id && (
+                <div className="nav-dropdown-menu">
+                  {level.certs.map(cert => (
+                    <Link
+                      key={cert.code}
+                      to={cert.available ? cert.path : '#'}
+                      className={`nav-dropdown-item ${!cert.available ? 'disabled' : ''} ${
+                        cert.available && (cert.path === '/' ? isAifPage : location.pathname === cert.path) ? 'active' : ''
+                      }`}
+                      onClick={e => { if (!cert.available) e.preventDefault() }}
+                    >
+                      <span className="nav-dropdown-code">{cert.code}</span>
+                      <span className="nav-dropdown-title">{cert.title}</span>
+                      {!cert.available && <span className="nav-dropdown-soon">준비 중</span>}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
-          {EXTRA_LINKS.map(link => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`nav-link nav-link-accent ${location.pathname === link.path ? 'active' : ''}`}
-            >
-              {link.title}
-            </Link>
-          ))}
+
+          <div className="nav-divider" />
+
+          <Link
+            to="/stamp"
+            className={`nav-link nav-link-accent ${location.pathname === '/stamp' ? 'active' : ''}`}
+          >
+            도장깨기
+          </Link>
+          <Link
+            to="/practice"
+            className={`nav-link nav-link-accent ${location.pathname === '/practice' ? 'active' : ''}`}
+          >
+            문제풀이
+          </Link>
         </div>
+
+        {/* Actions */}
         <div className="nav-actions">
           <button className="theme-toggle" onClick={toggleTheme} title="테마 전환">
             {theme === 'light' ? '🌙' : '☀️'}
@@ -51,28 +110,46 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* Mobile Nav */}
       <div className={`nav-mobile ${mobileOpen ? 'open' : ''}`}>
         <Link to="/" className="nav-link" onClick={() => setMobileOpen(false)}>홈</Link>
-        {CATEGORIES.map(cat => (
-          <Link
-            key={cat.id}
-            to={cat.path}
-            className={`nav-link ${location.pathname === cat.path ? 'active' : ''}`}
-            onClick={() => setMobileOpen(false)}
-          >
-            {cat.title}
-          </Link>
+        <Link to="/about" className="nav-link" onClick={() => setMobileOpen(false)}>About</Link>
+
+        {CERT_LEVELS.map(level => (
+          <div key={level.id} className="nav-mobile-group">
+            <button
+              className="nav-mobile-group-header"
+              onClick={() => setMobileAccordion(mobileAccordion === level.id ? null : level.id)}
+            >
+              <span>{level.title} ({level.titleKo})</span>
+              <span className={`nav-arrow ${mobileAccordion === level.id ? 'open' : ''}`}>&#9662;</span>
+            </button>
+            {mobileAccordion === level.id && (
+              <div className="nav-mobile-group-items">
+                {level.certs.map(cert => (
+                  <Link
+                    key={cert.code}
+                    to={cert.available ? cert.path : '#'}
+                    className={`nav-link nav-mobile-sub ${!cert.available ? 'disabled' : ''}`}
+                    onClick={e => {
+                      if (!cert.available) { e.preventDefault(); return }
+                      setMobileOpen(false)
+                    }}
+                  >
+                    <span className="nav-dropdown-code">{cert.code}</span> {cert.title}
+                    {!cert.available && <span className="nav-dropdown-soon">준비 중</span>}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         ))}
-        {EXTRA_LINKS.map(link => (
-          <Link
-            key={link.path}
-            to={link.path}
-            className={`nav-link nav-link-accent ${location.pathname === link.path ? 'active' : ''}`}
-            onClick={() => setMobileOpen(false)}
-          >
-            {link.title}
-          </Link>
-        ))}
+
+        <div className="nav-mobile-divider" />
+
+        <Link to="/stamp" className="nav-link nav-link-accent" onClick={() => setMobileOpen(false)}>도장깨기</Link>
+        <Link to="/practice" className="nav-link nav-link-accent" onClick={() => setMobileOpen(false)}>문제풀이</Link>
       </div>
     </nav>
   )

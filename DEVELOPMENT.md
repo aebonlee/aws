@@ -1,9 +1,9 @@
-# Development Log - AWS AIF-C01 Study Site
+# Development Log - AWS Certification Study Site
 
 ## 프로젝트 개요
 
-- **프로젝트명**: AWS AIF-C01 Study Site
-- **목적**: AWS Certified AI Practitioner (AIF-C01) 자격증 학습 사이트
+- **프로젝트명**: AWS Certification Study Site
+- **목적**: AWS 자격증 학습 사이트 (현재 AIF-C01 학습 콘텐츠 제공)
 - **URL**: https://aws.dreamitbiz.com
 - **Repository**: https://github.com/aebonlee/aws
 - **개발 기간**: 2026년 4월
@@ -172,6 +172,49 @@
 
 ---
 
+### Phase 5: 자격증 체계 메뉴 및 About 페이지
+
+**커밋**: (현재) - feat: Add certification-based nav with dropdowns and About page
+
+#### 변경 사항
+
+**자격증 데이터 모델** (`lib/certifications.ts`):
+- `CertInfo` / `CertLevel` 타입 정의
+- 4개 레벨: Foundational, Associate, Professional, Specialty
+- 12개 자격증 정보 (code, title, titleKo, path, available, description)
+- AIF-C01만 `available: true`, 나머지는 `available: false` (준비 중)
+
+**About 페이지** (`pages/About.tsx`):
+- AWS 자격증 선택 방법 (IT 초보 / 비즈니스 직무 / IT 경력자 3가지 경로)
+- 자격증 레벨별 구분 (Foundational, Associate, Professional, Specialty)
+- 각 자격증 카드 (코드, 영문/한글 명칭, 설명, 학습 가능 여부)
+- 직무별 추천 자격증 경로 (8개 직무 카테고리, 15+ 직무)
+- 시험 준비 4단계 가이드
+- 자격증 취득 후기 (Igor Soroka, Rola Dali)
+- PDF 원본 데이터 기반 (`data/AWS_certification_paths.pdf`)
+
+**Navbar 드롭다운 재구성** (`components/layout/Navbar.tsx`):
+- 로고: "AWS AIF-C01" → "AWS Certification"
+- 메뉴 구조: About | Foundational ▾ | Associate ▾ | Professional ▾ | Specialty ▾ | 도장깨기 | 문제풀이
+- 데스크톱: hover 기반 드롭다운 메뉴 (150ms 딜레이로 안정적 동작)
+- 모바일: 아코디언 방식 접기/펼치기 메뉴
+- 비활성 자격증은 "준비 중" 표시 + 클릭 방지
+- 자격증 코드 배지 (CLF-C02, AIF-C01 등) 표시
+
+**CSS 추가/수정:**
+- `styles/about.css` (신규): About 페이지 전용 스타일
+  - Hero 섹션, 자격증 카드 그리드, 직무별 경로, 준비 단계, 후기
+  - 레벨별 컬러 코딩 (Foundational: green, Associate: blue, Professional: purple, Specialty: red)
+- `styles/navbar.css` (전면 재작성): 드롭다운 메뉴 스타일
+  - `.nav-dropdown`, `.nav-dropdown-menu`, `.nav-dropdown-item`
+  - 모바일 아코디언: `.nav-mobile-group`, `.nav-mobile-group-header`
+  - 구분선: `.nav-divider`, `.nav-mobile-divider`
+- `styles/dark-mode.css`: 드롭다운, About 카드 다크 모드
+- `styles/responsive.css`: About 페이지 반응형 (1024px, 768px, 480px)
+- `index.css`: `about.css` import 추가
+
+---
+
 ## 아키텍처 결정 사항
 
 ### 1. Pure CSS over Tailwind
@@ -204,10 +247,11 @@
 
 ### 빌드 출력
 ```
-65 modules → dist/
+67 modules → dist/
 - index.html (0.86 KB)
-- CSS: 17.45 KB (gzip: 3.98 KB)
-- JS main: 238.52 KB (gzip: 76.69 KB)
+- CSS: 24.33 KB (gzip: 4.96 KB)
+- JS main: 243.19 KB (gzip: 78.08 KB)
+- JS About: 9.34 KB (gzip: 2.97 KB)
 - JS pages: 각 10-13 KB
 - JS practice: 32.19 KB (80문제 데이터 포함)
 ```
@@ -227,7 +271,7 @@ git push origin main
 
 ## 파일별 상세 정보
 
-### 전체 파일 목록 (35파일)
+### 전체 파일 목록 (39파일)
 
 **Config (5):**
 | 파일 | 설명 |
@@ -242,19 +286,21 @@ git push origin main
 | 파일 | 라인 수 (약) | 설명 |
 |------|------------|------|
 | `src/main.tsx` | 13 | BrowserRouter 엔트리 |
-| `src/App.tsx` | 46 | lazy routes, Provider 래핑 |
-| `src/index.css` | 8 | CSS import 통합 |
+| `src/App.tsx` | 50 | lazy routes, Provider 래핑 |
+| `src/index.css` | 9 | CSS import 통합 |
 | `src/lib/categories.ts` | 20 | 8개 카테고리 상수 |
+| `src/lib/certifications.ts` | ~120 | 12개 자격증 정보 (4레벨) |
 | `src/data/quizData.ts` | ~200 | 80문제 통합 퀴즈 데이터 |
 | `src/contexts/ThemeContext.tsx` | 40 | 다크/라이트 테마 |
 | `src/contexts/ProgressContext.tsx` | 95 | 도장깨기 진행률 |
 | `src/layouts/PublicLayout.tsx` | 15 | Navbar+main+Footer |
-| `src/components/layout/Navbar.tsx` | 79 | 네비게이션 |
+| `src/components/layout/Navbar.tsx` | ~140 | 드롭다운 네비게이션 |
 | `src/components/layout/Footer.tsx` | ~50 | 푸터 |
 | `src/components/GuideLayout.tsx` | ~70 | 학습 페이지 레이아웃 |
 | `src/components/Quiz.tsx` | 123 | 퀴즈 컴포넌트 |
 | `src/components/TipBox.tsx` | ~15 | 팁 박스 |
 | `src/components/ToggleSection.tsx` | ~20 | 토글 섹션 |
+| `src/pages/About.tsx` | ~150 | AWS 자격증 소개 |
 | `src/pages/Home.tsx` | ~90 | 메인 페이지 |
 | `src/pages/StampBreaking.tsx` | 67 | 도장깨기 대시보드 |
 | `src/pages/Practice.tsx` | ~130 | 문제풀이 |
@@ -268,10 +314,11 @@ git push origin main
 | `src/pages/SecurityGovernance.tsx` | 97 | 보안/거버넌스 |
 | `src/pages/NotFound.tsx` | ~20 | 404 페이지 |
 | `src/styles/base.css` | 114 | 기본 스타일 |
-| `src/styles/navbar.css` | 37 | 네비게이션 |
+| `src/styles/navbar.css` | ~90 | 네비게이션 + 드롭다운 |
 | `src/styles/home.css` | 96 | 홈/도장/문제풀이 |
+| `src/styles/about.css` | ~110 | About 페이지 |
 | `src/styles/guide-pages.css` | ~50 | 학습 페이지 |
 | `src/styles/quiz.css` | 41 | 퀴즈 |
 | `src/styles/footer.css` | ~30 | 푸터 |
-| `src/styles/dark-mode.css` | ~20 | 다크 모드 |
+| `src/styles/dark-mode.css` | ~28 | 다크 모드 |
 | `src/styles/responsive.css` | 32 | 반응형 |
