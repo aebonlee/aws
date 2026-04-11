@@ -5,7 +5,7 @@
   .sidebar-link { padding: 6px 10px; font-size: 0.8rem; }
 }
 @media (max-width: 768px) {
-  .categories-grid { grid-template-columns: 1fr; }
+  .categories-grid, .stamp-grid, .practice-cat-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 1.8rem; }
   .hero-stats { gap: 20px; }
   .nav-links { display: none; }

@@ -32,4 +32,6 @@
   display: none; width: 36px; height: 36px; border: none; background: none;
   cursor: pointer; font-size: 1.4rem; color: var(--text);
 }
+.nav-link-accent { color: var(--primary-dark); font-weight: 600; }
+.nav-link-accent:hover { background: rgba(255,153,0,0.12); }
 .nav-mobile { display: none; }

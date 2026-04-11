@@ -13,6 +13,8 @@ const PromptEngineering = lazy(() => import('./pages/PromptEngineering'))
 const FmEvaluation = lazy(() => import('./pages/FmEvaluation'))
 const ResponsibleAi = lazy(() => import('./pages/ResponsibleAi'))
 const SecurityGovernance = lazy(() => import('./pages/SecurityGovernance'))
+const StampBreaking = lazy(() => import('./pages/StampBreaking'))
+const Practice = lazy(() => import('./pages/Practice'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
             <Route path="/fm-evaluation" element={<FmEvaluation />} />
             <Route path="/responsible-ai" element={<ResponsibleAi />} />
             <Route path="/security-governance" element={<SecurityGovernance />} />
+            <Route path="/stamp" element={<StampBreaking />} />
+            <Route path="/practice" element={<Practice />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
