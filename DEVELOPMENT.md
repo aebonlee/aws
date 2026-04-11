@@ -3,7 +3,7 @@
 ## 프로젝트 개요
 
 - **프로젝트명**: AWS Certification Study Site
-- **목적**: AWS 자격증 학습 사이트 (현재 AIF-C01 학습 콘텐츠 제공)
+- **목적**: AWS 자격증 학습 사이트 (12개 자격증 학습 콘텐츠 제공)
 - **URL**: https://aws.dreamitbiz.com
 - **Repository**: https://github.com/aebonlee/aws
 - **개발 기간**: 2026년 4월
@@ -215,6 +215,96 @@
 
 ---
 
+### Phase 6: 10개 추가 자격증 학습 페이지
+
+**커밋**: (현재 작업)
+
+#### 개요
+AIF-C01 외 나머지 10개 AWS 자격증의 학습 콘텐츠를 일괄 생성.
+AWS 공식 시험 가이드 기반으로 각 자격증별 도메인 핵심 내용과 10문제 퀴즈를 구성.
+
+#### 생성된 10개 자격증 페이지
+
+| 파일 | 자격증 | 레벨 | 아이콘 | 섹션 수 | 퀴즈 |
+|------|--------|------|--------|---------|------|
+| `pages/ClfC02.tsx` | Cloud Practitioner (CLF-C02) | Foundational | ☁️ | 6 | 10문제 |
+| `pages/SaaC03.tsx` | Solutions Architect Associate (SAA-C03) | Associate | 🏗️ | 6 | 10문제 |
+| `pages/DvaC02.tsx` | Developer Associate (DVA-C02) | Associate | 💻 | 6 | 10문제 |
+| `pages/SoaC02.tsx` | SysOps Administrator Associate (SOA-C02) | Associate | 🔧 | 8 | 10문제 |
+| `pages/DeaC01.tsx` | Data Engineer Associate (DEA-C01) | Associate | 📊 | 6 | 10문제 |
+| `pages/MlaC01.tsx` | ML Engineer Associate (MLA-C01) | Associate | 🧠 | 6 | 10문제 |
+| `pages/SapC02.tsx` | Solutions Architect Professional (SAP-C02) | Professional | 🏛️ | 6 | 10문제 |
+| `pages/DopC02.tsx` | DevOps Engineer Professional (DOP-C02) | Professional | 🔄 | 8 | 10문제 |
+| `pages/ScsC02.tsx` | Security Specialty (SCS-C02) | Specialty | 🔐 | 8 | 10문제 |
+| `pages/AnsC01.tsx` | Advanced Networking Specialty (ANS-C01) | Specialty | 🌐 | 6 | 10문제 |
+
+#### 각 페이지 구성 패턴
+- **시험 개요:** 시험 코드, 문항 수, 시간, 합격 점수, 비용, 권장 경험
+- **도메인별 핵심 내용:** 표(info-table), 목록, TipBox, ToggleSection 활용
+- **실력 점검 퀴즈:** 10문제 4지선다, 70% 이상 도장 획득
+- **GuideLayout:** 사이드바 네비게이션, IntersectionObserver 연동
+- **ProgressContext 연동:** `markStudied(categoryId)` + 퀴즈 결과 저장
+
+#### 각 자격증 도메인 구성
+
+**CLF-C02 Cloud Practitioner (65문제/90분/$100):**
+- 클라우드 개념 (24%), 보안 및 규정 준수 (30%), 클라우드 기술 및 서비스 (34%), 결제/요금/지원 (12%)
+
+**SAA-C03 Solutions Architect Associate (65문제/130분/$150):**
+- 안전한 아키텍처 (30%), 탄력적 아키텍처 (26%), 고성능 아키텍처 (24%), 비용 최적화 (20%)
+
+**DVA-C02 Developer Associate (65문제/130분/$150):**
+- AWS 서비스 개발 (32%), 보안 (26%), 배포 (24%), 문제 해결 및 최적화 (18%)
+
+**SOA-C02 SysOps Administrator Associate (65문제/130분/$150):**
+- 모니터링 (20%), 안정성 (16%), 배포/자동화 (18%), 보안 (16%), 네트워킹 (18%), 비용/성능 (12%)
+
+**DEA-C01 Data Engineer Associate (65문제/130분/$150):**
+- 데이터 수집/변환 (34%), 데이터 저장소 (26%), 데이터 운영 (22%), 보안/거버넌스 (18%)
+
+**MLA-C01 ML Engineer Associate (65문제/130분/$150):**
+- ML 데이터 준비 (28%), 모델 개발 (26%), 배포/오케스트레이션 (22%), 모니터링/보안 (24%)
+
+**SAP-C02 Solutions Architect Professional (75문제/180분/$300):**
+- 조직 복잡성 (26%), 새 솔루션 설계 (29%), 기존 솔루션 개선 (25%), 마이그레이션 (20%)
+
+**DOP-C02 DevOps Engineer Professional (75문제/180분/$300):**
+- SDLC 자동화 (22%), 구성/IaC (17%), 탄력적 솔루션 (15%), 모니터링 (15%), 인시던트 (14%), 보안 (17%)
+
+**SCS-C02 Security Specialty (65문제/170분/$300):**
+- 위협 탐지 (14%), 로깅/모니터링 (18%), 인프라 보안 (20%), IAM (16%), 데이터 보호 (18%), 거버넌스 (14%)
+
+**ANS-C01 Advanced Networking Specialty (65문제/170분/$300):**
+- 네트워크 설계 (30%), 구현 (26%), 관리/운영 (20%), 보안/규정 준수 (24%)
+
+#### 수정된 기존 파일
+
+**`App.tsx`:**
+- 10개 lazy import 추가 (ClfC02, SaaC03, DvaC02, SoaC02, DeaC01, MlaC01, SapC02, DopC02, ScsC02, AnsC01)
+- 10개 Route 추가 (/clf-c02, /saa-c03, /dva-c02, /soa-c02, /dea-c01, /mla-c01, /sap-c02, /dop-c02, /scs-c02, /ans-c01)
+
+**`lib/certifications.ts`:**
+- 전체 10개 자격증 `available: false` → `available: true` 변경
+- 드롭다운 메뉴에서 "준비 중" 표시 제거, 모든 자격증 클릭 가능
+
+#### 빌드 결과
+```
+77 modules → dist/
+- JS pages: 각 11-20 KB (기존 10-13 KB 대비 증가)
+- ClfC02: 19.80 KB (도메인 범위가 가장 넓음)
+- ScsC02: 15.93 KB
+- DopC02: 15.03 KB
+- AnsC01: 14.66 KB
+- SoaC02: 14.60 KB
+- SapC02: 13.87 KB
+- SaaC03: 13.99 KB
+- DvaC02: 13.54 KB
+- MlaC01: 12.05 KB
+- DeaC01: 11.19 KB
+```
+
+---
+
 ## 아키텍처 결정 사항
 
 ### 1. Pure CSS over Tailwind
@@ -247,12 +337,13 @@
 
 ### 빌드 출력
 ```
-67 modules → dist/
+77 modules → dist/
 - index.html (0.86 KB)
 - CSS: 24.33 KB (gzip: 4.96 KB)
-- JS main: 243.19 KB (gzip: 78.08 KB)
+- JS main: 244.74 KB (gzip: 78.48 KB)
 - JS About: 9.34 KB (gzip: 2.97 KB)
-- JS pages: 각 10-13 KB
+- JS AIF-C01 pages: 각 10-13 KB (8개)
+- JS 추가 자격증 pages: 각 11-20 KB (10개)
 - JS practice: 32.19 KB (80문제 데이터 포함)
 ```
 
@@ -271,7 +362,7 @@ git push origin main
 
 ## 파일별 상세 정보
 
-### 전체 파일 목록 (39파일)
+### 전체 파일 목록 (49파일)
 
 **Config (5):**
 | 파일 | 설명 |
@@ -282,7 +373,7 @@ git push origin main
 | `index.html` | Noto Sans KR, SEO meta |
 | `.github/workflows/deploy.yml` | GitHub Pages 자동 배포 |
 
-**Source (30):**
+**Source (40):**
 | 파일 | 라인 수 (약) | 설명 |
 |------|------------|------|
 | `src/main.tsx` | 13 | BrowserRouter 엔트리 |
@@ -312,6 +403,16 @@ git push origin main
 | `src/pages/FmEvaluation.tsx` | 99 | FM 성능 평가 |
 | `src/pages/ResponsibleAi.tsx` | 94 | Responsible AI |
 | `src/pages/SecurityGovernance.tsx` | 97 | 보안/거버넌스 |
+| `src/pages/ClfC02.tsx` | ~200 | Cloud Practitioner (CLF-C02) |
+| `src/pages/SaaC03.tsx` | ~148 | Solutions Architect Associate (SAA-C03) |
+| `src/pages/DvaC02.tsx` | ~148 | Developer Associate (DVA-C02) |
+| `src/pages/SoaC02.tsx` | ~162 | SysOps Administrator (SOA-C02) |
+| `src/pages/DeaC01.tsx` | ~143 | Data Engineer Associate (DEA-C01) |
+| `src/pages/MlaC01.tsx` | ~145 | ML Engineer Associate (MLA-C01) |
+| `src/pages/SapC02.tsx` | ~168 | Solutions Architect Pro (SAP-C02) |
+| `src/pages/DopC02.tsx` | ~190 | DevOps Engineer Pro (DOP-C02) |
+| `src/pages/ScsC02.tsx` | ~185 | Security Specialty (SCS-C02) |
+| `src/pages/AnsC01.tsx` | ~175 | Advanced Networking (ANS-C01) |
 | `src/pages/NotFound.tsx` | ~20 | 404 페이지 |
 | `src/styles/base.css` | 114 | 기본 스타일 |
 | `src/styles/navbar.css` | ~90 | 네비게이션 + 드롭다운 |

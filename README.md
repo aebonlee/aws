@@ -1,13 +1,13 @@
 # AWS Certification Study Site
 
-AWS 자격증 학습 사이트 - 현재 AI Practitioner (AIF-C01) 학습 콘텐츠 제공
+AWS 자격증 학습 사이트 - 12개 자격증 학습 콘텐츠 제공 (AIF-C01 + 10개 추가 자격증)
 
 **Live**: [https://aws.dreamitbiz.com](https://aws.dreamitbiz.com)
 
 ## Overview
 
-AWS 자격증 체계(Foundational, Associate, Professional, Specialty)를 소개하고,
-AIF-C01 시험 핵심 내용을 8개 카테고리로 정리한 학습 사이트입니다.
+AWS 자격증 체계(Foundational, Associate, Professional, Specialty) 12개 자격증의
+핵심 내용을 정리한 학습 사이트입니다.
 도장깨기 시스템으로 학습 진행률을 추적하고, 퀴즈로 실력을 점검할 수 있습니다.
 
 ## Tech Stack
@@ -53,14 +53,24 @@ aws/
 │   │   ├── Home.tsx                # 메인 페이지 (카테고리 그리드, 진행률)
 │   │   ├── StampBreaking.tsx       # 도장깨기 현황 대시보드
 │   │   ├── Practice.tsx            # 문제풀이 (랜덤 출제, 카테고리 필터)
-│   │   ├── AiMlBasics.tsx          # AI/ML 기초
-│   │   ├── MlDevelopment.tsx       # ML 개발
-│   │   ├── SageMaker.tsx           # Amazon SageMaker
-│   │   ├── GenAiBasics.tsx         # 생성형 AI 기초
-│   │   ├── PromptEngineering.tsx   # FM 활용과 프롬프트 엔지니어링
-│   │   ├── FmEvaluation.tsx        # FM 성능 평가 방법
-│   │   ├── ResponsibleAi.tsx       # Responsible AI
-│   │   ├── SecurityGovernance.tsx  # 보안, 규정 준수, 거버넌스
+│   │   ├── AiMlBasics.tsx          # AI/ML 기초 (AIF-C01)
+│   │   ├── MlDevelopment.tsx       # ML 개발 (AIF-C01)
+│   │   ├── SageMaker.tsx           # Amazon SageMaker (AIF-C01)
+│   │   ├── GenAiBasics.tsx         # 생성형 AI 기초 (AIF-C01)
+│   │   ├── PromptEngineering.tsx   # 프롬프트 엔지니어링 (AIF-C01)
+│   │   ├── FmEvaluation.tsx        # FM 성능 평가 (AIF-C01)
+│   │   ├── ResponsibleAi.tsx       # Responsible AI (AIF-C01)
+│   │   ├── SecurityGovernance.tsx  # 보안/거버넌스 (AIF-C01)
+│   │   ├── ClfC02.tsx              # Cloud Practitioner (CLF-C02)
+│   │   ├── SaaC03.tsx              # Solutions Architect Associate (SAA-C03)
+│   │   ├── DvaC02.tsx              # Developer Associate (DVA-C02)
+│   │   ├── SoaC02.tsx              # SysOps Administrator (SOA-C02)
+│   │   ├── DeaC01.tsx              # Data Engineer Associate (DEA-C01)
+│   │   ├── MlaC01.tsx              # ML Engineer Associate (MLA-C01)
+│   │   ├── SapC02.tsx              # Solutions Architect Pro (SAP-C02)
+│   │   ├── DopC02.tsx              # DevOps Engineer Pro (DOP-C02)
+│   │   ├── ScsC02.tsx              # Security Specialty (SCS-C02)
+│   │   ├── AnsC01.tsx              # Advanced Networking (ANS-C01)
 │   │   └── NotFound.tsx            # 404 페이지
 │   ├── styles/
 │   │   ├── base.css                # CSS 변수, 기본 스타일
@@ -92,7 +102,7 @@ aws/
 - 시험 준비 4단계 가이드
 - 자격증 취득 후기
 
-### 1. 8개 카테고리 학습 가이드 (AIF-C01)
+### 1. AIF-C01 학습 가이드 (8개 카테고리)
 - AI/ML 기초 (17.6%, 60문제)
 - ML 개발 (14.1%, 46문제)
 - Amazon SageMaker (11.9%, 38문제)
@@ -101,6 +111,22 @@ aws/
 - FM 성능 평가 방법 (21.3%, 61문제)
 - Responsible AI (8.7%, 37문제)
 - 보안, 규정 준수, 거버넌스 (10.4%, 44문제)
+
+### 1-1. 10개 추가 자격증 학습 가이드
+각 자격증별 시험 개요, 도메인별 핵심 내용 정리, 10문제 실력 점검 퀴즈 제공:
+
+| 레벨 | 자격증 | 코드 | 경로 |
+|------|--------|------|------|
+| Foundational | Cloud Practitioner | CLF-C02 | `/clf-c02` |
+| Associate | Solutions Architect | SAA-C03 | `/saa-c03` |
+| Associate | Developer | DVA-C02 | `/dva-c02` |
+| Associate | SysOps Administrator | SOA-C02 | `/soa-c02` |
+| Associate | Data Engineer | DEA-C01 | `/dea-c01` |
+| Associate | Machine Learning Engineer | MLA-C01 | `/mla-c01` |
+| Professional | Solutions Architect | SAP-C02 | `/sap-c02` |
+| Professional | DevOps Engineer | DOP-C02 | `/dop-c02` |
+| Specialty | Security | SCS-C02 | `/scs-c02` |
+| Specialty | Advanced Networking | ANS-C01 | `/ans-c01` |
 
 ### 2. 도장깨기 시스템
 - 각 카테고리별 10문제 퀴즈
