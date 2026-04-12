@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../../contexts/ThemeContext'
+import { useAuth } from '../../contexts/AuthContext'
 import { CERT_LEVELS } from '../../lib/certifications'
 import { CATEGORIES } from '../../lib/categories'
 
@@ -13,6 +14,7 @@ const COMMUNITY_MENU = [
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
+  const { user, signOut } = useAuth()
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
@@ -139,7 +141,19 @@ export default function Navbar() {
           <button className="theme-toggle" onClick={toggleTheme} title="테마 전환">
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
-          <Link to="/login" className="nav-login-btn">로그인</Link>
+          {user ? (
+            <div className="nav-user-info">
+              <img
+                src={user.user_metadata?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.user_metadata?.full_name || user.email || 'U')}&background=FF9900&color=fff&size=32`}
+                alt="avatar"
+                className="nav-user-avatar"
+              />
+              <span className="nav-user-name">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
+              <button className="nav-logout-btn" onClick={signOut}>로그아웃</button>
+            </div>
+          ) : (
+            <Link to="/login" className="nav-login-btn">로그인</Link>
+          )}
           <button
             className="nav-hamburger"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -214,7 +228,19 @@ export default function Navbar() {
         </div>
 
         <div className="nav-mobile-divider" />
-        <Link to="/login" className="nav-link" onClick={() => setMobileOpen(false)}>로그인</Link>
+        {user ? (
+          <div className="nav-mobile-user">
+            <img
+              src={user.user_metadata?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.user_metadata?.full_name || user.email || 'U')}&background=FF9900&color=fff&size=32`}
+              alt="avatar"
+              className="nav-user-avatar"
+            />
+            <span className="nav-user-name">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
+            <button className="nav-logout-btn" onClick={() => { signOut(); setMobileOpen(false) }}>로그아웃</button>
+          </div>
+        ) : (
+          <Link to="/login" className="nav-link" onClick={() => setMobileOpen(false)}>로그인</Link>
+        )}
       </div>
     </nav>
   )

@@ -89,3 +89,31 @@
 .nav-mobile-sub { font-size: 0.82rem; gap: 8px; }
 .nav-mobile-sub.disabled { opacity: 0.5; }
 .nav-mobile-divider { height: 1px; background: var(--border); margin: 8px 0; }
+
+/* User Info */
+.nav-user-info {
+  display: flex; align-items: center; gap: 8px; white-space: nowrap;
+}
+.nav-user-avatar {
+  width: 28px; height: 28px; border-radius: 50%; object-fit: cover;
+  border: 1px solid var(--border);
+}
+.nav-user-name {
+  font-size: 0.82rem; font-weight: 600; color: var(--text);
+  max-width: 100px; overflow: hidden; text-overflow: ellipsis;
+}
+.nav-logout-btn {
+  padding: 4px 10px; border: 1px solid var(--border); border-radius: var(--radius);
+  background: none; color: var(--text-secondary); font-size: 0.75rem;
+  font-weight: 500; font-family: var(--font); cursor: pointer;
+  transition: all var(--transition); white-space: nowrap;
+}
+.nav-logout-btn:hover {
+  background: #fee2e2; color: #dc2626; border-color: #fca5a5;
+}
+.nav-mobile-user {
+  display: flex; align-items: center; gap: 10px; padding: 10px 16px;
+}
+[data-theme="dark"] .nav-logout-btn:hover {
+  background: #450a0a; color: #fca5a5; border-color: #7f1d1d;
+}

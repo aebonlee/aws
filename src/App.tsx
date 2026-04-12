@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './contexts/AuthContext'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { ProgressProvider } from './contexts/ProgressContext'
 import PublicLayout from './layouts/PublicLayout'
@@ -31,10 +32,12 @@ const Board = lazy(() => import('./pages/community/Board'))
 const SuccessStories = lazy(() => import('./pages/community/SuccessStories'))
 const Tips = lazy(() => import('./pages/community/Tips'))
 const Login = lazy(() => import('./pages/Login'))
+const AuthCallback = lazy(() => import('./pages/AuthCallback'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
   return (
+    <AuthProvider>
     <ThemeProvider>
       <ProgressProvider>
       <PublicLayout>
@@ -67,12 +70,14 @@ function App() {
             <Route path="/community/success-stories" element={<SuccessStories />} />
             <Route path="/community/tips" element={<Tips />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </PublicLayout>
       </ProgressProvider>
     </ThemeProvider>
+    </AuthProvider>
   )
 }
 
