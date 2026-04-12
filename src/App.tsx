@@ -26,6 +26,11 @@ const ScsC02 = lazy(() => import('./pages/ScsC02'))
 const AnsC01 = lazy(() => import('./pages/AnsC01'))
 const StampBreaking = lazy(() => import('./pages/StampBreaking'))
 const Practice = lazy(() => import('./pages/Practice'))
+const Notices = lazy(() => import('./pages/community/Notices'))
+const Board = lazy(() => import('./pages/community/Board'))
+const SuccessStories = lazy(() => import('./pages/community/SuccessStories'))
+const Tips = lazy(() => import('./pages/community/Tips'))
+const Login = lazy(() => import('./pages/Login'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
@@ -57,6 +62,11 @@ function App() {
             <Route path="/ans-c01" element={<AnsC01 />} />
             <Route path="/stamp" element={<StampBreaking />} />
             <Route path="/practice" element={<Practice />} />
+            <Route path="/community/notices" element={<Notices />} />
+            <Route path="/community/board" element={<Board />} />
+            <Route path="/community/success-stories" element={<SuccessStories />} />
+            <Route path="/community/tips" element={<Tips />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

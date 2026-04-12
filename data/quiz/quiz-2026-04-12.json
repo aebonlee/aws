@@ -1,0 +1,1206 @@
+[
+  {
+    "number": 1,
+    "question": "한 회사에서 유전자 특성에 따라 인간 유전자를 20가지 범주로 분류하려고 합니다. 이 회사는 모델의 내부 메커니즘이 출력에 미치는 영향을 문서화하기 위한 ML 알고리즘이 필요합니다. 이러한 요구 사항을 충족하는 ML 알고리즘은 무엇입니까?",
+    "questionEn": "A company wants to classify human genes into 20 categories based on gene characteristics. The company needs an ML algorithm to document how the inner mechanism of the model affects the output. Which ML algorithm meets these requirements?",
+    "options": [
+      "의사결정 트리",
+      "선형 회귀",
+      "로지스틱 회귀",
+      "신경망"
+    ],
+    "optionsEn": [
+      "Decision trees",
+      "Linear regression",
+      "Logistic regression",
+      "Neural networks"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 2,
+    "question": "한 회사에서 사용자가 다음과 같은 질문에 답하는 교육용 게임을 개발하려고 합니다. \"항아리 하나에는 빨간색 구슬 6개, 녹색 구슬 4개, 노란색 구슬 3개가 들어 있습니다. 항아리에서 녹색 구슬을 선택할 확률은 얼마나 되나요?\" 운영 오버헤드를 최소화하면서 이러한 요구 사항을 충족하는 솔루션은 무엇일까요?",
+    "questionEn": "A company wants to develop an educational game where users answer questions such as the following: \"A jar contains six red, four green, and three yellow marbles. What is the probability of choosing a green marble from the jar?\" Which solution meets these requirements with the LEAST operational overhead?",
+    "options": [
+      "지도 학습을 사용하여 확률을 예측하는 회귀 모델을 만듭니다.",
+      "강화 학습을 사용하여 확률을 반환하도록 모델을 훈련합니다.",
+      "간단한 규칙과 계산을 사용하여 확률을 계산하는 코드를 사용합니다.",
+      "비지도 학습을 사용하여 확률 밀도를 추정하는 모델을 만듭니다."
+    ],
+    "optionsEn": [
+      "Use supervised learning to create a regression model that will predict probability.",
+      "Use reinforcement learning to train a model to return the probability.",
+      "Use code that will calculate probability by using simple rules and computations.",
+      "Use unsupervised learning to create a model that will estimate probability density."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 3,
+    "question": "회사는 광고 캠페인에 사용할 수 있는 페타바이트 규모의 레이블이 지정되지 않은 고객 데이터를 보유하고 있습니다. 이 회사는 고객을 등급별로 분류하여 회사 제품을 광고하고 홍보하려고 합니다. 회사는 이러한 요구 사항을 충족하기 위해 어떤 방법론을 사용해야 할까요?",
+    "questionEn": "A company has petabytes of unlabeled customer data to use for an advertisement campaign. The company wants to classify its customers into tiers to advertise and promote the company's products. Which methodology should the company use to meet these requirements?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "인간 피드백을 통한 강화 학습(RLHF)"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Reinforcement learning from human feedback (RLHF)"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 4,
+    "question": "한 회사는 AI를 사용하여 위협으로부터 애플리케이션을 보호하고자 합니다. AI 솔루션은 의심스러운 출처에서 온 IP 주소인지 확인해야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족하나요?",
+    "questionEn": "A company wants to use AI to protect its application from threats. The AI solution needs to check if an IP address is from a suspicious source. Which solution meets these requirements?",
+    "options": [
+      "음성 인식 시스템을 구축합니다.",
+      "자연어 처리(NLP) 명명된 개체 인식 시스템을 만듭니다.",
+      "이상 탐지 시스템을 개발합니다.",
+      "사기 예측 시스템을 만듭니다."
+    ],
+    "optionsEn": [
+      "Build a speech recognition system.",
+      "Create a natural language processing (NLP) named entity recognition system.",
+      "Develop an anomaly detection system.",
+      "Create a fraud forecasting system."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 5,
+    "question": "AI 전문가가 동물 사진 데이터베이스를 가지고 있습니다. AI 전문가는 사람의 수작업 없이 사진 속 동물을 자동으로 식별하고 분류하기를 원합니다. 이러한 요구 사항을 충족하는 전략은 무엇일까요?",
+    "questionEn": "An AI practitioner has a database of animal photos. The AI practitioner wants to automatically identify and categorize the animals in the photos without manual human effort. Which strategy meets these requirements?",
+    "options": [
+      "물체 감지",
+      "이상 감지",
+      "명명된 개체 인식",
+      "인페인팅"
+    ],
+    "optionsEn": [
+      "Object detection",
+      "Anomaly detection",
+      "Named entity recognition",
+      "Inpainting"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 6,
+    "question": "한 회사에서 고객 서비스 챗봇을 만들고 있습니다. 회사에서는 챗봇이 과거의 상호작용과 온라인 리소스를 통해 학습하여 반응을 개선하기를 원합니다. 이러한 자기 개선 기능을 제공하는 AI 학습 전략은 무엇입니까?",
+    "questionEn": "A company is building a customer service chatbot. The company wants the chatbot to improve its responses by learning from past interactions and online resources. Which AI learning strategy provides this self-improvement capability?",
+    "options": [
+      "수동으로 큐레이션한 좋은 반응과 나쁜 반응의 데이터 세트를 사용한 지도 학습",
+      "긍정적인 고객 피드백에 대한 보상을 제공하는 강화 학습",
+      "유사한 고객 문의 클러스터를 찾기 위한 비지도 학습",
+      "지속적으로 업데이트되는 FAQ 데이터베이스를 통한 지도 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning with a manually curated dataset of good responses and bad responses",
+      "Reinforcement learning with rewards for positive customer feedback",
+      "Unsupervised learning to find clusters of similar customer inquiries",
+      "Supervised learning with a continuously updated FAQ database"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 7,
+    "question": "소프트웨어 회사는 고객을 위한 도구를 만듭니다. 이 회사는 AI를 사용하여 소프트웨어 개발 생산성을 높이고자 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A software company builds tools for customers. The company wants to use AI to increase software development productivity. Which solution will meet these requirements?",
+    "options": [
+      "이진 분류 모델을 사용하여 코드 리뷰를 생성합니다.",
+      "회사의 개발자 도구에 코드 추천 소프트웨어를 설치합니다.",
+      "코드 예측 도구를 설치하여 잠재적 코드 문제를 예측합니다.",
+      "자연어 처리(NLP) 도구를 사용하여 코드를 생성합니다."
+    ],
+    "optionsEn": [
+      "Use a binary classification model to generate code reviews.",
+      "Install code recommendation software in the company's developer tools.",
+      "Install a code forecasting tool to predict potential code issues.",
+      "Use a natural language processing (NLP) tool to generate code."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 8,
+    "question": "소매점에서 Amazon SageMaker DeepAR 예측 알고리즘을 사용하여 향후 몇 주 동안 특정 제품에 대한 수요를 예측하려고 합니다. 어떤 유형의 데이터가 이 요구 사항을 충족할 수 있을까요?",
+    "questionEn": "A retail store wants to predict the demand for a specific product for the next few weeks by using the Amazon SageMaker DeepAR forecasting algorithm. Which type of data will meet this requirement?",
+    "options": [
+      "텍스트 데이터",
+      "이미지 데이터",
+      "시계열 데이터",
+      "바이너리 데이터"
+    ],
+    "optionsEn": [
+      "Text data",
+      "Image data",
+      "Time series data",
+      "Binary data"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 9,
+    "question": "AI 전문가가 꽃잎 길이, 꽃잎 너비, 꽃받침 길이, 꽃받침 너비를 기반으로 꽃의 분류를 예측하려고 합니다. 다음 요구 사항을 충족하는 알고리즘은 무엇입니까?",
+    "questionEn": "An AI practitioner wants to predict the classification of flowers based on petal length, petal width, sepal length, and sepal width. Which algorithm meets these requirements?",
+    "options": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Autoregressive Integrated Moving Average (ARIMA)",
+      "Linear regression"
+    ],
+    "optionsEn": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Autoregressive Integrated Moving Average (ARIMA)",
+      "Linear regression"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 10,
+    "question": "한 회사는 직원들이 잠재 고객에게 연락할 수 있도록 리드 우선 순위 지정 애플리케이션을 구축하려고 합니다. 애플리케이션은 직원이 도메인 지식과 전문 지식을 기반으로 모델의 다양한 변수에 할당된 가중치를 확인하고 조정할 수 있는 기능을 제공해야 합니다. 어떤 ML 모델 유형이 이러한 요구 사항을 충족합니까?",
+    "questionEn": "A company wants to build a lead prioritization application for its employees to contact potential customers. The application must give employees the ability to view and adjust the weights assigned to different variables in the model based on domain knowledge and expertise. Which ML model type meets these requirements?",
+    "options": [
+      "로지스틱 회귀 모델",
+      "주요 구성 요소를 기반으로 구축된 딥러닝 모델",
+      "K-최근접 이웃(k-NN) 모델",
+      "신경망"
+    ],
+    "optionsEn": [
+      "Logistic regression model",
+      "Deep learning model built on principal components",
+      "K-nearest neighbors (k-NN) model",
+      "Neural network"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 11,
+    "question": "기업은 다양한 동물 유형의 이미지를 분류하기 위해 ML 모델을 학습해야 합니다. 이 회사는 레이블이 지정된 이미지로 구성된 대규모 데이터 세트를 보유하고 있으며 더 이상 데이터에 레이블을 지정하지 않을 예정입니다. 회사에서 모델을 학습할 때 어떤 유형의 학습을 사용해야 할까요?",
+    "questionEn": "A company needs to train an ML model to classify images of different types of animals. The company has a large dataset of labeled images and will not label more data. Which type of learning should the company use to train the model?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "능동적 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Active learning"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 12,
+    "question": "제조 회사는 AI를 사용하여 제품을 검사하고 손상이나 결함을 찾아냅니다. 회사는 어떤 유형의 AI 애플리케이션을 사용하고 있나요?",
+    "questionEn": "A manufacturing company uses AI to inspect products and find any damages or defects. Which type of AI application is the company using?",
+    "options": [
+      "추천 시스템",
+      "자연어 처리(NLP)",
+      "컴퓨터 비전",
+      "이미지 프로세싱"
+    ],
+    "optionsEn": [
+      "Recommendation system",
+      "Natural language processing (NLP)",
+      "Computer vision",
+      "Image processing"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 13,
+    "question": "한 회사가 시각 장애가 있는 사용자를 위한 모바일 앱을 구축하고 있습니다. 앱은 사용자가 말하는 것을 듣고 음성 응답을 제공할 수 있어야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A company is building a mobile app for users who have a visual impairment. The app must be able to hear what users say and provide voice responses. Which solution will meet these requirements?",
+    "options": [
+      "딥러닝 신경망을 사용하여 음성 인식을 수행합니다.",
+      "숫자형 데이터의 패턴을 검색하기 위한 ML 모델을 구축합니다.",
+      "생성형 AI 요약을 사용하여 인간과 유사한 텍스트를 생성합니다.",
+      "이미지 분류 및 인식을 위한 맞춤형 모델을 구축합니다."
+    ],
+    "optionsEn": [
+      "Use a deep learning neural network to perform speech recognition.",
+      "Build ML models to search for patterns in numeric data.",
+      "Use generative AI summarization to generate human-like text.",
+      "Build custom models for image classification and recognition."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 14,
+    "question": "한 회사가 비즈니스 운영과 효율성을 개선하기 위해 ML 애플리케이션을 개발하고자 합니다. 다음 목록에서 각 사용 사례에 맞는 ML 패러다임을 선택하세요. 각 ML 패러다임은 한 번 이상 선택해야 합니다. Binary classification -> ? Multi-class classification -> ? K-means clustering -> ? Dimensionality reduction -> ?",
+    "questionEn": "A company wants to develop ML applications to improve business operations and efficiency. Select the correct ML paradigm from the following list for each use case. Each ML paradigm should be selected one or more times. Binary classification -> ? Multi-class classification -> ? K-means clustering -> ? Dimensionality reduction -> ?",
+    "options": [
+      "지도 학습, 지도 학습, 비지도 학습, 비지도 학습",
+      "비지도 학습, 비지도 학습, 지도 학습, 지도 학습",
+      "지도 학습, 비지도 학습, 지도 학습, 비지도 학습",
+      "비지도 학습, 지도 학습, 비지도 학습, 지도 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning, Supervised learning, Unsupervised learning, Unsupervised learning",
+      "Unsupervised learning, Unsupervised learning, Supervised learning, Supervised learning",
+      "Supervised learning, Unsupervised learning, Supervised learning, Unsupervised learning",
+      "Unsupervised learning, Supervised learning, Unsupervised learning, Supervised learning"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 15,
+    "question": "어떤 회사는 고객의 인구 통계와 구매 패턴을 기반으로 고객을 위한 그룹을 찾고 싶어합니다. 이 요구 사항을 충족하기 위해 회사는 어떤 알고리즘을 사용해야 할까요?",
+    "questionEn": "A company wants to find groups for its customers based on the customers' demographics and buying patterns. Which algorithm should the company use to meet this requirement?",
+    "options": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Decision tree",
+      "Support vector machine"
+    ],
+    "optionsEn": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Decision tree",
+      "Support vector machine"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 16,
+    "question": "한 회사에서 도메인별 모델을 사용하고 있습니다. 회사는 처음부터 새 모델을 만드는 것을 피하고자 합니다. 대신 회사는 사전 학습된 모델을 조정하여 새로운 관련 작업을 위한 모델을 만들고자 합니다. 어떤 ML 전략이 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A company is using domain-specific models. The company wants to avoid creating new models from the beginning. The company instead wants to adapt pre-trained models to create models for new, related tasks. Which ML strategy meets these requirements?",
+    "options": [
+      "에포크 수를 늘립니다.",
+      "전이 학습을 사용합니다.",
+      "에포크 수를 줄입니다.",
+      "비지도 학습을 사용합니다."
+    ],
+    "optionsEn": [
+      "Increase the number of epochs.",
+      "Use transfer learning.",
+      "Decrease the number of epochs.",
+      "Use unsupervised learning."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 17,
+    "question": "수치 예측을 수행하는 AI 모델 유형은 무엇입니까?",
+    "questionEn": "Which type of AI model makes numeric predictions?",
+    "options": [
+      "Diffusion",
+      "Regression",
+      "Transformer",
+      "Multi-modal"
+    ],
+    "optionsEn": [
+      "Diffusion",
+      "Regression",
+      "Transformer",
+      "Multi-modal"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 18,
+    "question": "한 금융회사가 거래 데이터를 기반으로 모든 신용카드 활동을 사기 가능성 또는 비사기로 표시하려고 합니다. 이 요구사항을 충족하는 ML 모델 유형은 무엇입니까?",
+    "questionEn": "A financial company wants to flag all credit card activity as possibly fraudulent or non-fraudulent based on transaction data. Which type of ML model meets these requirements?",
+    "options": [
+      "Regression",
+      "Diffusion",
+      "Binary classification",
+      "Multi-class classification"
+    ],
+    "optionsEn": [
+      "Regression",
+      "Diffusion",
+      "Binary classification",
+      "Multi-class classification"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 19,
+    "question": "AWS에서 AI 모델을 훈련할 때 데이터 규정 준수와 개인정보 보호를 보장하는 ML 기법은 무엇입니까?",
+    "questionEn": "Which ML technique ensures data compliance and privacy when training AI models on AWS?",
+    "options": [
+      "강화 학습",
+      "전이 학습",
+      "연합 학습",
+      "비지도 학습"
+    ],
+    "optionsEn": [
+      "Reinforcement learning",
+      "Transfer learning",
+      "Federated learning",
+      "Unsupervised learning"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 20,
+    "question": "올바른 출력 값으로 레이블이 지정된 훈련 데이터를 사용하는 ML 기법은 무엇입니까?",
+    "questionEn": "Which ML technique uses training data that is labeled with the correct output values?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "전이 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Transfer learning"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 21,
+    "question": "전자상거래 회사가 회사 애플리케이션의 사용자 경험을 개인화하기 위해 구매 이력과 선호도를 기반으로 고객을 그룹화하려고 합니다. 회사가 사용해야 하는 ML 기법은 무엇입니까?",
+    "questionEn": "An ecommerce company wants to group customers based on their purchase history and preferences to personalize the user experience of the company's application. Which ML technique should the company use?",
+    "options": [
+      "분류",
+      "클러스터링",
+      "회귀",
+      "콘텐츠 생성"
+    ],
+    "optionsEn": [
+      "Classification",
+      "Clustering",
+      "Regression",
+      "Content generation"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 22,
+    "question": "고객 서비스 팀이 고객 피드백을 분석하고 자동으로 다른 카테고리로 분류하는 애플리케이션을 개발하고 있습니다. 카테고리에는 제품 품질, 고객 서비스, 배송 경험이 포함됩니다. 이 시나리오가 나타내는 AI 개념은 무엇입니까?",
+    "questionEn": "A customer service team is developing an application to analyze customer feedback and automatically classify the feedback into different categories. The categories include product quality, customer service, and delivery experience. Which AI concept does this scenario present?",
+    "options": [
+      "컴퓨터 비전",
+      "자연어 처리(NLP)",
+      "추천 시스템",
+      "사기 탐지"
+    ],
+    "optionsEn": [
+      "Computer vision",
+      "Natural Language Processing (NLP)",
+      "Recommendation systems",
+      "Fraud detection"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 23,
+    "question": "회사는 데이터셋에서 추출한 사용자 지정 특성을 기반으로 다양한 객체의 이미지를 분류하려고 합니다. 최소한의 개발 노력으로 이 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company wants to classify images of different objects based on custom features extracted from a dataset. Which solution will meet this requirement with the LEAST development effort?",
+    "options": [
+      "데이터셋에서 추출한 사용자 지정 특성과 함께 기존 ML 알고리즘을 사용합니다.",
+      "사전 훈련된 딥러닝 모델을 사용합니다. 데이터셋에서 모델을 미세 조정합니다.",
+      "생성적 적대 신경망(GAN) 모델을 사용하여 이미지를 분류합니다.",
+      "분류를 위해 수동으로 엔지니어링된 특성과 함께 서포트 벡터 머신(SVM)을 사용합니다."
+    ],
+    "optionsEn": [
+      "Use traditional ML algorithms with custom features extracted from the dataset.",
+      "Use a pre-trained deep learning model. Fine-tune the model on the dataset.",
+      "Use a generative adversarial network (GAN) model to classify the images.",
+      "Use a support vector machine (SVM) with manually engineered features for classification."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 24,
+    "question": "회사는 대출 신청 위험을 평가하기 위한 해석 가능한 ML 모델을 개발하려고 합니다. 이러한 요구 사항을 충족하는 ML 모델 또는 알고리즘 유형은 무엇입니까?",
+    "questionEn": "A company wants to develop an interpretable ML model to assess the risk of loan applications. Which type of ML model or algorithm will meet these requirements?",
+    "options": [
+      "딥러닝 모델",
+      "로지스틱 회귀 모델",
+      "K-평균 알고리즘",
+      "랜덤 컷 포레스트 알고리즘"
+    ],
+    "optionsEn": [
+      "Deep learning model",
+      "Logistic regression model",
+      "K-means algorithm",
+      "Random cut forest algorithm"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 25,
+    "question": "회사는 심장 질환 위험을 예측하는 ML 모델을 개발하고 있습니다. 모델은 나이, 콜레스테롤, 혈압, 흡연 상태 및 운동 습관과 같은 환자 데이터를 사용합니다. 데이터셋에는 환자가 심장 질환이 있는지 여부를 나타내는 대상 값이 포함되어 있습니다. 이러한 요구 사항을 충족하는 ML 기술은 무엇입니까?",
+    "questionEn": "A company is developing an ML model to predict heart disease risk. The model uses patient data, such as age, cholesterol, blood pressure, smoking status, and exercise habits. The dataset includes a target value that indicates whether a patient has heart disease. Which ML technique will meet these requirements?",
+    "options": [
+      "비지도 학습",
+      "지도 학습",
+      "강화 학습",
+      "준지도 학습"
+    ],
+    "optionsEn": [
+      "Unsupervised learning",
+      "Supervised learning",
+      "Reinforcement learning",
+      "Semi-supervised learning"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 26,
+    "question": "회사는 센서 데이터에서 비정상적인 패턴을 감지하는 ML 모델을 구축하려고 합니다. 회사는 훈련을 위한 레이블이 지정된 데이터가 없습니다. 이러한 요구 사항을 충족하는 ML 방법은 무엇입니까?",
+    "questionEn": "A company wants to build an ML model to detect abnormal patterns in sensor data. The company does not have labeled data for training. Which ML method will meet these requirements?",
+    "options": [
+      "선형 회귀",
+      "분류",
+      "의사결정 트리",
+      "오토인코더"
+    ],
+    "optionsEn": [
+      "Linear regression",
+      "Classification",
+      "Decision tree",
+      "Autoencoders"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 27,
+    "question": "비지도 학습의 예는 무엇입니까?",
+    "questionEn": "Which option is an example of unsupervised learning?",
+    "options": [
+      "유사성을 기반으로 데이터 포인트를 그룹으로 클러스터링",
+      "동물 이미지를 인식하도록 모델 훈련",
+      "주택의 특성을 기반으로 주택 가격 예측",
+      "주어진 프롬프트를 기반으로 인간과 같은 텍스트 생성"
+    ],
+    "optionsEn": [
+      "Clustering data points into groups based on their similarity",
+      "Training a model to recognize images of animals",
+      "Predicting the price of a house based on the house's features",
+      "Generating human-like text based on a given prompt"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 28,
+    "question": "비지도 학습의 예는 무엇입니까?",
+    "questionEn": "Which option is an example of unsupervised learning?",
+    "options": [
+      "구매 이력을 기반으로 고객을 그룹화하는 모델",
+      "이미지를 개 또는 고양이로 분류하는 모델",
+      "다양한 특성을 기반으로 주택 가격을 예측하는 모델",
+      "시행착오를 사용하여 체스를 배우는 모델"
+    ],
+    "optionsEn": [
+      "A model that groups customers based on their purchase history",
+      "A model that classifies images as dogs or cats",
+      "A model that predicts a house's price based on various features",
+      "A model that learns to play chess by using trial and error"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 29,
+    "question": "다음 목록에서 각 문장에 맞는 올바른 AI 용어를 선택하세요. 각 AI 용어는 한 번씩 선택해야 합니다. 인간 문제 해결 능력을 시뮬레이션합니다. -> ? 예측을 위해 데이터 기반 학습 기술을 적용합니다. -> ? 복잡한 신경망을 통해 데이터를 처리하는 데 중점을 둡니다. -> ?",
+    "questionEn": "Select the correct AI term from the following list for each statement. Each AI term should be selected one time. Simulates human problem-solving capabilities. -> ? Applies data-driven learning techniques to make predictions. -> ? Focuses on processing data through intricate neural networks. -> ?",
+    "options": [
+      "AI, ML, 딥러닝",
+      "AI, 딥러닝, ML",
+      "ML, AI, 딥러닝",
+      "딥러닝, AI, ML"
+    ],
+    "optionsEn": [
+      "AI, ML, Deep learning",
+      "AI, Deep learning, ML",
+      "ML, AI, Deep learning",
+      "Deep learning, AI, ML"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 30,
+    "question": "회사는 ML 모델을 사용하여 소셜 미디어에서 고객 리뷰를 분석하려고 합니다. 모델은 각 리뷰가 중립, 긍정 또는 부정 감정인지 결정해야 합니다. 이러한 요구 사항을 충족하는 모델 평가 전략은 무엇입니까?",
+    "questionEn": "A company wants to use an ML model to analyze customer reviews on social media. The model must determine if each review has a neutral, positive, or negative sentiment. Which model evaluation strategy will meet these requirements?",
+    "options": [
+      "개방형 생성",
+      "텍스트 요약",
+      "기계 번역",
+      "분류"
+    ],
+    "optionsEn": [
+      "Open-ended generation",
+      "Text summarization",
+      "Machine translation",
+      "Classification"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 31,
+    "question": "감정 분석은 AI의 어떤 더 넓은 분야의 하위 집합입니까?",
+    "questionEn": "Sentiment analysis is a subset of which broader field of AI?",
+    "options": [
+      "컴퓨터 비전",
+      "로보틱스",
+      "자연어 처리(NLP)",
+      "기계 번역"
+    ],
+    "optionsEn": [
+      "Computer vision",
+      "Robotics",
+      "Natural language processing (NLP)",
+      "Machine translation"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 32,
+    "question": "회사는 ML 기술을 사용하여 애플리케이션을 구축합니다. 다음 목록에서 각 작업에 맞는 올바른 ML 기술을 선택하세요. 각 ML 기술을 한 번씩 선택합니다. 텍스트 질문을 분석하여 답변이 올바른지 결정합니다. -> ? 생태학적 요인을 분석하여 특정 지역의 종 수를 결정합니다. -> ? 자동차 속성을 분석하여 자동차 모델을 결정합니다. -> ?",
+    "questionEn": "A company uses ML techniques to build applications. Select the correct ML technique from the following list for each task. Select each ML technique one time. Analyze a text question to determine if the answer is correct. -> ? Analyze ecological factors to determine the number of species in a certain area. -> ? Analyze car attributes to determine the car model. -> ?",
+    "options": [
+      "이진 분류, 회귀, 다중 클래스 분류",
+      "이진 분류, 다중 클래스 분류, 회귀",
+      "다중 클래스 분류, 회귀, 이진 분류",
+      "다중 클래스 분류, 이진 분류, 회귀"
+    ],
+    "optionsEn": [
+      "Binary classification, Regression, Multiclass classification",
+      "Binary classification, Multiclass classification, Regression",
+      "Multiclass classification, Regression, Binary classification",
+      "Multiclass classification, Binary classification, Regression"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 33,
+    "question": "회사는 고객의 인구 통계 및 구매 패턴을 기반으로 고객 그룹을 식별하려고 합니다. 이 요구 사항을 충족하기 위해 회사가 사용해야 하는 알고리즘은 무엇입니까?",
+    "questionEn": "A company wants to identify groups for its customers based on the customers' demographics and buying patterns. Which algorithm should the company use to meet this requirement?",
+    "options": [
+      "K-최근접 이웃(k-NN)",
+      "K-평균",
+      "의사결정 트리",
+      "서포트 벡터 머신"
+    ],
+    "optionsEn": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Decision tree",
+      "Support vector machine"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 34,
+    "question": "회사는 ML 애플리케이션을 개발하고 있습니다. 이 애플리케이션은 특성에 따라 유사한 고객과 제품을 자동으로 그룹화해야 합니다. 이러한 요구 사항을 충족하기 위해 회사는 어떤 ML 전략을 사용해야 합니까?",
+    "questionEn": "A company is developing an ML application. The application must automatically group similar customers and products based on their characteristics. Which ML strategy should the company use to meet these requirements?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "준지도 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Semi-supervised learning"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 35,
+    "question": "한 연구 회사가 미생물 배양체를 키우고 있습니다. 이 회사는 성장 영역에 대한 사전 레이블이 지정된 데이터 없이 배양체의 이미지를 캡처합니다. 이 회사는 배양체 성장을 보여주는 이미지 영역을 식별해야 합니다. 이 요구 사항에 가장 적합한 ML 기법은 무엇입니까?",
+    "questionEn": "A research company is growing microbiological cultures. The company captures images of the cultures without any prior labeled data about growth areas. The company needs to identify the regions of the images that show culture growth. Which ML technique is best suited for this requirement?",
+    "options": [
+      "로지스틱 회귀",
+      "의사 결정 트리",
+      "클러스터링",
+      "차원 축소"
+    ],
+    "optionsEn": [
+      "Logistic regression",
+      "Decision tree",
+      "Clustering",
+      "Dimensionality reduction"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 36,
+    "question": "한 회사가 ML을 사용하여 고객 참여도와 매출을 높이려고 합니다. 이 회사는 고객 인구 통계, 구매 이력, 브라우징 패턴 및 제품 평점을 포함하는 대규모 데이터 세트를 수집했습니다. 다음 목록에서 각 사용 사례에 맞는 올바른 ML 접근 방식을 선택하세요. 각 ML 접근 방식은 한 번만 선택하세요. - 고객이 평생 동안 창출할 수익을 추정하여 고객 생애 가치(CLV)를 예측합니다.: ? - 고객이 회사의 서비스 사용을 중단할 가능성을 파악합니다.: ? - 유사한 구매 패턴과 선호도를 기반으로 고객을 그룹화합니다.: ?",
+    "questionEn": "A company wants to use ML to increase customer engagement and sales. The company has collected a large dataset that includes customer demographics, purchase history, browsing patterns, and product ratings. Select the correct ML approach from the following list for each use case. Select each ML approach one time. - Predict customer lifetime value (CLV) by estimating how much revenue a customer will generate over the customer's lifetime.: ? - Identify the likelihood of a customer to stop using the company's services.: ? - Group customers based on similar purchasing patterns and preferences.: ?",
+    "options": [
+      "Regression, Classification, Clustering",
+      "Regression, Clustering, Classification",
+      "Clustering, Regression, Classification",
+      "Classification, Clustering, Regression"
+    ],
+    "optionsEn": [
+      "Regression, Classification, Clustering",
+      "Regression, Clustering, Classification",
+      "Clustering, Regression, Classification",
+      "Classification, Clustering, Regression"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 37,
+    "question": "가장 높은 설명 가능성을 제공하는 ML 기법 유형은 무엇입니까?",
+    "questionEn": "Which type of ML technique provides the MOST explainability?",
+    "options": [
+      "선형 회귀(Linear regression)",
+      "서포트 벡터 머신(Support vector machines)",
+      "Random cut forest(RCF)",
+      "신경망(Neural network)"
+    ],
+    "optionsEn": [
+      "Linear regression",
+      "Support vector machines",
+      "Random cut forest (RCF)",
+      "Neural network"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 38,
+    "question": "한 회사에 과거 데이터가 포함된 여러 데이터셋이 있습니다. 회사는 ML 기술을 사용하여 각 데이터셋을 처리하려고 합니다. 다음 목록에서 각 데이터셋에 맞는 올바른 ML 기술을 선택하십시오. 각 기술은 한 번만 선택하거나 선택하지 않을 수 있습니다. - 텍스트 기반 고객 리뷰가 포함된 데이터셋: ? - 종 이름이 레이블된 동물 이미지가 포함된 데이터셋: ? - 제품의 일별 판매량이 포함된 데이터셋: ?",
+    "questionEn": "A company has multiple datasets that contain historical data. The company wants to use ML technologies to process each dataset. Select the correct ML technology from the following list for each dataset. Select each technology one time or not at all. - A dataset that contains text-based customer reviews: ? - A dataset that contains images of animals labeled with their species names: ? - A dataset that contains daily sales volumes for products: ?",
+    "options": [
+      "Natural language processing (NLP), Computer vision, Time series forecasting",
+      "Natural language processing (NLP), Time series forecasting, Computer vision",
+      "Time series forecasting, Computer vision, Natural language processing (NLP)",
+      "Time series forecasting, Natural language processing (NLP), Computer vision"
+    ],
+    "optionsEn": [
+      "Natural language processing (NLP), Computer vision, Time series forecasting",
+      "Natural language processing (NLP), Time series forecasting, Computer vision",
+      "Time series forecasting, Computer vision, Natural language processing (NLP)",
+      "Time series forecasting, Natural language processing (NLP), Computer vision"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 39,
+    "question": "컨택 센터 애플리케이션을 개발 중인 한 회사는 고객 대화를 통해 통찰력을 얻고자 합니다. 이 회사는 고객 통화 음성을 분석하여 주요 정보를 추출하려고 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company is building a contact center application and wants to gain insights from customer conversations. The company wants to analyze and extract key information from the audio of the customer calls. Which solution meets these requirements?",
+    "options": [
+      "Amazon Lex를 사용하여 대화형 챗봇을 구축합니다.",
+      "Amazon Transcribe를 사용하여 통화 녹음을 텍스트로 변환합니다.",
+      "Amazon SageMaker Model Monitor를 사용하여 통화 녹음에서 정보를 추출합니다.",
+      "Amazon Comprehend를 사용하여 분류 레이블을 생성합니다."
+    ],
+    "optionsEn": [
+      "Build a conversational chatbot by using Amazon Lex.",
+      "Transcribe call recordings by using Amazon Transcribe.",
+      "Extract information from call recordings by using Amazon SageMaker Model Monitor.",
+      "Create classification labels by using Amazon Comprehend."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 40,
+    "question": "한 회사에서 제출된 모든 이력서를 PDF 형식으로 수작업으로 검토합니다. 회사가 성장함에 따라 회사에서는 이력서의 양이 회사의 검토 용량을 초과할 것으로 예상합니다. 이 회사는 추가 처리를 위해 PDF 이력서를 일반 텍스트 형식으로 변환할 수 있는 자동화된 시스템이 필요합니다. 어떤 AWS 서비스가 이 요구 사항을 충족합니까?",
+    "questionEn": "A company manually reviews all submitted resumes in PDF format. As the company grows, the company expects the volume of resumes to exceed the company's review capacity. The company needs an automated system to convert the PDF resumes into plain text format for additional processing. Which AWS service meets this requirement?",
+    "options": [
+      "Amazon Textract",
+      "Amazon Personalize",
+      "Amazon Lex",
+      "Amazon Transcribe"
+    ],
+    "optionsEn": [
+      "Amazon Textract",
+      "Amazon Personalize",
+      "Amazon Lex",
+      "Amazon Transcribe"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 41,
+    "question": "한 식품 서비스 회사는 매일 발생하는 음식물 쓰레기를 줄이고 판매 수익을 높이는 데 도움이 되는 ML 모델을 개발하고자 합니다. 회사는 모델의 정확도를 지속적으로 개선해야 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A food service company wants to develop an ML model to help decrease daily food waste and increase sales revenue. The company needs to continuously improve the model's accuracy. Which solution meets these requirements?",
+    "options": [
+      "Amazon SageMaker를 사용하여 최신 데이터로 반복합니다.",
+      "Amazon Personalize를 사용하고 과거 데이터로 반복합니다.",
+      "Amazon CloudWatch를 사용하여 고객 주문을 분석합니다.",
+      "Amazon Rekognition을 사용하여 모델을 최적화합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon SageMaker and iterate with newer data.",
+      "Use Amazon Personalize and iterate with historical data.",
+      "Use Amazon CloudWatch to analyze customer orders.",
+      "Use Amazon Rekognition to optimize the model."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 42,
+    "question": "한 회사에서 고객 만족도를 예측하기 위한 ML 모델을 만들려고 합니다. 이 회사는 완전 자동화된 모델 튜닝이 필요합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까?",
+    "questionEn": "A company wants to create an ML model to predict customer satisfaction. The company needs fully automated model tuning. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Personalize",
+      "Amazon SageMaker",
+      "Amazon Athena",
+      "Amazon Comprehend"
+    ],
+    "optionsEn": [
+      "Amazon Personalize",
+      "Amazon SageMaker",
+      "Amazon Athena",
+      "Amazon Comprehend"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 43,
+    "question": "한 전자상거래 회사에서 제품에 대한 서면 고객 리뷰를 기반으로 고객 감정을 파악할 수 있는 솔루션을 구축하고자 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까? (2개를 선택하세요.)",
+    "questionEn": "An ecommerce company wants to build a solution to determine customer sentiments based on written customer reviews of products. Which AWS services meet these requirements? (Choose two.)",
+    "options": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Bedrock",
+      "Amazon Rekognition"
+    ],
+    "optionsEn": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Bedrock",
+      "Amazon Rekognition"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 44,
+    "question": "전자상거래 회사가 회사 전자상거래 플랫폼의 각 사용자에 대한 결과를 맞춤화하여 검색 엔진 추천을 개선하고자 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까?",
+    "questionEn": "An ecommerce company wants to improve search engine recommendations by customizing the results for each user of the company's ecommerce platform. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Personalize",
+      "Amazon Kendra",
+      "Amazon Rekognition",
+      "Amazon Transcribe"
+    ],
+    "optionsEn": [
+      "Amazon Personalize",
+      "Amazon Kendra",
+      "Amazon Rekognition",
+      "Amazon Transcribe"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 45,
+    "question": "어떤 AWS 서비스에서 사용자가 생성형 AI 애플리케이션을 구축하고 확장하는 데 도움이 되는 기초 모델(FM)을 제공합니까?",
+    "questionEn": "Which AWS service makes foundation models (FMs) available to help users build and scale generative AI applications?",
+    "options": [
+      "Amazon Q Developer",
+      "Amazon Bedrock",
+      "Amazon Kendra",
+      "Amazon Comprehend"
+    ],
+    "optionsEn": [
+      "Amazon Q Developer",
+      "Amazon Bedrock",
+      "Amazon Kendra",
+      "Amazon Comprehend"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 46,
+    "question": "한 회사의 직원들은 고객이 고객 서비스 센터에 전화를 걸면 고객에게 제품 설명과 추천을 제공합니다. 이러한 추천은 고객의 위치를 기반으로 합니다. 이 회사는 이 프로세스를 자동화하기 위해 Foundation Models(FM)를 사용하려고 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까?",
+    "questionEn": "A company's employees provide product descriptions and recommendations to customers when customers call the customer service center. These recommendations are based on where the customers are located. The company wants to use foundation models (FMs) to automate this process. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Macie",
+      "Amazon Transcribe",
+      "Amazon Bedrock",
+      "Amazon Textract"
+    ],
+    "optionsEn": [
+      "Amazon Macie",
+      "Amazon Transcribe",
+      "Amazon Bedrock",
+      "Amazon Textract"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 47,
+    "question": "어떤 회사는 하루에 수천 건의 고객 지원 상호작용을 하며 이러한 상호작용을 분석하여 자주 묻는 질문을 파악하고, 통찰력을 개발하고자 합니다. 이 요구 사항을 충족하기 위해 회사에서 사용할 수 있는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A company has thousands of customer support interactions per day and wants to analyze these interactions to identify frequently asked questions and develop insights. Which AWS service can the company use to meet this requirement?",
+    "options": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+      "Amazon Translate"
+    ],
+    "optionsEn": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+      "Amazon Translate"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 48,
+    "question": "한 회사가 ML 모델을 사용하여 소셜 미디어 게시물의 댓글 섹션에서 유해한 언어를 식별하고자 합니다. 이 회사는 레이블이 지정된 데이터를 사용하여 모델을 훈련시키지 않습니다. 이 회사는 유해한 언어를 식별하기 위해 어떤 전략을 사용해야 합니까?",
+    "questionEn": "A company wants to identify harmful language in the comments section of social media posts by using an ML model. The company will not use labeled data to train the model. Which strategy should the company use to identify harmful language?",
+    "options": [
+      "Amazon Rekognition 조정 기능을 사용합니다.",
+      "Amazon Comprehend 독성 감지를 사용합니다.",
+      "Amazon SageMaker 내장 알고리즘을 사용하여 모델을 훈련합니다.",
+      "Amazon Polly를 사용하여 댓글을 모니터링합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon Rekognition moderation.",
+      "Use Amazon Comprehend toxicity detection.",
+      "Use Amazon SageMaker built-in algorithms to train the model.",
+      "Use Amazon Polly to monitor comments."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 49,
+    "question": "제조 회사가 여러 언어로 제품 설명을 만들고 싶어합니다. 어떤 AWS 서비스가 이 작업을 자동화할까요?",
+    "questionEn": "A manufacturing company wants to create product descriptions in multiple languages. Which AWS service will automate this task?",
+    "options": [
+      "Amazon Translate",
+      "Amazon Transcribe",
+      "Amazon Kendra",
+      "Amazon Polly"
+    ],
+    "optionsEn": [
+      "Amazon Translate",
+      "Amazon Transcribe",
+      "Amazon Kendra",
+      "Amazon Polly"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 50,
+    "question": "한 병원이 임상 노트 작성 시 직원들의 기술 향상을 돕기 위해 음성-텍스트 기능을 갖춘 생성형 AI 솔루션을 사용하려고 합니다. 이 요구사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A hospital wants to use a generative AI solution with speech-to-text functionality to help improve employee skills in dictating clinical notes. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Q Developer",
+      "Amazon Polly",
+      "Amazon Rekognition",
+      "AWS HealthScribe"
+    ],
+    "optionsEn": [
+      "Amazon Q Developer",
+      "Amazon Polly",
+      "Amazon Rekognition",
+      "AWS HealthScribe"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 51,
+    "question": "한 의료회사가 구조화된 환자 기록에 접근하여 관련 정보를 추출하고 간결한 요약을 생성하는 AI 애플리케이션을 개발하려고 합니다. 어떤 솔루션이 이 요구사항을 충족할까요?",
+    "questionEn": "A medical company wants to develop an AI application that can access structured patient records, extract relevant information, and generate concise summaries. Which solution will meet these requirements?",
+    "options": [
+      "Amazon Comprehend Medical을 사용하여 관련 의료 엔티티와 관계를 추출합니다. 규칙 기반 로직을 적용하여 요약을 구조화하고 형식화합니다.",
+      "Amazon Personalize를 사용하여 환자 참여 패턴을 분석합니다. 출력을 범용 텍스트 요약 도구와 통합합니다.",
+      "Amazon Textract를 사용하여 스캔 문서를 디지털 텍스트로 변환합니다. 키워드 추출 시스템을 설계하여 요약 생성합니다.",
+      "Amazon Kendra를 구현하여 의료 기록에 대한 검색 가능한 인덱스를 제공합니다. 템플릿 기반 시스템을 사용하여 요약 형식화합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon Comprehend Medical to extract relevant medical entities and relationships. Apply rule-based logic to structure and format summaries.",
+      "Use Amazon Personalize to analyze patient engagement patterns. Integrate the output with a general purpose text summarization tool.",
+      "Use Amazon Textract to convert scanned documents into digital text. Design a keyword extraction system to generate summaries.",
+      "Implement Amazon Kendra to provide a searchable index for medical records. Use a template-based system to format summaries."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 52,
+    "question": "애니메이션 회사가 콘텐츠에 자막을 제공하려고 합니다. 이 요구사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "An animation company wants to provide subtitles for its content. Which AWS service meets this requirement?",
+    "options": [
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Transcribe",
+      "Amazon Translate"
+    ],
+    "optionsEn": [
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Transcribe",
+      "Amazon Translate"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 53,
+    "question": "회사는 사용자가 여행 예약을 할 수 있는 웹사이트를 운영합니다. 회사는 웹사이트의 호텔에 대한 일관된 브랜딩을 만드는 데 도움이 되는 AI 솔루션을 원합니다. AI 솔루션은 일관된 작문 스타일로 웹사이트용 호텔 설명을 생성해야 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A company runs a website for users to make travel reservations. The company wants an AI solution to help create consistent branding for hotels on the website. The AI solution needs to generate hotel descriptions for the website in a consistent writing style. Which AWS service will meet these requirements?",
+    "options": [
+      "Amazon Comprehend",
+      "Amazon Personalize",
+      "Amazon Rekognition",
+      "Amazon Bedrock"
+    ],
+    "optionsEn": [
+      "Amazon Comprehend",
+      "Amazon Personalize",
+      "Amazon Rekognition",
+      "Amazon Bedrock"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 54,
+    "question": "미디어 스트리밍 플랫폼은 사용자의 계정 이력을 기반으로 사용자에게 영화 추천을 제공하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A media streaming platform wants to provide movie recommendations to users based on the users' account history. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Polly",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+      "Amazon Personalize"
+    ],
+    "optionsEn": [
+      "Amazon Polly",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+      "Amazon Personalize"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 55,
+    "question": "대량의 교육 자료를 보유한 온라인 학습 회사는 엔터프라이즈 검색을 사용하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "An online learning company with large volumes of education materials wants to use enterprise search. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Comprehend",
+      "Amazon Kendra",
+      "Amazon Bedrock",
+      "Amazon Personalize"
+    ],
+    "optionsEn": [
+      "Amazon Comprehend",
+      "Amazon Kendra",
+      "Amazon Bedrock",
+      "Amazon Personalize"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 56,
+    "question": "금융 회사는 ML 예측에 대한 인적 검토 워크플로를 구축하려고 합니다. 회사는 사용 사례에 대한 신뢰도 임계값을 정의하고 시간이 지남에 따라 임계값을 조정하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A financial company wants to build workflows for human review of ML predictions. The company wants to define confidence thresholds for its use case and adjust the thresholds over time. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Personalize",
+      "Amazon Augmented AI(Amazon A2I)",
+      "Amazon Inspector",
+      "AWS Audit Manager"
+    ],
+    "optionsEn": [
+      "Amazon Personalize",
+      "Amazon Augmented AI (Amazon A2I)",
+      "Amazon Inspector",
+      "AWS Audit Manager"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 57,
+    "question": "다큐멘터리 영화 제작자는 더 많은 시청자에게 다가가고 싶어합니다. 영화 제작자는 영화에 여러 언어로 자막과 음성 해설을 자동으로 추가하려고 합니다. 이러한 요구 사항을 충족하는 단계의 조합은 무엇입니까? (2개 선택)",
+    "questionEn": "A documentary filmmaker wants to reach more viewers. The filmmaker wants to automatically add subtitles and voice-overs in multiple languages to their films. Which combination of steps will meet these requirements? (Choose two.)",
+    "options": [
+      "Amazon Transcribe와 Amazon Translate를 사용하여 다른 언어로 자막을 생성합니다.",
+      "Amazon Textract와 Amazon Translate를 사용하여 다른 언어로 자막을 생성합니다.",
+      "Amazon Polly를 사용하여 다른 언어로 음성 해설을 생성합니다.",
+      "Amazon Translate를 사용하여 다른 언어로 음성 해설을 생성합니다.",
+      "Amazon Textract를 사용하여 다른 언어로 음성 해설을 생성합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon Transcribe and Amazon Translate to generate subtitles in other languages.",
+      "Use Amazon Textract and Amazon Translate to generate subtitles in other languages.",
+      "Use Amazon Polly to generate voice-overs in other languages.",
+      "Use Amazon Translate to generate voice-overs in other languages.",
+      "Use Amazon Textract to generate voice-overs in other languages."
+    ],
+    "answer": -1,
+    "explanation": "해설을 자동으로 추가하려고 합니다. 이러한 요구 사항을 충족하는 단계의 조합은 무엇입니까? (2개 선택)\nA. Amazon Transcribe와 Amazon Translate를 사용하여 다른 언어로 자막을 생성합니다.\nB. Amazon Textract와 Amazon Translate를 사용하여 다른 언어로 자막을 생성합니다.\nC. Amazon Polly를 사용하여 다른 언어로 음성 해설을 생성합니다.\nD. Amazon Translate를 사용하여 다른 언어로 음성 해설을 생성합니다.\nE. Amazon Textract를 사용하여 다른 언어로 음성 해설을 생성합니다.\n이전\n정답 제출\n다음\n홈\n드릴 존\n과제\n마이",
+    "explanationEn": ""
+  },
+  {
+    "number": 58,
+    "question": "뉴스 에이전시는 영어로 기사를 발행합니다. 에이전시는 기사를 다른 언어로 제공하려고 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A news agency publishes articles in English. The agency wants to make articles available in other languages. Which solution meets these requirements?",
+    "options": [
+      "Amazon Transcribe를 회사 웹사이트에 사용합니다.",
+      "Amazon Translate 실시간 번역 기능을 사용합니다.",
+      "Amazon Personalize를 회사 웹사이트에 추가합니다.",
+      "Amazon Textract 실시간 문서 처리 기능을 사용합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon Transcribe on the company's website.",
+      "Use the Amazon Translate real-time translation feature.",
+      "Add Amazon Personalize to the company's website.",
+      "Use the Amazon Textract real-time document processing feature."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 59,
+    "question": "지능형 문서 처리(IDP)의 사용 사례를 설명하는 작업은 무엇입니까?",
+    "questionEn": "Which task describes a use case for intelligent document processing (IDP)?",
+    "options": [
+      "사기 거래 예측",
+      "제품 제공 개인화",
+      "사용자 피드백 분석 및 감성 분석 수행",
+      "스캔된 파일에서 데이터를 자동으로 추출 및 포맷팅"
+    ],
+    "optionsEn": [
+      "Predict fraudulent transactions",
+      "Personalize product offerings",
+      "Analyze user feedback and perform sentiment analysis",
+      "Automatically extract and format data from scanned files"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "number": 60,
+    "question": "한 금융 회사가 사기 행위 패턴을 데이터베이스에 저장하고 있습니다. 회사는 이 데이터를 사용하여 조사를 수행합니다. 회사는 이러한 조사를 지원하는 AI 도구를 개발하기 위해 그래프 기반 ML 솔루션을 사용하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A financial company stores patterns of fraudulent behavior in a database. The company uses this data to conduct investigations. The company wants to use a graph-based ML solution to develop an AI tool that helps with these investigations. Which AWS service will meet these requirements?",
+    "options": [
+      "Amazon OpenSearch Service",
+      "Amazon Aurora",
+      "Amazon Neptune",
+      "Amazon MemoryDB"
+    ],
+    "optionsEn": [
+      "Amazon OpenSearch Service",
+      "Amazon Aurora",
+      "Amazon Neptune",
+      "Amazon MemoryDB"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  }
+]

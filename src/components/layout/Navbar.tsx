@@ -4,6 +4,13 @@ import { useTheme } from '../../contexts/ThemeContext'
 import { CERT_LEVELS } from '../../lib/certifications'
 import { CATEGORIES } from '../../lib/categories'
 
+const COMMUNITY_MENU = [
+  { title: '공지사항', path: '/community/notices', icon: '📢' },
+  { title: '게시판', path: '/community/board', icon: '📋' },
+  { title: '시험합격수기', path: '/community/success-stories', icon: '🏆' },
+  { title: '시험팁공유', path: '/community/tips', icon: '💡' },
+]
+
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const location = useLocation()
@@ -95,6 +102,36 @@ export default function Navbar() {
           >
             문제풀이
           </Link>
+
+          <div
+            className="nav-dropdown"
+            onMouseEnter={() => handleMouseEnter('community')}
+            onMouseLeave={handleMouseLeave}
+          >
+            <button
+              className={`nav-link nav-dropdown-trigger ${
+                location.pathname.startsWith('/community') ? 'active' : ''
+              }`}
+            >
+              커뮤니티 <span className="nav-arrow">&#9662;</span>
+            </button>
+            {openDropdown === 'community' && (
+              <div className="nav-dropdown-menu">
+                {COMMUNITY_MENU.map(item => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`nav-dropdown-item ${
+                      location.pathname === item.path ? 'active' : ''
+                    }`}
+                  >
+                    <span className="nav-dropdown-code">{item.icon}</span>
+                    <span className="nav-dropdown-title">{item.title}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Actions */}
@@ -102,6 +139,7 @@ export default function Navbar() {
           <button className="theme-toggle" onClick={toggleTheme} title="테마 전환">
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
+          <Link to="/login" className="nav-login-btn">로그인</Link>
           <button
             className="nav-hamburger"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -150,6 +188,33 @@ export default function Navbar() {
 
         <Link to="/stamp" className="nav-link nav-link-accent" onClick={() => setMobileOpen(false)}>도장깨기</Link>
         <Link to="/practice" className="nav-link nav-link-accent" onClick={() => setMobileOpen(false)}>문제풀이</Link>
+
+        <div className="nav-mobile-group">
+          <button
+            className="nav-mobile-group-header"
+            onClick={() => setMobileAccordion(mobileAccordion === 'community' ? null : 'community')}
+          >
+            <span>커뮤니티</span>
+            <span className={`nav-arrow ${mobileAccordion === 'community' ? 'open' : ''}`}>&#9662;</span>
+          </button>
+          {mobileAccordion === 'community' && (
+            <div className="nav-mobile-group-items">
+              {COMMUNITY_MENU.map(item => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className="nav-link nav-mobile-sub"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span>{item.icon}</span> {item.title}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="nav-mobile-divider" />
+        <Link to="/login" className="nav-link" onClick={() => setMobileOpen(false)}>로그인</Link>
       </div>
     </nav>
   )

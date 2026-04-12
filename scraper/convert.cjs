@@ -6,7 +6,7 @@ function escapeTs(s) {
   return s
     .replace(/\\/g, '\\\\')
     .replace(/'/g, "\\'")
-    .replace(/\n/g, ' ')
+    .replace(/\n/g, '\\n')
     .replace(/\r/g, '')
     .replace(/\t/g, ' ');
 }
@@ -21,8 +21,26 @@ for (const q of qs) {
   const question = escapeTs(q.question);
   const explanation = escapeTs(q.explanation || '');
   const opts = q.options.map(o => "'" + escapeTs(o) + "'").join(', ');
-  const answer = q.answer < 0 ? 0 : q.answer;
-  lines.push(`  { categoryId: 'aif-c01', question: '${question}', options: [${opts}], answer: ${answer}, explanation: '${explanation}' },`);
+
+  // Handle multi-select (array) and single answers
+  let answer;
+  if (Array.isArray(q.answer)) {
+    answer = `[${q.answer.join(', ')}]`;
+  } else {
+    answer = q.answer < 0 ? 0 : q.answer;
+  }
+
+  // Build optional English fields
+  let extra = '';
+  if (q.questionEn) {
+    extra += `, questionEn: '${escapeTs(q.questionEn)}'`;
+  }
+  if (q.optionsEn && q.optionsEn.length > 0) {
+    const optsEn = q.optionsEn.map(o => "'" + escapeTs(o) + "'").join(', ');
+    extra += `, optionsEn: [${optsEn}]`;
+  }
+
+  lines.push(`  { categoryId: '${q.categoryId || 'unknown'}', question: '${question}', options: [${opts}], answer: ${answer}, explanation: '${explanation}'${extra} },`);
 }
 
 lines.push(']');

@@ -1,0 +1,542 @@
+[
+  {
+    "number": 1,
+    "question": "한 회사에서 유전자 특성에 따라 인간 유전자를 20가지 범주로 분류하려고 합니다. 이 회사는 모델의 내부 메커니즘이 출력에 미치는 영향을 문서화하기 위한 ML 알고리즘이 필요합니다. 이러한 요구 사항을 충족하는 ML 알고리즘은 무엇입니까?",
+    "questionEn": "A company wants to classify human genes into 20 categories based on gene characteristics. The company needs an ML algorithm to document how the inner mechanism of the model affects the output. Which ML algorithm meets these requirements?",
+    "options": [
+      "의사결정 트리",
+      "선형 회귀",
+      "로지스틱 회귀",
+      "신경망"
+    ],
+    "optionsEn": [
+      "Decision trees",
+      "Linear regression",
+      "Logistic regression",
+      "Neural networks"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n의사결정 트리는 각 분기점의 결정 규칙이 명확하여 유전자 분류 과정을 단계별로 추적할 수 있는 해석 가능한 모델입니다. 내부 메커니즘이 트리 구조로 시각화되므로 각 특성이 출력에 미치는 영향을 문서화하기 용이합니다.\n\n오답 분석\n\nB: 선형 회귀는 연속적인 수치값을 예측하는 모델로, 20개 범주로 분류하는 작업에는 부적합합니다.\n\nC: 로지스틱 회귀는 이진 또는 다중 분류를 수행할 수 있지만, 내부 메커니즘이 확률 함수 기반이라 의사결정 트리보다 해석 및 문서화가 제한적입니다.\n\nD: 신경망은 블랙박스 모델로 내부 작동 원리를 외부에서 직접 설명하거나 문서화하기 가장 어렵습니다.",
+    "explanationEn": "정답: A\n\nA decision tree is an interpretable model with clear decision rules at each branch point, allowing step-by-step tracking of the gene classification process. Its internal mechanism is visualized as a tree structure, making it easy to document how each feature affects the output.\n\nIncorrect answer analysis\n\nB: Linear regression is a model for predicting continuous numeric values and is unsuitable for classifying into 20 categories.\n\nC: Logistic regression can perform binary or multi-class classification, but its internal mechanism is based on probability functions, making it more limited in interpretability and documentation than a decision tree.\n\nD: Neural networks are black-box models, making it the hardest to directly explain or document their internal workings."
+  },
+  {
+    "number": 2,
+    "question": "한 회사에서 사용자가 다음과 같은 질문에 답하는 교육용 게임을 개발하려고 합니다. \"항아리 하나에는 빨간색 구슬 6개, 녹색 구슬 4개, 노란색 구슬 3개가 들어 있습니다. 항아리에서 녹색 구슬을 선택할 확률은 얼마나 되나요?\" 운영 오버헤드를 최소화하면서 이러한 요구 사항을 충족하는 솔루션은 무엇일까요?",
+    "questionEn": "A company wants to develop an educational game where users answer questions such as the following: \"A jar contains six red, four green, and three yellow marbles. What is the probability of choosing a green marble from the jar?\" Which solution meets these requirements with the LEAST operational overhead?",
+    "options": [
+      "지도 학습을 사용하여 확률을 예측하는 회귀 모델을 만듭니다.",
+      "강화 학습을 사용하여 확률을 반환하도록 모델을 훈련합니다.",
+      "간단한 규칙과 계산을 사용하여 확률을 계산하는 코드를 사용합니다.",
+      "비지도 학습을 사용하여 확률 밀도를 추정하는 모델을 만듭니다."
+    ],
+    "optionsEn": [
+      "Use supervised learning to create a regression model that will predict probability.",
+      "Use reinforcement learning to train a model to return the probability.",
+      "Use code that will calculate probability by using simple rules and computations.",
+      "Use unsupervised learning to create a model that will estimate probability density."
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n확률 계산은 단순한 수학 공식(녹색 구슬 수 / 전체 구슬 수)으로 정확히 표현되므로, ML 모델 없이 코드로 직접 구현하는 것이 가장 효율적입니다. 이 방식은 운영 오버헤드를 최소화하면서 요구 사항을 정확히 충족합니다.\n\n오답 분석\n\nA: 지도 학습 회귀는 복잡한 패턴 학습을 위한 방법으로, 단순한 확률 계산에 적용하기에는 과도합니다.\n\nB: 강화 학습은 순차적 의사결정 문제를 해결하기 위한 방법으로, 고정된 확률 계산에는 부적합합니다.\n\nD: 비지도 학습은 레이블 없는 데이터에서 패턴을 발견하는 방법으로, 명확한 공식이 있는 확률 계산과 맞지 않습니다.",
+    "explanationEn": "정답: C\n\nProbability calculation is precisely expressed by a simple math formula (green marbles / total marbles), making it most efficient to implement directly in code without an ML model. This approach meets the requirements exactly while minimizing operational overhead.\n\nIncorrect answer analysis\n\nA: Supervised learning regression is a method for learning complex patterns and is excessive to apply to simple probability calculation.\n\nB: Reinforcement learning is a method for solving sequential decision-making problems and is unsuitable for fixed probability calculation.\n\nD: Unsupervised learning is a method for discovering patterns in unlabeled data and does not fit probability calculation where a clear formula exists."
+  },
+  {
+    "number": 3,
+    "question": "회사는 광고 캠페인에 사용할 수 있는 페타바이트 규모의 레이블이 지정되지 않은 고객 데이터를 보유하고 있습니다. 이 회사는 고객을 등급별로 분류하여 회사 제품을 광고하고 홍보하려고 합니다. 회사는 이러한 요구 사항을 충족하기 위해 어떤 방법론을 사용해야 할까요?",
+    "questionEn": "A company has petabytes of unlabeled customer data to use for an advertisement campaign. The company wants to classify its customers into tiers to advertise and promote the company's products. Which methodology should the company use to meet these requirements?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "인간 피드백을 통한 강화 학습(RLHF)"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Reinforcement learning from human feedback (RLHF)"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n비지도 학습은 레이블이 없는 대량의 데이터에서 고객 세그먼트를 자동으로 발견하여 계층화된 마케팅 전략을 수립하는 데 적합합니다. 레이블 없이도 페타바이트 규모의 고객 데이터를 등급별로 분류할 수 있으므로 이 요구 사항을 충족합니다.\n\n오답 분석\n\nA: 지도 학습은 레이블이 필요하지만, 페타바이트 규모의 데이터를 레이블링하는 것은 현실적이지 않습니다.\n\nC: 강화 학습은 행동과 보상 기반의 방법으로, 고객을 등급별로 분류하는 작업과 맞지 않습니다.\n\nD: RLHF(인간 피드백을 통한 강화 학습)는 LLM 미세 조정에 사용되는 훈련 기법으로, 고객 세분화와는 무관합니다.",
+    "explanationEn": "정답: B\n\nUnsupervised learning is well-suited for automatically discovering customer segments from large amounts of unlabeled data to establish stratified marketing strategies. It can classify petabyte-scale customer data into tiers without labels, meeting these requirements.\n\nIncorrect answer analysis\n\nA: Supervised learning requires labels, but labeling petabyte-scale data is not practical.\n\nC: Reinforcement learning is an action-reward based method and does not fit the task of classifying customers into tiers.\n\nD: RLHF (Reinforcement Learning from Human Feedback) is a training technique used for LLM fine-tuning and is unrelated to customer segmentation."
+  },
+  {
+    "number": 4,
+    "question": "한 회사는 AI를 사용하여 위협으로부터 애플리케이션을 보호하고자 합니다. AI 솔루션은 의심스러운 출처에서 온 IP 주소인지 확인해야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족하나요?",
+    "questionEn": "A company wants to use AI to protect its application from threats. The AI solution needs to check if an IP address is from a suspicious source. Which solution meets these requirements?",
+    "options": [
+      "음성 인식 시스템을 구축합니다.",
+      "자연어 처리(NLP) 명명된 개체 인식 시스템을 만듭니다.",
+      "이상 탐지 시스템을 개발합니다.",
+      "사기 예측 시스템을 만듭니다."
+    ],
+    "optionsEn": [
+      "Build a speech recognition system.",
+      "Create a natural language processing (NLP) named entity recognition system.",
+      "Develop an anomaly detection system.",
+      "Create a fraud forecasting system."
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n이상 탐지 시스템은 정상적인 IP 패턴을 학습하고 의심스러운 출처의 비정상 패턴을 자동으로 식별하는 AI 기술입니다. IP 주소가 의심스러운 출처인지 판별해야 한다는 요구 사항에 가장 직접적으로 부합합니다.\n\n오답 분석\n\nA: 음성 인식은 오디오 신호를 텍스트로 변환하는 기술로, IP 주소 분석과는 무관합니다.\n\nB: NER(명명된 개체 인식)은 텍스트에서 특정 개체를 추출하는 기술로, IP 위협 탐지와는 다른 목적을 가집니다.\n\nD: 사기 예측 시스템은 미래의 사기 행위를 예측하는 것으로, 실시간 IP 주소 검증과는 차이가 있습니다.",
+    "explanationEn": "정답: C\n\nAn anomaly detection system is an AI technique that learns normal IP patterns and automatically identifies abnormal patterns from suspicious sources. It most directly meets the requirement to check whether an IP address is from a suspicious source.\n\nIncorrect answer analysis\n\nA: Speech recognition is a technology that converts audio signals to text and is unrelated to IP address analysis.\n\nB: NER (Named Entity Recognition) is a technology for extracting specific entities from text and serves a different purpose from IP threat detection.\n\nD: A fraud prediction system is designed to predict future fraudulent activity, which differs from real-time IP address verification."
+  },
+  {
+    "number": 5,
+    "question": "AI 전문가가 동물 사진 데이터베이스를 가지고 있습니다. AI 전문가는 사람의 수작업 없이 사진 속 동물을 자동으로 식별하고 분류하기를 원합니다. 이러한 요구 사항을 충족하는 전략은 무엇일까요?",
+    "questionEn": "An AI practitioner has a database of animal photos. The AI practitioner wants to automatically identify and categorize the animals in the photos without manual human effort. Which strategy meets these requirements?",
+    "options": [
+      "물체 감지",
+      "이상 감지",
+      "명명된 개체 인식",
+      "인페인팅"
+    ],
+    "optionsEn": [
+      "Object detection",
+      "Anomaly detection",
+      "Named entity recognition",
+      "Inpainting"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n객체 탐지는 이미지 내 동물의 위치를 찾고 종류를 자동으로 분류하는 컴퓨터 비전 기술입니다. 사람의 수작업 없이 동물 사진 데이터베이스에서 동물을 자동으로 식별하고 범주화하는 요구 사항에 최적합합니다.\n\n오답 분석\n\nB: 이상 탐지는 비정상적인 패턴을 발견하는 기술로, 정상적인 동물을 범주별로 분류하는 작업과는 다릅니다.\n\nC: NER(명명된 개체 인식)은 텍스트에서 특정 개체를 인식하는 기술로, 이미지 분석과는 무관합니다.\n\nD: 인페인팅은 이미지를 복원하거나 편집하는 기술로, 동물을 식별하고 분류하는 작업과는 다릅니다.",
+    "explanationEn": "정답: A\n\nObject detection is a computer vision technique that locates animals within images and automatically classifies their types. It is optimal for the requirement to automatically identify and categorize animals in a photo database without manual human effort.\n\nIncorrect answer analysis\n\nB: Anomaly detection is a technique for finding abnormal patterns and differs from classifying normal animals by category.\n\nC: NER (Named Entity Recognition) is a technique for recognizing specific entities in text and is unrelated to image analysis.\n\nD: Inpainting is a technique for restoring or editing images and differs from the task of identifying and classifying animals."
+  },
+  {
+    "number": 6,
+    "question": "한 회사에서 고객 서비스 챗봇을 만들고 있습니다. 회사에서는 챗봇이 과거의 상호작용과 온라인 리소스를 통해 학습하여 반응을 개선하기를 원합니다. 이러한 자기 개선 기능을 제공하는 AI 학습 전략은 무엇입니까?",
+    "questionEn": "A company is building a customer service chatbot. The company wants the chatbot to improve its responses by learning from past interactions and online resources. Which AI learning strategy provides this self-improvement capability?",
+    "options": [
+      "수동으로 큐레이션한 좋은 반응과 나쁜 반응의 데이터 세트를 사용한 지도 학습",
+      "긍정적인 고객 피드백에 대한 보상을 제공하는 강화 학습",
+      "유사한 고객 문의 클러스터를 찾기 위한 비지도 학습",
+      "지속적으로 업데이트되는 FAQ 데이터베이스를 통한 지도 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning with a manually curated dataset of good responses and bad responses",
+      "Reinforcement learning with rewards for positive customer feedback",
+      "Unsupervised learning to find clusters of similar customer inquiries",
+      "Supervised learning with a continuously updated FAQ database"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n강화 학습은 긍정적인 고객 피드백을 보상 신호로 사용하여 챗봇이 과거 상호작용을 통해 점진적으로 더 나은 응답을 학습하도록 유도합니다. 이 자기 개선 메커니즘이 챗봇이 지속적으로 발전하는 요구 사항을 충족합니다.\n\n오답 분석\n\nA: 정적 데이터셋을 이용한 지도 학습은 한 번 학습 후 고정되어 지속적인 자기 개선 메커니즘이 없습니다.\n\nC: 비지도 학습의 클러스터링은 유사한 문의 패턴을 발견하는 것이지, 응답 품질을 개선하는 것이 아닙니다.\n\nD: FAQ 데이터베이스 업데이트는 사람이 직접 관여하는 수동 과정으로, 자율적인 자기 학습과는 다릅니다.",
+    "explanationEn": "정답: B\n\nReinforcement learning uses positive customer feedback as a reward signal to guide the chatbot to progressively learn better responses through past interactions. This self-improvement mechanism meets the requirement for the chatbot to continuously improve.\n\nIncorrect answer analysis\n\nA: Supervised learning with a static dataset is fixed after a single training run and has no continuous self-improvement mechanism.\n\nC: Clustering in unsupervised learning is for discovering patterns in similar inquiries, not for improving response quality.\n\nD: Updating an FAQ database is a manual process that requires human involvement and differs from autonomous self-learning."
+  },
+  {
+    "number": 7,
+    "question": "소프트웨어 회사는 고객을 위한 도구를 만듭니다. 이 회사는 AI를 사용하여 소프트웨어 개발 생산성을 높이고자 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A software company builds tools for customers. The company wants to use AI to increase software development productivity. Which solution will meet these requirements?",
+    "options": [
+      "이진 분류 모델을 사용하여 코드 리뷰를 생성합니다.",
+      "회사의 개발자 도구에 코드 추천 소프트웨어를 설치합니다.",
+      "코드 예측 도구를 설치하여 잠재적 코드 문제를 예측합니다.",
+      "자연어 처리(NLP) 도구를 사용하여 코드를 생성합니다."
+    ],
+    "optionsEn": [
+      "Use a binary classification model to generate code reviews.",
+      "Install code recommendation software in the company's developer tools.",
+      "Install a code forecasting tool to predict potential code issues.",
+      "Use a natural language processing (NLP) tool to generate code."
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\nNLP 기반 코드 생성 도구는 자연어 설명을 코드로 변환하여 소프트웨어 개발 생산성을 직접적으로 향상시킵니다. 개발자가 자연어로 요구 사항을 입력하면 코드가 자동으로 생성되므로 운영 오버헤드 없이 생산성 향상 요구를 충족합니다.\n\n오답 분석\n\nA: 이진 분류 모델은 코드 품질을 좋음/나쁨으로 판단하는 것으로, 코드 생성을 통한 생산성 향상과는 간접적인 관련만 있습니다.\n\nB: 코드 추천 소프트웨어는 자동 완성 수준의 지원을 제공하며, 전체 코드를 생성하는 것보다 생산성 향상 효과가 제한적입니다.\n\nC: 코드 예측 도구는 잠재적 문제를 식별하는 데 집중하므로, 개발 생산성 향상과는 간접적인 관련에 그칩니다.",
+    "explanationEn": "정답: D\n\nNLP-based code generation tools convert natural language descriptions into code, directly improving software development productivity. Because code is automatically generated from natural language requirements entered by developers, this meets the productivity improvement requirement without operational overhead.\n\nIncorrect answer analysis\n\nA: A binary classification model judges code quality as good or bad, which is only indirectly related to improving productivity through code generation.\n\nB: Code recommendation software provides auto-completion level support and has a more limited productivity improvement effect compared to generating full code.\n\nC: Code prediction tools focus on identifying potential issues, so their contribution to improving development productivity is only indirect."
+  },
+  {
+    "number": 8,
+    "question": "소매점에서 Amazon SageMaker DeepAR 예측 알고리즘을 사용하여 향후 몇 주 동안 특정 제품에 대한 수요를 예측하려고 합니다. 어떤 유형의 데이터가 이 요구 사항을 충족할 수 있을까요?",
+    "questionEn": "A retail store wants to predict the demand for a specific product for the next few weeks by using the Amazon SageMaker DeepAR forecasting algorithm. Which type of data will meet this requirement?",
+    "options": [
+      "텍스트 데이터",
+      "이미지 데이터",
+      "시계열 데이터",
+      "바이너리 데이터"
+    ],
+    "optionsEn": [
+      "Text data",
+      "Image data",
+      "Time series data",
+      "Binary data"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n시계열 데이터는 시간 순서로 기록된 판매 이력으로, DeepAR 알고리즘이 이를 학습하여 계절성과 트렌드를 파악하고 미래 수요를 예측합니다. DeepAR은 시계열 데이터 예측에 특화된 알고리즘이므로 이 요구 사항에 가장 적합합니다.\n\n오답 분석\n\nA: 텍스트 데이터는 제품 설명이나 리뷰에 해당하며, 시간에 따른 수요 변화를 예측하는 것과는 직접적인 관련이 없습니다.\n\nB: 이미지 데이터는 제품 사진에 해당하며, 판매량 예측을 위한 시계열 입력으로는 부적합합니다.\n\nD: 이진 데이터는 예/아니오 형태의 정보로, 연속적인 수요 변화를 포착하는 시계열 예측에 사용할 수 없습니다.",
+    "explanationEn": "정답: C\n\nTime series data consists of sales records arranged in chronological order, which DeepAR learns to understand seasonality and trends and forecast future demand. DeepAR is an algorithm specialized for time series data forecasting, making this data type the most appropriate for the requirement.\n\nIncorrect answer analysis\n\nA: Text data consists of product descriptions or reviews and has no direct relevance to predicting demand changes over time.\n\nB: Image data consists of product photos and is unsuitable as time series input for sales volume prediction.\n\nD: Binary data is yes/no type information and cannot be used for time series forecasting that captures continuous demand changes."
+  },
+  {
+    "number": 9,
+    "question": "AI 전문가가 꽃잎 길이, 꽃잎 너비, 꽃받침 길이, 꽃받침 너비를 기반으로 꽃의 분류를 예측하려고 합니다. 다음 요구 사항을 충족하는 알고리즘은 무엇입니까?",
+    "questionEn": "An AI practitioner wants to predict the classification of flowers based on petal length, petal width, sepal length, and sepal width. Which algorithm meets these requirements?",
+    "options": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Autoregressive Integrated Moving Average (ARIMA)",
+      "Linear regression"
+    ],
+    "optionsEn": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Autoregressive Integrated Moving Average (ARIMA)",
+      "Linear regression"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nk-NN은 레이블이 있는 지도 학습 알고리즘으로, 새로운 데이터를 기존 레이블된 데이터(꽃잎 길이, 꽃잎 너비 등) 중 가장 가까운 k개와 비교하여 분류합니다. 꽃의 수치적 특성으로 종류를 예측하는 분류 작업에 적합합니다.\n\n오답 분석\n\nB: K-means는 레이블이 없는 비지도 학습으로 데이터를 자동으로 군집화하는 용도이며, 특정 카테고리로 분류하는 지도 학습 작업과는 다릅니다.\n\nC: ARIMA는 시계열 데이터의 미래값을 예측하기 위한 알고리즘으로, 꽃의 특성을 기반으로 분류하는 작업에는 부적합합니다.\n\nD: 선형 회귀는 연속적인 수치값을 예측하는 알고리즘으로, 꽃의 종류처럼 이산적인 카테고리를 분류하는 작업에는 사용할 수 없습니다.",
+    "explanationEn": "정답: A\n\nk-NN is a supervised learning algorithm with labels that classifies new data by comparing it with the k nearest labeled data points (petal length, petal width, etc.). It is well-suited for classification tasks that predict a category based on the numerical characteristics of flowers.\n\nIncorrect answer analysis\n\nB: K-means is unsupervised learning without labels used for automatically clustering data, which differs from a supervised learning task that classifies into specific categories.\n\nC: ARIMA is an algorithm for predicting future values of time series data and is unsuitable for classifying flowers based on their characteristics.\n\nD: Linear regression is an algorithm for predicting continuous numerical values and cannot be used for classifying discrete categories such as flower species."
+  },
+  {
+    "number": 10,
+    "question": "한 회사는 직원들이 잠재 고객에게 연락할 수 있도록 리드 우선 순위 지정 애플리케이션을 구축하려고 합니다. 애플리케이션은 직원이 도메인 지식과 전문 지식을 기반으로 모델의 다양한 변수에 할당된 가중치를 확인하고 조정할 수 있는 기능을 제공해야 합니다. 어떤 ML 모델 유형이 이러한 요구 사항을 충족합니까?",
+    "questionEn": "A company wants to build a lead prioritization application for its employees to contact potential customers. The application must give employees the ability to view and adjust the weights assigned to different variables in the model based on domain knowledge and expertise. Which ML model type meets these requirements?",
+    "options": [
+      "로지스틱 회귀 모델",
+      "주요 구성 요소를 기반으로 구축된 딥러닝 모델",
+      "K-최근접 이웃(k-NN) 모델",
+      "신경망"
+    ],
+    "optionsEn": [
+      "Logistic regression model",
+      "Deep learning model built on principal components",
+      "K-nearest neighbors (k-NN) model",
+      "Neural network"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n로지스틱 회귀는 각 변수에 할당된 가중치를 명시적으로 확인하고 조정할 수 있어 도메인 지식을 모델에 직접 반영할 수 있습니다. 직원이 전문 지식을 바탕으로 변수 가중치를 조정해야 한다는 요구 사항에 가장 적합합니다.\n\n오답 분석\n\nB: 주성분 분석(PCA) 기반 딥러닝은 원본 변수가 변환된 주성분으로 대체되어 개별 변수를 직접 조정하기가 불가합니다.\n\nC: k-NN은 이웃 데이터 포인트와의 거리를 기반으로 분류하는 방식으로, 변수별 가중치라는 개념 자체가 없습니다.\n\nD: 신경망은 복잡한 내부 구조를 가진 블랙박스 모델로, 개별 변수의 영향도를 파악하거나 직접 조정하기가 어렵습니다.",
+    "explanationEn": "정답: A\n\nLogistic regression allows explicit verification and adjustment of the weight assigned to each variable, enabling domain knowledge to be directly reflected in the model. It is the best fit for the requirement that employees adjust variable weights based on their expertise.\n\nIncorrect answer analysis\n\nB: Deep learning based on principal component analysis (PCA) replaces original variables with transformed principal components, making it impossible to directly adjust individual variables.\n\nC: k-NN classifies based on distance to neighboring data points, so the concept of per-variable weights does not exist.\n\nD: Neural networks are black-box models with complex internal structures, making it difficult to identify or directly adjust the influence of individual variables."
+  },
+  {
+    "number": 11,
+    "question": "기업은 다양한 동물 유형의 이미지를 분류하기 위해 ML 모델을 학습해야 합니다. 이 회사는 레이블이 지정된 이미지로 구성된 대규모 데이터 세트를 보유하고 있으며 더 이상 데이터에 레이블을 지정하지 않을 예정입니다. 회사에서 모델을 학습할 때 어떤 유형의 학습을 사용해야 할까요?",
+    "questionEn": "A company needs to train an ML model to classify images of different types of animals. The company has a large dataset of labeled images and will not label more data. Which type of learning should the company use to train the model?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "능동적 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Active learning"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n레이블이 지정된 대량의 이미지 데이터가 이미 확보되어 있고 추가 레이블링이 불필요하므로, 지도 학습으로 직접 분류 모델을 훈련할 수 있습니다. 레이블된 데이터를 활용하여 동물 유형을 분류하는 이 시나리오는 지도 학습의 전형적인 사용 사례에 해당합니다.\n\n오답 분석\n\nB: 비지도 학습은 레이블이 없는 데이터에서 패턴을 발견하는 방법으로, 레이블된 데이터가 있는 이 경우에는 적합하지 않습니다.\n\nC: 강화 학습은 환경과의 상호작용을 통한 순차적 의사결정 문제를 해결하는 방법으로, 이미지 분류와는 다릅니다.\n\nD: 능동 학습은 모델이 불확실한 데이터에 대해 추가 레이블링을 요청하는 방법으로, 더 이상 레이블링하지 않는다는 조건과 맞지 않습니다.",
+    "explanationEn": "정답: A\n\nSince a large dataset of labeled images is already available and no additional labeling is needed, a classification model can be directly trained using supervised learning. This scenario of classifying animal types using labeled data is a typical use case for supervised learning.\n\nIncorrect answer analysis\n\nB: Unsupervised learning is a method for discovering patterns in unlabeled data and is not appropriate for this case where labeled data is available.\n\nC: Reinforcement learning is a method for solving sequential decision-making problems through interaction with an environment and differs from image classification.\n\nD: Active learning is a method in which a model requests additional labeling for uncertain data, which conflicts with the condition that no more labeling will be done."
+  },
+  {
+    "number": 12,
+    "question": "제조 회사는 AI를 사용하여 제품을 검사하고 손상이나 결함을 찾아냅니다. 회사는 어떤 유형의 AI 애플리케이션을 사용하고 있나요?",
+    "questionEn": "A manufacturing company uses AI to inspect products and find any damages or defects. Which type of AI application is the company using?",
+    "options": [
+      "추천 시스템",
+      "자연어 처리(NLP)",
+      "컴퓨터 비전",
+      "이미지 프로세싱"
+    ],
+    "optionsEn": [
+      "Recommendation system",
+      "Natural language processing (NLP)",
+      "Computer vision",
+      "Image processing"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n컴퓨터 비전은 이미지에서 객체를 인식하고 분류하는 AI 분야로, 제품의 손상이나 결함을 시각적으로 탐지하는 검사 작업에 직접 적용할 수 있습니다. 이미지를 분석하여 결함 유무를 판단하는 이 사용 사례는 컴퓨터 비전의 전형적인 응용에 해당합니다.\n\n오답 분석\n\nA: 추천 시스템은 사용자 행동 데이터를 분석하여 선호도를 예측하는 기술로, 시각적 제품 검사와는 다른 목적을 가집니다.\n\nB: NLP는 텍스트나 언어 데이터를 처리하는 기술로, 이미지를 통한 시각적 검사와는 무관합니다.\n\nD: 이미지 처리는 이미지를 변환하거나 향상시키는 전처리 기술이며, AI가 결함을 스스로 인식하고 분류하는 컴퓨터 비전과는 구별됩니다.",
+    "explanationEn": "정답: C\n\nComputer vision is an AI field that recognizes and classifies objects in images, and can be directly applied to inspection tasks that visually detect product damage or defects. This use case of analyzing images to determine the presence of defects is a typical application of computer vision.\n\nIncorrect answer analysis\n\nA: Recommendation systems analyze user behavior data to predict preferences, serving a different purpose from visual product inspection.\n\nB: NLP is a technology for processing text or language data and is unrelated to visual inspection through images.\n\nD: Image processing is a preprocessing technique for transforming or enhancing images, and is distinct from computer vision where AI independently recognizes and classifies defects."
+  },
+  {
+    "number": 13,
+    "question": "한 회사가 시각 장애가 있는 사용자를 위한 모바일 앱을 구축하고 있습니다. 앱은 사용자가 말하는 것을 듣고 음성 응답을 제공할 수 있어야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A company is building a mobile app for users who have a visual impairment. The app must be able to hear what users say and provide voice responses. Which solution will meet these requirements?",
+    "options": [
+      "딥러닝 신경망을 사용하여 음성 인식을 수행합니다.",
+      "숫자형 데이터의 패턴을 검색하기 위한 ML 모델을 구축합니다.",
+      "생성형 AI 요약을 사용하여 인간과 유사한 텍스트를 생성합니다.",
+      "이미지 분류 및 인식을 위한 맞춤형 모델을 구축합니다."
+    ],
+    "optionsEn": [
+      "Use a deep learning neural network to perform speech recognition.",
+      "Build ML models to search for patterns in numeric data.",
+      "Use generative AI summarization to generate human-like text.",
+      "Build custom models for image classification and recognition."
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n딥러닝 신경망 기반 음성 인식은 시각 장애인의 음성을 텍스트로 변환하여 앱이 해석하고, TTS를 통해 음성 응답을 생성하는 흐름을 구현합니다. 시각 대신 음성에 의존하는 시각 장애인 사용자를 위한 앱 요구 사항에 가장 직접적으로 부합합니다.\n\n오답 분석\n\nB: 숫자 데이터의 패턴 탐색은 시각 장애인을 위한 음성 인터페이스 앱과는 직접적인 관련이 없습니다.\n\nC: 생성형 AI 텍스트 요약은 음성 인터페이스의 핵심 기능이 아니며, 시각 장애인 앱의 주요 요구 사항에 해당하지 않습니다.\n\nD: 이미지 분류 및 인식은 시각적 정보를 처리하는 기술로, 시각을 사용하지 못하는 대상 사용자에게는 부적합합니다.",
+    "explanationEn": "정답: A\n\nDeep learning neural network-based speech recognition implements a flow that converts a visually impaired user's speech to text for the app to interpret, then generates a voice response via TTS. It most directly meets the app requirements for visually impaired users who rely on voice instead of sight.\n\nIncorrect answer analysis\n\nB: Searching for patterns in numerical data has no direct relevance to a voice interface app for visually impaired users.\n\nC: Generative AI text summarization is not a core function of a voice interface and does not correspond to the main requirements of an app for visually impaired users.\n\nD: Image classification and recognition is a technology for processing visual information and is unsuitable for target users who cannot use their sight."
+  },
+  {
+    "number": 14,
+    "question": "한 회사가 비즈니스 운영과 효율성을 개선하기 위해 ML 애플리케이션을 개발하고자 합니다. 다음 목록에서 각 사용 사례에 맞는 ML 패러다임을 선택하세요. 각 ML 패러다임은 한 번 이상 선택해야 합니다. Binary classification -> ? Multi-class classification -> ? K-means clustering -> ? Dimensionality reduction -> ?",
+    "questionEn": "A company wants to develop ML applications to improve business operations and efficiency. Select the correct ML paradigm from the following list for each use case. Each ML paradigm should be selected one or more times. Binary classification -> ? Multi-class classification -> ? K-means clustering -> ? Dimensionality reduction -> ?",
+    "options": [
+      "지도 학습, 지도 학습, 비지도 학습, 비지도 학습",
+      "비지도 학습, 비지도 학습, 지도 학습, 지도 학습",
+      "지도 학습, 비지도 학습, 지도 학습, 비지도 학습",
+      "비지도 학습, 지도 학습, 비지도 학습, 지도 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning, Supervised learning, Unsupervised learning, Unsupervised learning",
+      "Unsupervised learning, Unsupervised learning, Supervised learning, Supervised learning",
+      "Supervised learning, Unsupervised learning, Supervised learning, Unsupervised learning",
+      "Unsupervised learning, Supervised learning, Unsupervised learning, Supervised learning"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n이진 분류와 다중 분류는 레이블된 데이터를 사용하는 지도 학습에 해당합니다. K-means 클러스터링과 차원 축소는 레이블 없이 데이터의 구조를 파악하는 비지도 학습 패러다임입니다.",
+    "explanationEn": "정답: A\n\nBinary classification and multi-class classification belong to supervised learning, which uses labeled data. K-means clustering and dimensionality reduction are unsupervised learning paradigms that discover data structure without labels."
+  },
+  {
+    "number": 15,
+    "question": "어떤 회사는 고객의 인구 통계와 구매 패턴을 기반으로 고객을 위한 그룹을 찾고 싶어합니다. 이 요구 사항을 충족하기 위해 회사는 어떤 알고리즘을 사용해야 할까요?",
+    "questionEn": "A company wants to find groups for its customers based on the customers' demographics and buying patterns. Which algorithm should the company use to meet this requirement?",
+    "options": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Decision tree",
+      "Support vector machine"
+    ],
+    "optionsEn": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Decision tree",
+      "Support vector machine"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nK-means는 레이블이 없는 데이터에서 유사한 패턴을 찾아 자동으로 k개의 그룹을 생성하는 비지도 학습 알고리즘입니다. 고객의 인구 통계와 구매 패턴을 바탕으로 고객 그룹을 자동으로 발견하는 이 요구 사항에 적합합니다.\n\n오답 분석\n\nA: k-NN은 이미 레이블된 데이터가 필요한 지도 학습으로, 새로운 그룹을 생성하는 것이 아닌 기존 그룹으로 새 데이터를 분류합니다.\n\nC: 의사결정 트리는 레이블이 필요한 지도 학습으로 분류나 회귀에 사용되며, 레이블 없는 데이터에서 그룹을 자동으로 찾는 기능은 없습니다.\n\nD: SVM은 레이블 기반의 분류 및 회귀 알고리즘으로, 레이블이 없는 데이터에서 새로운 그룹을 발견하는 데는 사용할 수 없습니다.",
+    "explanationEn": "정답: B\n\nK-means is an unsupervised learning algorithm that finds similar patterns in unlabeled data to automatically create k groups. It is appropriate for the requirement of automatically discovering customer groups based on demographics and buying patterns.\n\nIncorrect answer analysis\n\nA: k-NN is supervised learning that requires already labeled data, classifying new data into existing groups rather than creating new ones.\n\nC: Decision tree is supervised learning that requires labels for classification or regression, and has no capability to automatically discover groups from unlabeled data.\n\nD: SVM is a label-based classification and regression algorithm and cannot be used to discover new groups in unlabeled data."
+  },
+  {
+    "number": 16,
+    "question": "한 회사에서 도메인별 모델을 사용하고 있습니다. 회사는 처음부터 새 모델을 만드는 것을 피하고자 합니다. 대신 회사는 사전 학습된 모델을 조정하여 새로운 관련 작업을 위한 모델을 만들고자 합니다. 어떤 ML 전략이 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A company is using domain-specific models. The company wants to avoid creating new models from the beginning. The company instead wants to adapt pre-trained models to create models for new, related tasks. Which ML strategy meets these requirements?",
+    "options": [
+      "에포크 수를 늘립니다.",
+      "전이 학습을 사용합니다.",
+      "에포크 수를 줄입니다.",
+      "비지도 학습을 사용합니다."
+    ],
+    "optionsEn": [
+      "Increase the number of epochs.",
+      "Use transfer learning.",
+      "Decrease the number of epochs.",
+      "Use unsupervised learning."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n전이 학습은 사전 훈련된 모델이 학습한 지식과 특성을 새로운 관련 작업에 재활용하는 ML 전략입니다. 처음부터 새 모델을 만들지 않고 사전 훈련 모델을 조정하여 새 작업에 적용한다는 요구 사항에 정확히 부합합니다.\n\n오답 분석\n\nA: 에포크 수를 늘리는 것은 기존 모델에 대한 추가 훈련에 불과하며, 사전 훈련된 지식을 새로운 작업에 전이하는 개념과는 다릅니다.\n\nC: 에포크 수를 줄이면 충분한 학습이 이루어지지 않아 성능이 저하되는 과소적합(underfitting)이 발생합니다.\n\nD: 비지도 학습은 레이블 없는 데이터에서 패턴을 찾는 방법으로, 사전 훈련된 모델을 새 작업에 조정하는 전이 학습과는 다릅니다.",
+    "explanationEn": "정답: B\n\nTransfer learning is an ML strategy that reuses the knowledge and features learned by a pre-trained model for a new related task. It precisely meets the requirement of adapting pre-trained models to new tasks without creating models from scratch.\n\nIncorrect answer analysis\n\nA: Increasing the number of epochs is merely additional training of the existing model and differs from the concept of transferring pre-trained knowledge to a new task.\n\nC: Decreasing the number of epochs results in insufficient learning, causing underfitting and performance degradation.\n\nD: Unsupervised learning is a method for finding patterns in unlabeled data and differs from transfer learning, which adapts a pre-trained model to a new task."
+  },
+  {
+    "number": 17,
+    "question": "수치 예측을 수행하는 AI 모델 유형은 무엇입니까?",
+    "questionEn": "Which type of AI model makes numeric predictions?",
+    "options": [
+      "Diffusion",
+      "Regression",
+      "Transformer",
+      "Multi-modal"
+    ],
+    "optionsEn": [
+      "Diffusion",
+      "Regression",
+      "Transformer",
+      "Multi-modal"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n회귀 모델은 연속적인 수치값을 예측하는 ML 모델로, 가격, 온도, 판매량 등 정량적 결과를 예측하는 데 사용됩니다. 수치값을 출력으로 예측해야 하는 요구 사항에 직접 부합하는 모델 유형입니다.\n\n오답 분석\n\nA: 확산 모델은 노이즈에서 이미지를 생성하는 생성형 AI 기술로, 수치값 예측과는 무관합니다.\n\nC: 트랜스포머는 어텐션 메커니즘을 기반으로 하는 신경망 아키텍처 유형으로, 특정 예측 작업 유형을 가리키는 분류가 아닙니다.\n\nD: Multi-modal 모델은 텍스트, 이미지, 오디오 등 여러 형태의 입출력을 동시에 처리하는 모델 유형으로, 예측 방식에 따른 분류인 회귀와는 다른 기준의 분류입니다.",
+    "explanationEn": "정답: B\n\nA regression model is an ML model that predicts continuous numerical values, used for quantitative predictions such as price, temperature, and sales volume. It is the model type that directly meets the requirement to predict a numerical value as output.\n\nIncorrect answer analysis\n\nA: A diffusion model is a generative AI technique that generates images from noise and is unrelated to numerical value prediction.\n\nC: A transformer is a neural network architecture type based on an attention mechanism and is not a classification referring to a specific prediction task type.\n\nD: A Multi-modal model is a model type that simultaneously processes multiple forms of input and output such as text, image, and audio, and is a different classification criterion from regression, which is categorized by prediction method."
+  },
+  {
+    "number": 18,
+    "question": "한 금융회사가 거래 데이터를 기반으로 모든 신용카드 활동을 사기 가능성 또는 비사기로 표시하려고 합니다. 이 요구사항을 충족하는 ML 모델 유형은 무엇입니까?",
+    "questionEn": "A financial company wants to flag all credit card activity as possibly fraudulent or non-fraudulent based on transaction data. Which type of ML model meets these requirements?",
+    "options": [
+      "Regression",
+      "Diffusion",
+      "Binary classification",
+      "Multi-class classification"
+    ],
+    "optionsEn": [
+      "Regression",
+      "Diffusion",
+      "Binary classification",
+      "Multi-class classification"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n이진 분류는 거래를 사기 가능성 있음/없음의 두 카테고리로 분류하는 모델로, 신용카드 사기 탐지의 표준 접근법입니다. 모든 카드 활동에 두 가지 레이블 중 하나를 지정해야 하는 요구 사항에 정확히 부합합니다.\n\n오답 분석\n\nA: 회귀는 연속적인 수치값을 예측하는 모델로, 사기 여부를 플래그로 지정하는 이진 분류 작업과는 다릅니다.\n\nB: 확산 모델은 이미지와 같은 데이터를 생성하는 생성형 AI 모델로, 거래를 분류하는 작업과는 무관합니다.\n\nD: 다중 분류는 3개 이상의 카테고리로 분류하는 모델로, 사기/정상의 두 카테고리만 필요한 이 경우에는 불필요하게 복잡합니다.",
+    "explanationEn": "정답: C\n\nBinary classification is a model that classifies transactions into two categories—possibly fraudulent or non-fraudulent—and is the standard approach for credit card fraud detection. It precisely meets the requirement to flag every card activity with one of two labels.\n\nIncorrect answer analysis\n\nA: Regression is a model that predicts continuous numerical values and differs from the binary classification task of flagging fraud.\n\nB: A diffusion model is a generative AI model that generates data such as images and is unrelated to the task of classifying transactions.\n\nD: Multi-class classification is a model that classifies into three or more categories, which is unnecessarily complex for this case that only requires two categories: fraud and normal."
+  },
+  {
+    "number": 19,
+    "question": "AWS에서 AI 모델을 훈련할 때 데이터 규정 준수와 개인정보 보호를 보장하는 ML 기법은 무엇입니까?",
+    "questionEn": "Which ML technique ensures data compliance and privacy when training AI models on AWS?",
+    "options": [
+      "강화 학습",
+      "전이 학습",
+      "연합 학습",
+      "비지도 학습"
+    ],
+    "optionsEn": [
+      "Reinforcement learning",
+      "Transfer learning",
+      "Federated learning",
+      "Unsupervised learning"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n연합 학습은 데이터를 중앙 서버로 이동시키지 않고 데이터가 존재하는 분산된 위치에서 모델을 각각 훈련하여 모델 업데이트만 집계하는 기법입니다. 원본 데이터가 로컬에 유지되므로 데이터 규정 준수와 개인정보 보호 요구 사항을 충족합니다.\n\n오답 분석\n\nA: 강화 학습은 환경과의 상호작용에서 보상을 통해 최적 행동을 학습하는 방법으로, 데이터 프라이버시 보장과는 무관합니다.\n\nB: 전이 학습은 사전 훈련된 모델의 지식을 새 작업에 전달하는 기법으로, 데이터 프라이버시 보장 메커니즘과는 별개입니다.\n\nD: 비지도 학습은 레이블 없는 데이터에서 패턴을 발견하는 학습 방식으로, 데이터를 분산 유지하여 프라이버시를 보장하는 것과는 다릅니다.",
+    "explanationEn": "정답: C\n\nFederated learning is a technique that trains models separately at distributed locations where data resides without moving it to a central server, then aggregates only the model updates. Since the original data remains local, it meets the requirements for data compliance and privacy protection.\n\nIncorrect answer analysis\n\nA: Reinforcement learning is a method for learning optimal actions through rewards from interactions with an environment and is unrelated to ensuring data privacy.\n\nB: Transfer learning is a technique for transferring knowledge from a pre-trained model to a new task and is separate from data privacy assurance mechanisms.\n\nD: Unsupervised learning is a learning method that discovers patterns in unlabeled data and differs from keeping data distributed to ensure privacy."
+  },
+  {
+    "number": 20,
+    "question": "올바른 출력 값으로 레이블이 지정된 훈련 데이터를 사용하는 ML 기법은 무엇입니까?",
+    "questionEn": "Which ML technique uses training data that is labeled with the correct output values?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "전이 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Transfer learning"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n지도 학습은 올바른 출력값으로 레이블이 지정된 훈련 데이터를 사용하여 입력-출력 간의 매핑을 학습하는 기법입니다. 회귀, 의사결정 트리, k-NN 등이 지도 학습의 대표적인 예에 해당합니다.\n\n오답 분석\n\nB: 비지도 학습은 레이블이 없는 데이터에서 패턴을 발견하는 학습 기법으로, K-means 클러스터링, 차원 축소, 이상 탐지 등이 해당합니다.\n\nC: 강화 학습은 환경과의 상호작용에서 보상 신호를 통해 최적의 행동을 학습하는 방식으로, 레이블된 훈련 데이터를 사용하지 않습니다.\n\nD: 전이 학습은 사전 학습된 모델의 지식을 재활용하여 새로운 작업에 대한 학습 시간을 줄이는 기법으로, 레이블 데이터 사용 방식을 정의하는 것과는 다른 개념입니다.",
+    "explanationEn": "정답: A\n\nSupervised learning is a technique that uses training data labeled with correct output values to learn the mapping between inputs and outputs. Regression, decision trees, and k-NN are representative examples of supervised learning.\n\nIncorrect answer analysis\n\nB: Unsupervised learning is a technique that discovers patterns from unlabeled data, including K-means clustering, dimensionality reduction, and anomaly detection.\n\nC: Reinforcement learning is a method that learns optimal actions through reward signals from interactions with an environment and does not use labeled training data.\n\nD: Transfer learning is a technique that reuses knowledge from pre-trained models to reduce learning time for new tasks, which is a different concept from defining how labeled data is used."
+  },
+  {
+    "number": 21,
+    "question": "전자상거래 회사가 회사 애플리케이션의 사용자 경험을 개인화하기 위해 구매 이력과 선호도를 기반으로 고객을 그룹화하려고 합니다. 회사가 사용해야 하는 ML 기법은 무엇입니까?",
+    "questionEn": "An ecommerce company wants to group customers based on their purchase history and preferences to personalize the user experience of the company's application. Which ML technique should the company use?",
+    "options": [
+      "분류",
+      "클러스터링",
+      "회귀",
+      "콘텐츠 생성"
+    ],
+    "optionsEn": [
+      "Classification",
+      "Clustering",
+      "Regression",
+      "Content generation"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n클러스터링은 레이블 없이 데이터의 패턴을 분석하여 비슷한 데이터끼리 자동으로 그룹을 형성하는 비지도 학습 기법입니다. 구매 이력과 선호도를 기반으로 고객을 유사한 그룹으로 묶어 개인화된 사용자 경험을 제공하는 요구 사항에 적합합니다.\n\n오답 분석\n\nA: 분류(Classification)는 사전에 정의된 카테고리 레이블로 데이터를 분류하는 지도 학습 방법으로, 레이블 없이 새로운 그룹을 자동으로 찾는 것과는 다릅니다.\n\nC: 회귀(Regression)는 매출, 가격 등 연속적인 수치값을 예측하는 모델로, 고객을 그룹화하는 작업과는 다릅니다.\n\nD: 콘텐츠 생성(Content generation)은 텍스트, 이미지 등 새로운 콘텐츠를 생성하는 생성형 AI 기술로, 고객을 그룹화하는 분석 작업과는 다릅니다.",
+    "explanationEn": "정답: B\n\nClustering is an unsupervised learning technique that analyzes data patterns without labels to automatically form groups of similar data. It is suitable for the requirement to group customers with similar purchase history and preferences to provide a personalized user experience.\n\nIncorrect answer analysis\n\nA: Classification is a supervised learning method that categorizes data into predefined category labels and differs from automatically finding new groups without labels.\n\nC: Regression is a model that predicts continuous numerical values such as sales and prices, which differs from the task of grouping customers.\n\nD: Content generation is a generative AI technique that creates new content such as text and images, which differs from the analytical task of grouping customers."
+  },
+  {
+    "number": 22,
+    "question": "고객 서비스 팀이 고객 피드백을 분석하고 자동으로 다른 카테고리로 분류하는 애플리케이션을 개발하고 있습니다. 카테고리에는 제품 품질, 고객 서비스, 배송 경험이 포함됩니다. 이 시나리오가 나타내는 AI 개념은 무엇입니까?",
+    "questionEn": "A customer service team is developing an application to analyze customer feedback and automatically classify the feedback into different categories. The categories include product quality, customer service, and delivery experience. Which AI concept does this scenario present?",
+    "options": [
+      "컴퓨터 비전",
+      "자연어 처리(NLP)",
+      "추천 시스템",
+      "사기 탐지"
+    ],
+    "optionsEn": [
+      "Computer vision",
+      "Natural Language Processing (NLP)",
+      "Recommendation systems",
+      "Fraud detection"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nNLP(자연어 처리)는 인간의 언어를 이해하고 처리하는 AI 기술입니다. 고객 피드백 텍스트의 의미를 파악하고 특정 카테고리로 분류하는 작업은 NLP의 전형적인 응용 사례에 해당합니다.\n\n오답 분석\n\nA: 컴퓨터 비전은 이미지와 비디오를 분석하는 시각 인식 기술로, 텍스트 피드백 분류와는 다른 분야입니다.\n\nC: 추천 시스템은 사용자 행동 데이터를 기반으로 개인화된 추천을 제공하는 기술로, 피드백 텍스트를 분류하는 것과는 다른 목적을 가집니다.\n\nD: 사기 탐지는 비정상적인 패턴을 감지하여 사기 거래를 식별하는 기술로, 고객 피드백 텍스트를 카테고리로 분류하는 것과는 다릅니다.",
+    "explanationEn": "정답: B\n\nNLP (Natural Language Processing) is an AI technology that understands and processes human language. Understanding the meaning of customer feedback text and classifying it into specific categories is a typical application of NLP.\n\nIncorrect answer analysis\n\nA: Computer vision is a visual recognition technology that analyzes images and videos and belongs to a different field from classifying text feedback.\n\nC: Recommendation systems are a technology that provides personalized recommendations based on user behavior data, serving a different purpose from classifying feedback text.\n\nD: Fraud detection is a technology that identifies fraudulent transactions by detecting abnormal patterns, which differs from classifying customer feedback text into categories."
+  },
+  {
+    "number": 23,
+    "question": "회사는 데이터셋에서 추출한 사용자 지정 특성을 기반으로 다양한 객체의 이미지를 분류하려고 합니다. 최소한의 개발 노력으로 이 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company wants to classify images of different objects based on custom features extracted from a dataset. Which solution will meet this requirement with the LEAST development effort?",
+    "options": [
+      "데이터셋에서 추출한 사용자 지정 특성과 함께 기존 ML 알고리즘을 사용합니다.",
+      "사전 훈련된 딥러닝 모델을 사용합니다. 데이터셋에서 모델을 미세 조정합니다.",
+      "생성적 적대 신경망(GAN) 모델을 사용하여 이미지를 분류합니다.",
+      "분류를 위해 수동으로 엔지니어링된 특성과 함께 서포트 벡터 머신(SVM)을 사용합니다."
+    ],
+    "optionsEn": [
+      "Use traditional ML algorithms with custom features extracted from the dataset.",
+      "Use a pre-trained deep learning model. Fine-tune the model on the dataset.",
+      "Use a generative adversarial network (GAN) model to classify the images.",
+      "Use a support vector machine (SVM) with manually engineered features for classification."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n사전 학습된 딥러닝 모델(예: ResNet)을 미세 조정하는 것은 전이 학습의 방식으로, 특성 추출이 자동화되어 최소한의 개발 노력으로 사용자 지정 분류를 달성할 수 있습니다. 이미 학습된 모델을 재활용하므로 처음부터 개발하는 것보다 훨씬 적은 노력이 필요합니다.\n\n오답 분석\n\nA: 기존 ML 알고리즘과 수동 특성 추출 방식은 도메인 전문 지식과 추가적인 개발 노력을 필요로 합니다.\n\nC: GAN은 새로운 이미지를 생성하기 위한 모델로, 이미지 분류에 직접 사용하기에는 구조가 복잡하고 적합하지 않습니다.\n\nD: SVM과 수동 특성 엔지니어링 조합은 각 특성을 수동으로 설계해야 하므로 가장 많은 개발 노력이 필요합니다.",
+    "explanationEn": "정답: B\n\nFine-tuning a pre-trained deep learning model (e.g., ResNet) is a transfer learning approach that automates feature extraction, allowing custom classification to be achieved with minimal development effort. Reusing an already-trained model requires far less effort than developing from scratch.\n\nIncorrect answer analysis\n\nA: Using traditional ML algorithms with manual feature extraction requires domain expertise and additional development effort.\n\nC: GANs are models designed to generate new images and are complex and not well-suited for direct use in image classification.\n\nD: The combination of SVM and manual feature engineering requires the most development effort because each feature must be designed manually."
+  },
+  {
+    "number": 24,
+    "question": "회사는 대출 신청 위험을 평가하기 위한 해석 가능한 ML 모델을 개발하려고 합니다. 이러한 요구 사항을 충족하는 ML 모델 또는 알고리즘 유형은 무엇입니까?",
+    "questionEn": "A company wants to develop an interpretable ML model to assess the risk of loan applications. Which type of ML model or algorithm will meet these requirements?",
+    "options": [
+      "딥러닝 모델",
+      "로지스틱 회귀 모델",
+      "K-평균 알고리즘",
+      "랜덤 컷 포레스트 알고리즘"
+    ],
+    "optionsEn": [
+      "Deep learning model",
+      "Logistic regression model",
+      "K-means algorithm",
+      "Random cut forest algorithm"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n로지스틱 회귀는 각 특성의 계수가 명확하게 정의되어 예측 결과를 직관적으로 해석할 수 있는 모델입니다. 대출 심사처럼 규제 요구사항이 있어 결정 이유를 설명해야 하는 경우에 적합한 해석 가능한 모델입니다.\n\n오답 분석\n\nA: 딥러닝 모델은 내부 구조가 복잡한 블랙박스 모델로, 해석 가능성이 가장 낮아 대출 심사에 사용하기 어렵습니다.\n\nC: K-means는 클러스터링 알고리즘으로 데이터를 그룹화하는 데 사용되며, 대출 위험을 예측하거나 분류하는 용도가 아닙니다.\n\nD: 랜덤 컷 포레스트는 이상 탐지를 위한 알고리즘으로, 해석 가능한 분류 모델로는 적합하지 않습니다.",
+    "explanationEn": "정답: B\n\nLogistic regression is a model with clearly defined coefficients for each feature, allowing intuitive interpretation of prediction results. It is an interpretable model suitable for cases like loan assessment where regulatory requirements demand explanations for decisions.\n\nIncorrect answer analysis\n\nA: Deep learning models are black-box models with complex internal structures and the lowest interpretability, making them difficult to use in loan assessment.\n\nC: K-means is a clustering algorithm used to group data and is not designed for predicting or classifying loan risk.\n\nD: Random cut forest is an algorithm for anomaly detection and is not suitable as an interpretable classification model."
+  },
+  {
+    "number": 25,
+    "question": "회사는 심장 질환 위험을 예측하는 ML 모델을 개발하고 있습니다. 모델은 나이, 콜레스테롤, 혈압, 흡연 상태 및 운동 습관과 같은 환자 데이터를 사용합니다. 데이터셋에는 환자가 심장 질환이 있는지 여부를 나타내는 대상 값이 포함되어 있습니다. 이러한 요구 사항을 충족하는 ML 기술은 무엇입니까?",
+    "questionEn": "A company is developing an ML model to predict heart disease risk. The model uses patient data, such as age, cholesterol, blood pressure, smoking status, and exercise habits. The dataset includes a target value that indicates whether a patient has heart disease. Which ML technique will meet these requirements?",
+    "options": [
+      "비지도 학습",
+      "지도 학습",
+      "강화 학습",
+      "준지도 학습"
+    ],
+    "optionsEn": [
+      "Unsupervised learning",
+      "Supervised learning",
+      "Reinforcement learning",
+      "Semi-supervised learning"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n심장 질환 유무라는 타겟 레이블이 포함된 데이터셋을 사용하여 예측 모델을 학습하는 것은 지도 학습에 해당합니다. 입력 특성과 타겟 레이블 간의 매핑을 학습하여 새로운 환자 데이터에 대해 예측하는 방식입니다.\n\n오답 분석\n\nA: 비지도 학습은 레이블 없이 데이터에서 패턴을 발견하는 방법으로, 타겟 레이블이 있는 이 시나리오에는 적합하지 않습니다.\n\nC: 강화 학습은 보상 기반의 순차적 의사결정 문제를 해결하는 방법으로, 환자 데이터로 결과를 예측하는 문제와는 다릅니다.\n\nD: 준지도 학습은 일부 데이터만 레이블이 있는 경우에 사용하는 방법으로, 모든 데이터에 레이블이 있는 이 경우에는 지도 학습이 더 적합합니다.",
+    "explanationEn": "정답: B\n\nTraining a prediction model using a dataset that contains a target label for the presence or absence of heart disease is supervised learning. It learns the mapping between input features and the target label to make predictions on new patient data.\n\nIncorrect answer analysis\n\nA: Unsupervised learning is a method for discovering patterns in data without labels and is not appropriate for this scenario where a target label exists.\n\nC: Reinforcement learning is a method for solving sequential decision-making problems through rewards and differs from the problem of predicting outcomes from patient data.\n\nD: Semi-supervised learning is a method used when only some data has labels, and in this case where all data is labeled, supervised learning is more appropriate."
+  },
+  {
+    "number": 26,
+    "question": "회사는 센서 데이터에서 비정상적인 패턴을 감지하는 ML 모델을 구축하려고 합니다. 회사는 훈련을 위한 레이블이 지정된 데이터가 없습니다. 이러한 요구 사항을 충족하는 ML 방법은 무엇입니까?",
+    "questionEn": "A company wants to build an ML model to detect abnormal patterns in sensor data. The company does not have labeled data for training. Which ML method will meet these requirements?",
+    "options": [
+      "선형 회귀",
+      "분류",
+      "의사결정 트리",
+      "오토인코더"
+    ],
+    "optionsEn": [
+      "Linear regression",
+      "Classification",
+      "Decision tree",
+      "Autoencoders"
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\n오토인코더는 레이블 없이 정상 패턴을 학습하는 비지도 학습 방법으로, 입력을 압축했다가 재구성할 때 오차가 큰 데이터를 이상치로 탐지합니다. 레이블이 없는 센서 데이터에서 비정상적인 패턴을 감지해야 하는 요구 사항에 적합합니다.\n\n오답 분석\n\nA: 선형 회귀는 타겟 레이블이 필요한 지도 학습 방법으로, 레이블이 없는 이 경우에는 사용할 수 없습니다.\n\nB: 분류는 정상/비정상으로 레이블된 훈련 데이터가 필요한 지도 학습으로, 레이블이 없는 이 시나리오에는 적합하지 않습니다.\n\nC: 의사결정 트리도 레이블이 있는 데이터를 사용하는 지도 학습 알고리즘으로, 레이블 없는 이상 탐지에는 사용할 수 없습니다.",
+    "explanationEn": "정답: D\n\nAn autoencoder is an unsupervised learning method that learns normal patterns without labels and detects data with high reconstruction error—when compressing then reconstructing input—as anomalies. It is suitable for the requirement to detect abnormal patterns in sensor data without labels.\n\nIncorrect answer analysis\n\nA: Linear regression is a supervised learning method requiring a target label and cannot be used in this case where there are no labels.\n\nB: Classification is supervised learning that requires training data labeled as normal/abnormal and is not appropriate for this scenario with no labels.\n\nC: Decision tree is also a supervised learning algorithm that uses labeled data and cannot be used for label-free anomaly detection."
+  },
+  {
+    "number": 27,
+    "question": "비지도 학습의 예는 무엇입니까?",
+    "questionEn": "Which option is an example of unsupervised learning?",
+    "options": [
+      "유사성을 기반으로 데이터 포인트를 그룹으로 클러스터링",
+      "동물 이미지를 인식하도록 모델 훈련",
+      "주택의 특성을 기반으로 주택 가격 예측",
+      "주어진 프롬프트를 기반으로 인간과 같은 텍스트 생성"
+    ],
+    "optionsEn": [
+      "Clustering data points into groups based on their similarity",
+      "Training a model to recognize images of animals",
+      "Predicting the price of a house based on the house's features",
+      "Generating human-like text based on a given prompt"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n유사도를 기반으로 데이터 포인트를 그룹으로 클러스터링하는 것은 레이블 없이 데이터의 구조를 자동으로 발견하는 비지도 학습의 대표적인 예시입니다. 사전 정의된 레이블 없이 데이터 내의 유사한 패턴을 찾아 그룹화하는 것이 핵심입니다.\n\n오답 분석\n\nB: 동물 이미지 인식은 레이블이 지정된 이미지로 학습하는 지도 학습(분류)에 해당합니다.\n\nC: 주택 가격 예측은 가격이라는 레이블을 사용하여 학습하는 지도 학습(회귀)에 해당합니다.\n\nD: 텍스트 생성은 새로운 콘텐츠를 만들어내는 생성형 AI로, 비지도 학습 클러스터링과는 다른 패러다임에 해당합니다.",
+    "explanationEn": "정답: A\n\nClustering data points into groups based on their similarity is a representative example of unsupervised learning that automatically discovers the structure of data without labels. The key is finding and grouping similar patterns within data without predefined labels.\n\nIncorrect answer analysis\n\nB: Animal image recognition corresponds to supervised learning (classification) that trains with labeled images.\n\nC: House price prediction corresponds to supervised learning (regression) that trains using prices as labels.\n\nD: Text generation is generative AI that creates new content and belongs to a different paradigm from unsupervised learning clustering."
+  }
+]

@@ -4,19 +4,43 @@ import { CATEGORIES } from '../lib/categories'
 import { allQuestions, type PracticeQuestion } from '../data/quizData'
 import type { QuizQuestion } from '../components/Quiz'
 
+function isAnswerIndex(answer: number | number[], idx: number): boolean {
+  return Array.isArray(answer) ? answer.includes(idx) : answer === idx
+}
+
 function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: string }) {
   const [currentQ, setCurrentQ] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
+  const [selectedMulti, setSelectedMulti] = useState<number[]>([])
   const [answered, setAnswered] = useState(false)
   const [isCorrect, setIsCorrect] = useState(false)
   const [score, setScore] = useState(0)
   const [showResult, setShowResult] = useState(false)
 
+  const q = questions[currentQ]
+  const isMulti = Array.isArray(q.answer)
+  const requiredCount = isMulti ? (q.answer as number[]).length : 1
+
   const handleSelect = (idx: number) => {
     if (answered) return
-    setSelected(idx)
+    if (isMulti) {
+      setSelectedMulti(prev =>
+        prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx]
+      )
+    } else {
+      setSelected(idx)
+      setAnswered(true)
+      const correct = idx === q.answer
+      setIsCorrect(correct)
+      if (correct) setScore(prev => prev + 1)
+    }
+  }
+
+  const handleMultiSubmit = () => {
     setAnswered(true)
-    const correct = idx === questions[currentQ].answer
+    const sorted = [...selectedMulti].sort()
+    const answerSorted = [...(q.answer as number[])].sort()
+    const correct = sorted.length === answerSorted.length && sorted.every((v, i) => v === answerSorted[i])
     setIsCorrect(correct)
     if (correct) setScore(prev => prev + 1)
   }
@@ -25,6 +49,7 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
     if (currentQ < questions.length - 1) {
       setCurrentQ(prev => prev + 1)
       setSelected(null)
+      setSelectedMulti([])
       setAnswered(false)
       setIsCorrect(false)
     } else {
@@ -35,6 +60,7 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
   const handleRetry = () => {
     setCurrentQ(0)
     setSelected(null)
+    setSelectedMulti([])
     setShowResult(false)
     setScore(0)
     setAnswered(false)
@@ -54,7 +80,22 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
     )
   }
 
-  const q = questions[currentQ]
+  const getOptionClass = (idx: number): string => {
+    if (!answered) {
+      if (isMulti && selectedMulti.includes(idx)) return 'selected'
+      if (!isMulti && selected === idx) return 'selected'
+      return ''
+    }
+    const isAns = isAnswerIndex(q.answer, idx)
+    if (isMulti) {
+      if (isAns) return 'correct'
+      if (selectedMulti.includes(idx) && !isAns) return 'wrong'
+      return ''
+    }
+    if (selected === idx) return idx === q.answer ? 'correct' : 'wrong'
+    if (isAns) return 'correct'
+    return ''
+  }
 
   return (
     <div className="quiz-container">
@@ -67,11 +108,14 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
       </div>
       <div className="quiz-question">
         <p className="quiz-q-text">{q.question}</p>
+        {isMulti && !answered && (
+          <p className="quiz-multi-hint">{requiredCount}개를 선택하세요 ({selectedMulti.length}/{requiredCount})</p>
+        )}
         <div className="quiz-options">
           {q.options.map((opt, idx) => (
             <button
               key={idx}
-              className={`quiz-option ${selected === idx ? (idx === q.answer ? 'correct' : 'wrong') : ''} ${answered && idx === q.answer ? 'correct' : ''}`}
+              className={`quiz-option ${getOptionClass(idx)}`}
               onClick={() => handleSelect(idx)}
               disabled={answered}
             >
@@ -80,6 +124,15 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
             </button>
           ))}
         </div>
+        {isMulti && !answered && selectedMulti.length > 0 && (
+          <button
+            className="btn btn-primary quiz-submit-btn"
+            onClick={handleMultiSubmit}
+            disabled={selectedMulti.length !== requiredCount}
+          >
+            정답 확인
+          </button>
+        )}
         {answered && (
           <div className={`quiz-explanation ${isCorrect ? 'correct' : 'wrong'}`}>
             <p><strong>{isCorrect ? 'O 정답!' : 'X 오답!'}</strong></p>
