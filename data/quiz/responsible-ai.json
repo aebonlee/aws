@@ -1,0 +1,233 @@
+[
+  {
+    "categoryId": "responsible-ai",
+    "number": 1,
+    "question": "한 회사에서 Amazon Bedrock과 Amazon S3에 업로드된 고객 데이터를 사용하여 대규모 언어 모델(LLM) 애플리케이션을 개발하려고 합니다. 회사의 보안 정책에 따르면 각 팀은 팀 고객의 데이터에만 액세스할 수 있습니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A company wants to develop a large language model (LLM) application by using Amazon Bedrock and customer data that is uploaded to Amazon S3. The company's security policy states that each team can access data for only the team's own customers. Which solution will meet these requirements?",
+    "options": [
+      "각 팀에 대해 팀의 고객 데이터에만 액세스할 수 있는 Amazon Bedrock 사용자 지정 서비스 역할을 생성합니다.",
+      "Amazon S3에 액세스할 수 있는 사용자 지정 서비스 역할을 생성합니다. 각 Amazon Bedrock 요청에 고객 이름을 지정하도록 팀에 요청합니다.",
+      "Amazon S3에서 개인 데이터를 삭제합니다. 팀이 고객 데이터에 액세스할 수 있도록 S3 버킷 정책을 업데이트합니다.",
+      "전체 Amazon S3에 액세스할 수 있는 Amazon Bedrock 역할을 하나 생성합니다. 각 팀의 고객 폴더에만 액세스할 수 있는 IAM 역할을 각 팀에 대해 생성합니다."
+    ],
+    "optionsEn": [
+      "Create an Amazon Bedrock custom service role for each team that has access to only the team's customer data.",
+      "Create a custom service role that has Amazon S3 access. Ask teams to specify the customer name on each Amazon Bedrock request.",
+      "Redact personal data in Amazon S3. Update the S3 bucket policy to allow team access to customer data.",
+      "Create one Amazon Bedrock role that has full Amazon S3 access. Create IAM roles for each team that have access to only each team's customer folders."
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n팀별로 자신의 고객 데이터에만 접근할 수 있는 Bedrock 사용자 지정 서비스 역할을 생성하면 IAM 수준에서 세분화된 권한 관리가 이루어집니다. 이 방식은 보안 정책의 팀별 데이터 분리 요구사항을 가장 명확하게 충족합니다.\n\n오답 분석\n\nB: 고객명 지정은 애플리케이션 레벨에서 관리되는 방식으로, 보안 정책을 우회할 수 있어 신뢰할 수 없습니다.\n\nC: 개인정보 제거는 데이터 활용도를 저하시키고, S3 버킷 정책 업데이트만으로는 팀별 데이터 분리를 보장하지 못합니다.\n\nD: 전체 S3 접근 권한이 있는 단일 Bedrock 역할은 과도한 권한 부여로 보안 정책을 위반합니다.",
+    "explanationEn": "정답: A\n\nCreating Bedrock custom service roles that allow each team to access only their own customer data enables fine-grained permission management at the IAM level. This approach most clearly meets the security policy's requirement for per-team data separation.\n\nIncorrect answer analysis\n\nB: Specifying customer names is managed at the application level, which can bypass security policies and is not trustworthy.\n\nC: Removing personal information degrades data utility, and updating the S3 bucket policy alone cannot guarantee per-team data separation.\n\nD: A single Bedrock role with full S3 access constitutes excessive privilege that violates the security policy."
+  },
+  {
+    "categoryId": "responsible-ai",
+    "number": 2,
+    "question": "한 회사가 Amazon Bedrock을 사용하려고 합니다. 회사는 Amazon Bedrock을 사용할 때 회사가 어떤 보안 측면을 담당하는지 검토해야 합니다. 회사는 어떤 보안 측면을 담당하게 되나요?",
+    "questionEn": "A company wants to use Amazon Bedrock. The company needs to review which security aspects the company is responsible for when using Amazon Bedrock. Which security aspect will the company be responsible for?",
+    "options": [
+      "Amazon Bedrock 버전 패치 및 업데이트",
+      "Amazon Bedrock을 호스팅하는 인프라 보호",
+      "회사의 전송 데이터 및 저장된 데이터 보호",
+      "기업 네트워크 내 Amazon Bedrock 프로비저닝"
+    ],
+    "optionsEn": [
+      "Patching and updating the versions of Amazon Bedrock",
+      "Protecting the infrastructure that hosts Amazon Bedrock",
+      "Securing the company's data in transit and at rest",
+      "Provisioning Amazon Bedrock within the company network"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nAWS 공유 책임 모델에 따라 고객은 전송 중 암호화(TLS)와 저장 시 암호화 설정 및 관리에 대한 책임을 집니다. 데이터 자체의 보안은 AWS가 아닌 고객의 책임 범위에 해당합니다.\n\n오답 분석\n\nA: Amazon Bedrock의 버전 패치 및 업데이트는 관리형 서비스를 운영하는 AWS의 책임에 해당합니다.\n\nB: Bedrock을 호스팅하는 물리적 인프라와 하이퍼바이저 보호는 AWS의 책임에 해당합니다.\n\nD: Bedrock은 완전 관리형 클라우드 서비스이므로 고객 네트워크 내에 프로비저닝하는 것이 불필요하며 기술적으로도 불가능합니다.",
+    "explanationEn": "정답: C\n\nUnder the AWS shared responsibility model, customers are responsible for configuring and managing encryption in transit (TLS) and encryption at rest. The security of the data itself falls within the customer's responsibility, not AWS's.\n\nIncorrect answer analysis\n\nA: Version patching and updating of Amazon Bedrock is the responsibility of AWS as the operator of the managed service.\n\nB: Protecting the physical infrastructure and hypervisor that hosts Bedrock is the responsibility of AWS.\n\nD: Since Bedrock is a fully managed cloud service, provisioning it within the customer network is unnecessary and technically impossible."
+  },
+  {
+    "categoryId": "responsible-ai",
+    "number": 3,
+    "question": "한 금융회사가 대출 신청 과정의 일부로 고객 신용 점수를 얻기 위해 AI 시스템을 사용하고 있습니다. 이 회사는 다른 지역의 새로운 시장으로 확장하려고 합니다. 회사는 해당 지역에서 운영할 수 있도록 보장해야 합니다. 회사가 검토해야 할 규정 준수 법률은 무엇입니까?",
+    "questionEn": "A financial company is using AI systems to obtain customer credit scores as part of the loan application process. The company wants to expand to a new market in a different geographic area. The company must ensure that it can operate in that geographic area. Which compliance laws should the company review?",
+    "options": [
+      "지역 건강 데이터 보호법",
+      "지역 결제 카드 데이터 보호법",
+      "지역 교육 개인정보 보호법",
+      "지역 알고리즘 책임법"
+    ],
+    "optionsEn": [
+      "Local health data protection laws",
+      "Local payment card data protection laws",
+      "Local education privacy laws",
+      "Local algorithm accountability laws"
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\n알고리즘 책임성 법률은 AI 시스템이 신용 평가 같은 의사결정에 사용될 때 투명성, 공정성, 설명 가능성을 요구합니다. 대출 승인/거부를 결정하는 AI 알고리즘의 차별 방지 및 설명 의무가 이 법률의 핵심 쟁점에 해당합니다.\n\n오답 분석\n\nA: 건강 데이터 보호법은 의료 정보의 수집, 저장, 활용에 관한 법률로, 금융 신용 평가와는 무관합니다.\n\nB: 결제 카드 데이터 보호법은 카드 결제 정보의 보안 처리에 관한 규정으로, AI 알고리즘의 투명성 및 공정성 요구사항과는 다릅니다.\n\nC: 교육 프라이버시법은 학생의 교육 기록 보호에 관한 법률로, 금융 대출 심사와는 무관합니다.",
+    "explanationEn": "정답: D\n\nAlgorithmic accountability laws require transparency, fairness, and explainability when AI systems are used for decision-making such as credit evaluation. The core issues of this legislation are anti-discrimination and explanation obligations for AI algorithms that decide loan approvals and denials.\n\nIncorrect answer analysis\n\nA: Health data protection laws are regulations concerning the collection, storage, and use of medical information, which is unrelated to financial credit evaluation.\n\nB: Payment card data protection laws are regulations about the secure handling of card payment information, which differs from transparency and fairness requirements for AI algorithms.\n\nC: Education privacy laws are regulations protecting students' educational records, which is unrelated to financial loan assessment."
+  },
+  {
+    "categoryId": "responsible-ai",
+    "number": 4,
+    "question": "회사는 AI 위험을 관리하고 AI를 책임감 있게 사용하기 위해 국제 표준화 기구(ISO) 인증을 취득합니다. 이 인증은 회사에 대해 무엇을 반영합니까?",
+    "questionEn": "A company acquires International Organization for Standardization (ISO) accreditation to manage AI risks and to use AI responsibly. What does this accreditation reflect about the company?",
+    "options": [
+      "회사의 모든 구성원이 ISO 인증을 받았습니다.",
+      "회사가 사용하는 모든 AI 시스템이 ISO 인증을 받았습니다.",
+      "모든 AI 애플리케이션 팀 구성원이 ISO 인증을 받았습니다.",
+      "회사의 개발 프레임워크가 ISO 인증을 받았습니다."
+    ],
+    "optionsEn": [
+      "All members of the company are ISO certified.",
+      "All AI systems that the company uses are ISO certified.",
+      "All AI application team members are ISO certified.",
+      "The company's development framework is ISO certified."
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\nISO 인증은 개인이나 개별 시스템이 아닌 조직의 프로세스와 프레임워크가 국제 표준을 준수함을 인증합니다. 이 경우 회사의 AI 리스크 관리 개발 프레임워크가 ISO 표준을 충족한다는 의미입니다.\n\n오답 분석\n\nA: ISO는 개인을 대상으로 하는 자격증이 아닌 조직의 프로세스와 관리 체계를 인증하는 표준입니다.\n\nB: 개별 AI 시스템이 아닌 AI를 관리하는 조직의 전체 프레임워크와 프로세스를 인증하는 것에 해당합니다.\n\nC: 팀원 개인의 역량이 아닌 조직 전체의 관리 프레임워크가 인증의 대상에 해당합니다.",
+    "explanationEn": "정답: D\n\nISO certification certifies that an organization's processes and frameworks comply with international standards, not individuals or individual systems. In this case, it means the company's AI risk management development framework meets ISO standards.\n\nIncorrect answer analysis\n\nA: ISO is a standard that certifies an organization's processes and management systems, not a qualification targeting individuals.\n\nB: This certifies the overall framework and processes of the organization that manages AI, not individual AI systems.\n\nC: The subject of certification is the organization's overall management framework, not the capabilities of individual team members."
+  },
+  {
+    "categoryId": "responsible-ai",
+    "number": 5,
+    "question": "한 회사가 Amazon SageMaker Studio에서 실시간으로 금융 거래의 사기 활동을 분석하는 맞춤형 AI 솔루션을 구축하고 있습니다. 회사는 SageMaker Studio에서 Amazon Bedrock으로의 연결이 회사의 VPC를 통과하도록 해야 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company is building a custom AI solution in Amazon SageMaker Studio to analyze financial transactions for fraudulent activity in real time. The company needs to ensure that the connectivity from SageMaker Studio to Amazon Bedrock traverses the company's VPC. Which solution meets these requirements?",
+    "options": [
+      "SageMaker Studio가 Amazon Bedrock에 액세스할 수 있도록 AWS Identity and Access Management(IAM) 역할 및 정책을 구성합니다.",
+      "SageMaker Studio에서 Amazon Bedrock으로의 요청을 프록시하도록 Amazon Macie를 구성합니다.",
+      "SageMaker Studio가 연결된 VPC에 Amazon Bedrock API 엔드포인트에 대한 AWS PrivateLink 엔드포인트를 구성합니다.",
+      "Amazon Bedrock 사용을 위한 새 VPC를 구성합니다. VPC들을 피어로 등록합니다."
+    ],
+    "optionsEn": [
+      "Configure AWS Identity and Access Management (IAM) roles and policies for SageMaker Studio to access Amazon Bedrock.",
+      "Configure Amazon Macie to proxy requests from SageMaker Studio to Amazon Bedrock.",
+      "Configure AWS PrivateLink endpoints for the Amazon Bedrock API endpoints in the VPC that SageMaker Studio is connected to.",
+      "Configure a new VPC for the Amazon Bedrock usage. Register the VPCs as peers."
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nAWS PrivateLink는 VPC 인터페이스 엔드포인트를 생성하여 SageMaker Studio가 퍼블릭 인터넷을 거치지 않고 회사의 VPC를 통해 Amazon Bedrock API에 비공개로 액세스할 수 있게 합니다.\n\n오답 분석\n\nA: IAM 역할 및 정책은 권한 부여와 액세스 권한을 제어하지만, 네트워크 라우팅을 제어하거나 트래픽이 VPC 내에 유지되도록 보장하지는 않습니다.\n\nB: Amazon Macie는 S3용 데이터 보안 서비스이며, 서비스 간 네트워크 요청을 프록시할 수 없습니다.\n\nD: VPC 피어링은 두 VPC를 연결하지만, Amazon Bedrock은 고객 관리 VPC에서 실행되지 않으므로 피어링으로 트래픽을 라우팅할 수 없습니다.",
+    "explanationEn": "정답: C\n\nAWS PrivateLink creates VPC interface endpoints that allow SageMaker Studio to access the Amazon Bedrock API privately through the company's VPC without traversing the public internet.\n\nIncorrect answer analysis\n\nA: IAM roles and policies control authorization and access permissions but do not control network routing or ensure traffic stays within a VPC.\n\nB: Amazon Macie is a data security service for S3 and cannot proxy network requests between services.\n\nD: VPC peering connects two VPCs but Amazon Bedrock does not run in a customer-managed VPC, so peering cannot route traffic to it."
+  },
+  {
+    "categoryId": "responsible-ai",
+    "number": 6,
+    "question": "한 회사가 Amazon VPC의 서버에서 애플리케이션을 실행하고 있습니다. 회사의 애플리케이션은 AI 기능을 위해 Amazon Bedrock API를 사용합니다. 회사는 API 호출이 퍼블릭 인터넷을 통해 전송되지 않기를 원합니다. 이 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company runs an application on servers in an Amazon VPC. The company's application uses Amazon Bedrock APIs for AI features. The company does not want API calls to travel across the public internet. Which solution will meet this requirement?",
+    "options": [
+      "AWS PrivateLink를 사용하여 Amazon VPC와 Amazon Bedrock 간에 프라이빗 연결을 설정합니다.",
+      "IAM 보안 주체와 연결된 액세스 키 ID 및 비밀 액세스 키를 사용하여 API 요청에 서명합니다.",
+      "애플리케이션을 온프레미스 서버로 이전합니다. Amazon Bedrock의 퍼블릭 엔드포인트로 API 호출을 수행합니다.",
+      "클라이언트에서 Amazon VPC에 구현된 API로의 전송 중 데이터를 암호화합니다. Amazon VPC에서 Amazon Bedrock으로의 API 호출에 대해 전송 중 데이터를 암호화합니다."
+    ],
+    "optionsEn": [
+      "Use AWS PrivateLink to establish a private connection between the Amazon VPC and Amazon Bedrock.",
+      "Sign API requests by using an access key ID and a secret access key that is associated with an IAM principal.",
+      "Move the application to an on-premises server. Make API calls to the public endpoint of Amazon Bedrock.",
+      "Encrypt the data in transit from clients to the APIs that have been implemented in the Amazon VPC. Encrypt the data in transit for API calls from the Amazon VPC to Amazon Bedrock."
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nAWS PrivateLink는 Amazon Bedrock에 대한 API 호출을 AWS 프라이빗 네트워크를 통해 라우팅하는 VPC 엔드포인트를 생성하여, 트래픽이 퍼블릭 인터넷을 절대 통과하지 않도록 보장합니다.\n\n오답 분석\n\nB: 액세스 키로 API 요청에 서명하면 인증과 무결성을 제공하지만 네트워크 경로를 변경하지 않으므로, 트래픽은 여전히 퍼블릭 인터넷을 통해 전송됩니다.\n\nC: 온프레미스 서버로 이전하고 Bedrock의 퍼블릭 엔드포인트를 호출하면 API 호출이 퍼블릭 인터넷을 통해 전송되므로, 요구 사항에 직접 위배됩니다.\n\nD: 전송 중 데이터를 암호화하면 기밀성은 보호되지만, 트래픽이 퍼블릭 인터넷을 통해 전송되는 것을 방지하지는 못합니다.",
+    "explanationEn": "정답: A\n\nAWS PrivateLink creates a VPC endpoint that routes API calls to Amazon Bedrock through the AWS private network, ensuring traffic never traverses the public internet.\n\nIncorrect answer analysis\n\nB: Signing API requests with access keys provides authentication and integrity but does not change the network path — traffic still goes over the public internet.\n\nC: Moving to an on-premises server and calling Bedrock's public endpoint sends API calls over the public internet, directly contradicting the requirement.\n\nD: Encrypting data in transit protects confidentiality but does not prevent traffic from traveling across the public internet."
+  },
+  {
+    "categoryId": "responsible-ai",
+    "number": 7,
+    "question": "한 병원에서는 환자 기록과 의료 이미지를 기반으로 의사가 질병을 진단하도록 돕는 AI 시스템을 개발하고 있습니다. 규정을 준수하려면 민감한 환자 데이터는 해당 데이터가 위치한 국가를 벗어나서는 안 됩니다. 어떤 데이터 거버넌스 전략이 규정 준수를 보장하고 환자 개인 정보를 보호할까요?",
+    "questionEn": "A hospital is developing an AI system to assist doctors in diagnosing diseases based on patient records and medical images. To comply with regulations, the sensitive patient data must not leave the country the data is located in. Which data governance strategy will ensure compliance and protect patient privacy?",
+    "options": [
+      "데이터 레지던시",
+      "데이터 품질",
+      "데이터 발견 가능성",
+      "데이터 강화"
+    ],
+    "optionsEn": [
+      "Data residency",
+      "Data quality",
+      "Data discoverability",
+      "Data enrichment"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n데이터 레지던시는 민감한 데이터를 특정 국가나 지역의 경계 내에서만 저장, 처리, 전송하도록 보장하는 데이터 거버넌스 전략입니다. 환자 데이터가 국경을 넘어서는 안 된다는 규제 요구사항을 직접적으로 충족하는 전략에 해당합니다.\n\n오답 분석\n\nB: 데이터 품질은 데이터의 정확성, 완전성, 일관성을 보장하는 전략으로, 의료 진단 정확도에 중요하지만 지리적 데이터 저장 위치 규제와는 무관합니다.\n\nC: 데이터 검색 가능성은 필요한 데이터를 쉽게 찾고 접근할 수 있도록 하는 전략으로, 데이터의 물리적 저장 위치를 제한하는 개념과는 다릅니다.\n\nD: 데이터 보강은 기존 데이터에 추가 정보나 컨텍스트를 결합하여 가치를 높이는 과정으로, 규제 준수나 프라이버시 보호와는 직접적 관련이 없습니다.",
+    "explanationEn": "정답: A\n\nData residency is a data governance strategy that ensures sensitive data is stored, processed, and transmitted only within specific country or regional boundaries. It is a strategy that directly meets the regulatory requirement that patient data must not cross borders.\n\nIncorrect answer analysis\n\nB: Data quality is a strategy for ensuring data accuracy, completeness, and consistency, which is important for medical diagnosis accuracy but unrelated to regulations on geographic data storage locations.\n\nC: Data discoverability is a strategy for making it easy to find and access needed data, which is a different concept from restricting the physical storage location of data.\n\nD: Data enrichment is a process of combining additional information or context with existing data to increase its value, which has no direct relation to regulatory compliance or privacy protection."
+  },
+  {
+    "categoryId": "responsible-ai",
+    "number": 8,
+    "question": "회사는 고객 개인 식별 정보(PII) 데이터를 저장합니다. 회사는 회사의 AWS 리전 내에 PII 데이터를 저장해야 합니다. 이것이 설명하는 거버넌스의 측면은 무엇입니까?",
+    "questionEn": "A company stores customer personally identifiable information (PII) data. The company must store the PII data within the company's AWS Region. Which aspect of governance does this describe?",
+    "options": [
+      "데이터 마이닝",
+      "데이터 레지던시",
+      "데이터 계보",
+      "지리적 위치 라우팅"
+    ],
+    "optionsEn": [
+      "Data mining",
+      "Data residency",
+      "Data lineage",
+      "Geolocation routing"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n데이터 레지던시는 데이터가 물리적으로 저장되는 지리적 위치를 규정하는 거버넌스 개념입니다. 특정 AWS 리전 내에 PII 데이터를 저장해야 한다는 요구사항이 정확히 데이터 레지던시에 해당합니다.\n\n오답 분석\n\nA: Data mining은 대규모 데이터에서 패턴이나 인사이트를 발견하는 분석 기법으로, 데이터 저장 위치 규제와는 무관합니다.\n\nC: 데이터 계보(Data lineage)는 데이터의 출처와 변환 이력을 추적하는 개념으로, 물리적 저장 위치 제한과는 다릅니다.\n\nD: 지리적 위치 라우팅(Geolocation routing)은 사용자의 물리적 위치 기반으로 트래픽을 분산하는 네트워크 기법으로, 데이터 저장 위치 규제와는 다른 개념입니다.",
+    "explanationEn": "정답: B\n\nData residency is a governance concept that regulates the geographic location where data is physically stored. The requirement to store PII data within a specific AWS Region exactly corresponds to data residency.\n\nIncorrect answer analysis\n\nA: Data mining is an analytical technique for discovering patterns or insights in large-scale data, which is unrelated to regulations on data storage locations.\n\nC: Data lineage is a concept for tracking the origin and transformation history of data, which is different from restricting physical storage locations.\n\nD: Geolocation routing is a network technique for distributing traffic based on users' physical locations, which is a different concept from data storage location regulations."
+  },
+  {
+    "categoryId": "responsible-ai",
+    "number": 9,
+    "question": "회사는 데이터 저장 및 삭제에 대한 지침을 가지고 있습니다. 이것이 설명하는 데이터 거버넌스 전략은 무엇입니까?",
+    "questionEn": "A company has guidelines for data storage and deletion. Which data governance strategy does this describe?",
+    "options": [
+      "데이터 비식별화",
+      "데이터 품질 표준",
+      "데이터 보존",
+      "로그 저장"
+    ],
+    "optionsEn": [
+      "Data de-identification",
+      "Data quality standards",
+      "Data retention",
+      "Log storage"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n데이터 보존(Data retention)은 데이터를 얼마나 오래 저장하고 언제 삭제할지를 정의하는 정책으로, 저장 및 삭제 가이드라인이 이에 정확히 해당합니다. 법적 요건, 비즈니스 필요성, 프라이버시 규정을 고려하여 보존 기간을 결정합니다.\n\n오답 분석\n\nA: 데이터 비식별화(De-identification)는 개인 식별이 가능한 정보를 제거하거나 변환하는 기법으로, 저장 기간 및 삭제 시점 관리와는 다른 개념에 해당합니다.\n\nB: 데이터 품질 표준은 데이터의 정확성, 완전성, 일관성 기준을 정의하는 것으로, 보존 기간이나 삭제 정책과는 무관합니다.\n\nD: 로그 저장은 시스템 활동 기록을 보관하는 특정 목적의 기법으로, 전반적인 데이터 보존 정책보다 좁은 범위에 해당합니다.",
+    "explanationEn": "정답: C\n\nData retention is a policy that defines how long to store data and when to delete it, and guidelines for storage and deletion exactly correspond to this concept. The retention period is determined considering legal requirements, business needs, and privacy regulations.\n\nIncorrect answer analysis\n\nA: Data de-identification is a technique for removing or transforming personally identifiable information, which is a different concept from managing storage duration and deletion timing.\n\nB: Data quality standards define criteria for data accuracy, completeness, and consistency, which is unrelated to retention periods or deletion policies.\n\nD: Log storage is a technique for specific purposes of retaining system activity records, which falls within a narrower scope than general data retention policy."
+  },
+  {
+    "categoryId": "responsible-ai",
+    "number": 10,
+    "question": "한 회사가 AI 데이터셋을 Amazon S3 버킷에 저장합니다. 회사는 비즈니스 파트너와 S3 버킷을 공유하려고 합니다. 회사는 민감한 데이터를 실수로 공유하는 것을 방지해야 합니다. 데이터셋에서 민감한 데이터를 검색하기 위해 회사가 사용해야 하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A company stores its AI datasets in Amazon S3 buckets. The company wants to share the S3 buckets with its business partners. The company needs to avoid accidentally sharing sensitive data. Which AWS service should the company use to discover sensitive data in the datasets?",
+    "options": [
+      "Amazon Kendra",
+      "Amazon Macie",
+      "Amazon Textract",
+      "AWS Data Exchange"
+    ],
+    "optionsEn": [
+      "Amazon Kendra",
+      "Amazon Macie",
+      "Amazon Textract",
+      "AWS Data Exchange"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nAmazon Macie는 ML과 패턴 매칭을 사용하여 Amazon S3 버킷에 저장된 PII와 같은 민감한 데이터를 자동으로 검색하고 분류하여, 공유 전에 민감한 데이터를 식별하고 보호할 수 있게 합니다.\n\n오답 분석\n\nA: Amazon Kendra는 지능형 엔터프라이즈 검색 서비스이며, S3에서 민감한 데이터를 검색하거나 분류하지 않습니다.\n\nC: Amazon Textract는 스캔된 문서에서 텍스트와 구조화된 데이터를 추출하지만, 민감한 데이터를 식별하거나 분류하지 않습니다.\n\nD: AWS Data Exchange는 서드파티 데이터셋을 구독하고 공유하기 위한 마켓플레이스이며, 민감한 데이터 검색 도구가 아닙니다.",
+    "explanationEn": "정답: B\n\nAmazon Macie uses ML and pattern matching to automatically discover and classify sensitive data such as PII stored in Amazon S3 buckets, enabling the company to identify and protect sensitive data before sharing.\n\nIncorrect answer analysis\n\nA: Amazon Kendra is an intelligent enterprise search service and does not discover or classify sensitive data in S3.\n\nC: Amazon Textract extracts text and structured data from scanned documents but does not identify or classify sensitive data.\n\nD: AWS Data Exchange is a marketplace for subscribing to and sharing third-party datasets, not a sensitive data discovery tool."
+  },
+  {
+    "categoryId": "responsible-ai",
+    "number": 11,
+    "question": "한 회사가 AI 기반 대출 승인 시스템을 배포하고 있습니다. 회사는 AI에 대한 데이터 거버넌스 규정을 준수해야 합니다. 이 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company is deploying an AI-powered loan approval system. The company must comply with data governance regulations for AI. Which solution will meet these requirements?",
+    "options": [
+      "감사 추적 없이 사용자 선호도에 따라 AI 출력을 수정합니다.",
+      "데이터 수명 주기 관리를 구현하여 AI 훈련 데이터를 추적하고 관리합니다.",
+      "데이터 상주 요구 사항보다 추론 시간 최적화를 우선시합니다.",
+      "규정 준수 위험을 피하기 위해 모델 훈련에 합성 데이터만 사용합니다."
+    ],
+    "optionsEn": [
+      "Modify AI outputs based on user preferences without audit trails.",
+      "Implement data lifecycle management to track and manage AI training data.",
+      "Prioritize inference time optimization over data residency requirements.",
+      "Use only synthetic data for model training to avoid compliance risks."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n데이터 수명 주기 관리는 계보, 액세스 제어, 감사 추적을 포함하여 AI 훈련 데이터의 전체 수명 주기에 걸쳐 체계적인 추적과 거버넌스를 제공하며, 이는 데이터 거버넌스 준수에 필요합니다.\n\n오답 분석\n\nA: 감사 추적 없이 사용자 선호도에 따라 AI 출력을 수정하는 것은 추적 가능성과 책임성을 요구하는 데이터 거버넌스 규정을 직접 위반합니다.\n\nC: 데이터 상주 요구 사항보다 추론 속도를 우선시하면 데이터가 특정 지리적 위치에서 저장 및 처리되어야 한다는 규정 준수 규정을 위반합니다.\n\nD: 합성 데이터만 사용하면 정확한 대출 결정에 필요한 실제 데이터 패턴을 확보할 수 없으며, 합성 데이터만으로는 데이터 거버넌스에 대한 규정 준수 요구 사항을 충족하지 못합니다.",
+    "explanationEn": "정답: B\n\nData lifecycle management provides systematic tracking and governance of AI training data throughout its lifecycle, including lineage, access controls, and audit trails required for data governance compliance.\n\nIncorrect answer analysis\n\nA: Modifying AI outputs based on user preferences without audit trails directly violates data governance regulations that require traceability and accountability.\n\nC: Prioritizing inference speed over data residency requirements violates compliance regulations that mandate data be stored and processed in specific geographic locations.\n\nD: Using only synthetic data avoids real-world data patterns needed for accurate loan decisions, and synthetic data alone does not satisfy compliance requirements for data governance."
+  }
+]

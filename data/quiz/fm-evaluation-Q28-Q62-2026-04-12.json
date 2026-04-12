@@ -1,0 +1,737 @@
+[
+  {
+    "categoryId": "fm-evaluation",
+    "number": 28,
+    "question": "회사는 애플리케이션에 새로운 기능을 도입하고 있습니다. 이 기능은 출력 메시지의 스타일을 다듬을 것입니다. 회사는 이 기능을 구현하기 위해 Amazon Bedrock에서 대규모 언어 모델(LLM)을 미세 조정할 것입니다. 이러한 요구 사항을 충족하기 위해 회사에 필요한 데이터 유형은 무엇입니까?",
+    "questionEn": "A company is introducing a new feature for its application. The feature will refine the style of output messages. The company will fine-tune a large language model (LLM) on Amazon Bedrock to implement the feature. Which type of data does the company need to meet these requirements?",
+    "options": [
+      "입력 메시지 샘플만",
+      "출력 메시지 샘플만",
+      "입력 및 출력 메시지 쌍의 샘플",
+      "입력 및 출력 메시지의 별도 샘플"
+    ],
+    "optionsEn": [
+      "Samples of only input messages",
+      "Samples of only output messages",
+      "Samples of pairs of input and output messages",
+      "Separate samples of input and output messages"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nFine-tuning은 입력-출력 쌍(prompt-completion pairs)으로 모델이 원하는 스타일의 응답을 학습합니다. JSONL 형식의 페어 데이터가 필수입니다.\n\n오답 분석\n\nA: 입력만으로는 모델이 어떤 출력을 생성해야 하는지 학습 불가능합니다.\n\nB: 출력만으로는 어떤 입력에 해당하는지 모델이 연결 불가능합니다.\n\nD: 분리된 샘플은 입출력 관계를 학습할 수 없습니다. 쌍으로 연결되어야 합니다.",
+    "explanationEn": "정답: C\n\nFine-tuning uses input-output pairs (prompt-completion pairs) to teach the model to generate responses in the desired style. Paired data in JSONL format is essential.\n\nIncorrect answer analysis\n\nA: With inputs only, the model cannot learn what output to generate.\n\nB: With outputs only, the model cannot associate which input they correspond to.\n\nD: Separated samples cannot learn input-output relationships. They must be paired together."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 29,
+    "question": "한 회사에서 Amazon Bedrock과 함께 대규모 언어 모델(LLM)을 사용하여 회사 제품 설명서를 위한 채팅 인터페이스를 개발하려고 합니다. 설명서는 PDF 파일로 저장됩니다. 이러한 요구 사항을 가장 비용 효율적으로 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company wants to use large language models (LLMs) with Amazon Bedrock to develop a chat interface for the company's product manuals. The manuals are stored as PDF files. Which solution meets these requirements MOST cost-effectively?",
+    "options": [
+      "프롬프트가 Amazon Bedrock에 제출될 때 프롬프트 엔지니어링을 사용하여 사용자 프롬프트에 PDF 파일 하나를 컨텍스트로 추가합니다.",
+      "프롬프트가 Amazon Bedrock에 제출될 때 프롬프트 엔지니어링을 사용하여 모든 PDF 파일을 사용자 프롬프트에 컨텍스트로 추가합니다.",
+      "모든 PDF 문서를 사용하여 Amazon Bedrock으로 모델을 미세 조정합니다. 미세 조정된 모델을 사용하여 사용자 프롬프트를 처리합니다.",
+      "Amazon Bedrock 지식 기반에 PDF 문서를 업로드합니다. 지식 기반을 사용하여 사용자가 Amazon Bedrock에 프롬프트를 제출할 때 컨텍스트를 제공합니다."
+    ],
+    "optionsEn": [
+      "Use prompt engineering to add one PDF file as context to the user prompt when the prompt is submitted to Amazon Bedrock.",
+      "Use prompt engineering to add all the PDF files as context to the user prompt when the prompt is submitted to Amazon Bedrock.",
+      "Use all the PDF documents to fine-tune a model with Amazon Bedrock. Use the fine-tuned model to process user prompts.",
+      "Upload PDF documents to an Amazon Bedrock Knowledge Base. Use the Knowledge Base to provide context when users submit prompts to Amazon Bedrock."
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\nKnowledge Bases는 AI 모델이 참조할 수 있는 구조화된 지식 저장소입니다. 외부 문서, 기업 데이터, 정책 문서, 최신 데이터 등을 FM에 통합합니다. 필요시 관련 내용만 검색하여 토큰을 최적화합니다 (비용 효율적).\n\n오답 분석\n\nA: 단일 PDF는 전체 매뉴얼 정보가 부족하여 불완전한 답변을 생성합니다.\n\nB: 모든 PDF를 프롬프트에 포함시 컨텍스트 윈도우 초과 및 비용이 급증합니다.\n\nC: 파인튜닝은 높은 비용, 긴 훈련 시간, 정보 업데이트 시 재훈련이 필요합니다.",
+    "explanationEn": "정답: D\n\nKnowledge Bases are structured knowledge repositories that AI models can reference. They integrate external documents, enterprise data, policy documents, and up-to-date data into FMs. They retrieve only relevant content as needed to optimize token usage (cost-effective).\n\nIncorrect answer analysis\n\nA: A single PDF lacks the complete manual information, resulting in incomplete answers.\n\nB: Including all PDFs in the prompt would exceed the context window and cause costs to skyrocket.\n\nC: Fine-tuning requires high costs, long training time, and retraining when information is updated."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 30,
+    "question": "한 리서치 회사는 Amazon Bedrock의 기초 모델(FM)을 사용하여 챗봇을 구현했습니다. 챗봇은 대규모 연구 논문 데이터베이스에서 질문에 대한 답변을 검색합니다. 몇 차례의 프롬프트 엔지니어링 시도 끝에 회사는 연구 논문에 사용된 복잡한 과학 용어로 인해 FM의 성능이 저조하다는 사실을 알게 되었습니다. 회사는 챗봇의 성능을 어떻게 개선할 수 있을까요?",
+    "questionEn": "A research company implemented a chatbot by using a foundation model (FM) from Amazon Bedrock. The chatbot searches for answers to questions from a large database of research papers. After multiple prompt engineering attempts, the company notices that the FM is performing poorly because of the complex scientific terms in the research papers. How can the company improve the performance of the chatbot?",
+    "options": [
+      "퓨샷 프롬프팅을 사용하여 FM이 질문에 어떻게 답할 수 있는지 정의합니다.",
+      "도메인 적응 미세 조정을 사용하여 FM을 복잡한 과학 용어에 맞게 조정합니다.",
+      "FM 추론 파라미터를 변경합니다.",
+      "연구 논문 데이터를 정리하여 복잡한 과학 용어를 제거합니다."
+    ],
+    "optionsEn": [
+      "Use few-shot prompting to define how the FM can answer the questions.",
+      "Use domain adaptation fine-tuning to adapt the FM to complex scientific terms.",
+      "Change the FM inference parameters.",
+      "Clean the research paper data to remove complex scientific terms."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n도메인 적응 파인튜닝으로 과학 논문의 전문 용어와 문체를 학습하여 이해도가 향상됩니다.\n\n오답 분석\n\nA: Few-shot은 제한된 예시로 복잡한 도메인 지식 학습에 한계가 있습니다.\n\nC: 추론 파라미터는 출력 특성 조절로 이해력 개선과 무관합니다.\n\nD: 전문 용어 제거는 핵심 정보 손실로 검색 품질 저하됩니다.",
+    "explanationEn": "정답: B\n\nDomain-adapted fine-tuning improves comprehension by learning the specialized terminology and writing style of scientific papers.\n\nIncorrect answer analysis\n\nA: Few-shot has limitations in learning complex domain knowledge with limited examples.\n\nC: Inference parameters adjust output characteristics and are unrelated to improving comprehension.\n\nD: Removing specialized terminology results in the loss of key information and degrades search quality."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 31,
+    "question": "기초 모델(FM)을 미세 조정할 때 지속적인 사전 훈련을 통해 얻을 수 있는 이점은 무엇입니까?",
+    "questionEn": "Which option is a benefit of ongoing pre-training when fine-tuning a foundation model (FM)?",
+    "options": [
+      "모델의 복잡성을 줄이는 데 도움이 됩니다.",
+      "시간이 지남에 따라 모델 성능을 개선합니다.",
+      "필요한 훈련 시간을 줄입니다.",
+      "모델 추론 시간을 최적화합니다."
+    ],
+    "optionsEn": [
+      "Helps decrease the model's complexity",
+      "Improves model performance over time",
+      "Decreases the training time requirement",
+      "Optimizes model inference time"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n지속적 사전학습으로 새로운 데이터를 추가 학습하여 모델의 지식과 성능을 점진적으로 개선합니다.\n\n오답 분석\n\nA: 모델 복잡도는 구조적 특성으로 사전학습과 직접적인 관련이 없습니다.\n\nC: 추가 학습으로 일반적으로 훈련 시간은 증가합니다.\n\nD: 추론 시간은 모델 구조에 의존하며 사전학습과 무관합니다.",
+    "explanationEn": "정답: B\n\nContinued pre-training progressively improves the model's knowledge and performance by additionally learning from new data.\n\nIncorrect answer analysis\n\nA: Model complexity is a structural characteristic and has no direct relationship with pre-training.\n\nC: Additional training generally increases training time.\n\nD: Inference time depends on model architecture and is unrelated to pre-training."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 32,
+    "question": "한 회사가 대규모 언어 모델(LLM)을 사용하여 생성형 AI 어시스턴트를 만들고 있습니다. 이 회사는 AI 어시스턴트가 가장 사실에 맞는 정확한 응답을 생성하도록 보장하기 위해 AI 기법을 선택해야 합니다. 이 회사는 검색 증강 생성(RAG) 기법을 선택했습니다. 이 회사가 줄이려는 LLM의 한계는 무엇입니까?",
+    "questionEn": "A company is using a large language model (LLM) to create a generative AI assistant. The company must choose an AI technique to ensure that the AI assistant generates the most factually correct responses. The company selects the Retrieval-Augmented Generation (RAG) technique. Which limitation of LLMs is the company trying to reduce?",
+    "options": [
+      "환각(Hallucination)",
+      "보안",
+      "비결정성",
+      "해석 가능성"
+    ],
+    "optionsEn": [
+      "Hallucinations",
+      "Security",
+      "Nondeterminism",
+      "Interpretability"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nRAG는 LLM에 외부의 신뢰할 수 있는 지식을 보충하여 환각 문제를 해결하며, 조작된 정보 대신 사실에 기반한 응답을 생성할 수 있게 합니다.\n\n오답 분석\n\nB: 보안 문제는 액세스 제어 및 데이터 보호와 관련되며, RAG가 개선하는 사실 정확성과는 관련이 없습니다.\n\nC: 비결정성은 동일한 입력에 대한 출력의 변동성을 의미하며, RAG가 아닌 temperature 설정으로 제어됩니다.\n\nD: 해석 가능성은 모델이 특정 출력을 생성하는 이유를 이해하는 것과 관련되며, RAG가 직접적으로 해결하지 않습니다.",
+    "explanationEn": "정답: A\n\nRAG addresses hallucinations by supplementing the LLM with external authoritative knowledge, enabling factually grounded responses instead of fabricated information.\n\nIncorrect answer analysis\n\nB: Security concerns relate to access controls and data protection, not to the factual correctness that RAG improves.\n\nC: Nondeterminism refers to variability in outputs for the same input, which is controlled by temperature settings rather than RAG.\n\nD: Interpretability concerns understanding why a model produces a given output, which RAG does not directly address."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 33,
+    "question": "검색 증강 생성(RAG)을 정확하게 설명하는 문장은 무엇입니까?",
+    "questionEn": "Which statement accurately describes Retrieval-Augmented Generation (RAG)?",
+    "options": [
+      "LLM 성능을 개선하기 위해 대량의 새 데이터를 사용하여 대규모 언어 모델(LLM)을 훈련하는 프로세스",
+      "재훈련 없이 LLM 응답의 관련성과 정확성을 향상시키기 위해 대규모 언어 모델(LLM)이 외부 권위 있는 지식 기반을 참조하는 프로세스",
+      "재훈련 없이 비즈니스 애플리케이션의 응답 속도를 향상시키기 위해 대규모 언어 모델(LLM)을 원래 훈련 데이터에만 제한하는 프로세스",
+      "여러 국가에서 운영하는 비즈니스를 위한 언어 번역 작업에 초점을 맞춘 프로세스"
+    ],
+    "optionsEn": [
+      "A process that uses large amounts of new data to train large language models (LLMs) to improve LLM performance",
+      "A process by which large language models (LLMs) reference external authoritative knowledge bases to enhance the relevance and accuracy of LLM responses without re-training",
+      "A process that limits large language models (LLMs) exclusively to their original training data to improve response speed for business applications without re-training",
+      "A process that focuses on language translation tasks for businesses that operate in multiple countries"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nRAG는 모델 재훈련 없이 추론 시점에 LLM이 외부 권위 있는 지식 기반을 참조하여 응답의 관련성과 정확성을 향상시키는 기술입니다.\n\n오답 분석\n\nA: RAG는 대량의 새 데이터로 모델을 재훈련하는 것이 아니라, 모델 가중치를 수정하지 않고 쿼리 시점에 외부 정보를 검색합니다.\n\nC: RAG는 모델의 지식을 원래 훈련 데이터에 제한하는 것이 아니라 외부 소스를 검색하여 모델의 지식을 확장합니다.\n\nD: RAG는 언어 번역 작업에 국한되지 않는 범용 지식 증강 기술입니다.",
+    "explanationEn": "정답: B\n\nRAG is a technique where LLMs reference external authoritative knowledge bases at inference time to enhance response relevance and accuracy without requiring model re-training.\n\nIncorrect answer analysis\n\nA: RAG does not involve re-training the model with large amounts of new data; it retrieves external information at query time without modifying model weights.\n\nC: RAG expands the model's knowledge beyond its training data by retrieving external sources, rather than limiting it to original training data.\n\nD: RAG is a general knowledge augmentation technique, not one limited to language translation tasks."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 34,
+    "question": "한 회사가 특정 작업을 수행하도록 파운데이션 모델(FM)을 훈련했습니다. 이 회사는 다른 관련 작업을 수행하도록 FM을 미세 조정해야 합니다. 이 요구 사항을 충족하는 미세 조정 방법은 무엇입니까?",
+    "questionEn": "A company has trained a foundation model (FM) to perform a specific task. The company needs to fine-tune the FM to perform a different but related task. Which fine-tuning method will meet this requirement?",
+    "options": [
+      "하이퍼파라미터 튜닝",
+      "사전 훈련",
+      "전이 학습",
+      "강화 학습"
+    ],
+    "optionsEn": [
+      "Hyperparameter tuning",
+      "Pre-training",
+      "Transfer learning",
+      "Reinforcement learning"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n전이 학습은 하나의 작업에서 훈련하여 얻은 지식을 다른 관련 작업에 적용하여, 처음부터 훈련하지 않고도 기존 파운데이션 모델을 적응시킬 수 있게 합니다.\n\n오답 분석\n\nA: 하이퍼파라미터 튜닝은 학습률이나 배치 크기 같은 훈련 구성 매개변수를 조정하지만 모델을 다른 작업을 수행하도록 적응시키지는 않습니다.\n\nB: 사전 훈련은 대규모 일반 코퍼스에서 모델을 처음부터 훈련하는 것으로, 이미 훈련된 모델을 관련 작업에 적응시키는 것과는 다릅니다.\n\nD: 강화 학습은 환경으로부터의 보상 기반 피드백을 통해 모델을 훈련하는 것으로, FM을 관련 작업에 적응시키는 방법이 아닌 별도의 훈련 패러다임입니다.",
+    "explanationEn": "정답: C\n\nTransfer learning applies knowledge gained from training on one task to a different but related task, allowing the company to adapt the existing foundation model without training from scratch.\n\nIncorrect answer analysis\n\nA: Hyperparameter tuning adjusts training configuration parameters like learning rate and batch size but does not adapt the model to perform a different task.\n\nB: Pre-training trains a model from scratch on a large general corpus, which is not the same as adapting an already-trained model to a related task.\n\nD: Reinforcement learning trains models through reward-based feedback from an environment, which is a distinct training paradigm rather than a method to adapt an FM to a related task."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 35,
+    "question": "한 이커머스 회사가 제품 이미지를 분류하고 사양을 추출하는 AI 애플리케이션을 개발하고 있습니다. 이 애플리케이션은 고품질 레이블링된 데이터 세트를 사용하여 파운데이션 모델(FM)을 커스터마이징하여 정확한 응답을 생성합니다. Amazon Bedrock을 사용하여 이 요구 사항을 충족하는 ML 기법은 무엇입니까?",
+    "questionEn": "An ecommerce company is developing an AI application that categorizes product images and extracts specifications. The application will use a high-quality labeled dataset to customize a foundation model (FM) to generate accurate responses. Which ML technique will meet these requirements by using Amazon Bedrock?",
+    "options": [
+      "지속적 사전 훈련 적용",
+      "에이전트 생성",
+      "파인 튜닝 수행",
+      "프롬프트 엔지니어링 개발"
+    ],
+    "optionsEn": [
+      "Apply continued pre-training",
+      "Create an agent",
+      "Perform fine-tuning",
+      "Develop prompt engineering"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n파인 튜닝은 고품질 레이블링된 데이터 세트를 사용하여 이미지 분류 및 사양 추출과 같은 특정 작업에 파운데이션 모델을 적응시키며, Amazon Bedrock은 파인 튜닝을 직접 지원합니다.\n\n오답 분석\n\nA: 지속적 사전 훈련은 레이블링되지 않은 데이터를 사용하여 모델의 도메인 지식을 확장하는 것이며, 작업별 커스터마이징을 위한 레이블링된 데이터를 사용하지 않습니다.\n\nB: 에이전트 생성은 API 호출과 작업을 오케스트레이션하지만, 레이블링된 데이터로 기본 모델을 커스터마이징하지는 않습니다.\n\nD: 프롬프트 엔지니어링은 모델 자체를 수정하지 않고 입력 프롬프트를 작성하여 모델 응답을 유도하므로, 커스터마이징에 레이블링된 데이터 세트를 사용하지 않습니다.",
+    "explanationEn": "정답: C\n\nFine-tuning uses a high-quality labeled dataset to adapt a foundation model for specific tasks like image categorization and specification extraction, and Amazon Bedrock supports fine-tuning directly.\n\nIncorrect answer analysis\n\nA: Continued pre-training uses unlabeled data to expand a model's domain knowledge, not labeled data for task-specific customization.\n\nB: Creating an agent orchestrates API calls and actions but does not customize the underlying model with labeled data.\n\nD: Prompt engineering crafts input prompts to guide model responses without modifying the model itself, so it does not use labeled datasets for customization."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 36,
+    "question": "한 회사가 파운데이션 모델(FM)을 커스터마이징하려고 합니다. 회사는 사용 가능한 커스터마이징 방법과 데이터 유형을 이해하고자 합니다. 각 설명에 해당하는 올바른 커스터마이징 방법을 다음 목록에서 선택하십시오. 각 커스터마이징 방법은 한 번만 선택하십시오. - 레이블이 지정된 데이터를 제공하여 특정 작업에 대한 성능을 개선하도록 모델을 커스터마이징합니다.: ? - 레이블이 지정되지 않은 데이터를 제공하여 특정 도메인에 맞게 FM을 커스터마이징합니다.: ? - 더 크고 지능적인 모델에서 더 작은 모델로 지식을 전달합니다.: ?",
+    "questionEn": "A company wants to customize a foundation model (FM). The company wants to understand the customization methods and data types that are available. Select the correct customization method from the following list for each description. Select each customization method one time. - Provide labeled data to customize a model to improve performance on specific tasks.: ? - Provide unlabeled data to customize an FM for a specific domain.: ? - Transfer knowledge from a larger and more intelligent model to a smaller model.: ?",
+    "options": [
+      "Fine-tuning, Continued pre-training, Distillation",
+      "Fine-tuning, Distillation, Continued pre-training",
+      "Continued pre-training, Fine-tuning, Distillation",
+      "Distillation, Continued pre-training, Fine-tuning"
+    ],
+    "optionsEn": [
+      "Fine-tuning, Continued pre-training, Distillation",
+      "Fine-tuning, Distillation, Continued pre-training",
+      "Continued pre-training, Fine-tuning, Distillation",
+      "Distillation, Continued pre-training, Fine-tuning"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nFine-tuning은 레이블이 지정된 데이터를 사용하여 특정 작업 성능을 개선하고, continued pre-training은 레이블이 지정되지 않은 데이터를 사용하여 FM을 특정 도메인에 적응시키며, distillation은 더 큰 교사 모델에서 더 작은 학생 모델로 지식을 전달합니다. 이는 옵션 A의 올바른 순서와 일치합니다.\n\n오답 분석\n\nB: distillation을 레이블이 지정되지 않은 도메인 데이터와 잘못 연결하고, continued pre-training을 모델 간 지식 전달과 잘못 연결합니다.\n\nC: continued pre-training을 레이블이 지정된 작업 데이터에 잘못 할당하고, fine-tuning을 레이블이 지정되지 않은 도메인 데이터에 잘못 할당합니다.\n\nD: distillation을 레이블이 지정된 작업 데이터에 잘못 할당하고, fine-tuning을 모델 간 지식 전달에 잘못 할당합니다.",
+    "explanationEn": "정답: A\n\nFine-tuning uses labeled data to improve task-specific performance, continued pre-training uses unlabeled data to adapt an FM to a specific domain, and distillation transfers knowledge from a larger teacher model to a smaller student model, matching the correct order in option A.\n\nIncorrect answer analysis\n\nB: This incorrectly pairs distillation with unlabeled domain data and continued pre-training with knowledge transfer between models.\n\nC: This incorrectly assigns continued pre-training to labeled task data and fine-tuning to unlabeled domain data.\n\nD: This incorrectly assigns distillation to labeled task data and fine-tuning to knowledge transfer between models."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 37,
+    "question": "대규모 언어 모델(LLM)과 외부 지식 기반을 결합하여 응답 정확도를 향상시키는 AI 기법은 무엇입니까?",
+    "questionEn": "Which AI technique combines large language models (LLMs) with external knowledge bases to improve response accuracy?",
+    "options": [
+      "강화 학습(Reinforcement learning, RL)",
+      "자연어 처리(Natural language processing, NLP)",
+      "검색 증강 생성(Retrieval-Augmented Generation, RAG)",
+      "전이 학습(Transfer learning)"
+    ],
+    "optionsEn": [
+      "Reinforcement learning (RL)",
+      "Natural language processing (NLP)",
+      "Retrieval-Augmented Generation (RAG)",
+      "Transfer learning"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n검색 증강 생성(RAG)은 쿼리 시점에 관련 문서를 검색하여 프롬프트 컨텍스트에 포함시킴으로써 LLM과 외부 지식 기반을 결합하여 최신 정보로 응답 정확도를 향상시킵니다.\n\n오답 분석\n\nA: 강화 학습은 환경에서 보상 신호를 통해 에이전트를 훈련하며, 외부 지식 기반을 LLM과 통합하는 것과는 관련이 없습니다.\n\nB: 자연어 처리는 텍스트 이해 작업을 포괄하는 넓은 분야이며, LLM과 외부 지식 기반을 결합하는 특정 기법이 아닙니다.\n\nD: 전이 학습은 사전 훈련된 모델을 새로운 작업에 적용하지만, 추론 시점에 외부 지식 기반에서 동적으로 검색하지는 않습니다.",
+    "explanationEn": "정답: C\n\nRetrieval-Augmented Generation (RAG) combines an LLM with an external knowledge base by retrieving relevant documents at query time and including them in the prompt context, which improves response accuracy with up-to-date information.\n\nIncorrect answer analysis\n\nA: Reinforcement learning trains agents through reward signals in an environment and does not involve integrating external knowledge bases with LLMs.\n\nB: Natural language processing is a broad field encompassing text understanding tasks, not a specific technique for combining LLMs with external knowledge bases.\n\nD: Transfer learning applies a pre-trained model to a new task but does not dynamically retrieve from external knowledge bases at inference time."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 38,
+    "question": "지속적 사전 훈련(continuous pre-training)이란 무엇입니까?",
+    "questionEn": "What is continuous pre-training?",
+    "options": [
+      "특정 작업을 위해 레이블이 지정된 데이터로 사전 훈련된 언어 모델을 미세 조정하는 프로세스",
+      "사전 훈련된 언어 모델에 레이블이 지정되지 않은 데이터를 제공하여 모델의 도메인 지식을 향상시키는 프로세스",
+      "특정 데이터셋에서 언어 모델을 처음부터 훈련하는 프로세스",
+      "테스트 세트에서 사전 훈련된 언어 모델의 성능을 평가하는 프로세스"
+    ],
+    "optionsEn": [
+      "The process of fine-tuning a pre-trained language model on labeled data for a specific task",
+      "The process of providing unlabeled data to a pre-trained language model to improve the model's domain knowledge",
+      "The process of training a language model from the beginning on a specific dataset",
+      "The process of evaluating the performance of a pre-trained language model on a test set"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n지속적 사전 훈련은 이미 사전 훈련된 모델에 레이블이 지정되지 않은 추가 도메인별 데이터를 공급하여 레이블이 지정된 예제 없이도 모델의 지식을 확장합니다.\n\n오답 분석\n\nA: 미세 조정은 특정 작업을 위해 레이블이 지정된 데이터를 사용하며, 레이블이 지정되지 않은 데이터를 사용하여 도메인 지식을 확장하는 지속적 사전 훈련과는 다릅니다.\n\nC: 특정 데이터셋에서 모델을 처음부터 훈련하는 것은 초기 사전 훈련 또는 랜덤 가중치에서의 훈련을 설명하는 것이며, 기존 모델의 지속적 사전 훈련이 아닙니다.\n\nD: 테스트 세트에서 모델 성능을 평가하는 것은 모델 평가를 설명하는 것이며, 훈련 프로세스가 아닙니다.",
+    "explanationEn": "정답: B\n\nContinuous pre-training feeds additional unlabeled, domain-specific data to an already pre-trained model to expand its knowledge without requiring labeled examples.\n\nIncorrect answer analysis\n\nA: Fine-tuning uses labeled data for a specific task, which differs from continuous pre-training that uses unlabeled data to broaden domain knowledge.\n\nC: Training a model from scratch on a specific dataset describes initial pre-training or training from random weights, not continuous pre-training of an existing model.\n\nD: Evaluating model performance on a test set describes model evaluation, not a training process."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 39,
+    "question": "한 회사가 검색 증강 생성(RAG) 솔루션에서 대규모 언어 모델(LLM)의 지식 기반으로 자사 문서를 사용하려고 합니다. 이 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company wants to use its documents as a knowledge base for a large language model (LLM) in a Retrieval Augmented Generation (RAG) solution. Which solution will meet these requirements?",
+    "options": [
+      "각 문서를 암호화 키로 암호화합니다.",
+      "문서 청크에서 임베딩을 생성합니다.",
+      "문서 데이터에 메타데이터를 레이블링합니다.",
+      "각 문서에 대해 원-핫 인코딩을 생성합니다."
+    ],
+    "optionsEn": [
+      "Encrypt each document with encryption keys.",
+      "Create embeddings from document chunks.",
+      "Label the document data with metadata.",
+      "Generate one-hot encoding for each document."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n문서 청크에서 임베딩을 생성하면 텍스트가 벡터 표현으로 변환되어 벡터 데이터베이스에 저장되고, RAG 과정에서 LLM이 이를 검색하여 근거 있는 응답을 생성할 수 있습니다.\n\n오답 분석\n\nA: 문서를 암호화 키로 암호화하면 데이터 보안은 보호되지만 문서 콘텐츠를 LLM의 지식 기반으로 사용할 수 있게 만들지는 않습니다.\n\nC: 문서에 메타데이터를 레이블링하면 구성 및 필터링에는 도움이 되지만 RAG에 필요한 의미론적 검색을 활성화하지 않습니다.\n\nD: 원-핫 인코딩은 의미론적 의미를 포착하지 못하는 희소 이진 벡터를 생성하므로 RAG에서의 유사성 기반 검색에 적합하지 않습니다.",
+    "explanationEn": "정답: B\n\nCreating embeddings from document chunks converts text into vector representations that can be stored in a vector database and retrieved by the LLM during RAG to generate grounded responses.\n\nIncorrect answer analysis\n\nA: Encrypting documents with encryption keys protects data security but does not make document content usable as a knowledge base for an LLM.\n\nC: Labeling documents with metadata aids in organization and filtering but does not enable semantic retrieval required for RAG.\n\nD: One-hot encoding creates sparse binary vectors that do not capture semantic meaning, making them unsuitable for similarity-based retrieval in RAG."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 40,
+    "question": "한 회사가 3개월 이내에 콘텐츠 조정을 위해 대규모 언어 모델(LLM)을 개선하려고 합니다. 회사는 모델이 회사의 가치와 윤리에 따라 콘텐츠를 조정하기를 원합니다. LLM은 또한 새로운 트렌드와 새로운 유형의 문제 콘텐츠를 처리할 수 있어야 합니다. 이 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company wants to improve a large language model (LLM) for content moderation within 3 months. The company wants the model to moderate content according to the company's values and ethics. The LLM must also be able to handle emerging trends and new types of problematic content. Which solution will meet these requirements?",
+    "options": [
+      "대량의 텍스트 기반 인터넷 콘텐츠에 대해 지속적인 사전 학습을 수행합니다.",
+      "과거 조정 결정의 고품질 데이터셋을 생성합니다.",
+      "다양한 출처의 일반적인 윤리 지침 세트로 LLM을 파인 튜닝합니다.",
+      "숙련된 조정자의 실시간 입력을 사용하여 인간 피드백 기반 강화 학습(RLHF)을 수행합니다."
+    ],
+    "optionsEn": [
+      "Conduct continuous pre-training on a large amount of text-based internet content.",
+      "Create a high-quality dataset of historical moderation decisions.",
+      "Fine-tune the LLM on a diverse set of general ethical guidelines from various sources.",
+      "Conduct reinforcement learning from human feedback (RLHF) by using real-time input from skilled moderators."
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\n숙련된 조정자를 활용한 RLHF를 통해 모델은 회사 가치에 부합하는 전문가의 인간 피드백을 지속적으로 학습할 수 있으며, 실시간 입력을 통해 새로운 트렌드와 새로운 유형의 문제 콘텐츠에 적응할 수 있습니다.\n\n오답 분석\n\nA: 일반 인터넷 콘텐츠에 대한 지속적 사전 학습은 모델을 회사별 가치와 윤리에 맞추지 못하며, 인터넷 데이터에는 조정이 필요한 콘텐츠가 포함될 수 있습니다.\n\nB: 과거 조정 결정의 데이터셋은 이전 패턴을 포착하지만 새로운 트렌드나 새로운 유형의 문제 콘텐츠를 다루지 못합니다.\n\nC: 다양한 출처의 일반적인 윤리 지침으로 파인 튜닝하면 회사별 정렬이 부족하고 진화하는 콘텐츠 유형을 처리하는 메커니즘을 제공하지 않습니다.",
+    "explanationEn": "정답: D\n\nRLHF with skilled moderators allows the model to continuously learn from expert human feedback aligned with company values, and it adapts to emerging trends and new types of problematic content through ongoing real-time input.\n\nIncorrect answer analysis\n\nA: Continuous pre-training on general internet content does not align the model with company-specific values and ethics, and internet data may contain the very content that needs moderation.\n\nB: A dataset of historical moderation decisions captures past patterns but does not address emerging trends or new types of problematic content.\n\nC: Fine-tuning on general ethical guidelines from various sources lacks company-specific alignment and does not provide a mechanism to handle evolving content types."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 41,
+    "question": "한 회사가 사전 훈련된 모델을 사용하여 대규모 언어 모델(LLM) 솔루션을 구현했습니다. 회사는 모델의 응답이 투명하고 정확하도록 보장해야 합니다. 회사는 모델의 응답을 회사의 신뢰할 수 있는 데이터 소스의 사실 정보에 근거시키려고 합니다. 이 요구 사항을 충족하기 위해 회사가 사용해야 하는 기법은 무엇입니까?",
+    "questionEn": "A company has implemented a large language model (LLM) solution by using a pre-trained model. The company needs to ensure that the model's responses are transparent and accurate. The company wants to ground the model's responses in factual information from the company's authoritative data sources. Which technique should the company use to meet these requirements?",
+    "options": [
+      "프롬프트 엔지니어링",
+      "강화 학습",
+      "Retrieval Augmented Generation (RAG)",
+      "정적 지식 베이스"
+    ],
+    "optionsEn": [
+      "Prompt engineering",
+      "Reinforcement learning",
+      "Retrieval Augmented Generation (RAG)",
+      "Static knowledge base"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nRAG는 추론 시점에 회사의 신뢰할 수 있는 데이터 소스에서 관련 정보를 검색하여 모델의 응답을 보강하므로, 출력이 사실적이고 최신의 회사 데이터에 근거하도록 보장합니다.\n\n오답 분석\n\nA: 프롬프트 엔지니어링은 정교하게 작성된 지침을 통해 응답 품질을 향상시키지만, 근거 확보를 위해 모델을 외부 신뢰 데이터 소스에 연결하지 않습니다.\n\nB: 강화 학습은 훈련 중 보상 신호를 통해 모델 행동을 최적화하며, 추론 시점에 외부 사실 데이터에 응답을 근거시키기 위한 것이 아닙니다.\n\nD: 정적 지식 베이스는 추론 시점에 관련 정보를 동적으로 검색하지 않으며, 신뢰할 수 있는 데이터에 응답을 근거시키는 데 필요한 검색 및 보강 메커니즘이 없습니다.",
+    "explanationEn": "정답: C\n\nRAG retrieves relevant information from the company's authoritative data sources at inference time and augments the model's responses, ensuring outputs are grounded in factual, up-to-date company data.\n\nIncorrect answer analysis\n\nA: Prompt engineering improves response quality through crafted instructions but does not connect the model to external authoritative data sources for grounding.\n\nB: Reinforcement learning optimizes model behavior through reward signals during training, not for grounding responses in external factual data at inference time.\n\nD: A static knowledge base does not dynamically retrieve relevant information at inference time and lacks the retrieval-and-augmentation mechanism needed to ground responses in authoritative data."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 42,
+    "question": "한 회사가 회사 데이터를 기반으로 응답을 생성하기 위해 대규모 언어 모델(LLM)을 사용하려고 합니다. 이 요구 사항을 충족하는 전략은 무엇입니까?",
+    "questionEn": "A company wants to use a large language model (LLM) to generate responses based on company data. Which strategy will meet this requirement?",
+    "options": [
+      "Amazon Bedrock의 퍼스트 파티 사전 훈련된 모델을 사용합니다.",
+      "사전 훈련된 오픈 소스 모델을 사용합니다.",
+      "회사 데이터로 커스텀 모델을 파인 튜닝합니다.",
+      "Amazon Bedrock의 서드 파티 사전 훈련된 모델을 사용합니다."
+    ],
+    "optionsEn": [
+      "Use first-party pre-trained models from Amazon Bedrock.",
+      "Use pre-trained open source models.",
+      "Fine-tune a custom model on company data.",
+      "Use pre-trained third-party models from Amazon Bedrock."
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n회사 데이터로 커스텀 모델을 파인 튜닝하면 LLM이 회사 고유의 지식과 패턴을 학습하여 해당 데이터에 근거한 응답을 생성할 수 있습니다.\n\n오답 분석\n\nA: Bedrock의 퍼스트 파티 사전 훈련된 모델은 일반 데이터로 훈련되어 있으며, 추가 커스터마이징 없이는 회사 고유의 지식이 없습니다.\n\nB: 사전 훈련된 오픈 소스 모델도 마찬가지로 회사 고유의 데이터가 없으며, 추가 훈련이나 보강이 필요합니다.\n\nD: Bedrock의 서드 파티 사전 훈련된 모델은 범용 모델이며 기본적으로 회사 고유의 데이터를 포함하지 않습니다.",
+    "explanationEn": "정답: C\n\nFine-tuning a custom model on company data trains the LLM to learn company-specific knowledge and patterns, enabling it to generate responses grounded in that data.\n\nIncorrect answer analysis\n\nA: First-party pre-trained models from Bedrock are trained on general data and lack company-specific knowledge without additional customization.\n\nB: Pre-trained open source models similarly lack company-specific data and would need further training or augmentation.\n\nD: Pre-trained third-party models from Bedrock are general-purpose and do not incorporate company-specific data by default."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 43,
+    "question": "한 회사가 상세한 설명이 포함된 대규모 제품 카탈로그를 유지 관리하고 있습니다. 회사는 제품에 대한 고객 질문에 답변할 AI 어시스턴트를 구축하려고 합니다. 그러나 회사의 레이블이 지정된 학습 데이터는 제한적입니다. 최소한의 구현 노력으로 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company maintains a large product catalog with detailed descriptions. The company wants to build an AI assistant to answer customer questions about the products. However, the company's labeled training data is limited. Which solution will meet these requirements with the LEAST implementation effort?",
+    "options": [
+      "Retrieval Augmented Generation(RAG) 아키텍처를 사용하여 런타임에 제품 데이터베이스를 쿼리합니다. 관련되고 수정되지 않은 제품 설명을 파운데이션 모델(FM)의 컨텍스트로 제공합니다.",
+      "제한된 레이블 데이터로 파운데이션 모델(FM)을 파인 튜닝합니다. 정확성을 위해 매주 새로운 제품 세부 정보로 모델을 자동 갱신합니다.",
+      "각 제품 카테고리에 대해 파운데이션 모델(FM)을 배포합니다. 고객 쿼리를 적절한 전문 모델로 라우팅하는 라우팅 레이어를 구현합니다.",
+      "제품 데이터베이스를 기반으로 학습된 새로운 커스텀 파운데이션 모델(FM)을 생성합니다. 추론 중 최소한의 토큰 사용을 위해 FM을 최적화합니다."
+    ],
+    "optionsEn": [
+      "Use a Retrieval Augmented Generation (RAG) architecture to query the product database at runtime. Provide relevant, unmodified product descriptions as context for the foundation model (FM).",
+      "Fine-tune a foundation model (FM) on the restricted labeled data. Automatically refresh the model with novel product details weekly for accuracy.",
+      "Deploy a foundation model (FM) for each product category. Implement a routing layer to direct customer queries to the appropriate specialized model.",
+      "Create a new custom foundation model (FM) that is trained on the product database. Optimize the FM for minimal token usage during inference."
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nRAG는 런타임에 카탈로그에서 관련 제품 설명을 검색하여 FM에 컨텍스트로 제공하므로, 레이블이 지정된 학습 데이터가 필요 없고 최소한의 구현 노력만 필요합니다.\n\n오답 분석\n\nB: 파인 튜닝에는 레이블 데이터가 필요하며(제한적임), 매주 재학습하면 상당한 구현 및 운영 오버헤드가 추가됩니다.\n\nC: 제품 카테고리별로 별도의 FM을 배포하고 라우팅 레이어를 구축하면 상당한 복잡성과 비용이 발생하며 구현 노력이 큽니다.\n\nD: 제품 데이터베이스를 기반으로 커스텀 FM을 처음부터 학습하려면 대규모 컴퓨팅 리소스, 레이블 데이터 및 ML 전문 지식이 필요합니다.",
+    "explanationEn": "정답: A\n\nRAG retrieves relevant product descriptions from the catalog at runtime and provides them as context to the FM, requiring no labeled training data and minimal implementation effort.\n\nIncorrect answer analysis\n\nB: Fine-tuning requires labeled data (which is limited) and weekly retraining adds significant implementation and operational overhead.\n\nC: Deploying a separate FM per product category and building a routing layer introduces substantial complexity and cost with significant implementation effort.\n\nD: Training a custom FM from scratch on the product database requires extensive compute resources, labeled data, and ML expertise."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 44,
+    "question": "한 회사가 Amazon Bedrock Agents를 사용하여 고객을 위한 AI 어시스턴트 애플리케이션을 개발했습니다. 회사는 에이전트가 일관되게 정보에 기반한 결정을 내리기 위해 추가 컨텍스트가 필요하다는 것을 발견합니다. 에이전트는 고객 여행 예약 요청을 완료하기 위해 외부 서비스에 액세스하지 않고 있습니다. 회사는 에이전트가 필요할 때 추가 컨텍스트에 액세스할 수 있도록 해야 합니다. 이 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company has developed an AI assistant application for customers by using Amazon Bedrock Agents. The company notices that the agents require additional context to make informed decisions consistently. The agents are not accessing external services to complete customer travel booking requests. The company needs to ensure that the agents access additional context when necessary. Which solution will meet this requirement?",
+    "options": [
+      "네거티브 프롬프팅",
+      "Model Context Protocol(MCP)",
+      "제로샷 프롬프팅",
+      "더 많은 컨텍스트를 제공하기 위한 사용자 지정 API"
+    ],
+    "optionsEn": [
+      "Negative prompting",
+      "Model Context Protocol (MCP)",
+      "Zero-shot prompting",
+      "Custom API to provide more context"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nModel Context Protocol(MCP)은 Amazon Bedrock Agents가 외부 데이터 소스 및 서비스에 연결할 수 있게 하는 개방형 표준으로, 여행 예약과 같은 작업에 대해 정보에 기반한 의사결정에 필요한 추가 컨텍스트를 제공합니다.\n\n오답 분석\n\nA: 네거티브 프롬프팅은 모델에 출력에서 특정 콘텐츠를 제외하도록 지시하며 외부 서비스에 대한 액세스나 추가 컨텍스트를 제공하지 않습니다.\n\nC: 제로샷 프롬프팅은 예시 없이 지침을 제공하지만 에이전트가 외부 서비스에 액세스하거나 추가 컨텍스트를 검색하는 것을 가능하게 하지 않습니다.\n\nD: 사용자 지정 API는 각 외부 서비스에 대한 독점적 통합을 구축하고 유지해야 하므로 상당한 개발 및 운영 부담이 추가됩니다.",
+    "explanationEn": "정답: B\n\nModel Context Protocol (MCP) is an open standard that enables Amazon Bedrock Agents to connect to external data sources and services, providing the additional context needed for informed decision-making on tasks like travel booking.\n\nIncorrect answer analysis\n\nA: Negative prompting instructs the model to exclude certain content from outputs and does not provide access to external services or additional context.\n\nC: Zero-shot prompting provides instructions without examples but does not enable the agent to access external services or retrieve additional context.\n\nD: A custom API requires building and maintaining proprietary integrations for each external service, adding significant development and operational burden."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 45,
+    "question": "한 회사가 Amazon Bedrock을 사용하여 Amazon Titan 기초 모델(FM)을 구현하고 있습니다. 회사는 회사의 비공개 데이터 소스에서 가져온 관련 데이터를 사용하여 모델을 보완해야 합니다. 어떤 솔루션이 이 요구 사항을 충족할까요?",
+    "questionEn": "A company is implementing the Amazon Titan foundation model (FM) by using Amazon Bedrock. The company needs to supplement the model by using relevant data from the company's private data sources. Which solution will meet this requirement?",
+    "options": [
+      "다른 FM을 사용합니다.",
+      "더 낮은 온도 값을 선택합니다.",
+      "Amazon Bedrock 지식 기반(knowledge base)을 생성합니다.",
+      "모델 호출 로깅을 활성화합니다."
+    ],
+    "optionsEn": [
+      "Use a different FM",
+      "Choose a lower temperature value",
+      "Create an Amazon Bedrock Knowledge Base",
+      "Enable model invocation logging"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nKnowledge Bases는 AI 모델이 참조할 수 있는 구조화된 지식 저장소입니다. 외부 문서, 기업 데이터, 정책 문서, 최신 데이터 등을 FM에 통합합니다. 필요시 관련 내용만 검색하여 토큰을 최적화합니다 (비용 효율적). RAG 패턴 구현으로 회사 문서를 벡터화하여 FM의 응답에 컨텍스트로 제공합니다.\n\n오답 분석\n\nA: 다른 FM 사용은 데이터 보강 문제를 해결하지 못합니다.\n\nB: Temperature는 창의성을 조절하는 파라미터입니다. 지식 추가와 무관합니다.\n\nD: 로깅은 모니터링/디버깅용으로, 모델 성능 향상과 무관합니다.",
+    "explanationEn": "정답: C\n\nKnowledge Bases are structured knowledge repositories that AI models can reference. They integrate external documents, enterprise data, policy documents, and up-to-date data into FMs. They retrieve only relevant content as needed to optimize token usage (cost-effective). By implementing the RAG pattern, company documents are vectorized and provided as context for FM responses.\n\nIncorrect answer analysis\n\nA: Using a different FM does not solve the data augmentation problem.\n\nB: Temperature is a parameter that controls creativity. It is unrelated to adding knowledge.\n\nD: Logging is for monitoring/debugging and is unrelated to improving model performance."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 46,
+    "question": "기초 모델(FM)이 비즈니스 목표를 효과적으로 충족하는지 여부를 결정하는 전략은 무엇입니까?",
+    "questionEn": "Which strategy will determine if a foundation model (FM) effectively meets business objectives?",
+    "options": [
+      "벤치마크 데이터 세트에서 모델의 성능을 평가합니다.",
+      "모델의 아키텍처와 하이퍼파라미터를 분석합니다.",
+      "모델이 특정 사용 사례에 부합하는지 평가합니다.",
+      "모델 배포에 필요한 계산 리소스를 측정합니다."
+    ],
+    "optionsEn": [
+      "Evaluate the model's performance on benchmark datasets.",
+      "Analyze the model's architecture and hyperparameters.",
+      "Assess the model's alignment with specific use cases.",
+      "Measure the computational resources required for model deployment."
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n구체적 비즈니스 사용 사례에 대한 모델 성능 평가로 실제 가치 창출 가능성을 확인합니다.\n\n오답 분석\n\nA: 벤치마크는 일반적 성능으로 특정 비즈니스 목표와 괴리가 있을 수 있습니다.\n\nB: 기술적 분석은 구현 측면이지 비즈니스 가치와는 간접적인 관계입니다.\n\nD: 컴퓨팅 자원은 비용 효율성과 관련있는 것으로 목표 달성 여부와 별개입니다.",
+    "explanationEn": "정답: C\n\nEvaluating model performance on specific business use cases confirms the potential for actual value creation.\n\nIncorrect answer analysis\n\nA: Benchmarks measure general performance, which may diverge from specific business objectives.\n\nB: Technical analysis relates to implementation aspects and has only an indirect relationship with business value.\n\nD: Computing resources relate to cost efficiency and are separate from whether objectives are achieved."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 47,
+    "question": "한 회사는 고객에게 대화형 검색 경험을 제공하기 위해 지능형 에이전트를 구현하고 있습니다. 이 회사는 생성형 AI 모델의 임베딩을 데이터베이스의 벡터로 저장하고 쿼리를 저장할 수 있는 데이터베이스 서비스가 필요합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A company is implementing intelligent agents to provide conversational search experiences for its customers. The company needs a database service that will support storage and queries of embeddings from a generative AI model as vectors in the database. Which AWS service will meet these requirements?",
+    "options": [
+      "Amazon Athena",
+      "Amazon Aurora PostgreSQL",
+      "Amazon Redshift",
+      "Amazon EMR"
+    ],
+    "optionsEn": [
+      "Amazon Athena",
+      "Amazon Aurora PostgreSQL",
+      "Amazon Redshift",
+      "Amazon EMR"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nAurora PostgreSQL은 pgvector 확장으로 벡터 임베딩 저장과 유사도 검색을 네이티브로 지원합니다.\n\n오답 분석\n\nA: Athena는 S3 데이터 쿼리용으로 벡터 연산을 지원하지 않습니다.\n\nC: Redshift는 분석용 데이터 웨어하우스로 벡터 검색 최적화가 부족합니다.\n\nD: EMR은 대규모 데이터 처리 프레임워크로 벡터 DB 기능이 없습니다.",
+    "explanationEn": "정답: B\n\nAurora PostgreSQL natively supports vector embedding storage and similarity search through the pgvector extension.\n\nIncorrect answer analysis\n\nA: Athena is for querying S3 data and does not support vector operations.\n\nC: Redshift is an analytical data warehouse and lacks optimization for vector search.\n\nD: EMR is a large-scale data processing framework and does not have vector DB capabilities."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 48,
+    "question": "회사가 Amazon Bedrock에서 사전 훈련된 기초 모델(FM)을 사용하는 생성형 AI 애플리케이션을 보유하고 있습니다. 회사는 FM이 회사 정보를 사용하여 더 많은 컨텍스트를 포함하기를 원합니다. 이러한 요구사항을 가장 비용 효율적으로 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company has a generative AI application that uses a pre-trained foundation model (FM) on Amazon Bedrock. The company wants the FM to include more context by using company information. Which solution meets these requirements MOST cost-effectively?",
+    "options": [
+      "Amazon Bedrock Knowledge Bases를 사용합니다.",
+      "Amazon Bedrock에서 다른 FM을 선택합니다.",
+      "Amazon Bedrock Agents를 사용합니다.",
+      "Amazon Bedrock에 맞춤형 모델을 배포합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon Bedrock Knowledge Bases.",
+      "Choose a different FM on Amazon Bedrock.",
+      "Use Amazon Bedrock Agents.",
+      "Deploy a custom model on Amazon Bedrock."
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nKnowledge Bases는 AI 모델이 참조할 수 있는 구조화된 지식 저장소입니다. 외부 문서, 기업 데이터, 정책 문서, 최신 데이터 등을 FM에 통합합니다. 필요시 관련 내용만 검색하여 토큰을 최적화합니다 (비용 효율적).\n\n오답 분석\n\nB: 다른 FM 선택만으로는 컨텍스트 문제(회사 고유 정보 통합) 해결 불가능합니다.\n\nC: Bedrock Agents는 반복적인 작업 자동화 및 복잡한 워크플로우 오케스트레이션용으로, 단순 컨텍스트 추가보다 과도한 솔루션입니다.\n\nD: 커스텀 모델 배포는 fine-tuning과 provisioned throughput으로 비용이 많이 드는 옵션입니다.",
+    "explanationEn": "정답: A\n\nKnowledge Bases are structured knowledge repositories that AI models can reference. They integrate external documents, enterprise data, policy documents, and up-to-date data into FMs. They retrieve only relevant content as needed to optimize token usage (cost-effective).\n\nIncorrect answer analysis\n\nB: Simply selecting a different FM cannot solve the context problem (integrating company-specific information).\n\nC: Bedrock Agents are for repetitive task automation and complex workflow orchestration, making them an excessive solution compared to simply adding context.\n\nD: Custom model deployment is a costly option requiring fine-tuning and provisioned throughput."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 49,
+    "question": "한 소셜 미디어 회사에서 콘텐츠 조정을 위해 대규모 언어 모델(LLM)을 사용하려고 합니다. 이 회사는 LLM 결과에서 특정 그룹이나 개인에 대한 편견과 잠재적 차별을 평가하고자 합니다. 최소한의 관리 노력으로 LLM 산출물을 평가하려면 회사에서 어떤 데이터 소스를 사용해야 할까요?",
+    "questionEn": "A social media company wants to use a large language model (LLM) for content moderation. The company wants to evaluate the LLM outputs for bias and potential discrimination against specific groups or individuals. Which data source should the company use to evaluate the LLM outputs with the LEAST administrative effort?",
+    "options": [
+      "사용자 제작 콘텐츠",
+      "조정 로그",
+      "콘텐츠 조정 가이드라인",
+      "벤치마크 데이터세트"
+    ],
+    "optionsEn": [
+      "User-generated content",
+      "Moderation logs",
+      "Content moderation guidelines",
+      "Benchmark datasets"
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\n표준화된 벤치마크 데이터셋은 이미 편향성 평가가 완료되어 즉시 사용 가능하며 비교 가능한 결과를 제공합니다.\n\n오답 분석\n\nA: 사용자 콘텐츠는 레이블링과 편향성 분석이 필요하여 관리 부담이 높습니다.\n\nB: 조정 로그는 실제 결정 기록으로 편향성 평가 기준이 없습니다.\n\nC: 가이드라인은 규칙 문서로 실제 평가용 데이터가 아닙니다.",
+    "explanationEn": "정답: D\n\nStandardized benchmark datasets have already undergone bias evaluation and are ready for immediate use, providing comparable results.\n\nIncorrect answer analysis\n\nA: User content requires labeling and bias analysis, resulting in high management burden.\n\nB: Moderation logs are records of actual decisions and lack bias evaluation criteria.\n\nC: Guidelines are rule documents and are not actual evaluation data."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 50,
+    "question": "회사는 Amazon Bedrock에서 내부적으로 사용할 모델을 선택해야 합니다. 회사는 회사 직원이 선호하는 스타일로 응답을 생성하는 모델을 찾아야 합니다. 회사는 이러한 요구 사항을 충족하기 위해 무엇을 해야 할까요?",
+    "questionEn": "A company needs to choose a model from Amazon Bedrock to use internally. The company must identify a model that generates responses in a style that the company's employees prefer. What should the company do to meet these requirements?",
+    "options": [
+      "내장된 프롬프트 데이터세트를 사용하여 모델을 평가합니다.",
+      "인적 인력과 사용자 지정 프롬프트 데이터세트를 사용하여 모델을 평가합니다.",
+      "공개 모델 리더보드를 사용하여 모델을 식별합니다.",
+      "모델을 시도할 때는 Amazon CloudWatch의 모델 호출 지연 시간 측정치를 사용합니다."
+    ],
+    "optionsEn": [
+      "Evaluate the models by using built-in prompt datasets.",
+      "Evaluate the models by using a human workforce and custom prompt datasets.",
+      "Use public model leaderboards to identify the model.",
+      "Use the model InvocationLatency runtime metrics in Amazon CloudWatch when trying models."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n인간 평가단이 회사 고유의 커뮤니케이션 스타일과 선호도를 정확히 평가하여 최적 모델을 선택합니다.\n\n오답 분석\n\nA: 내장 프롬프트는 일반적 평가로 회사 특화 스타일 반영이 불가능합니다.\n\nC: 공개 리더보드는 일반 성능 지표로 특정 기업 요구사항을 반영하지 않습니다.\n\nD: 지연시간은 기술적 성능으로 콘텐츠 스타일과 무관합니다.",
+    "explanationEn": "정답: B\n\nA human evaluation panel accurately assesses the company's unique communication style and preferences to select the optimal model.\n\nIncorrect answer analysis\n\nA: Built-in prompts provide general evaluation and cannot reflect company-specific style.\n\nC: Public leaderboards use general performance metrics and do not reflect specific enterprise requirements.\n\nD: Latency is a technical performance metric and is unrelated to content style."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 51,
+    "question": "이미지 분류 작업에 사용되는 기초 모델(FM)의 정확도를 평가하는 전략은 무엇입니까?",
+    "questionEn": "Which strategy evaluates the accuracy of a foundation model (FM) that is used in image classification tasks?",
+    "options": [
+      "모델에 사용된 리소스의 총 비용을 계산합니다.",
+      "사전 정의된 벤치마크 데이터 세트를 기준으로 모델의 정확도를 측정합니다.",
+      "신경망의 계층 수를 셉니다.",
+      "모델에서 처리된 이미지의 색상 정확도를 평가합니다."
+    ],
+    "optionsEn": [
+      "Calculate the total cost of resources used by the model.",
+      "Measure the model's accuracy against a predefined benchmark dataset.",
+      "Count the number of layers in the neural network.",
+      "Assess the color accuracy of images processed by the model."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nImageNet, COCO 등 표준 벤치마크로 정확도, 정밀도, 재현율 등 객관적 성능 지표를 측정합니다.\n\n오답 분석\n\nA: 컴퓨팅 비용은 효율성 지표로 모델 정확도와 별개입니다.\n\nC: 레이어 수는 모델 복잡도로 성능과 간접적 관계입니다.\n\nD: 색상 정확도는 이미지 품질이지 분류 정확도가 아닙니다.",
+    "explanationEn": "정답: B\n\nStandard benchmarks such as ImageNet and COCO measure objective performance metrics including accuracy, precision, and recall.\n\nIncorrect answer analysis\n\nA: Computing cost is an efficiency metric and is separate from model accuracy.\n\nC: The number of layers represents model complexity and has an indirect relationship with performance.\n\nD: Color accuracy is about image quality and is not classification accuracy."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 52,
+    "question": "한 회사가 생성형 AI를 사용하여 솔루션을 구축했습니다. 이 솔루션은 대규모 언어 모델(LLM)을 사용하여 교육 매뉴얼을 영어에서 다른 언어로 번역합니다. 회사에서는 매뉴얼용으로 생성된 텍스트를 검토하여 솔루션의 정확성을 평가하려고 합니다. 이러한 요구 사항을 충족하는 모델 평가 전략은 무엇입니까?",
+    "questionEn": "A company has built a solution by using generative AI. The solution uses large language models (LLMs) to translate training manuals from English into other languages. The company wants to evaluate the accuracy of the solution by examining the text generated for the manuals. Which model evaluation strategy meets these requirements?",
+    "options": [
+      "이중 언어 평가 보조 지표(BLEU)",
+      "평균 제곱 오차(RMSE)",
+      "요약 중심 평가를 위한 재현율 기반 보조 지표(ROUGE)",
+      "F1 점수"
+    ],
+    "optionsEn": [
+      "Bilingual Evaluation Understudy (BLEU)",
+      "Root mean squared error (RMSE)",
+      "Recall-Oriented Understudy for Gisting Evaluation (ROUGE)",
+      "F1 score"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nBLEU는 정확도 중심의 번역 + 요약 평가 지표입니다. 생성된 텍스트가 참조 텍스트 기준으로 얼마나 정확한가를 측정합니다 (n-gram 정확 매칭).\n\n오답 분석\n\nB: RMSE는 연속값 예측 오차로 텍스트 평가에 부적합합니다.\n\nC: ROUGE는 재현율 중심의 요약 + 번역 평가 지표입니다. 생성된 텍스트가 참조 텍스트의 내용을 얼마나 포함했나를 측정합니다.\n\nD: F1 점수는 분류 작업의 정밀도와 재현율의 조합 지표입니다. LLM 응답 평가에도 사용되지만, 번역 품질은 어순과 유창성을 고려하는 BLEU가 더 적합합니다.",
+    "explanationEn": "정답: A\n\nBLEU is a precision-oriented evaluation metric for translation and summarization. It measures how accurate the generated text is compared to the reference text (exact n-gram matching).\n\nIncorrect answer analysis\n\nB: RMSE measures continuous value prediction error and is unsuitable for text evaluation.\n\nC: ROUGE is a recall-oriented evaluation metric for summarization and translation. It measures how much of the reference text's content is covered by the generated text.\n\nD: F1 score is a combined metric of precision and recall for classification tasks. While it is also used for LLM response evaluation, BLEU is more appropriate for translation quality as it considers word order and fluency."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 53,
+    "question": "한 회사에서 헬프 데스크의 질문에 답하기 위해 대규모 언어 모델(LLM)을 미세 조정했습니다. 이 회사는 미세 조정을 통해 모델의 정확도가 향상되었는지 확인하려고 합니다. 회사에서 평가에 사용해야 하는 지표는 무엇입니까?",
+    "questionEn": "A company has fine-tuned a large language model (LLM) to answer questions for a help desk. The company wants to determine if the fine-tuning has enhanced the model's accuracy. Which metric should the company use for the evaluation?",
+    "options": [
+      "정밀도",
+      "첫 번째 토큰까지의 시간",
+      "F1 스코어",
+      "단어 오류율"
+    ],
+    "optionsEn": [
+      "Precision",
+      "Time to first token",
+      "F1 score",
+      "Word error rate"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nF1 점수는 분류 작업의 정밀도와 재현율 조합 지표입니다. LLM의 평가에서는 정확한 토큰 매칭 기반으로 QA나 정보 추출 작업 평가에 활용합니다. 불균형 데이터셋에서도 균형잡힌 평가를 제공합니다.\n\n오답 분석\n\nA: 정밀도만으로는 재현율을 무시하여 전체 성능을 왜곡할 수 있습니다.\n\nB: TTFT는 응답 속도로 정확도와 무관한 성능 지표입니다.\n\nD: WER은 음성 인식 평가로 텍스트 생성과 다른 도메인입니다.",
+    "explanationEn": "정답: C\n\nThe F1 score is a combined metric of precision and recall for classification tasks. In LLM evaluation, it is used for QA and information extraction tasks based on exact token matching. It provides balanced evaluation even on imbalanced datasets.\n\nIncorrect answer analysis\n\nA: Precision alone may distort overall performance by ignoring recall.\n\nB: TTFT is a response speed performance metric and is unrelated to accuracy.\n\nD: WER is for speech recognition evaluation and is a different domain from text generation."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 54,
+    "question": "한 회사에서 Amazon Bedrock을 사용하여 생성 텍스트 요약 모델을 개발했습니다. 이 회사는 Amazon Bedrock 자동 모델 평가 기능을 사용할 예정입니다. 회사에서 모델의 정확도를 평가하기 위해 어떤 지표를 사용해야 합니까?",
+    "questionEn": "A company has developed a generative text summarization model by using Amazon Bedrock. The company will use Amazon Bedrock automatic model evaluation capabilities. Which metric should the company use to evaluate the accuracy of the model?",
+    "options": [
+      "Area Under the ROC Curve(AUC) score",
+      "F1 스코어",
+      "BERTScore",
+      "실제 지식(RWK) 점수"
+    ],
+    "optionsEn": [
+      "Area Under the ROC Curve (AUC) score",
+      "F1 score",
+      "BERTScore",
+      "Real world knowledge (RWK) score"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nBERTScore는 BERT 임베딩 모델을 사용해 생성된 텍스트와 참조 텍스트 간 의미적 유사성을 평가합니다.\n\n오답 분석\n\nA: AUC는 이진 분류기 성능으로 텍스트 품질과 무관합니다.\n\nB: F1은 전통적으로 분류 평가에 사용합니다. LLM의 응답 평가에도 사용되지만, '요약의 정확도' 평가에는 의미적 유사성을 측정하는 BERTScore가 더 적합합니다.\n\nD: RWK는 실제 지식 평가로 요약 품질과 다른 측면입니다.",
+    "explanationEn": "정답: C\n\nBERTScore uses BERT embedding models to evaluate the semantic similarity between generated text and reference text.\n\nIncorrect answer analysis\n\nA: AUC is for binary classifier performance and is unrelated to text quality.\n\nB: F1 is traditionally used for classification evaluation. While it is also used for LLM response evaluation, BERTScore is more appropriate for evaluating 'summary accuracy' as it measures semantic similarity.\n\nD: RWK is for evaluating real-world knowledge and is a different aspect from summary quality."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 55,
+    "question": "한 회사에서 사용자가 외국어를 배울 수 있도록 도와주는 모바일 앱을 도입하고 있습니다. 이 앱은 대규모 언어 모델(LLM)을 호출하여 텍스트의 일관성을 높입니다. 이 회사는 다양한 텍스트 데이터세트를 수집하고 그 데이터세트를 좀 더 읽기 쉬운 버전의 예시로 보완했습니다. 회사는 LLM 출력이 제공된 예제와 비슷해지기를 원합니다. LLM이 이러한 요구 사항을 충족하는지 여부를 평가하기 위해 회사에서 사용해야 하는 지표는 무엇입니까?",
+    "questionEn": "A company is introducing a mobile app that helps users learn foreign languages. The app makes text more coherent by calling a large language model (LLM). The company collected a diverse dataset of text and supplemented the dataset with examples of more readable versions. The company wants the LLM output to resemble the provided examples. Which metric should the company use to assess whether the LLM meets these requirements?",
+    "options": [
+      "손실 함수의 값",
+      "의미적 견고성",
+      "Recall-Oriented Understudy for Gisting Evaluation (ROUGE) score",
+      "텍스트 생성 지연"
+    ],
+    "optionsEn": [
+      "Value of the loss function",
+      "Semantic robustness",
+      "Recall-Oriented Understudy for Gisting Evaluation (ROUGE) score",
+      "Latency of the text generation"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nROUGE는 재현율 중심의 요약 + 번역 평가 지표입니다. 생성된 텍스트가 참조 텍스트의 내용을 얼마나 포함했나를 측정합니다 (n-gram 중첩 측정).\n\n오답 분석\n\nA: 손실 함수는 훈련 과정에서 모델의 예측과 정답 간의 차이를 수치화하는 최적화 지표로 출력 품질을 직접 측정할 수 없습니다.\n\nB: 의미적 견고성은 표준화된 측정 지표가 아닙니다.\n\nD: 생성 지연시간은 성능 지표로 텍스트 품질과 무관합니다.",
+    "explanationEn": "정답: C\n\nROUGE is a recall-oriented evaluation metric for summarization and translation. It measures how much of the reference text's content is covered by the generated text (n-gram overlap measurement).\n\nIncorrect answer analysis\n\nA: A loss function is an optimization metric that quantifies the difference between model predictions and correct answers during training and cannot directly measure output quality.\n\nB: Semantic robustness is not a standardized measurement metric.\n\nD: Generation latency is a performance metric and is unrelated to text quality."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 56,
+    "question": "F1 점수는 기초 모델(FM) 성능의 맥락에서 무엇을 측정합니까?",
+    "questionEn": "What does an F1 score measure in the context of foundation model (FM) performance?",
+    "options": [
+      "모델 정밀도 및 재현율",
+      "응답을 생성하는 모델 속도",
+      "모델 운영의 재정적 비용",
+      "모델 계산의 에너지 효율성"
+    ],
+    "optionsEn": [
+      "Model precision and recall.",
+      "Model speed in generating responses.",
+      "Financial cost of operating the model.",
+      "Energy efficiency of the model's computations."
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nF1 점수는 분류 작업의 정밀도와 재현율 조합 지표입니다. LLM의 평가에서는 정확한 토큰 매칭 기반으로 QA나 정보 추출 작업 평가에 활용합니다. 불균형 데이터셋에서도 균형잡힌 평가를 제공합니다.\n\n오답 분석\n\nB: 응답 생성 속도는 지연시간으로 별도 측정합니다.\n\nC: 운영 비용은 재무 지표로 F1과 무관합니다.\n\nD: 에너지 효율은 환경 지표로 성능과 별개입니다.",
+    "explanationEn": "정답: A\n\nThe F1 score is a combined metric of precision and recall for classification tasks. In LLM evaluation, it is used for QA and information extraction tasks based on exact token matching. It provides balanced evaluation even on imbalanced datasets.\n\nIncorrect answer analysis\n\nB: Response generation speed is separately measured as latency.\n\nC: Operational cost is a financial metric and is unrelated to F1.\n\nD: Energy efficiency is an environmental metric and is separate from performance."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 57,
+    "question": "텍스트 요약 작업을 위한 기초 모델(FM)의 성능을 평가하는 데 사용되는 지표는 무엇입니까?",
+    "questionEn": "Which metric is used to evaluate the performance of foundation models (FMs) for text summarization tasks?",
+    "options": [
+      "F1 score",
+      "Bilingual Evaluation Understudy(BLEU) score",
+      "Accuracy",
+      "Mean squared error (MSE)"
+    ],
+    "optionsEn": [
+      "F1 score",
+      "Bilingual Evaluation Understudy (BLEU) score",
+      "Accuracy",
+      "Mean squared error (MSE)"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nBLEU는 정확도 중심의 번역 + 요약 평가 지표입니다. 생성된 텍스트가 참조 텍스트 기준으로 얼마나 정확한가를 측정합니다 (n-gram 정확 매칭).\n\n오답 분석\n\nA: F1 점수는 분류 작업의 정밀도와 재현율의 조합 지표입니다. LLM의 텍스트 생성 및 QA 작업 평가에 사용되기도 합니다.\n\nC: 정확도는 분류 작업의 평가 지표입니다. 전체 예측(TP + FP + TN + FN) 중 올바른 예측(TP + TN)의 비율입니다. 텍스트 생성 품질 평가에 부적합합니다.\n\nD: MSE는 회귀 문제(연속값)의 예측 오차 측정 지표입니다.",
+    "explanationEn": "정답: B\n\nBLEU is a precision-oriented evaluation metric for translation and summarization. It measures how accurate the generated text is compared to the reference text (exact n-gram matching).\n\nIncorrect answer analysis\n\nA: The F1 score is a combined metric of precision and recall for classification tasks. It is also used for LLM text generation and QA task evaluation.\n\nC: Accuracy is an evaluation metric for classification tasks. It measures the ratio of correct predictions (TP + TN) to total predictions (TP + FP + TN + FN). It is unsuitable for evaluating text generation quality.\n\nD: MSE is a metric for measuring prediction error in regression problems (continuous values)."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 58,
+    "question": "회사가 전 세계 고객의 문제를 처리하는 고객 서비스 팀을 돕기 위해 번역 도구를 설정했습니다. 회사는 번역 도구의 성능을 평가하려고 합니다. 회사는 도구의 응답과 실제 사람의 응답을 비교하는 병렬 데이터 프로세스를 설정합니다. 두 응답 세트 모두 동일한 문서 세트에서 생성됩니다. 번역 도구를 평가하기 위해 회사가 사용해야 하는 전략은 무엇입니까?",
+    "questionEn": "A company has set up a translation tool to help its customer service team handle issues from customers around the world. The company wants to evaluate the performance of the translation tool. The company sets up a parallel data process that compares the responses from the tool to responses from actual humans. Both sets of responses are generated on the same set of documents. Which strategy should the company use to evaluate the translation tool?",
+    "options": [
+      "BLEU(Bilingual Evaluation Understudy) 점수를 사용하여 두 방법의 절대 번역 품질을 추정합니다.",
+      "BLEU(Bilingual Evaluation Understudy) 점수를 사용하여 두 방법의 상대 번역 품질을 추정합니다.",
+      "BERTScore를 사용하여 두 방법의 절대 번역 품질을 추정합니다.",
+      "BERTScore를 사용하여 두 방법의 상대 번역 품질을 추정합니다."
+    ],
+    "optionsEn": [
+      "Use the Bilingual Evaluation Understudy (BLEU) score to estimate the absolute translation quality of the two methods.",
+      "Use the Bilingual Evaluation Understudy (BLEU) score to estimate the relative translation quality of the two methods.",
+      "Use the BERTScore to estimate the absolute translation quality of the two methods.",
+      "Use the BERTScore to estimate the relative translation quality of the two methods."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nBLEU는 정확도 중심의 번역 + 요약 평가 지표입니다. 생성된 텍스트가 참조 텍스트 기준으로 얼마나 정확한가를 측정합니다 (상대적 품질 비교).\n\n오답 분석\n\nA: BLEU는 참조 번역(인간 번역)과의 비교 없이는 작동하지 않습니다. 절대적 품질 평가는 참조 없이 번역의 독립적인 품질(문법성, 유창성 등)을 측정합니다.\n\nC: BERTScore 역시 절대적 품질 평가가 불가능합니다. 참조 텍스트 없이는 점수를 산출할 수 없는 비교 기반 지표입니다.\n\nD: BERTScore는 BERT 임베딩 모델을 사용해 생성된 텍스트와 참조 텍스트 간 의미적 유사성을 평가합니다 (상대적 비교). 번역 평가에는 BLEU가 더 적합합니다.",
+    "explanationEn": "정답: B\n\nBLEU is a precision-oriented evaluation metric for translation and summarization. It measures how accurate the generated text is compared to the reference text (relative quality comparison).\n\nIncorrect answer analysis\n\nA: BLEU does not work without comparison to a reference translation (human translation). Absolute quality evaluation measures a translation's independent quality (grammar, fluency, etc.) without a reference.\n\nC: BERTScore also cannot perform absolute quality evaluation. It is a comparison-based metric that cannot produce scores without a reference text.\n\nD: BERTScore uses BERT embedding models to evaluate the semantic similarity between generated text and reference text (relative comparison). BLEU is more appropriate for translation evaluation."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 59,
+    "question": "교육 회사가 대상 고객이 십대인 챗봇을 구축하고 있습니다. 회사는 맞춤형 대규모 언어 모델(LLM)을 훈련하고 있습니다. 회사는 챗봇이 창의적인 철자법과 단축어를 사용하여 대상 고객의 언어 스타일로 말하기를 원합니다. LLM의 성능을 평가할 지표는 무엇입니까?",
+    "questionEn": "An education company is building a chatbot whose target audience is teenagers. The company is training a custom large language model (LLM). The company wants the chatbot to speak in the target audience's language style by using creative spelling and shortened words. Which metric will assess the LLM's performance?",
+    "options": [
+      "F1 점수",
+      "BERTScore",
+      "ROUGE(Recall Oriented Understudy for Gisting Evaluation)",
+      "BLEU(Bilingual Evaluation Understudy) 점수"
+    ],
+    "optionsEn": [
+      "F1 score",
+      "BERTScore",
+      "Recall Oriented Understudy for Gisting Evaluation (ROUGE)",
+      "Bilingual Evaluation Understudy (BLEU) score"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nBERTScore는 BERT 임베딩 모델을 사용해 생성된 텍스트와 참조 텍스트 간 의미적 유사성을 평가합니다. 의미적 유사성 평가로 창의적 철자(예: 'u' instead of 'you')와 축약어 같은 10대 언어 스타일의 변형을 효과적으로 포착합니다.\n\n오답 분석\n\nA: F1 점수는 분류 작업의 정밀도와 재현율 조합 지표입니다. LLM의 평가에서는 정확한 토큰 매칭 기반으로 QA나 정보 추출 작업 평가에 활용합니다. 창의적 철자와 축약어 같은 스타일 변형을 평가하지 못합니다.\n\nC: ROUGE는 재현율 중심의 요약 + 번역 평가 지표입니다. 생성된 텍스트가 참조 텍스트의 내용을 얼마나 포함했나를 측정합니다 (n-gram 중첩 측정). 스타일 변형 감지는 제한적입니다.\n\nD: BLEU는 정확도 중심의 번역 + 요약 평가 지표입니다. 생성된 텍스트가 참조 텍스트 기준으로 얼마나 정확한가를 측정합니다 (n-gram 정확 매칭).",
+    "explanationEn": "정답: B\n\nBERTScore uses BERT embedding models to evaluate the semantic similarity between generated text and reference text. Its semantic similarity evaluation effectively captures variations in teenage language styles, such as creative spelling (e.g., 'u' instead of 'you') and abbreviations.\n\nIncorrect answer analysis\n\nA: The F1 score is a combined metric of precision and recall for classification tasks. In LLM evaluation, it is used for QA and information extraction tasks based on exact token matching. It cannot evaluate style variations such as creative spelling and abbreviations.\n\nC: ROUGE is a recall-oriented evaluation metric for summarization and translation. It measures how much of the reference text's content is covered by the generated text (n-gram overlap measurement). Its ability to detect style variations is limited.\n\nD: BLEU is a precision-oriented evaluation metric for translation and summarization. It measures how accurate the generated text is compared to the reference text (exact n-gram matching)."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 60,
+    "question": "회사는 텍스트 요약 작업을 위해 여러 대규모 언어 모델(LLM)을 평가하고 있습니다. 회사는 LLM이 생성하는 요약의 품질을 평가하기 위한 메트릭을 선택해야 합니다. 이 요구 사항을 충족하는 메트릭은 무엇입니까?",
+    "questionEn": "A company is evaluating several large language models (LLMs) for a text summarization task. The company needs to select a metric to evaluate the quality of the summaries that the LLMs generate. Which metric will meet this requirement?",
+    "options": [
+      "재현율",
+      "ROC 곡선 아래 면적(AUC)",
+      "요점 평가를 위한 재현율 지향 대리 평가(ROUGE)",
+      "평균 제곱 오차(MSE)"
+    ],
+    "optionsEn": [
+      "Recall",
+      "Area under the ROC curve (AUC)",
+      "Recall-Oriented Understudy for Gisting Evaluation (ROUGE)",
+      "Mean squared error (MSE)"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nROUGE는 텍스트 요약 품질 평가의 표준 지표입니다. 생성된 요약과 참조 요약 간 n-gram 중복을 측정하여 요약 품질을 정량화합니다.\n\n오답 분석\n\nA: Recall만으로는 요약 품질의 다양한 측면(정확성, 유창성)을 평가하기에 충분하지 않습니다.\n\nB: AUC는 이진 분류 모델 평가용으로 텍스트 생성 품질과 무관합니다.\n\nD: MSE는 회귀 문제의 오차 측정으로 텍스트 요약 평가에 부적합합니다.",
+    "explanationEn": "정답: C\n\nROUGE is the standard metric for evaluating text summarization quality. It quantifies summary quality by measuring n-gram overlap between the generated summary and reference summaries.\n\nIncorrect answer analysis\n\nA: Recall alone is insufficient for evaluating the various aspects of summary quality (accuracy, fluency).\n\nB: AUC is for binary classification model evaluation and is unrelated to text generation quality.\n\nD: MSE is for measuring error in regression problems and is unsuitable for text summarization evaluation."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 61,
+    "question": "한 회사가 Amazon SageMaker AI를 사용하여 여러 언어로 기사 요약을 생성합니다. 이 회사는 여러 언어의 요약 번역 품질을 평가하기 위한 지표가 필요합니다. 이 요구 사항을 충족하는 평가 지표는 무엇입니까?",
+    "questionEn": "A company uses Amazon SageMaker AI to generate article summaries in multiple languages. The company needs a metric to evaluate the quality of the summary translations in multiple languages. Which evaluation metric will meet this requirement?",
+    "options": [
+      "ROUGE(Recall-Oriented Understudy for Gisting Evaluation)",
+      "BLEU(Bilingual Evaluation Understudy)",
+      "AUC(Area Under the ROC Curve)",
+      "Precision"
+    ],
+    "optionsEn": [
+      "Recall-Oriented Understudy for Gisting Evaluation (ROUGE)",
+      "Bilingual Evaluation Understudy (BLEU)",
+      "Area Under the ROC Curve (AUC)",
+      "Precision"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nBLEU(Bilingual Evaluation Understudy)는 참조 번역과의 n-gram 겹침을 비교하여 기계 번역 텍스트의 품질을 측정하므로, 다국어 요약 번역 평가에 적합한 지표입니다.\n\n오답 분석\n\nA: ROUGE는 참조 요약과의 재현율 기반 겹침을 측정하며, 여러 언어에 걸친 번역 품질이 아닌 요약 품질을 위해 설계되었습니다.\n\nC: AUC는 참양성률과 거짓양성률 간의 상충 관계를 측정하여 분류 모델 성능을 평가하며, 텍스트 품질과는 관련이 없습니다.\n\nD: Precision은 분류 작업에서 올바른 양성 예측의 비율을 측정하며, 번역이나 텍스트 생성 품질을 평가하지 않습니다.",
+    "explanationEn": "정답: B\n\nBLEU (Bilingual Evaluation Understudy) measures the quality of machine-translated text by comparing n-gram overlap with reference translations, making it the appropriate metric for evaluating multilingual summary translations.\n\nIncorrect answer analysis\n\nA: ROUGE measures recall-oriented overlap with reference summaries and is designed for summarization quality, not translation quality across languages.\n\nC: AUC evaluates classification model performance by measuring the trade-off between true positive and false positive rates, which is unrelated to text quality.\n\nD: Precision measures the proportion of correct positive predictions in classification tasks and does not evaluate translation or text generation quality."
+  },
+  {
+    "categoryId": "fm-evaluation",
+    "number": 62,
+    "question": "AI 실무자가 프로덕션 환경에서 에이전트 응답의 품질을 평가하기 위해 Amazon Bedrock의 LLM-as-a-judge를 사용하고 있습니다. AI 실무자는 에이전트 응답이 각 프롬프트 또는 질문의 모든 부분을 얼마나 철저하게 다루는지 평가하는 기본 제공 메트릭을 적용하려고 합니다. 이러한 요구 사항을 충족하는 메트릭은 무엇입니까?",
+    "questionEn": "An AI Practitioner is using an LLM-as-a-judge in Amazon Bedrock to evaluate the quality of agent responses in a production environment. The AI practitioner wants to apply a built-in metric that assesses how thoroughly the agent responses address all parts of each prompt or question. Which metric will meet these requirements?",
+    "options": [
+      "Recall-Oriented Understudy for Gisting Evaluation (ROUGE)",
+      "Completeness",
+      "Following instructions",
+      "Refusal"
+    ],
+    "optionsEn": [
+      "Recall-Oriented Understudy for Gisting Evaluation (ROUGE)",
+      "Completeness",
+      "Following instructions",
+      "Refusal"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nCompleteness는 에이전트의 응답이 사용자 프롬프트 또는 질문의 모든 부분을 얼마나 철저하게 다루는지 측정하는 Amazon Bedrock 기본 제공 평가 메트릭입니다.\n\n오답 분석\n\nA: ROUGE는 요약 품질을 위해 생성된 텍스트와 참조 텍스트 간의 텍스트 중복을 측정하며, 응답이 프롬프트의 모든 부분을 얼마나 철저하게 다루는지 측정하지 않습니다.\n\nC: Following instructions는 응답이 특정 지침이나 제약 조건을 준수하는지 평가하며, 질문의 모든 부분을 다루는 철저함을 평가하지 않습니다.\n\nD: Refusal은 모델이 특정 프롬프트에 대한 응답을 적절하게 거부하는지 측정하며, 응답의 철저함과는 관련이 없습니다.",
+    "explanationEn": "정답: B\n\nCompleteness is a built-in Amazon Bedrock evaluation metric that measures how thoroughly an agent's response addresses all parts of a user's prompt or question.\n\nIncorrect answer analysis\n\nA: ROUGE measures text overlap between generated and reference text for summarization quality, not how thoroughly a response addresses all parts of a prompt.\n\nC: Following instructions evaluates whether the response adheres to specific instructions or constraints, not the thoroughness of addressing all parts of a question.\n\nD: Refusal measures whether the model appropriately declines to answer certain prompts, which is unrelated to response thoroughness."
+  }
+]

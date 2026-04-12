@@ -1,0 +1,28 @@
+[
+  {
+    "categoryId": "fm-utilization",
+    "number": 30,
+    "question": "한 회사가 생성형 AI 애플리케이션에 Amazon Bedrock을 사용하고 있습니다. 이 회사는 Amazon Bedrock Guardrails를 사용하여 유해한 사용자 입력과 모델이 생성한 출력을 감지하고 필터링하려고 합니다. 가드레일이 필터링할 수 있는 콘텐츠 카테고리는 무엇입니까? (2개를 선택합니다.)",
+    "questionEn": "A company uses Amazon Bedrock for its generative AI application. The company wants to use Amazon Bedrock Guardrails to detect and filter harmful user inputs and model-generated outputs. Which content categories can the guardrails filter? (Choose two.)",
+    "options": [
+      "증오",
+      "정치",
+      "폭력",
+      "도박",
+      "종교"
+    ],
+    "optionsEn": [
+      "Hate",
+      "Politics",
+      "Violence",
+      "Gambling",
+      "Religion"
+    ],
+    "answer": [
+      0,
+      2
+    ],
+    "explanation": "정답: A, C\n\nBedrock Guardrails는 증오, 모욕, 폭력, 성적 콘텐츠, 위법행위 및 프롬프트 공격 관련 내용을 기본적으로 필터링합니다.\n\n오답 분석\n\nB, D, \nE: 정치, 도박, 종교는 기본 필터 카테고리에 포함되지 않습니다.",
+    "explanationEn": "정답: A, C\n\nBedrock Guardrails filters hate, insults, sexual, violence, misconduct, and prompt attack related content by default.\n\nIncorrect answer analysis\n\nB, D, \nE: Politics, gambling, and religion are not included in the default filter categories."
+  }
+]

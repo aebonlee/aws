@@ -3,7 +3,8 @@ import { useProgress } from '../contexts/ProgressContext'
 import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
-import Quiz, { QuizQuestion } from '../components/Quiz'
+import Quiz from '../components/Quiz'
+import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
   { id: 'threats', title: 'AI 보안 위협' },
@@ -13,18 +14,7 @@ const sections = [
   { id: 'quiz', title: '도장깨기 퀴즈' },
 ]
 
-const quizQuestions: QuizQuestion[] = [
-  { question: '프롬프트 인젝션(Prompt Injection)이란?', options: ['모델 파라미터 변조', '악의적 프롬프트로 FM의 의도된 동작을 우회', 'SQL 인젝션과 동일', 'DDoS 공격'], answer: 1, explanation: '프롬프트 인젝션은 악의적 입력으로 FM의 가드레일을 우회하여 의도치 않은 응답을 유도하는 공격입니다.' },
-  { question: '학습 데이터 오염(Data Poisoning)의 위험은?', options: ['모델 속도 저하', '악의적 데이터로 모델이 잘못된 패턴을 학습', '하드웨어 손상', '네트워크 차단'], answer: 1, explanation: '데이터 오염은 학습 데이터에 악의적 데이터를 주입하여 모델이 편향되거나 잘못된 예측을 하도록 합니다.' },
-  { question: 'AWS IAM의 역할은?', options: ['데이터 암호화', 'ID 및 접근 권한 관리', '네트워크 방화벽', '로그 분석'], answer: 1, explanation: 'IAM은 AWS 리소스에 대한 접근을 제어합니다. 사용자, 역할, 정책으로 최소 권한 원칙을 적용합니다.' },
-  { question: 'AWS KMS의 주요 기능은?', options: ['로그 수집', '암호화 키 생성 및 관리', '위협 탐지', '비용 관리'], answer: 1, explanation: 'KMS(Key Management Service)는 암호화 키를 생성, 저장, 관리하여 데이터 암호화를 지원합니다.' },
-  { question: 'Amazon Macie의 기능은?', options: ['DDoS 방어', 'S3에서 민감 데이터(PII) 자동 탐지', '코드 보안 분석', '인증서 관리'], answer: 1, explanation: 'Macie는 ML을 사용하여 S3에서 PII(개인식별정보)를 자동으로 탐지하고 보호합니다.' },
-  { question: 'AWS CloudTrail의 역할은?', options: ['실시간 위협 탐지', 'AWS API 호출 로깅 및 감사 추적', '데이터 암호화', 'DDoS 방어'], answer: 1, explanation: 'CloudTrail은 AWS 계정의 모든 API 호출을 기록하여 감사, 규정 준수, 보안 분석에 사용됩니다.' },
-  { question: '최소 권한 원칙(Least Privilege)이란?', options: ['모든 사용자에게 관리자 권한 부여', '작업에 필요한 최소한의 권한만 부여', '읽기 권한만 부여', '권한을 부여하지 않음'], answer: 1, explanation: '최소 권한 원칙은 사용자/서비스에게 업무 수행에 필요한 최소한의 권한만 부여하는 보안 원칙입니다.' },
-  { question: 'Amazon GuardDuty의 기능은?', options: ['데이터 암호화', '지능형 위협 탐지 서비스', 'ID 관리', '비용 분석'], answer: 1, explanation: 'GuardDuty는 ML 기반으로 AWS 환경의 악의적 활동과 비정상 동작을 지속적으로 모니터링합니다.' },
-  { question: 'VPC의 보안 역할은?', options: ['데이터 암호화', '논리적으로 격리된 네트워크 환경 제공', '사용자 인증', '로그 분석'], answer: 1, explanation: 'VPC는 AWS 리소스를 논리적으로 격리된 가상 네트워크에서 운영하여 네트워크 수준 보안을 제공합니다.' },
-  { question: 'AI 거버넌스의 핵심 요소가 아닌 것은?', options: ['모델 버전 관리', '규정 준수 감사', '책임 소재 명확화', '마케팅 예산 관리'], answer: 3, explanation: 'AI 거버넌스는 모델 관리, 규정 준수, 책임 소재, 윤리적 사용 등을 다룹니다. 마케팅은 관련 없습니다.' },
-]
+const quizQuestions = getQuestionsByCategory('security-governance')
 
 export default function SecurityGovernance() {
   const { markStudied } = useProgress()

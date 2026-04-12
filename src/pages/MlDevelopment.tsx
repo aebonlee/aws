@@ -3,7 +3,8 @@ import { useProgress } from '../contexts/ProgressContext'
 import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
-import Quiz, { QuizQuestion } from '../components/Quiz'
+import Quiz from '../components/Quiz'
+import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
   { id: 'ec2-families', title: 'EC2 인스턴스 패밀리' },
@@ -14,18 +15,7 @@ const sections = [
   { id: 'quiz', title: '도장깨기 퀴즈' },
 ]
 
-const quizQuestions: QuizQuestion[] = [
-  { question: 'GPU 기반 ML 학습에 적합한 EC2 인스턴스 패밀리는?', options: ['C 패밀리 (컴퓨팅 최적화)', 'P/G 패밀리 (가속 컴퓨팅)', 'R 패밀리 (메모리 최적화)', 'T 패밀리 (범용)'], answer: 1, explanation: 'P 패밀리(NVIDIA GPU)와 G 패밀리는 ML/DL 학습 및 추론에 최적화된 가속 컴퓨팅 인스턴스입니다.' },
-  { question: 'ML 개발 프로세스의 올바른 순서는?', options: ['모델 학습 → 데이터 수집 → 배포 → 평가', '데이터 수집 → 전처리 → 모델 학습 → 평가 → 배포', '평가 → 모델 학습 → 데이터 수집 → 배포', '배포 → 데이터 수집 → 모델 학습 → 평가'], answer: 1, explanation: 'ML 파이프라인: 데이터 수집 → 전처리/피처 엔지니어링 → 모델 학습 → 평가 → 배포/모니터링' },
-  { question: '정밀도(Precision)의 정의는?', options: ['전체 중 맞춘 비율', 'TP / (TP + FP)', 'TP / (TP + FN)', '(TP + TN) / 전체'], answer: 1, explanation: '정밀도 = TP/(TP+FP). 모델이 양성으로 예측한 것 중 실제 양성인 비율입니다.' },
-  { question: '재현율(Recall)이 중요한 상황은?', options: ['스팸 메일 필터링', '질병 진단 (놓치면 위험)', '제품 추천', '이미지 분류'], answer: 1, explanation: '재현율은 실제 양성을 놓치지 않는 것이 중요한 경우(의료 진단, 사기 탐지) 핵심 지표입니다.' },
-  { question: '과적합(Overfitting)의 증상은?', options: ['학습/검증 모두 성능이 낮음', '학습 성능 높고 검증 성능 낮음', '학습 성능 낮고 검증 성능 높음', '학습/검증 모두 성능이 높음'], answer: 1, explanation: '과적합은 학습 데이터에 지나치게 맞춰져 새로운 데이터에 대한 일반화 성능이 떨어지는 현상입니다.' },
-  { question: '과적합 해결 방법이 아닌 것은?', options: ['더 많은 학습 데이터 확보', '드롭아웃(Dropout) 적용', '모델 복잡도 증가', '정규화(Regularization)'], answer: 2, explanation: '모델 복잡도를 증가시키면 과적합이 더 심해집니다. 데이터 증가, 드롭아웃, 정규화가 해결 방법입니다.' },
-  { question: '결측치(Missing Values) 처리 방법이 아닌 것은?', options: ['평균/중앙값으로 대체', '해당 행 제거', '과적합 적용', 'KNN 기반 대체'], answer: 2, explanation: '과적합은 결측치 처리와 무관합니다. 평균/중앙값 대체, 행 삭제, KNN/모델 기반 대체가 일반적 방법입니다.' },
-  { question: 'F1 Score는 어떤 지표의 조화 평균인가?', options: ['정확도와 AUC', '정밀도와 재현율', 'MSE와 RMSE', '편향과 분산'], answer: 1, explanation: 'F1 = 2 × (Precision × Recall) / (Precision + Recall). 정밀도와 재현율의 조화 평균입니다.' },
-  { question: 'Inf 패밀리 인스턴스의 용도는?', options: ['범용 워크로드', 'ML 모델 추론(Inference)', '스토리지 최적화', '네트워크 최적화'], answer: 1, explanation: 'Inf 패밀리(AWS Inferentia 칩)는 ML 추론에 특화된 인스턴스로 비용 효율적입니다.' },
-  { question: '데이터를 학습/검증/테스트로 나누는 일반적 비율은?', options: ['50/25/25', '70/15/15 또는 80/10/10', '90/5/5', '60/30/10'], answer: 1, explanation: '일반적으로 학습 70-80%, 검증 10-15%, 테스트 10-15%로 분할합니다.' },
-]
+const quizQuestions = getQuestionsByCategory('ml-development')
 
 export default function MlDevelopment() {
   const { markStudied } = useProgress()

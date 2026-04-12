@@ -3,7 +3,8 @@ import { useProgress } from '../contexts/ProgressContext'
 import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
-import Quiz, { QuizQuestion } from '../components/Quiz'
+import Quiz from '../components/Quiz'
+import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
   { id: 'ai-ml-dl', title: 'AI / ML / DL 개념' },
@@ -13,18 +14,7 @@ const sections = [
   { id: 'quiz', title: '도장깨기 퀴즈' },
 ]
 
-const quizQuestions: QuizQuestion[] = [
-  { question: 'AI, ML, DL의 관계를 올바르게 설명한 것은?', options: ['ML은 AI와 DL을 모두 포함한다', 'AI ⊃ ML ⊃ DL 관계이다', 'DL이 가장 넓은 개념이다', '모두 동일한 개념이다'], answer: 1, explanation: 'AI가 가장 넓은 개념이며, ML은 AI의 하위, DL은 ML의 하위 분야입니다.' },
-  { question: '레이블이 있는 데이터를 사용하는 ML 유형은?', options: ['비지도 학습', '강화 학습', '지도 학습', '전이 학습'], answer: 2, explanation: '지도 학습(Supervised Learning)은 입력-정답 쌍으로 모델을 학습시킵니다.' },
-  { question: '고객을 구매 패턴별 그룹으로 나눌 때 적합한 ML 유형은?', options: ['지도 학습 - 분류', '비지도 학습 - 클러스터링', '강화 학습', '지도 학습 - 회귀'], answer: 1, explanation: '클러스터링은 레이블 없는 데이터를 유사한 그룹으로 나누는 비지도 학습 기법입니다.' },
-  { question: 'Amazon Rekognition의 주요 기능이 아닌 것은?', options: ['이미지 객체 감지', '얼굴 인식', '자연어 감성 분석', '비디오 콘텐츠 감지'], answer: 2, explanation: '감성 분석은 Amazon Comprehend의 기능입니다. Rekognition은 이미지/비디오 분석 서비스입니다.' },
-  { question: '문서에서 텍스트, 표, 양식을 추출하는 서비스는?', options: ['Comprehend', 'Rekognition', 'Textract', 'Translate'], answer: 2, explanation: 'Amazon Textract는 문서에서 텍스트, 표, 양식(key-value) 데이터를 자동 추출합니다.' },
-  { question: '분류와 회귀의 차이는?', options: ['분류는 연속값, 회귀는 범주형', '분류는 비지도, 회귀는 지도', '분류는 범주형, 회귀는 연속 수치', '차이 없음'], answer: 2, explanation: '분류는 카테고리(스팸/정상), 회귀는 연속 수치(가격, 온도)를 예측합니다.' },
-  { question: 'Amazon Lex의 주요 용도는?', options: ['텍스트→음성', '음성→텍스트', '챗봇/음성봇 구축', '문서 텍스트 추출'], answer: 2, explanation: 'Lex는 대화형 챗봇 구축 서비스로 Alexa와 동일한 기술을 사용합니다.' },
-  { question: '개인화 추천 시스템 구축 서비스는?', options: ['Forecast', 'Personalize', 'Kendra', 'Comprehend'], answer: 1, explanation: 'Amazon Personalize는 실시간 개인화 추천을 제공하는 ML 서비스입니다.' },
-  { question: '강화 학습에서 에이전트가 최대화하려는 것은?', options: ['데이터 양', '보상(Reward)', '레이블 수', '클러스터 수'], answer: 1, explanation: '강화 학습은 에이전트가 환경과 상호작용하며 보상을 최대화하도록 학습합니다.' },
-  { question: 'ML 기반 지능형 엔터프라이즈 검색 서비스는?', options: ['Forecast', 'Rekognition', 'Kendra', 'Polly'], answer: 2, explanation: 'Amazon Kendra는 자연어 질문으로 문서에서 정확한 답변을 찾는 검색 서비스입니다.' },
-]
+const quizQuestions = getQuestionsByCategory('ai-ml-basics')
 
 export default function AiMlBasics() {
   const { markStudied } = useProgress()

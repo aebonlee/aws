@@ -1,0 +1,28 @@
+[
+  {
+    "categoryId": "security-governance",
+    "number": 16,
+    "question": "한 회사가 자사 데이터에 Amazon Q Business를 사용하려고 합니다. 이 회사는 데이터의 보안과 프라이버시를 보장해야 합니다. 이 요구 사항을 충족하는 단계의 조합은 무엇입니까? (2개를 선택하십시오.)",
+    "questionEn": "A company wants to use Amazon Q Business for its data. The company needs to ensure the security and privacy of the data. Which combination of steps will meet these requirements? (Choose two.)",
+    "options": [
+      "Amazon Q Business Enterprise 인덱스에 대해 AWS Key Management Service(AWS KMS) 키를 활성화합니다.",
+      "Amazon Q 인덱스에 대한 교차 계정 액세스를 설정합니다.",
+      "인증을 위해 Amazon Inspector를 구성합니다.",
+      "Amazon Q 인덱스에 대한 퍼블릭 액세스를 허용합니다.",
+      "인증을 위해 AWS Identity and Access Management(IAM)를 구성합니다."
+    ],
+    "optionsEn": [
+      "Enable AWS Key Management Service (AWS KMS) keys for the Amazon Q Business Enterprise index.",
+      "Set up cross-account access to the Amazon Q index.",
+      "Configure Amazon Inspector for authentication.",
+      "Allow public access to the Amazon Q index.",
+      "Configure AWS Identity and Access Management (IAM) for authentication."
+    ],
+    "answer": [
+      0,
+      4
+    ],
+    "explanation": "정답: A, E\n\nAWS KMS 키를 활성화하면 Amazon Q Business 인덱스 데이터를 저장 시 암호화하고(A), IAM을 인증용으로 구성하면(E) 인덱스에 액세스할 수 있는 사용자를 제어하여 데이터 보안과 프라이버시를 함께 보장합니다.\n\n오답 분석\n\nB: 교차 계정 액세스는 공격 표면을 넓히며 데이터 보안이나 프라이버시를 직접적으로 보장하지 않습니다.\n\nC: Amazon Inspector는 EC2/Lambda용 취약성 평가 서비스이며, Amazon Q Business의 인증 메커니즘이 아닙니다.\n\nD: 인덱스에 대한 퍼블릭 액세스를 허용하는 것은 데이터 보안 및 프라이버시 요구 사항과 직접적으로 모순됩니다.",
+    "explanationEn": "정답: A, E\n\nEnabling AWS KMS keys encrypts the Amazon Q Business index data at rest (A), and configuring IAM for authentication (E) controls who can access the index, together ensuring data security and privacy.\n\nIncorrect answer analysis\n\nB: Cross-account access broadens the attack surface and does not directly ensure data security or privacy.\n\nC: Amazon Inspector is a vulnerability assessment service for EC2/Lambda, not an authentication mechanism for Amazon Q Business.\n\nD: Allowing public access to the index directly contradicts the requirement for data security and privacy."
+  }
+]

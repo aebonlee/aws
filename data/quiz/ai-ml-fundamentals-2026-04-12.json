@@ -1,0 +1,1214 @@
+[
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 1,
+    "question": "한 회사에서 유전자 특성에 따라 인간 유전자를 20가지 범주로 분류하려고 합니다. 이 회사는 모델의 내부 메커니즘이 출력에 미치는 영향을 문서화하기 위한 ML 알고리즘이 필요합니다. 이러한 요구 사항을 충족하는 ML 알고리즘은 무엇입니까?",
+    "questionEn": "A company wants to classify human genes into 20 categories based on gene characteristics. The company needs an ML algorithm to document how the inner mechanism of the model affects the output. Which ML algorithm meets these requirements?",
+    "options": [
+      "의사결정 트리",
+      "선형 회귀",
+      "로지스틱 회귀",
+      "신경망"
+    ],
+    "optionsEn": [
+      "Decision trees",
+      "Linear regression",
+      "Logistic regression",
+      "Neural networks"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n의사결정 트리는 각 분기점의 결정 규칙이 명확하여 유전자 분류 과정을 단계별로 추적할 수 있는 해석 가능한 모델입니다. 내부 메커니즘이 트리 구조로 시각화되므로 각 특성이 출력에 미치는 영향을 문서화하기 용이합니다.\n\n오답 분석\n\nB: 선형 회귀는 연속적인 수치값을 예측하는 모델로, 20개 범주로 분류하는 작업에는 부적합합니다.\n\nC: 로지스틱 회귀는 이진 또는 다중 분류를 수행할 수 있지만, 내부 메커니즘이 확률 함수 기반이라 의사결정 트리보다 해석 및 문서화가 제한적입니다.\n\nD: 신경망은 블랙박스 모델로 내부 작동 원리를 외부에서 직접 설명하거나 문서화하기 가장 어렵습니다.",
+    "explanationEn": "정답: A\n\nA decision tree is an interpretable model with clear decision rules at each branch point, allowing step-by-step tracking of the gene classification process. Its internal mechanism is visualized as a tree structure, making it easy to document how each feature affects the output.\n\nIncorrect answer analysis\n\nB: Linear regression is a model for predicting continuous numeric values and is unsuitable for classifying into 20 categories.\n\nC: Logistic regression can perform binary or multi-class classification, but its internal mechanism is based on probability functions, making it more limited in interpretability and documentation than a decision tree.\n\nD: Neural networks are black-box models, making it the hardest to directly explain or document their internal workings."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 2,
+    "question": "한 회사에서 사용자가 다음과 같은 질문에 답하는 교육용 게임을 개발하려고 합니다. \"항아리 하나에는 빨간색 구슬 6개, 녹색 구슬 4개, 노란색 구슬 3개가 들어 있습니다. 항아리에서 녹색 구슬을 선택할 확률은 얼마나 되나요?\" 운영 오버헤드를 최소화하면서 이러한 요구 사항을 충족하는 솔루션은 무엇일까요?",
+    "questionEn": "A company wants to develop an educational game where users answer questions such as the following: \"A jar contains six red, four green, and three yellow marbles. What is the probability of choosing a green marble from the jar?\" Which solution meets these requirements with the LEAST operational overhead?",
+    "options": [
+      "지도 학습을 사용하여 확률을 예측하는 회귀 모델을 만듭니다.",
+      "강화 학습을 사용하여 확률을 반환하도록 모델을 훈련합니다.",
+      "간단한 규칙과 계산을 사용하여 확률을 계산하는 코드를 사용합니다.",
+      "비지도 학습을 사용하여 확률 밀도를 추정하는 모델을 만듭니다."
+    ],
+    "optionsEn": [
+      "Use supervised learning to create a regression model that will predict probability.",
+      "Use reinforcement learning to train a model to return the probability.",
+      "Use code that will calculate probability by using simple rules and computations.",
+      "Use unsupervised learning to create a model that will estimate probability density."
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n확률 계산은 단순한 수학 공식(녹색 구슬 수 / 전체 구슬 수)으로 정확히 표현되므로, ML 모델 없이 코드로 직접 구현하는 것이 가장 효율적입니다. 이 방식은 운영 오버헤드를 최소화하면서 요구 사항을 정확히 충족합니다.\n\n오답 분석\n\nA: 지도 학습 회귀는 복잡한 패턴 학습을 위한 방법으로, 단순한 확률 계산에 적용하기에는 과도합니다.\n\nB: 강화 학습은 순차적 의사결정 문제를 해결하기 위한 방법으로, 고정된 확률 계산에는 부적합합니다.\n\nD: 비지도 학습은 레이블 없는 데이터에서 패턴을 발견하는 방법으로, 명확한 공식이 있는 확률 계산과 맞지 않습니다.",
+    "explanationEn": "정답: C\n\nProbability calculation is precisely expressed by a simple math formula (green marbles / total marbles), making it most efficient to implement directly in code without an ML model. This approach meets the requirements exactly while minimizing operational overhead.\n\nIncorrect answer analysis\n\nA: Supervised learning regression is a method for learning complex patterns and is excessive to apply to simple probability calculation.\n\nB: Reinforcement learning is a method for solving sequential decision-making problems and is unsuitable for fixed probability calculation.\n\nD: Unsupervised learning is a method for discovering patterns in unlabeled data and does not fit probability calculation where a clear formula exists."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 3,
+    "question": "회사는 광고 캠페인에 사용할 수 있는 페타바이트 규모의 레이블이 지정되지 않은 고객 데이터를 보유하고 있습니다. 이 회사는 고객을 등급별로 분류하여 회사 제품을 광고하고 홍보하려고 합니다. 회사는 이러한 요구 사항을 충족하기 위해 어떤 방법론을 사용해야 할까요?",
+    "questionEn": "A company has petabytes of unlabeled customer data to use for an advertisement campaign. The company wants to classify its customers into tiers to advertise and promote the company's products. Which methodology should the company use to meet these requirements?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "인간 피드백을 통한 강화 학습(RLHF)"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Reinforcement learning from human feedback (RLHF)"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n비지도 학습은 레이블이 없는 대량의 데이터에서 고객 세그먼트를 자동으로 발견하여 계층화된 마케팅 전략을 수립하는 데 적합합니다. 레이블 없이도 페타바이트 규모의 고객 데이터를 등급별로 분류할 수 있으므로 이 요구 사항을 충족합니다.\n\n오답 분석\n\nA: 지도 학습은 레이블이 필요하지만, 페타바이트 규모의 데이터를 레이블링하는 것은 현실적이지 않습니다.\n\nC: 강화 학습은 행동과 보상 기반의 방법으로, 고객을 등급별로 분류하는 작업과 맞지 않습니다.\n\nD: RLHF(인간 피드백을 통한 강화 학습)는 LLM 미세 조정에 사용되는 훈련 기법으로, 고객 세분화와는 무관합니다.",
+    "explanationEn": "정답: B\n\nUnsupervised learning is well-suited for automatically discovering customer segments from large amounts of unlabeled data to establish stratified marketing strategies. It can classify petabyte-scale customer data into tiers without labels, meeting these requirements.\n\nIncorrect answer analysis\n\nA: Supervised learning requires labels, but labeling petabyte-scale data is not practical.\n\nC: Reinforcement learning is an action-reward based method and does not fit the task of classifying customers into tiers.\n\nD: RLHF (Reinforcement Learning from Human Feedback) is a training technique used for LLM fine-tuning and is unrelated to customer segmentation."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 4,
+    "question": "한 회사는 AI를 사용하여 위협으로부터 애플리케이션을 보호하고자 합니다. AI 솔루션은 의심스러운 출처에서 온 IP 주소인지 확인해야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족하나요?",
+    "questionEn": "A company wants to use AI to protect its application from threats. The AI solution needs to check if an IP address is from a suspicious source. Which solution meets these requirements?",
+    "options": [
+      "음성 인식 시스템을 구축합니다.",
+      "자연어 처리(NLP) 명명된 개체 인식 시스템을 만듭니다.",
+      "이상 탐지 시스템을 개발합니다.",
+      "사기 예측 시스템을 만듭니다."
+    ],
+    "optionsEn": [
+      "Build a speech recognition system.",
+      "Create a natural language processing (NLP) named entity recognition system.",
+      "Develop an anomaly detection system.",
+      "Create a fraud forecasting system."
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n이상 탐지 시스템은 정상적인 IP 패턴을 학습하고 의심스러운 출처의 비정상 패턴을 자동으로 식별하는 AI 기술입니다. IP 주소가 의심스러운 출처인지 판별해야 한다는 요구 사항에 가장 직접적으로 부합합니다.\n\n오답 분석\n\nA: 음성 인식은 오디오 신호를 텍스트로 변환하는 기술로, IP 주소 분석과는 무관합니다.\n\nB: NER(명명된 개체 인식)은 텍스트에서 특정 개체를 추출하는 기술로, IP 위협 탐지와는 다른 목적을 가집니다.\n\nD: 사기 예측 시스템은 미래의 사기 행위를 예측하는 것으로, 실시간 IP 주소 검증과는 차이가 있습니다.",
+    "explanationEn": "정답: C\n\nAn anomaly detection system is an AI technique that learns normal IP patterns and automatically identifies abnormal patterns from suspicious sources. It most directly meets the requirement to check whether an IP address is from a suspicious source.\n\nIncorrect answer analysis\n\nA: Speech recognition is a technology that converts audio signals to text and is unrelated to IP address analysis.\n\nB: NER (Named Entity Recognition) is a technology for extracting specific entities from text and serves a different purpose from IP threat detection.\n\nD: A fraud prediction system is designed to predict future fraudulent activity, which differs from real-time IP address verification."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 5,
+    "question": "AI 전문가가 동물 사진 데이터베이스를 가지고 있습니다. AI 전문가는 사람의 수작업 없이 사진 속 동물을 자동으로 식별하고 분류하기를 원합니다. 이러한 요구 사항을 충족하는 전략은 무엇일까요?",
+    "questionEn": "An AI practitioner has a database of animal photos. The AI practitioner wants to automatically identify and categorize the animals in the photos without manual human effort. Which strategy meets these requirements?",
+    "options": [
+      "물체 감지",
+      "이상 감지",
+      "명명된 개체 인식",
+      "인페인팅"
+    ],
+    "optionsEn": [
+      "Object detection",
+      "Anomaly detection",
+      "Named entity recognition",
+      "Inpainting"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n객체 탐지는 이미지 내 동물의 위치를 찾고 종류를 자동으로 분류하는 컴퓨터 비전 기술입니다. 사람의 수작업 없이 동물 사진 데이터베이스에서 동물을 자동으로 식별하고 범주화하는 요구 사항에 최적합합니다.\n\n오답 분석\n\nB: 이상 탐지는 비정상적인 패턴을 발견하는 기술로, 정상적인 동물을 범주별로 분류하는 작업과는 다릅니다.\n\nC: NER(명명된 개체 인식)은 텍스트에서 특정 개체를 인식하는 기술로, 이미지 분석과는 무관합니다.\n\nD: 인페인팅은 이미지를 복원하거나 편집하는 기술로, 동물을 식별하고 분류하는 작업과는 다릅니다.",
+    "explanationEn": "정답: A\n\nObject detection is a computer vision technique that locates animals within images and automatically classifies their types. It is optimal for the requirement to automatically identify and categorize animals in a photo database without manual human effort.\n\nIncorrect answer analysis\n\nB: Anomaly detection is a technique for finding abnormal patterns and differs from classifying normal animals by category.\n\nC: NER (Named Entity Recognition) is a technique for recognizing specific entities in text and is unrelated to image analysis.\n\nD: Inpainting is a technique for restoring or editing images and differs from the task of identifying and classifying animals."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 6,
+    "question": "한 회사에서 고객 서비스 챗봇을 만들고 있습니다. 회사에서는 챗봇이 과거의 상호작용과 온라인 리소스를 통해 학습하여 반응을 개선하기를 원합니다. 이러한 자기 개선 기능을 제공하는 AI 학습 전략은 무엇입니까?",
+    "questionEn": "A company is building a customer service chatbot. The company wants the chatbot to improve its responses by learning from past interactions and online resources. Which AI learning strategy provides this self-improvement capability?",
+    "options": [
+      "수동으로 큐레이션한 좋은 반응과 나쁜 반응의 데이터 세트를 사용한 지도 학습",
+      "긍정적인 고객 피드백에 대한 보상을 제공하는 강화 학습",
+      "유사한 고객 문의 클러스터를 찾기 위한 비지도 학습",
+      "지속적으로 업데이트되는 FAQ 데이터베이스를 통한 지도 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning with a manually curated dataset of good responses and bad responses",
+      "Reinforcement learning with rewards for positive customer feedback",
+      "Unsupervised learning to find clusters of similar customer inquiries",
+      "Supervised learning with a continuously updated FAQ database"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n강화 학습은 긍정적인 고객 피드백을 보상 신호로 사용하여 챗봇이 과거 상호작용을 통해 점진적으로 더 나은 응답을 학습하도록 유도합니다. 이 자기 개선 메커니즘이 챗봇이 지속적으로 발전하는 요구 사항을 충족합니다.\n\n오답 분석\n\nA: 정적 데이터셋을 이용한 지도 학습은 한 번 학습 후 고정되어 지속적인 자기 개선 메커니즘이 없습니다.\n\nC: 비지도 학습의 클러스터링은 유사한 문의 패턴을 발견하는 것이지, 응답 품질을 개선하는 것이 아닙니다.\n\nD: FAQ 데이터베이스 업데이트는 사람이 직접 관여하는 수동 과정으로, 자율적인 자기 학습과는 다릅니다.",
+    "explanationEn": "정답: B\n\nReinforcement learning uses positive customer feedback as a reward signal to guide the chatbot to progressively learn better responses through past interactions. This self-improvement mechanism meets the requirement for the chatbot to continuously improve.\n\nIncorrect answer analysis\n\nA: Supervised learning with a static dataset is fixed after a single training run and has no continuous self-improvement mechanism.\n\nC: Clustering in unsupervised learning is for discovering patterns in similar inquiries, not for improving response quality.\n\nD: Updating an FAQ database is a manual process that requires human involvement and differs from autonomous self-learning."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 7,
+    "question": "소프트웨어 회사는 고객을 위한 도구를 만듭니다. 이 회사는 AI를 사용하여 소프트웨어 개발 생산성을 높이고자 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A software company builds tools for customers. The company wants to use AI to increase software development productivity. Which solution will meet these requirements?",
+    "options": [
+      "이진 분류 모델을 사용하여 코드 리뷰를 생성합니다.",
+      "회사의 개발자 도구에 코드 추천 소프트웨어를 설치합니다.",
+      "코드 예측 도구를 설치하여 잠재적 코드 문제를 예측합니다.",
+      "자연어 처리(NLP) 도구를 사용하여 코드를 생성합니다."
+    ],
+    "optionsEn": [
+      "Use a binary classification model to generate code reviews.",
+      "Install code recommendation software in the company's developer tools.",
+      "Install a code forecasting tool to predict potential code issues.",
+      "Use a natural language processing (NLP) tool to generate code."
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\nNLP 기반 코드 생성 도구는 자연어 설명을 코드로 변환하여 소프트웨어 개발 생산성을 직접적으로 향상시킵니다. 개발자가 자연어로 요구 사항을 입력하면 코드가 자동으로 생성되므로 운영 오버헤드 없이 생산성 향상 요구를 충족합니다.\n\n오답 분석\n\nA: 이진 분류 모델은 코드 품질을 좋음/나쁨으로 판단하는 것으로, 코드 생성을 통한 생산성 향상과는 간접적인 관련만 있습니다.\n\nB: 코드 추천 소프트웨어는 자동 완성 수준의 지원을 제공하며, 전체 코드를 생성하는 것보다 생산성 향상 효과가 제한적입니다.\n\nC: 코드 예측 도구는 잠재적 문제를 식별하는 데 집중하므로, 개발 생산성 향상과는 간접적인 관련에 그칩니다.",
+    "explanationEn": "정답: D\n\nNLP-based code generation tools convert natural language descriptions into code, directly improving software development productivity. Because code is automatically generated from natural language requirements entered by developers, this meets the productivity improvement requirement without operational overhead.\n\nIncorrect answer analysis\n\nA: A binary classification model judges code quality as good or bad, which is only indirectly related to improving productivity through code generation.\n\nB: Code recommendation software provides auto-completion level support and has a more limited productivity improvement effect compared to generating full code.\n\nC: Code prediction tools focus on identifying potential issues, so their contribution to improving development productivity is only indirect."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 8,
+    "question": "소매점에서 Amazon SageMaker DeepAR 예측 알고리즘을 사용하여 향후 몇 주 동안 특정 제품에 대한 수요를 예측하려고 합니다. 어떤 유형의 데이터가 이 요구 사항을 충족할 수 있을까요?",
+    "questionEn": "A retail store wants to predict the demand for a specific product for the next few weeks by using the Amazon SageMaker DeepAR forecasting algorithm. Which type of data will meet this requirement?",
+    "options": [
+      "텍스트 데이터",
+      "이미지 데이터",
+      "시계열 데이터",
+      "바이너리 데이터"
+    ],
+    "optionsEn": [
+      "Text data",
+      "Image data",
+      "Time series data",
+      "Binary data"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n시계열 데이터는 시간 순서로 기록된 판매 이력으로, DeepAR 알고리즘이 이를 학습하여 계절성과 트렌드를 파악하고 미래 수요를 예측합니다. DeepAR은 시계열 데이터 예측에 특화된 알고리즘이므로 이 요구 사항에 가장 적합합니다.\n\n오답 분석\n\nA: 텍스트 데이터는 제품 설명이나 리뷰에 해당하며, 시간에 따른 수요 변화를 예측하는 것과는 직접적인 관련이 없습니다.\n\nB: 이미지 데이터는 제품 사진에 해당하며, 판매량 예측을 위한 시계열 입력으로는 부적합합니다.\n\nD: 이진 데이터는 예/아니오 형태의 정보로, 연속적인 수요 변화를 포착하는 시계열 예측에 사용할 수 없습니다.",
+    "explanationEn": "정답: C\n\nTime series data consists of sales records arranged in chronological order, which DeepAR learns to understand seasonality and trends and forecast future demand. DeepAR is an algorithm specialized for time series data forecasting, making this data type the most appropriate for the requirement.\n\nIncorrect answer analysis\n\nA: Text data consists of product descriptions or reviews and has no direct relevance to predicting demand changes over time.\n\nB: Image data consists of product photos and is unsuitable as time series input for sales volume prediction.\n\nD: Binary data is yes/no type information and cannot be used for time series forecasting that captures continuous demand changes."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 9,
+    "question": "AI 전문가가 꽃잎 길이, 꽃잎 너비, 꽃받침 길이, 꽃받침 너비를 기반으로 꽃의 분류를 예측하려고 합니다. 다음 요구 사항을 충족하는 알고리즘은 무엇입니까?",
+    "questionEn": "An AI practitioner wants to predict the classification of flowers based on petal length, petal width, sepal length, and sepal width. Which algorithm meets these requirements?",
+    "options": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Autoregressive Integrated Moving Average (ARIMA)",
+      "Linear regression"
+    ],
+    "optionsEn": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Autoregressive Integrated Moving Average (ARIMA)",
+      "Linear regression"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nk-NN은 레이블이 있는 지도 학습 알고리즘으로, 새로운 데이터를 기존 레이블된 데이터(꽃잎 길이, 꽃잎 너비 등) 중 가장 가까운 k개와 비교하여 분류합니다. 꽃의 수치적 특성으로 종류를 예측하는 분류 작업에 적합합니다.\n\n오답 분석\n\nB: K-means는 레이블이 없는 비지도 학습으로 데이터를 자동으로 군집화하는 용도이며, 특정 카테고리로 분류하는 지도 학습 작업과는 다릅니다.\n\nC: ARIMA는 시계열 데이터의 미래값을 예측하기 위한 알고리즘으로, 꽃의 특성을 기반으로 분류하는 작업에는 부적합합니다.\n\nD: 선형 회귀는 연속적인 수치값을 예측하는 알고리즘으로, 꽃의 종류처럼 이산적인 카테고리를 분류하는 작업에는 사용할 수 없습니다.",
+    "explanationEn": "정답: A\n\nk-NN is a supervised learning algorithm with labels that classifies new data by comparing it with the k nearest labeled data points (petal length, petal width, etc.). It is well-suited for classification tasks that predict a category based on the numerical characteristics of flowers.\n\nIncorrect answer analysis\n\nB: K-means is unsupervised learning without labels used for automatically clustering data, which differs from a supervised learning task that classifies into specific categories.\n\nC: ARIMA is an algorithm for predicting future values of time series data and is unsuitable for classifying flowers based on their characteristics.\n\nD: Linear regression is an algorithm for predicting continuous numerical values and cannot be used for classifying discrete categories such as flower species."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 10,
+    "question": "한 회사는 직원들이 잠재 고객에게 연락할 수 있도록 리드 우선 순위 지정 애플리케이션을 구축하려고 합니다. 애플리케이션은 직원이 도메인 지식과 전문 지식을 기반으로 모델의 다양한 변수에 할당된 가중치를 확인하고 조정할 수 있는 기능을 제공해야 합니다. 어떤 ML 모델 유형이 이러한 요구 사항을 충족합니까?",
+    "questionEn": "A company wants to build a lead prioritization application for its employees to contact potential customers. The application must give employees the ability to view and adjust the weights assigned to different variables in the model based on domain knowledge and expertise. Which ML model type meets these requirements?",
+    "options": [
+      "로지스틱 회귀 모델",
+      "주요 구성 요소를 기반으로 구축된 딥러닝 모델",
+      "K-최근접 이웃(k-NN) 모델",
+      "신경망"
+    ],
+    "optionsEn": [
+      "Logistic regression model",
+      "Deep learning model built on principal components",
+      "K-nearest neighbors (k-NN) model",
+      "Neural network"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n로지스틱 회귀는 각 변수에 할당된 가중치를 명시적으로 확인하고 조정할 수 있어 도메인 지식을 모델에 직접 반영할 수 있습니다. 직원이 전문 지식을 바탕으로 변수 가중치를 조정해야 한다는 요구 사항에 가장 적합합니다.\n\n오답 분석\n\nB: 주성분 분석(PCA) 기반 딥러닝은 원본 변수가 변환된 주성분으로 대체되어 개별 변수를 직접 조정하기가 불가합니다.\n\nC: k-NN은 이웃 데이터 포인트와의 거리를 기반으로 분류하는 방식으로, 변수별 가중치라는 개념 자체가 없습니다.\n\nD: 신경망은 복잡한 내부 구조를 가진 블랙박스 모델로, 개별 변수의 영향도를 파악하거나 직접 조정하기가 어렵습니다.",
+    "explanationEn": "정답: A\n\nLogistic regression allows explicit verification and adjustment of the weight assigned to each variable, enabling domain knowledge to be directly reflected in the model. It is the best fit for the requirement that employees adjust variable weights based on their expertise.\n\nIncorrect answer analysis\n\nB: Deep learning based on principal component analysis (PCA) replaces original variables with transformed principal components, making it impossible to directly adjust individual variables.\n\nC: k-NN classifies based on distance to neighboring data points, so the concept of per-variable weights does not exist.\n\nD: Neural networks are black-box models with complex internal structures, making it difficult to identify or directly adjust the influence of individual variables."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 11,
+    "question": "기업은 다양한 동물 유형의 이미지를 분류하기 위해 ML 모델을 학습해야 합니다. 이 회사는 레이블이 지정된 이미지로 구성된 대규모 데이터 세트를 보유하고 있으며 더 이상 데이터에 레이블을 지정하지 않을 예정입니다. 회사에서 모델을 학습할 때 어떤 유형의 학습을 사용해야 할까요?",
+    "questionEn": "A company needs to train an ML model to classify images of different types of animals. The company has a large dataset of labeled images and will not label more data. Which type of learning should the company use to train the model?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "능동적 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Active learning"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n레이블이 지정된 대량의 이미지 데이터가 이미 확보되어 있고 추가 레이블링이 불필요하므로, 지도 학습으로 직접 분류 모델을 훈련할 수 있습니다. 레이블된 데이터를 활용하여 동물 유형을 분류하는 이 시나리오는 지도 학습의 전형적인 사용 사례에 해당합니다.\n\n오답 분석\n\nB: 비지도 학습은 레이블이 없는 데이터에서 패턴을 발견하는 방법으로, 레이블된 데이터가 있는 이 경우에는 적합하지 않습니다.\n\nC: 강화 학습은 환경과의 상호작용을 통한 순차적 의사결정 문제를 해결하는 방법으로, 이미지 분류와는 다릅니다.\n\nD: 능동 학습은 모델이 불확실한 데이터에 대해 추가 레이블링을 요청하는 방법으로, 더 이상 레이블링하지 않는다는 조건과 맞지 않습니다.",
+    "explanationEn": "정답: A\n\nSince a large dataset of labeled images is already available and no additional labeling is needed, a classification model can be directly trained using supervised learning. This scenario of classifying animal types using labeled data is a typical use case for supervised learning.\n\nIncorrect answer analysis\n\nB: Unsupervised learning is a method for discovering patterns in unlabeled data and is not appropriate for this case where labeled data is available.\n\nC: Reinforcement learning is a method for solving sequential decision-making problems through interaction with an environment and differs from image classification.\n\nD: Active learning is a method in which a model requests additional labeling for uncertain data, which conflicts with the condition that no more labeling will be done."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 12,
+    "question": "제조 회사는 AI를 사용하여 제품을 검사하고 손상이나 결함을 찾아냅니다. 회사는 어떤 유형의 AI 애플리케이션을 사용하고 있나요?",
+    "questionEn": "A manufacturing company uses AI to inspect products and find any damages or defects. Which type of AI application is the company using?",
+    "options": [
+      "추천 시스템",
+      "자연어 처리(NLP)",
+      "컴퓨터 비전",
+      "이미지 프로세싱"
+    ],
+    "optionsEn": [
+      "Recommendation system",
+      "Natural language processing (NLP)",
+      "Computer vision",
+      "Image processing"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n컴퓨터 비전은 이미지에서 객체를 인식하고 분류하는 AI 분야로, 제품의 손상이나 결함을 시각적으로 탐지하는 검사 작업에 직접 적용할 수 있습니다. 이미지를 분석하여 결함 유무를 판단하는 이 사용 사례는 컴퓨터 비전의 전형적인 응용에 해당합니다.\n\n오답 분석\n\nA: 추천 시스템은 사용자 행동 데이터를 분석하여 선호도를 예측하는 기술로, 시각적 제품 검사와는 다른 목적을 가집니다.\n\nB: NLP는 텍스트나 언어 데이터를 처리하는 기술로, 이미지를 통한 시각적 검사와는 무관합니다.\n\nD: 이미지 처리는 이미지를 변환하거나 향상시키는 전처리 기술이며, AI가 결함을 스스로 인식하고 분류하는 컴퓨터 비전과는 구별됩니다.",
+    "explanationEn": "정답: C\n\nComputer vision is an AI field that recognizes and classifies objects in images, and can be directly applied to inspection tasks that visually detect product damage or defects. This use case of analyzing images to determine the presence of defects is a typical application of computer vision.\n\nIncorrect answer analysis\n\nA: Recommendation systems analyze user behavior data to predict preferences, serving a different purpose from visual product inspection.\n\nB: NLP is a technology for processing text or language data and is unrelated to visual inspection through images.\n\nD: Image processing is a preprocessing technique for transforming or enhancing images, and is distinct from computer vision where AI independently recognizes and classifies defects."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 13,
+    "question": "한 회사가 시각 장애가 있는 사용자를 위한 모바일 앱을 구축하고 있습니다. 앱은 사용자가 말하는 것을 듣고 음성 응답을 제공할 수 있어야 합니다. 어떤 솔루션이 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A company is building a mobile app for users who have a visual impairment. The app must be able to hear what users say and provide voice responses. Which solution will meet these requirements?",
+    "options": [
+      "딥러닝 신경망을 사용하여 음성 인식을 수행합니다.",
+      "숫자형 데이터의 패턴을 검색하기 위한 ML 모델을 구축합니다.",
+      "생성형 AI 요약을 사용하여 인간과 유사한 텍스트를 생성합니다.",
+      "이미지 분류 및 인식을 위한 맞춤형 모델을 구축합니다."
+    ],
+    "optionsEn": [
+      "Use a deep learning neural network to perform speech recognition.",
+      "Build ML models to search for patterns in numeric data.",
+      "Use generative AI summarization to generate human-like text.",
+      "Build custom models for image classification and recognition."
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n딥러닝 신경망 기반 음성 인식은 시각 장애인의 음성을 텍스트로 변환하여 앱이 해석하고, TTS를 통해 음성 응답을 생성하는 흐름을 구현합니다. 시각 대신 음성에 의존하는 시각 장애인 사용자를 위한 앱 요구 사항에 가장 직접적으로 부합합니다.\n\n오답 분석\n\nB: 숫자 데이터의 패턴 탐색은 시각 장애인을 위한 음성 인터페이스 앱과는 직접적인 관련이 없습니다.\n\nC: 생성형 AI 텍스트 요약은 음성 인터페이스의 핵심 기능이 아니며, 시각 장애인 앱의 주요 요구 사항에 해당하지 않습니다.\n\nD: 이미지 분류 및 인식은 시각적 정보를 처리하는 기술로, 시각을 사용하지 못하는 대상 사용자에게는 부적합합니다.",
+    "explanationEn": "정답: A\n\nDeep learning neural network-based speech recognition implements a flow that converts a visually impaired user's speech to text for the app to interpret, then generates a voice response via TTS. It most directly meets the app requirements for visually impaired users who rely on voice instead of sight.\n\nIncorrect answer analysis\n\nB: Searching for patterns in numerical data has no direct relevance to a voice interface app for visually impaired users.\n\nC: Generative AI text summarization is not a core function of a voice interface and does not correspond to the main requirements of an app for visually impaired users.\n\nD: Image classification and recognition is a technology for processing visual information and is unsuitable for target users who cannot use their sight."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 14,
+    "question": "한 회사가 비즈니스 운영과 효율성을 개선하기 위해 ML 애플리케이션을 개발하고자 합니다. 다음 목록에서 각 사용 사례에 맞는 ML 패러다임을 선택하세요. 각 ML 패러다임은 한 번 이상 선택해야 합니다. Binary classification -> ? Multi-class classification -> ? K-means clustering -> ? Dimensionality reduction -> ?",
+    "questionEn": "A company wants to develop ML applications to improve business operations and efficiency. Select the correct ML paradigm from the following list for each use case. Each ML paradigm should be selected one or more times. Binary classification -> ? Multi-class classification -> ? K-means clustering -> ? Dimensionality reduction -> ?",
+    "options": [
+      "지도 학습, 지도 학습, 비지도 학습, 비지도 학습",
+      "비지도 학습, 비지도 학습, 지도 학습, 지도 학습",
+      "지도 학습, 비지도 학습, 지도 학습, 비지도 학습",
+      "비지도 학습, 지도 학습, 비지도 학습, 지도 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning, Supervised learning, Unsupervised learning, Unsupervised learning",
+      "Unsupervised learning, Unsupervised learning, Supervised learning, Supervised learning",
+      "Supervised learning, Unsupervised learning, Supervised learning, Unsupervised learning",
+      "Unsupervised learning, Supervised learning, Unsupervised learning, Supervised learning"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n이진 분류와 다중 분류는 레이블된 데이터를 사용하는 지도 학습에 해당합니다. K-means 클러스터링과 차원 축소는 레이블 없이 데이터의 구조를 파악하는 비지도 학습 패러다임입니다.",
+    "explanationEn": "정답: A\n\nBinary classification and multi-class classification belong to supervised learning, which uses labeled data. K-means clustering and dimensionality reduction are unsupervised learning paradigms that discover data structure without labels."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 15,
+    "question": "어떤 회사는 고객의 인구 통계와 구매 패턴을 기반으로 고객을 위한 그룹을 찾고 싶어합니다. 이 요구 사항을 충족하기 위해 회사는 어떤 알고리즘을 사용해야 할까요?",
+    "questionEn": "A company wants to find groups for its customers based on the customers' demographics and buying patterns. Which algorithm should the company use to meet this requirement?",
+    "options": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Decision tree",
+      "Support vector machine"
+    ],
+    "optionsEn": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Decision tree",
+      "Support vector machine"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nK-means는 레이블이 없는 데이터에서 유사한 패턴을 찾아 자동으로 k개의 그룹을 생성하는 비지도 학습 알고리즘입니다. 고객의 인구 통계와 구매 패턴을 바탕으로 고객 그룹을 자동으로 발견하는 이 요구 사항에 적합합니다.\n\n오답 분석\n\nA: k-NN은 이미 레이블된 데이터가 필요한 지도 학습으로, 새로운 그룹을 생성하는 것이 아닌 기존 그룹으로 새 데이터를 분류합니다.\n\nC: 의사결정 트리는 레이블이 필요한 지도 학습으로 분류나 회귀에 사용되며, 레이블 없는 데이터에서 그룹을 자동으로 찾는 기능은 없습니다.\n\nD: SVM은 레이블 기반의 분류 및 회귀 알고리즘으로, 레이블이 없는 데이터에서 새로운 그룹을 발견하는 데는 사용할 수 없습니다.",
+    "explanationEn": "정답: B\n\nK-means is an unsupervised learning algorithm that finds similar patterns in unlabeled data to automatically create k groups. It is appropriate for the requirement of automatically discovering customer groups based on demographics and buying patterns.\n\nIncorrect answer analysis\n\nA: k-NN is supervised learning that requires already labeled data, classifying new data into existing groups rather than creating new ones.\n\nC: Decision tree is supervised learning that requires labels for classification or regression, and has no capability to automatically discover groups from unlabeled data.\n\nD: SVM is a label-based classification and regression algorithm and cannot be used to discover new groups in unlabeled data."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 16,
+    "question": "한 회사에서 도메인별 모델을 사용하고 있습니다. 회사는 처음부터 새 모델을 만드는 것을 피하고자 합니다. 대신 회사는 사전 학습된 모델을 조정하여 새로운 관련 작업을 위한 모델을 만들고자 합니다. 어떤 ML 전략이 이러한 요구 사항을 충족할까요?",
+    "questionEn": "A company is using domain-specific models. The company wants to avoid creating new models from the beginning. The company instead wants to adapt pre-trained models to create models for new, related tasks. Which ML strategy meets these requirements?",
+    "options": [
+      "에포크 수를 늘립니다.",
+      "전이 학습을 사용합니다.",
+      "에포크 수를 줄입니다.",
+      "비지도 학습을 사용합니다."
+    ],
+    "optionsEn": [
+      "Increase the number of epochs.",
+      "Use transfer learning.",
+      "Decrease the number of epochs.",
+      "Use unsupervised learning."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n전이 학습은 사전 훈련된 모델이 학습한 지식과 특성을 새로운 관련 작업에 재활용하는 ML 전략입니다. 처음부터 새 모델을 만들지 않고 사전 훈련 모델을 조정하여 새 작업에 적용한다는 요구 사항에 정확히 부합합니다.\n\n오답 분석\n\nA: 에포크 수를 늘리는 것은 기존 모델에 대한 추가 훈련에 불과하며, 사전 훈련된 지식을 새로운 작업에 전이하는 개념과는 다릅니다.\n\nC: 에포크 수를 줄이면 충분한 학습이 이루어지지 않아 성능이 저하되는 과소적합(underfitting)이 발생합니다.\n\nD: 비지도 학습은 레이블 없는 데이터에서 패턴을 찾는 방법으로, 사전 훈련된 모델을 새 작업에 조정하는 전이 학습과는 다릅니다.",
+    "explanationEn": "정답: B\n\nTransfer learning is an ML strategy that reuses the knowledge and features learned by a pre-trained model for a new related task. It precisely meets the requirement of adapting pre-trained models to new tasks without creating models from scratch.\n\nIncorrect answer analysis\n\nA: Increasing the number of epochs is merely additional training of the existing model and differs from the concept of transferring pre-trained knowledge to a new task.\n\nC: Decreasing the number of epochs results in insufficient learning, causing underfitting and performance degradation.\n\nD: Unsupervised learning is a method for finding patterns in unlabeled data and differs from transfer learning, which adapts a pre-trained model to a new task."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 17,
+    "question": "수치 예측을 수행하는 AI 모델 유형은 무엇입니까?",
+    "questionEn": "Which type of AI model makes numeric predictions?",
+    "options": [
+      "Diffusion",
+      "Regression",
+      "Transformer",
+      "Multi-modal"
+    ],
+    "optionsEn": [
+      "Diffusion",
+      "Regression",
+      "Transformer",
+      "Multi-modal"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n회귀 모델은 연속적인 수치값을 예측하는 ML 모델로, 가격, 온도, 판매량 등 정량적 결과를 예측하는 데 사용됩니다. 수치값을 출력으로 예측해야 하는 요구 사항에 직접 부합하는 모델 유형입니다.\n\n오답 분석\n\nA: 확산 모델은 노이즈에서 이미지를 생성하는 생성형 AI 기술로, 수치값 예측과는 무관합니다.\n\nC: 트랜스포머는 어텐션 메커니즘을 기반으로 하는 신경망 아키텍처 유형으로, 특정 예측 작업 유형을 가리키는 분류가 아닙니다.\n\nD: Multi-modal 모델은 텍스트, 이미지, 오디오 등 여러 형태의 입출력을 동시에 처리하는 모델 유형으로, 예측 방식에 따른 분류인 회귀와는 다른 기준의 분류입니다.",
+    "explanationEn": "정답: B\n\nA regression model is an ML model that predicts continuous numerical values, used for quantitative predictions such as price, temperature, and sales volume. It is the model type that directly meets the requirement to predict a numerical value as output.\n\nIncorrect answer analysis\n\nA: A diffusion model is a generative AI technique that generates images from noise and is unrelated to numerical value prediction.\n\nC: A transformer is a neural network architecture type based on an attention mechanism and is not a classification referring to a specific prediction task type.\n\nD: A Multi-modal model is a model type that simultaneously processes multiple forms of input and output such as text, image, and audio, and is a different classification criterion from regression, which is categorized by prediction method."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 18,
+    "question": "한 금융회사가 거래 데이터를 기반으로 모든 신용카드 활동을 사기 가능성 또는 비사기로 표시하려고 합니다. 이 요구사항을 충족하는 ML 모델 유형은 무엇입니까?",
+    "questionEn": "A financial company wants to flag all credit card activity as possibly fraudulent or non-fraudulent based on transaction data. Which type of ML model meets these requirements?",
+    "options": [
+      "Regression",
+      "Diffusion",
+      "Binary classification",
+      "Multi-class classification"
+    ],
+    "optionsEn": [
+      "Regression",
+      "Diffusion",
+      "Binary classification",
+      "Multi-class classification"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n이진 분류는 거래를 사기 가능성 있음/없음의 두 카테고리로 분류하는 모델로, 신용카드 사기 탐지의 표준 접근법입니다. 모든 카드 활동에 두 가지 레이블 중 하나를 지정해야 하는 요구 사항에 정확히 부합합니다.\n\n오답 분석\n\nA: 회귀는 연속적인 수치값을 예측하는 모델로, 사기 여부를 플래그로 지정하는 이진 분류 작업과는 다릅니다.\n\nB: 확산 모델은 이미지와 같은 데이터를 생성하는 생성형 AI 모델로, 거래를 분류하는 작업과는 무관합니다.\n\nD: 다중 분류는 3개 이상의 카테고리로 분류하는 모델로, 사기/정상의 두 카테고리만 필요한 이 경우에는 불필요하게 복잡합니다.",
+    "explanationEn": "정답: C\n\nBinary classification is a model that classifies transactions into two categories—possibly fraudulent or non-fraudulent—and is the standard approach for credit card fraud detection. It precisely meets the requirement to flag every card activity with one of two labels.\n\nIncorrect answer analysis\n\nA: Regression is a model that predicts continuous numerical values and differs from the binary classification task of flagging fraud.\n\nB: A diffusion model is a generative AI model that generates data such as images and is unrelated to the task of classifying transactions.\n\nD: Multi-class classification is a model that classifies into three or more categories, which is unnecessarily complex for this case that only requires two categories: fraud and normal."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 19,
+    "question": "AWS에서 AI 모델을 훈련할 때 데이터 규정 준수와 개인정보 보호를 보장하는 ML 기법은 무엇입니까?",
+    "questionEn": "Which ML technique ensures data compliance and privacy when training AI models on AWS?",
+    "options": [
+      "강화 학습",
+      "전이 학습",
+      "연합 학습",
+      "비지도 학습"
+    ],
+    "optionsEn": [
+      "Reinforcement learning",
+      "Transfer learning",
+      "Federated learning",
+      "Unsupervised learning"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n연합 학습은 데이터를 중앙 서버로 이동시키지 않고 데이터가 존재하는 분산된 위치에서 모델을 각각 훈련하여 모델 업데이트만 집계하는 기법입니다. 원본 데이터가 로컬에 유지되므로 데이터 규정 준수와 개인정보 보호 요구 사항을 충족합니다.\n\n오답 분석\n\nA: 강화 학습은 환경과의 상호작용에서 보상을 통해 최적 행동을 학습하는 방법으로, 데이터 프라이버시 보장과는 무관합니다.\n\nB: 전이 학습은 사전 훈련된 모델의 지식을 새 작업에 전달하는 기법으로, 데이터 프라이버시 보장 메커니즘과는 별개입니다.\n\nD: 비지도 학습은 레이블 없는 데이터에서 패턴을 발견하는 학습 방식으로, 데이터를 분산 유지하여 프라이버시를 보장하는 것과는 다릅니다.",
+    "explanationEn": "정답: C\n\nFederated learning is a technique that trains models separately at distributed locations where data resides without moving it to a central server, then aggregates only the model updates. Since the original data remains local, it meets the requirements for data compliance and privacy protection.\n\nIncorrect answer analysis\n\nA: Reinforcement learning is a method for learning optimal actions through rewards from interactions with an environment and is unrelated to ensuring data privacy.\n\nB: Transfer learning is a technique for transferring knowledge from a pre-trained model to a new task and is separate from data privacy assurance mechanisms.\n\nD: Unsupervised learning is a learning method that discovers patterns in unlabeled data and differs from keeping data distributed to ensure privacy."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 20,
+    "question": "올바른 출력 값으로 레이블이 지정된 훈련 데이터를 사용하는 ML 기법은 무엇입니까?",
+    "questionEn": "Which ML technique uses training data that is labeled with the correct output values?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "전이 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Transfer learning"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n지도 학습은 올바른 출력값으로 레이블이 지정된 훈련 데이터를 사용하여 입력-출력 간의 매핑을 학습하는 기법입니다. 회귀, 의사결정 트리, k-NN 등이 지도 학습의 대표적인 예에 해당합니다.\n\n오답 분석\n\nB: 비지도 학습은 레이블이 없는 데이터에서 패턴을 발견하는 학습 기법으로, K-means 클러스터링, 차원 축소, 이상 탐지 등이 해당합니다.\n\nC: 강화 학습은 환경과의 상호작용에서 보상 신호를 통해 최적의 행동을 학습하는 방식으로, 레이블된 훈련 데이터를 사용하지 않습니다.\n\nD: 전이 학습은 사전 학습된 모델의 지식을 재활용하여 새로운 작업에 대한 학습 시간을 줄이는 기법으로, 레이블 데이터 사용 방식을 정의하는 것과는 다른 개념입니다.",
+    "explanationEn": "정답: A\n\nSupervised learning is a technique that uses training data labeled with correct output values to learn the mapping between inputs and outputs. Regression, decision trees, and k-NN are representative examples of supervised learning.\n\nIncorrect answer analysis\n\nB: Unsupervised learning is a technique that discovers patterns from unlabeled data, including K-means clustering, dimensionality reduction, and anomaly detection.\n\nC: Reinforcement learning is a method that learns optimal actions through reward signals from interactions with an environment and does not use labeled training data.\n\nD: Transfer learning is a technique that reuses knowledge from pre-trained models to reduce learning time for new tasks, which is a different concept from defining how labeled data is used."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 21,
+    "question": "",
+    "questionEn": "An ecommerce company wants to group customers based on their purchase history and preferences to personalize the user experience of the company's application. Which ML technique should the company use?",
+    "options": [],
+    "optionsEn": [
+      "Classification",
+      "Clustering",
+      "Regression",
+      "Content generation"
+    ],
+    "answer": 1,
+    "explanation": "",
+    "explanationEn": "정답: B\n\nClustering is an unsupervised learning technique that analyzes data patterns without labels to automatically form groups of similar data. It is suitable for the requirement to group customers with similar purchase history and preferences to provide a personalized user experience.\n\nIncorrect answer analysis\n\nA: Classification is a supervised learning method that categorizes data into predefined category labels and differs from automatically finding new groups without labels.\n\nC: Regression is a model that predicts continuous numerical values such as sales and prices, which differs from the task of grouping customers.\n\nD: Content generation is a generative AI technique that creates new content such as text and images, which differs from the analytical task of grouping customers."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 22,
+    "question": "",
+    "questionEn": "A customer service team is developing an application to analyze customer feedback and automatically classify the feedback into different categories. The categories include product quality, customer service, and delivery experience. Which AI concept does this scenario present?",
+    "options": [],
+    "optionsEn": [
+      "Computer vision",
+      "Natural Language Processing (NLP)",
+      "Recommendation systems",
+      "Fraud detection"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nNLP(자연어 처리)는 인간의 언어를 이해하고 처리하는 AI 기술입니다. 고객 피드백 텍스트의 의미를 파악하고 특정 카테고리로 분류하는 작업은 NLP의 전형적인 응용 사례에 해당합니다.\n\n오답 분석\n\nA: 컴퓨터 비전은 이미지와 비디오를 분석하는 시각 인식 기술로, 텍스트 피드백 분류와는 다른 분야입니다.\n\nC: 추천 시스템은 사용자 행동 데이터를 기반으로 개인화된 추천을 제공하는 기술로, 피드백 텍스트를 분류하는 것과는 다른 목적을 가집니다.\n\nD: 사기 탐지는 비정상적인 패턴을 감지하여 사기 거래를 식별하는 기술로, 고객 피드백 텍스트를 카테고리로 분류하는 것과는 다릅니다.",
+    "explanationEn": "정답: B\n\nNLP (Natural Language Processing) is an AI technology that understands and processes human language. Understanding the meaning of customer feedback text and classifying it into specific categories is a typical application of NLP.\n\nIncorrect answer analysis\n\nA: Computer vision is a visual recognition technology that analyzes images and videos and belongs to a different field from classifying text feedback.\n\nC: Recommendation systems are a technology that provides personalized recommendations based on user behavior data, serving a different purpose from classifying feedback text.\n\nD: Fraud detection is a technology that identifies fraudulent transactions by detecting abnormal patterns, which differs from classifying customer feedback text into categories."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 23,
+    "question": "회사는 데이터셋에서 추출한 사용자 지정 특성을 기반으로 다양한 객체의 이미지를 분류하려고 합니다. 최소한의 개발 노력으로 이 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company wants to classify images of different objects based on custom features extracted from a dataset. Which solution will meet this requirement with the LEAST development effort?",
+    "options": [
+      "데이터셋에서 추출한 사용자 지정 특성과 함께 기존 ML 알고리즘을 사용합니다.",
+      "사전 훈련된 딥러닝 모델을 사용합니다. 데이터셋에서 모델을 미세 조정합니다.",
+      "생성적 적대 신경망(GAN) 모델을 사용하여 이미지를 분류합니다.",
+      "분류를 위해 수동으로 엔지니어링된 특성과 함께 서포트 벡터 머신(SVM)을 사용합니다."
+    ],
+    "optionsEn": [
+      "Use traditional ML algorithms with custom features extracted from the dataset.",
+      "Use a pre-trained deep learning model. Fine-tune the model on the dataset.",
+      "Use a generative adversarial network (GAN) model to classify the images.",
+      "Use a support vector machine (SVM) with manually engineered features for classification."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n사전 학습된 딥러닝 모델(예: ResNet)을 미세 조정하는 것은 전이 학습의 방식으로, 특성 추출이 자동화되어 최소한의 개발 노력으로 사용자 지정 분류를 달성할 수 있습니다. 이미 학습된 모델을 재활용하므로 처음부터 개발하는 것보다 훨씬 적은 노력이 필요합니다.\n\n오답 분석\n\nA: 기존 ML 알고리즘과 수동 특성 추출 방식은 도메인 전문 지식과 추가적인 개발 노력을 필요로 합니다.\n\nC: GAN은 새로운 이미지를 생성하기 위한 모델로, 이미지 분류에 직접 사용하기에는 구조가 복잡하고 적합하지 않습니다.\n\nD: SVM과 수동 특성 엔지니어링 조합은 각 특성을 수동으로 설계해야 하므로 가장 많은 개발 노력이 필요합니다.",
+    "explanationEn": "정답: B\n\nFine-tuning a pre-trained deep learning model (e.g., ResNet) is a transfer learning approach that automates feature extraction, allowing custom classification to be achieved with minimal development effort. Reusing an already-trained model requires far less effort than developing from scratch.\n\nIncorrect answer analysis\n\nA: Using traditional ML algorithms with manual feature extraction requires domain expertise and additional development effort.\n\nC: GANs are models designed to generate new images and are complex and not well-suited for direct use in image classification.\n\nD: The combination of SVM and manual feature engineering requires the most development effort because each feature must be designed manually."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 24,
+    "question": "회사는 대출 신청 위험을 평가하기 위한 해석 가능한 ML 모델을 개발하려고 합니다. 이러한 요구 사항을 충족하는 ML 모델 또는 알고리즘 유형은 무엇입니까?",
+    "questionEn": "A company wants to develop an interpretable ML model to assess the risk of loan applications. Which type of ML model or algorithm will meet these requirements?",
+    "options": [
+      "딥러닝 모델",
+      "로지스틱 회귀 모델",
+      "K-평균 알고리즘",
+      "랜덤 컷 포레스트 알고리즘"
+    ],
+    "optionsEn": [
+      "Deep learning model",
+      "Logistic regression model",
+      "K-means algorithm",
+      "Random cut forest algorithm"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n로지스틱 회귀는 각 특성의 계수가 명확하게 정의되어 예측 결과를 직관적으로 해석할 수 있는 모델입니다. 대출 심사처럼 규제 요구사항이 있어 결정 이유를 설명해야 하는 경우에 적합한 해석 가능한 모델입니다.\n\n오답 분석\n\nA: 딥러닝 모델은 내부 구조가 복잡한 블랙박스 모델로, 해석 가능성이 가장 낮아 대출 심사에 사용하기 어렵습니다.\n\nC: K-means는 클러스터링 알고리즘으로 데이터를 그룹화하는 데 사용되며, 대출 위험을 예측하거나 분류하는 용도가 아닙니다.\n\nD: 랜덤 컷 포레스트는 이상 탐지를 위한 알고리즘으로, 해석 가능한 분류 모델로는 적합하지 않습니다.",
+    "explanationEn": "정답: B\n\nLogistic regression is a model with clearly defined coefficients for each feature, allowing intuitive interpretation of prediction results. It is an interpretable model suitable for cases like loan assessment where regulatory requirements demand explanations for decisions.\n\nIncorrect answer analysis\n\nA: Deep learning models are black-box models with complex internal structures and the lowest interpretability, making them difficult to use in loan assessment.\n\nC: K-means is a clustering algorithm used to group data and is not designed for predicting or classifying loan risk.\n\nD: Random cut forest is an algorithm for anomaly detection and is not suitable as an interpretable classification model."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 25,
+    "question": "회사는 심장 질환 위험을 예측하는 ML 모델을 개발하고 있습니다. 모델은 나이, 콜레스테롤, 혈압, 흡연 상태 및 운동 습관과 같은 환자 데이터를 사용합니다. 데이터셋에는 환자가 심장 질환이 있는지 여부를 나타내는 대상 값이 포함되어 있습니다. 이러한 요구 사항을 충족하는 ML 기술은 무엇입니까?",
+    "questionEn": "A company is developing an ML model to predict heart disease risk. The model uses patient data, such as age, cholesterol, blood pressure, smoking status, and exercise habits. The dataset includes a target value that indicates whether a patient has heart disease. Which ML technique will meet these requirements?",
+    "options": [
+      "비지도 학습",
+      "지도 학습",
+      "강화 학습",
+      "준지도 학습"
+    ],
+    "optionsEn": [
+      "Unsupervised learning",
+      "Supervised learning",
+      "Reinforcement learning",
+      "Semi-supervised learning"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n심장 질환 유무라는 타겟 레이블이 포함된 데이터셋을 사용하여 예측 모델을 학습하는 것은 지도 학습에 해당합니다. 입력 특성과 타겟 레이블 간의 매핑을 학습하여 새로운 환자 데이터에 대해 예측하는 방식입니다.\n\n오답 분석\n\nA: 비지도 학습은 레이블 없이 데이터에서 패턴을 발견하는 방법으로, 타겟 레이블이 있는 이 시나리오에는 적합하지 않습니다.\n\nC: 강화 학습은 보상 기반의 순차적 의사결정 문제를 해결하는 방법으로, 환자 데이터로 결과를 예측하는 문제와는 다릅니다.\n\nD: 준지도 학습은 일부 데이터만 레이블이 있는 경우에 사용하는 방법으로, 모든 데이터에 레이블이 있는 이 경우에는 지도 학습이 더 적합합니다.",
+    "explanationEn": "정답: B\n\nTraining a prediction model using a dataset that contains a target label for the presence or absence of heart disease is supervised learning. It learns the mapping between input features and the target label to make predictions on new patient data.\n\nIncorrect answer analysis\n\nA: Unsupervised learning is a method for discovering patterns in data without labels and is not appropriate for this scenario where a target label exists.\n\nC: Reinforcement learning is a method for solving sequential decision-making problems through rewards and differs from the problem of predicting outcomes from patient data.\n\nD: Semi-supervised learning is a method used when only some data has labels, and in this case where all data is labeled, supervised learning is more appropriate."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 26,
+    "question": "회사는 센서 데이터에서 비정상적인 패턴을 감지하는 ML 모델을 구축하려고 합니다. 회사는 훈련을 위한 레이블이 지정된 데이터가 없습니다. 이러한 요구 사항을 충족하는 ML 방법은 무엇입니까?",
+    "questionEn": "A company wants to build an ML model to detect abnormal patterns in sensor data. The company does not have labeled data for training. Which ML method will meet these requirements?",
+    "options": [
+      "선형 회귀",
+      "분류",
+      "의사결정 트리",
+      "오토인코더"
+    ],
+    "optionsEn": [
+      "Linear regression",
+      "Classification",
+      "Decision tree",
+      "Autoencoders"
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\n오토인코더는 레이블 없이 정상 패턴을 학습하는 비지도 학습 방법으로, 입력을 압축했다가 재구성할 때 오차가 큰 데이터를 이상치로 탐지합니다. 레이블이 없는 센서 데이터에서 비정상적인 패턴을 감지해야 하는 요구 사항에 적합합니다.\n\n오답 분석\n\nA: 선형 회귀는 타겟 레이블이 필요한 지도 학습 방법으로, 레이블이 없는 이 경우에는 사용할 수 없습니다.\n\nB: 분류는 정상/비정상으로 레이블된 훈련 데이터가 필요한 지도 학습으로, 레이블이 없는 이 시나리오에는 적합하지 않습니다.\n\nC: 의사결정 트리도 레이블이 있는 데이터를 사용하는 지도 학습 알고리즘으로, 레이블 없는 이상 탐지에는 사용할 수 없습니다.",
+    "explanationEn": "정답: D\n\nAn autoencoder is an unsupervised learning method that learns normal patterns without labels and detects data with high reconstruction error—when compressing then reconstructing input—as anomalies. It is suitable for the requirement to detect abnormal patterns in sensor data without labels.\n\nIncorrect answer analysis\n\nA: Linear regression is a supervised learning method requiring a target label and cannot be used in this case where there are no labels.\n\nB: Classification is supervised learning that requires training data labeled as normal/abnormal and is not appropriate for this scenario with no labels.\n\nC: Decision tree is also a supervised learning algorithm that uses labeled data and cannot be used for label-free anomaly detection."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 27,
+    "question": "비지도 학습의 예는 무엇입니까?",
+    "questionEn": "Which option is an example of unsupervised learning?",
+    "options": [
+      "유사성을 기반으로 데이터 포인트를 그룹으로 클러스터링",
+      "동물 이미지를 인식하도록 모델 훈련",
+      "주택의 특성을 기반으로 주택 가격 예측",
+      "주어진 프롬프트를 기반으로 인간과 같은 텍스트 생성"
+    ],
+    "optionsEn": [
+      "Clustering data points into groups based on their similarity",
+      "Training a model to recognize images of animals",
+      "Predicting the price of a house based on the house's features",
+      "Generating human-like text based on a given prompt"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n유사도를 기반으로 데이터 포인트를 그룹으로 클러스터링하는 것은 레이블 없이 데이터의 구조를 자동으로 발견하는 비지도 학습의 대표적인 예시입니다. 사전 정의된 레이블 없이 데이터 내의 유사한 패턴을 찾아 그룹화하는 것이 핵심입니다.\n\n오답 분석\n\nB: 동물 이미지 인식은 레이블이 지정된 이미지로 학습하는 지도 학습(분류)에 해당합니다.\n\nC: 주택 가격 예측은 가격이라는 레이블을 사용하여 학습하는 지도 학습(회귀)에 해당합니다.\n\nD: 텍스트 생성은 새로운 콘텐츠를 만들어내는 생성형 AI로, 비지도 학습 클러스터링과는 다른 패러다임에 해당합니다.",
+    "explanationEn": "정답: A\n\nClustering data points into groups based on their similarity is a representative example of unsupervised learning that automatically discovers the structure of data without labels. The key is finding and grouping similar patterns within data without predefined labels.\n\nIncorrect answer analysis\n\nB: Animal image recognition corresponds to supervised learning (classification) that trains with labeled images.\n\nC: House price prediction corresponds to supervised learning (regression) that trains using prices as labels.\n\nD: Text generation is generative AI that creates new content and belongs to a different paradigm from unsupervised learning clustering."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 28,
+    "question": "비지도 학습의 예는 무엇입니까?",
+    "questionEn": "Which option is an example of unsupervised learning?",
+    "options": [
+      "구매 이력을 기반으로 고객을 그룹화하는 모델",
+      "이미지를 개 또는 고양이로 분류하는 모델",
+      "다양한 특성을 기반으로 주택 가격을 예측하는 모델",
+      "시행착오를 사용하여 체스를 배우는 모델"
+    ],
+    "optionsEn": [
+      "A model that groups customers based on their purchase history",
+      "A model that classifies images as dogs or cats",
+      "A model that predicts a house's price based on various features",
+      "A model that learns to play chess by using trial and error"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n구매 이력을 기반으로 고객을 그룹화하는 것은 레이블 없이 유사한 패턴을 찾아 군집을 형성하는 클러스터링으로, 비지도 학습의 대표적인 예시입니다. 사전에 정의된 카테고리나 레이블 없이 데이터 자체의 유사성으로 그룹을 구분합니다.\n\n오답 분석\n\nB: 이미지를 개 또는 고양이로 분류하는 것은 레이블이 지정된 이미지 데이터로 학습하는 지도 학습(분류)에 해당합니다.\n\nC: 다양한 특성을 기반으로 주택 가격을 예측하는 것은 가격이라는 레이블을 사용하는 지도 학습(회귀)에 해당합니다.\n\nD: 시행착오를 사용하여 체스를 학습하는 것은 보상 신호를 기반으로 최적 행동을 학습하는 강화 학습에 해당합니다.",
+    "explanationEn": "정답: A\n\nGrouping customers based on their purchase history is clustering that finds similar patterns without labels to form groups, and is a representative example of unsupervised learning. Groups are distinguished by the similarity of the data itself without predefined categories or labels.\n\nIncorrect answer analysis\n\nB: Classifying images as dogs or cats corresponds to supervised learning (classification) that trains with labeled image data.\n\nC: Predicting a house's price based on various features corresponds to supervised learning (regression) that uses prices as labels.\n\nD: Learning to play chess by using trial and error corresponds to reinforcement learning that learns optimal actions based on reward signals."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 29,
+    "question": "다음 목록에서 각 문장에 맞는 올바른 AI 용어를 선택하세요. 각 AI 용어는 한 번씩 선택해야 합니다. 인간 문제 해결 능력을 시뮬레이션합니다. -> ? 예측을 위해 데이터 기반 학습 기술을 적용합니다. -> ? 복잡한 신경망을 통해 데이터를 처리하는 데 중점을 둡니다. -> ?",
+    "questionEn": "Select the correct AI term from the following list for each statement. Each AI term should be selected one time. Simulates human problem-solving capabilities. -> ? Applies data-driven learning techniques to make predictions. -> ? Focuses on processing data through intricate neural networks. -> ?",
+    "options": [
+      "AI, ML, 딥러닝",
+      "AI, 딥러닝, ML",
+      "ML, AI, 딥러닝",
+      "딥러닝, AI, ML"
+    ],
+    "optionsEn": [
+      "AI, ML, Deep learning",
+      "AI, Deep learning, ML",
+      "ML, AI, Deep learning",
+      "Deep learning, AI, ML"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nAI는 인간의 문제 해결 능력을 시뮬레이션하는 가장 넓은 개념이고, ML은 데이터 기반 학습 기술을 적용하여 예측을 수행하며, 딥러닝은 복잡한 신경망을 통해 데이터를 처리하는 ML의 하위 분야입니다. 이 세 개념은 포함 관계로, AI > ML > 딥러닝 순으로 범위가 좁아집니다.",
+    "explanationEn": "정답: A\n\nAI is the broadest concept that simulates human problem-solving capabilities, ML applies data-driven learning techniques to make predictions, and deep learning is a subfield of ML that processes data through complex neural networks. These three concepts have an inclusion relationship, narrowing in scope from AI to ML to deep learning."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 30,
+    "question": "회사는 ML 모델을 사용하여 소셜 미디어에서 고객 리뷰를 분석하려고 합니다. 모델은 각 리뷰가 중립, 긍정 또는 부정 감정인지 결정해야 합니다. 이러한 요구 사항을 충족하는 모델 평가 전략은 무엇입니까?",
+    "questionEn": "A company wants to use an ML model to analyze customer reviews on social media. The model must determine if each review has a neutral, positive, or negative sentiment. Which model evaluation strategy will meet these requirements?",
+    "options": [
+      "개방형 생성",
+      "텍스트 요약",
+      "기계 번역",
+      "분류"
+    ],
+    "optionsEn": [
+      "Open-ended generation",
+      "Text summarization",
+      "Machine translation",
+      "Classification"
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\n각 리뷰를 긍정, 부정, 중립의 3가지 감성 중 하나로 분류하는 것은 다중 클래스 분류 문제에 해당합니다. 텍스트를 사전 정의된 카테고리로 분류하는 분류 모델이 이 요구 사항을 충족합니다.\n\n오답 분석\n\nA: 개방형 생성은 입력을 바탕으로 자유 형식의 텍스트를 생성하는 작업으로, 감성을 카테고리로 분류하는 것과는 다릅니다.\n\nB: 텍스트 요약은 긴 텍스트를 짧게 요약하는 작업으로, 감성 카테고리를 분류하는 것이 아닙니다.\n\nC: 기계 번역은 텍스트를 다른 언어로 번역하는 작업으로, 감성 분석 및 분류와는 무관합니다.",
+    "explanationEn": "정답: D\n\nClassifying each review into one of three sentiments—positive, negative, or neutral—is a multi-class classification problem. A classification model that classifies text into predefined categories meets this requirement.\n\nIncorrect answer analysis\n\nA: Open-ended generation is a task that creates free-form text based on input and differs from classifying sentiment into categories.\n\nB: Text summarization is a task that condenses long text into a shorter form and is not about classifying sentiment categories.\n\nC: Machine translation is a task that translates text into another language and is unrelated to sentiment analysis and classification."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 31,
+    "question": "감정 분석은 AI의 어떤 더 넓은 분야의 하위 집합입니까?",
+    "questionEn": "Sentiment analysis is a subset of which broader field of AI?",
+    "options": [
+      "컴퓨터 비전",
+      "로보틱스",
+      "자연어 처리(NLP)",
+      "기계 번역"
+    ],
+    "optionsEn": [
+      "Computer vision",
+      "Robotics",
+      "Natural language processing (NLP)",
+      "Machine translation"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n감성 분석은 텍스트에서 감정과 의견을 추출하고 분류하는 NLP(자연어 처리)의 하위 분야입니다. 텍스트를 이해하고 감성 카테고리로 분류하는 것이 핵심이므로, 자연어 처리의 범위 안에 속합니다.\n\n오답 분석\n\nA: 컴퓨터 비전은 이미지와 비디오를 처리하는 분야로, 텍스트 감성 분석과는 무관합니다.\n\nB: 로보틱스는 물리적 로봇을 제어하고 설계하는 분야로, 텍스트의 감성을 분석하는 것과는 무관합니다.\n\nD: 기계 번역은 텍스트를 다른 언어로 번역하는 NLP의 또 다른 하위 분야로, 감성 분석의 상위 분야가 아닙니다.",
+    "explanationEn": "정답: C\n\nSentiment analysis is a subfield of NLP (Natural Language Processing) that extracts and classifies emotions and opinions from text. Since its core involves understanding text and classifying it into sentiment categories, it falls within the scope of natural language processing.\n\nIncorrect answer analysis\n\nA: Computer vision is a field for processing images and videos and is unrelated to text sentiment analysis.\n\nB: Robotics is a field for controlling and designing physical robots and is unrelated to analyzing sentiment in text.\n\nD: Machine translation is another subfield of NLP that translates text into other languages and is not a parent field of sentiment analysis."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 32,
+    "question": "회사는 ML 기술을 사용하여 애플리케이션을 구축합니다. 다음 목록에서 각 작업에 맞는 올바른 ML 기술을 선택하세요. 각 ML 기술을 한 번씩 선택합니다. 텍스트 질문을 분석하여 답변이 올바른지 결정합니다. -> ? 생태학적 요인을 분석하여 특정 지역의 종 수를 결정합니다. -> ? 자동차 속성을 분석하여 자동차 모델을 결정합니다. -> ?",
+    "questionEn": "A company uses ML techniques to build applications. Select the correct ML technique from the following list for each task. Select each ML technique one time. Analyze a text question to determine if the answer is correct. -> ? Analyze ecological factors to determine the number of species in a certain area. -> ? Analyze car attributes to determine the car model. -> ?",
+    "options": [
+      "이진 분류, 회귀, 다중 클래스 분류",
+      "이진 분류, 다중 클래스 분류, 회귀",
+      "다중 클래스 분류, 회귀, 이진 분류",
+      "다중 클래스 분류, 이진 분류, 회귀"
+    ],
+    "optionsEn": [
+      "Binary classification, Regression, Multiclass classification",
+      "Binary classification, Multiclass classification, Regression",
+      "Multiclass classification, Regression, Binary classification",
+      "Multiclass classification, Binary classification, Regression"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n텍스트 질문에 대한 답변의 정답 여부(맞다/틀리다)는 두 가지 결과로 분류하는 이진 분류에 해당하고, 생태학적 요인으로 종 수를 결정하는 것은 연속값을 예측하는 회귀에 해당하며, 자동차 속성으로 자동차 모델을 결정하는 것은 여러 클래스 중 하나를 예측하는 다중 클래스 분류에 해당합니다. 각 작업의 출력 형태가 ML 기술 선택의 기준이 됩니다.",
+    "explanationEn": "정답: A\n\nDetermining whether an answer to a text question is correct or incorrect (true/false) corresponds to binary classification as it classifies into two outcomes; determining the number of species from ecological factors corresponds to regression as it predicts a continuous value; and determining a car model from car attributes corresponds to multiclass classification as it predicts one of multiple classes. The form of output for each task is the criterion for selecting the ML technique."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 33,
+    "question": "회사는 고객의 인구 통계 및 구매 패턴을 기반으로 고객 그룹을 식별하려고 합니다. 이 요구 사항을 충족하기 위해 회사가 사용해야 하는 알고리즘은 무엇입니까?",
+    "questionEn": "A company wants to identify groups for its customers based on the customers' demographics and buying patterns. Which algorithm should the company use to meet this requirement?",
+    "options": [
+      "K-최근접 이웃(k-NN)",
+      "K-평균",
+      "의사결정 트리",
+      "서포트 벡터 머신"
+    ],
+    "optionsEn": [
+      "K-nearest neighbors (k-NN)",
+      "K-means",
+      "Decision tree",
+      "Support vector machine"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nK-means는 레이블이 없는 데이터에서 유사한 패턴을 찾아 k개의 클러스터로 자동으로 그룹화하는 비지도 학습 알고리즘입니다. 고객의 인구 통계와 구매 패턴을 기반으로 고객 그룹을 식별하는 이 요구 사항에 표준적으로 사용됩니다.\n\n오답 분석\n\nA: k-NN은 레이블된 데이터를 기반으로 새 데이터를 기존 그룹으로 분류하는 알고리즘으로, 새로운 그룹을 생성하는 것이 아닙니다.\n\nC: 의사결정 트리는 레이블이 필요한 지도 학습으로 분류나 회귀에 사용되며, 레이블 없는 고객 그룹화에는 적합하지 않습니다.\n\nD: SVM은 지도 학습 기반 분류 알고리즘으로, 레이블이 없는 데이터에서 그룹을 발견하고 나누는 것은 불가합니다.",
+    "explanationEn": "정답: B\n\nK-means is an unsupervised learning algorithm that finds similar patterns in unlabeled data and automatically groups them into k clusters. It is commonly used for the requirement to identify customer groups based on demographics and buying patterns.\n\nIncorrect answer analysis\n\nA: k-NN is an algorithm that classifies new data into existing groups based on labeled data and does not create new groups.\n\nC: Decision tree is supervised learning that requires labels and is used for classification or regression, making it unsuitable for grouping customers without labels.\n\nD: SVM is a supervised learning-based classification algorithm and cannot discover and divide groups in unlabeled data."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 34,
+    "question": "회사는 ML 애플리케이션을 개발하고 있습니다. 이 애플리케이션은 특성에 따라 유사한 고객과 제품을 자동으로 그룹화해야 합니다. 이러한 요구 사항을 충족하기 위해 회사는 어떤 ML 전략을 사용해야 합니까?",
+    "questionEn": "A company is developing an ML application. The application must automatically group similar customers and products based on their characteristics. Which ML strategy should the company use to meet these requirements?",
+    "options": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "준지도 학습"
+    ],
+    "optionsEn": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Semi-supervised learning"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\n비지도 학습은 레이블 없이 데이터의 패턴과 구조를 자동으로 발견하는 ML 전략입니다. K-means와 같은 클러스터링 기법을 사용하여 특성이 유사한 고객과 제품을 자동으로 그룹화하는 이 요구 사항에 적합합니다.\n\n오답 분석\n\nA: 지도 학습은 레이블된 데이터를 사용하여 예측이나 분류를 학습하는 방법으로, 사전에 정의된 그룹이 없는 이 경우에는 부적합합니다.\n\nC: 강화 학습은 보상 기반으로 순차적 의사결정 문제를 해결하는 방법으로, 고객과 제품을 유사성에 따라 그룹화하는 것과는 무관합니다.\n\nD: 준지도 학습은 소량의 레이블 데이터와 대량의 비레이블 데이터를 혼합 사용하는 방법으로, 순수하게 그룹화를 수행하는 이 경우보다 복잡하고 불필요합니다.",
+    "explanationEn": "정답: B\n\nUnsupervised learning is an ML strategy that automatically discovers patterns and structures in data without labels. It is suitable for the requirement to automatically group similar customers and products using clustering techniques such as K-means.\n\nIncorrect answer analysis\n\nA: Supervised learning is a method that learns prediction or classification using labeled data and is unsuitable for this case where no predefined groups exist.\n\nC: Reinforcement learning is a method for solving sequential decision-making problems based on rewards and is unrelated to grouping customers and products by similarity.\n\nD: Semi-supervised learning is a method that uses a mix of small labeled data and large unlabeled data, which is more complex and unnecessary compared to this case of performing pure grouping."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 35,
+    "question": "한 연구 회사가 미생물 배양체를 키우고 있습니다. 이 회사는 성장 영역에 대한 사전 레이블이 지정된 데이터 없이 배양체의 이미지를 캡처합니다. 이 회사는 배양체 성장을 보여주는 이미지 영역을 식별해야 합니다. 이 요구 사항에 가장 적합한 ML 기법은 무엇입니까?",
+    "questionEn": "A research company is growing microbiological cultures. The company captures images of the cultures without any prior labeled data about growth areas. The company needs to identify the regions of the images that show culture growth. Which ML technique is best suited for this requirement?",
+    "options": [
+      "로지스틱 회귀",
+      "의사 결정 트리",
+      "클러스터링",
+      "차원 축소"
+    ],
+    "optionsEn": [
+      "Logistic regression",
+      "Decision tree",
+      "Clustering",
+      "Dimensionality reduction"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\n클러스터링은 레이블이 지정된 데이터 없이 유사한 데이터 포인트를 그룹화하는 비지도 학습 기법으로, 레이블이 없는 배양체 이미지에서 성장 영역을 식별하는 데 적합합니다.\n\n오답 분석\n\nA: 로지스틱 회귀는 레이블이 지정된 훈련 데이터가 필요한 지도 분류 방법이며, 이 회사에는 해당 데이터가 없습니다.\n\nB: 의사 결정 트리는 분류 또는 회귀를 위한 분할 규칙을 학습하기 위해 레이블이 지정된 데이터가 필요한 지도 학습 모델입니다.\n\nD: 차원 축소는 시각화나 전처리를 위해 데이터의 특성 수를 줄이지만, 고유한 영역이나 그룹을 식별하지는 않습니다.",
+    "explanationEn": "정답: C\n\nClustering is an unsupervised learning technique that groups similar data points without requiring labeled data, making it suitable for identifying growth regions in unlabeled culture images.\n\nIncorrect answer analysis\n\nA: Logistic regression is a supervised classification method that requires labeled training data, which the company does not have.\n\nB: Decision trees are supervised learning models that require labeled data to learn splitting rules for classification or regression.\n\nD: Dimensionality reduction reduces the number of features in data for visualization or preprocessing but does not identify distinct regions or groups."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 36,
+    "question": "한 회사가 ML을 사용하여 고객 참여도와 매출을 높이려고 합니다. 이 회사는 고객 인구 통계, 구매 이력, 브라우징 패턴 및 제품 평점을 포함하는 대규모 데이터 세트를 수집했습니다. 다음 목록에서 각 사용 사례에 맞는 올바른 ML 접근 방식을 선택하세요. 각 ML 접근 방식은 한 번만 선택하세요. - 고객이 평생 동안 창출할 수익을 추정하여 고객 생애 가치(CLV)를 예측합니다.: ? - 고객이 회사의 서비스 사용을 중단할 가능성을 파악합니다.: ? - 유사한 구매 패턴과 선호도를 기반으로 고객을 그룹화합니다.: ?",
+    "questionEn": "A company wants to use ML to increase customer engagement and sales. The company has collected a large dataset that includes customer demographics, purchase history, browsing patterns, and product ratings. Select the correct ML approach from the following list for each use case. Select each ML approach one time. - Predict customer lifetime value (CLV) by estimating how much revenue a customer will generate over the customer's lifetime.: ? - Identify the likelihood of a customer to stop using the company's services.: ? - Group customers based on similar purchasing patterns and preferences.: ?",
+    "options": [
+      "Regression, Classification, Clustering",
+      "Regression, Clustering, Classification",
+      "Clustering, Regression, Classification",
+      "Classification, Clustering, Regression"
+    ],
+    "optionsEn": [
+      "Regression, Classification, Clustering",
+      "Regression, Clustering, Classification",
+      "Clustering, Regression, Classification",
+      "Classification, Clustering, Regression"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nCLV 예측은 연속 값 추정(Regression), 이탈 가능성은 이진 결과 예측(Classification), 구매 패턴별 고객 그룹화는 비지도 그룹화(Clustering)로, 옵션 A의 Regression-Classification-Clustering 순서와 일치합니다.\n\n오답 분석\n\nB: 이탈 예측에 Clustering이 나열되어 있지만, 이탈은 예/아니오의 이진 결과이므로 Clustering이 아닌 Classification이 필요합니다.\n\nC: CLV 예측에 Clustering이 나열되어 있지만, CLV는 연속적인 금전적 가치를 추정해야 하므로 Regression 작업입니다.\n\nD: CLV 예측에 Classification이 나열되어 있지만 CLV는 Regression이 필요한 연속 값이며, 이탈에 Clustering이 나열되어 있지만 이것은 Classification 작업입니다.",
+    "explanationEn": "정답: A\n\nPredicting CLV is a continuous value estimation (Regression), churn likelihood is a binary outcome prediction (Classification), and grouping customers by purchasing patterns is unsupervised grouping (Clustering), matching the Regression-Classification-Clustering order in option A.\n\nIncorrect answer analysis\n\nB: Clustering is listed for churn prediction, but churn is a binary yes/no outcome that requires Classification, not Clustering.\n\nC: Clustering is listed for CLV prediction, but CLV requires estimating a continuous monetary value, which is a Regression task.\n\nD: Classification is listed for CLV prediction, but CLV is a continuous value requiring Regression, and Clustering is listed for churn, which is a Classification task."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 37,
+    "question": "가장 높은 설명 가능성을 제공하는 ML 기법 유형은 무엇입니까?",
+    "questionEn": "Which type of ML technique provides the MOST explainability?",
+    "options": [
+      "선형 회귀(Linear regression)",
+      "서포트 벡터 머신(Support vector machines)",
+      "Random cut forest(RCF)",
+      "신경망(Neural network)"
+    ],
+    "optionsEn": [
+      "Linear regression",
+      "Support vector machines",
+      "Random cut forest (RCF)",
+      "Neural network"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n선형 회귀는 각 특성에 대한 명시적인 계수가 포함된 단순한 수학 방정식을 생성하므로, 각 입력 변수가 예측에 어떻게 영향을 미치는지 정확히 이해하기 쉽습니다.\n\n오답 분석\n\nB: 서포트 벡터 머신은 고차원 공간에서 복잡한 결정 경계를 사용하므로 예측을 해석하기 어렵습니다.\n\nC: Random cut forest는 비지도 이상 탐지 알고리즘으로, 내부 트리 기반 격리 메커니즘의 투명성이 부족합니다.\n\nD: 신경망은 수많은 파라미터가 있는 여러 은닉 계층을 포함하므로 결정 과정이 불투명하고 설명하기 어렵습니다.",
+    "explanationEn": "정답: A\n\nLinear regression produces a simple mathematical equation with explicit coefficients for each feature, making it straightforward to understand exactly how each input variable influences the prediction.\n\nIncorrect answer analysis\n\nB: Support vector machines use complex decision boundaries in high-dimensional space, making their predictions difficult to interpret.\n\nC: Random cut forest is an unsupervised anomaly detection algorithm whose internal tree-based isolation mechanism lacks transparency.\n\nD: Neural networks contain multiple hidden layers with numerous parameters, making their decision process opaque and difficult to explain."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 38,
+    "question": "한 회사에 과거 데이터가 포함된 여러 데이터셋이 있습니다. 회사는 ML 기술을 사용하여 각 데이터셋을 처리하려고 합니다. 다음 목록에서 각 데이터셋에 맞는 올바른 ML 기술을 선택하십시오. 각 기술은 한 번만 선택하거나 선택하지 않을 수 있습니다. - 텍스트 기반 고객 리뷰가 포함된 데이터셋: ? - 종 이름이 레이블된 동물 이미지가 포함된 데이터셋: ? - 제품의 일별 판매량이 포함된 데이터셋: ?",
+    "questionEn": "A company has multiple datasets that contain historical data. The company wants to use ML technologies to process each dataset. Select the correct ML technology from the following list for each dataset. Select each technology one time or not at all. - A dataset that contains text-based customer reviews: ? - A dataset that contains images of animals labeled with their species names: ? - A dataset that contains daily sales volumes for products: ?",
+    "options": [
+      "Natural language processing (NLP), Computer vision, Time series forecasting",
+      "Natural language processing (NLP), Time series forecasting, Computer vision",
+      "Time series forecasting, Computer vision, Natural language processing (NLP)",
+      "Time series forecasting, Natural language processing (NLP), Computer vision"
+    ],
+    "optionsEn": [
+      "Natural language processing (NLP), Computer vision, Time series forecasting",
+      "Natural language processing (NLP), Time series forecasting, Computer vision",
+      "Time series forecasting, Computer vision, Natural language processing (NLP)",
+      "Time series forecasting, Natural language processing (NLP), Computer vision"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\n텍스트 기반 고객 리뷰는 NLP로 처리하고, 종 이름이 레이블된 동물 이미지는 Computer vision으로 처리하며, 일별 판매량은 Time series forecasting으로 처리하므로 옵션 A의 순서와 일치합니다.\n\n오답 분석\n\nB: 동물 이미지에 Time series forecasting을, 판매량에 Computer vision을 잘못 할당합니다. 이미지에는 Computer vision이, 순차적 판매 데이터에는 Time series forecasting이 필요합니다.\n\nC: 텍스트 리뷰에 Time series forecasting을, 판매 데이터에 NLP를 잘못 할당합니다. 텍스트 리뷰에는 시계열 분석이 아닌 NLP가 필요합니다.\n\nD: 텍스트 리뷰에 Time series forecasting을, 동물 이미지에 NLP를 잘못 할당합니다. 텍스트 리뷰에는 NLP가, 레이블된 동물 이미지에는 Computer vision이 필요합니다.",
+    "explanationEn": "정답: A\n\nText-based customer reviews are processed by NLP, images of animals labeled with species names are processed by computer vision, and daily sales volumes are processed by time series forecasting, matching the order in option A.\n\nIncorrect answer analysis\n\nB: This incorrectly assigns time series forecasting to animal images and computer vision to sales volumes; images require computer vision, and sequential sales data requires time series forecasting.\n\nC: This incorrectly assigns time series forecasting to text reviews and NLP to sales data; text reviews require NLP, not time series analysis.\n\nD: This incorrectly assigns time series forecasting to text reviews and NLP to animal images; text reviews require NLP, and labeled animal images require computer vision."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 39,
+    "question": "컨택 센터 애플리케이션을 개발 중인 한 회사는 고객 대화를 통해 통찰력을 얻고자 합니다. 이 회사는 고객 통화 음성을 분석하여 주요 정보를 추출하려고 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A company is building a contact center application and wants to gain insights from customer conversations. The company wants to analyze and extract key information from the audio of the customer calls. Which solution meets these requirements?",
+    "options": [
+      "Amazon Lex를 사용하여 대화형 챗봇을 구축합니다.",
+      "Amazon Transcribe를 사용하여 통화 녹음을 텍스트로 변환합니다.",
+      "Amazon SageMaker Model Monitor를 사용하여 통화 녹음에서 정보를 추출합니다.",
+      "Amazon Comprehend를 사용하여 분류 레이블을 생성합니다."
+    ],
+    "optionsEn": [
+      "Build a conversational chatbot by using Amazon Lex.",
+      "Transcribe call recordings by using Amazon Transcribe.",
+      "Extract information from call recordings by using Amazon SageMaker Model Monitor.",
+      "Create classification labels by using Amazon Comprehend."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nAmazon Transcribe는 음성을 텍스트로 자동 변환하는 AWS 서비스로, 통화 내용 분석의 첫 단계인 오디오에서 텍스트 추출을 수행합니다. 고객 통화 음성을 분석하여 주요 정보를 추출해야 하는 요구 사항에 가장 직접적으로 부합합니다.\n\n오답 분석\n\nA: Amazon Lex는 대화형 챗봇을 구축하기 위한 서비스로, 기존 음성 파일을 분석하는 것과는 다른 용도입니다.\n\nC: Amazon SageMaker Model Monitor는 배포된 ML 모델의 성능을 모니터링하기 위한 도구로, 음성 파일 분석 기능이 없습니다.\n\nD: Amazon Comprehend는 텍스트를 분석하는 NLP 서비스로, 음성 오디오를 직접 처리하는 기능은 없습니다.",
+    "explanationEn": "정답: B\n\nAmazon Transcribe is an AWS service that automatically converts speech to text, performing text extraction from audio as the first step of call content analysis. It most directly meets the requirement to analyze customer call audio and extract key information.\n\nIncorrect answer analysis\n\nA: Amazon Lex is a service for building conversational chatbots and serves a different purpose from analyzing existing audio files.\n\nC: Amazon SageMaker Model Monitor is a tool for monitoring the performance of deployed ML models and has no audio file analysis capability.\n\nD: Amazon Comprehend is an NLP service for analyzing text and does not have the capability to directly process audio."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 40,
+    "question": "한 회사에서 제출된 모든 이력서를 PDF 형식으로 수작업으로 검토합니다. 회사가 성장함에 따라 회사에서는 이력서의 양이 회사의 검토 용량을 초과할 것으로 예상합니다. 이 회사는 추가 처리를 위해 PDF 이력서를 일반 텍스트 형식으로 변환할 수 있는 자동화된 시스템이 필요합니다. 어떤 AWS 서비스가 이 요구 사항을 충족합니까?",
+    "questionEn": "A company manually reviews all submitted resumes in PDF format. As the company grows, the company expects the volume of resumes to exceed the company's review capacity. The company needs an automated system to convert the PDF resumes into plain text format for additional processing. Which AWS service meets this requirement?",
+    "options": [
+      "Amazon Textract",
+      "Amazon Personalize",
+      "Amazon Lex",
+      "Amazon Transcribe"
+    ],
+    "optionsEn": [
+      "Amazon Textract",
+      "Amazon Personalize",
+      "Amazon Lex",
+      "Amazon Transcribe"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nAmazon Textract는 PDF 문서에서 텍스트와 데이터를 자동으로 추출하여 구조화된 형식으로 변환하는 OCR 서비스입니다. PDF 이력서를 일반 텍스트 형식으로 자동 변환해야 하는 요구 사항에 정확히 부합합니다.\n\n오답 분석\n\nB: Amazon Personalize는 개인화된 추천을 제공하는 추천 엔진으로, PDF 문서를 처리하는 기능이 없습니다.\n\nC: Amazon Lex는 대화형 인터페이스와 챗봇을 구축하기 위한 서비스로, 문서 변환과는 무관합니다.\n\nD: Amazon Transcribe는 오디오 음성을 텍스트로 변환하는 서비스로, PDF 문서 처리와는 다릅니다.",
+    "explanationEn": "정답: A\n\nAmazon Textract is an OCR service that automatically extracts text and data from PDF documents and converts them into a structured format. It precisely meets the requirement to automatically convert PDF resumes into plain text format.\n\nIncorrect answer analysis\n\nB: Amazon Personalize is a recommendation engine that provides personalized recommendations and has no capability to process PDF documents.\n\nC: Amazon Lex is a service for building conversational interfaces and chatbots and is unrelated to document conversion.\n\nD: Amazon Transcribe is a service that converts audio speech to text and differs from PDF document processing."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 41,
+    "question": "한 전자상거래 회사에서 제품에 대한 서면 고객 리뷰를 기반으로 고객 감정을 파악할 수 있는 솔루션을 구축하고자 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까? (2개를 선택하세요.)",
+    "questionEn": "An ecommerce company wants to build a solution to determine customer sentiments based on written customer reviews of products. Which AWS services meet these requirements? (Choose two.)",
+    "options": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Bedrock",
+      "Amazon Rekognition"
+    ],
+    "optionsEn": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Bedrock",
+      "Amazon Rekognition"
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 42,
+    "question": "전자상거래 회사가 회사 전자상거래 플랫폼의 각 사용자에 대한 결과를 맞춤화하여 검색 엔진 추천을 개선하고자 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까?",
+    "questionEn": "An ecommerce company wants to improve search engine recommendations by customizing the results for each user of the company's ecommerce platform. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Personalize",
+      "Amazon Kendra",
+      "Amazon Rekognition",
+      "Amazon Transcribe"
+    ],
+    "optionsEn": [
+      "Amazon Personalize",
+      "Amazon Kendra",
+      "Amazon Rekognition",
+      "Amazon Transcribe"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nAmazon Personalize는 사용자의 행동 데이터를 기반으로 개인화된 검색 결과와 추천을 실시간으로 제공하는 완전 관리형 추천 서비스입니다. 각 사용자에게 맞춤화된 검색 엔진 추천을 개선해야 하는 요구 사항에 정확히 부합합니다.\n\n오답 분석\n\nB: Amazon Kendra는 엔터프라이즈 지능형 검색 서비스이지만, 개별 사용자에 따른 개인화 추천 기능은 제한적입니다.\n\nC: Amazon Rekognition은 이미지와 비디오를 분석하는 컴퓨터 비전 서비스로, 검색 추천 개인화와는 무관합니다.\n\nD: Amazon Transcribe는 음성을 텍스트로 변환하는 서비스로, 검색 결과 맞춤화와는 다른 용도입니다.",
+    "explanationEn": "정답: A\n\nAmazon Personalize is a fully managed recommendation service that provides personalized search results and recommendations in real-time based on user behavior data. It precisely meets the requirement to improve search engine recommendations by customizing results for each user.\n\nIncorrect answer analysis\n\nB: Amazon Kendra is an enterprise intelligent search service, but its personalized recommendation capability for individual users is limited.\n\nC: Amazon Rekognition is a computer vision service that analyzes images and videos and is unrelated to personalizing search recommendations.\n\nD: Amazon Transcribe is a service that converts speech to text and serves a different purpose from customizing search results."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 43,
+    "question": "어떤 AWS 서비스에서 사용자가 생성형 AI 애플리케이션을 구축하고 확장하는 데 도움이 되는 기초 모델(FM)을 제공합니까?",
+    "questionEn": "Which AWS service makes foundation models (FMs) available to help users build and scale generative AI applications?",
+    "options": [
+      "Amazon Q Developer",
+      "Amazon Bedrock",
+      "Amazon Kendra",
+      "Amazon Comprehend"
+    ],
+    "optionsEn": [
+      "Amazon Q Developer",
+      "Amazon Bedrock",
+      "Amazon Kendra",
+      "Amazon Comprehend"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nAmazon Bedrock은 다양한 기초 모델(FM)을 API를 통해 제공하여 생성형 AI 애플리케이션을 쉽게 구축하고 확장할 수 있는 완전 관리형 서비스입니다. 사용자가 생성형 AI 애플리케이션을 구축하고 확장하는 데 도움이 되는 FM을 제공하는 서비스라는 요구 사항에 정확히 부합합니다.\n\n오답 분석\n\nA: Amazon Q Developer는 코드 생성을 지원하는 AI 코딩 도우미로, FM을 직접 제공하는 플랫폼이 아닙니다.\n\nC: Amazon Kendra는 AI 기반 엔터프라이즈 검색 서비스로, 생성형 AI 애플리케이션 구축을 위한 FM을 제공하는 것과는 다릅니다.\n\nD: Amazon Comprehend는 감정 분석, 엔티티 인식, 주제 모델링 등 NLP 기능을 제공하는 텍스트 분석 서비스로, FM을 제공하는 플랫폼이 아닙니다.",
+    "explanationEn": "정답: B\n\nAmazon Bedrock is a fully managed service that provides various foundation models (FMs) via API, making it easy to build and scale generative AI applications. It precisely meets the requirement for a service that makes FMs available to help users build and scale generative AI applications.\n\nIncorrect answer analysis\n\nA: Amazon Q Developer is an AI coding assistant that supports code generation and is not a platform that directly provides FMs.\n\nC: Amazon Kendra is an AI-powered enterprise search service and differs from providing FMs for building generative AI applications.\n\nD: Amazon Comprehend is a text analysis service providing NLP capabilities such as sentiment analysis, entity recognition, and topic modeling, and is not a platform that provides FMs."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 44,
+    "question": "한 회사의 직원들은 고객이 고객 서비스 센터에 전화를 걸면 고객에게 제품 설명과 추천을 제공합니다. 이러한 추천은 고객의 위치를 기반으로 합니다. 이 회사는 이 프로세스를 자동화하기 위해 Foundation Models(FM)를 사용하려고 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까?",
+    "questionEn": "A company's employees provide product descriptions and recommendations to customers when customers call the customer service center. These recommendations are based on where the customers are located. The company wants to use foundation models (FMs) to automate this process. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Macie",
+      "Amazon Transcribe",
+      "Amazon Bedrock",
+      "Amazon Textract"
+    ],
+    "optionsEn": [
+      "Amazon Macie",
+      "Amazon Transcribe",
+      "Amazon Bedrock",
+      "Amazon Textract"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nAmazon Bedrock은 위치 기반 컨텍스트를 포함한 프롬프트로 FM을 활용하여 고객 위치에 맞춘 제품 설명과 추천을 자동화할 수 있는 서비스입니다. FM의 자연어 생성 능력을 통해 위치별 맞춤형 추천을 자동으로 생성하는 이 요구 사항을 충족합니다.\n\n오답 분석\n\nA: Amazon Macie는 S3 버킷의 민감 데이터를 자동으로 검색하고 분류하는 보안 서비스로, 제품 추천 생성과는 무관합니다.\n\nB: Amazon Transcribe는 음성을 텍스트로 변환하는 음성 인식 서비스만 제공하며, 제품 추천을 생성하는 기능은 없습니다.\n\nD: Amazon Textract는 문서에서 텍스트를 추출하는 OCR 서비스로, 맞춤형 제품 추천을 생성하는 기능이 없습니다.",
+    "explanationEn": "정답: C\n\nAmazon Bedrock is a service that can automate product descriptions and recommendations tailored to customer locations by leveraging FMs with prompts containing location-based context. It meets the requirement to automatically generate location-specific customized recommendations through the natural language generation capabilities of FMs.\n\nIncorrect answer analysis\n\nA: Amazon Macie is a security service that automatically discovers and classifies sensitive data in S3 buckets and is unrelated to generating product recommendations.\n\nB: Amazon Transcribe only provides a speech recognition service that converts speech to text and has no capability to generate product recommendations.\n\nD: Amazon Textract is an OCR service that extracts text from documents and has no capability to generate customized product recommendations."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 45,
+    "question": "어떤 회사는 하루에 수천 건의 고객 지원 상호작용을 하며 이러한 상호작용을 분석하여 자주 묻는 질문을 파악하고, 통찰력을 개발하고자 합니다. 이 요구 사항을 충족하기 위해 회사에서 사용할 수 있는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A company has thousands of customer support interactions per day and wants to analyze these interactions to identify frequently asked questions and develop insights. Which AWS service can the company use to meet this requirement?",
+    "options": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+      "Amazon Translate"
+    ],
+    "optionsEn": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+      "Amazon Translate"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nAmazon Comprehend는 텍스트에서 주요 구문, 감정, 주제 등을 자동으로 추출하는 NLP 서비스로, 수천 건의 고객 지원 상호작용을 분석하여 자주 묻는 질문을 식별하고 인사이트를 도출하는 요구 사항에 적합합니다. 대규모 텍스트 데이터에서 패턴과 주제를 자동으로 파악할 수 있습니다.\n\n오답 분석\n\nA: Amazon Lex는 대화형 챗봇을 구축하기 위한 서비스로, 기존 텍스트 데이터를 분석하는 것과는 다른 용도입니다.\n\nC: Amazon Transcribe는 오디오 음성을 텍스트로 변환하는 기능만 수행하며, 텍스트 내용을 분석하여 인사이트를 도출하는 기능은 없습니다.\n\nD: Amazon Translate는 텍스트를 다른 언어로 번역하는 서비스로, 고객 지원 내용을 분석하거나 FAQ를 식별하는 기능이 없습니다.",
+    "explanationEn": "정답: B\n\nAmazon Comprehend is an NLP service that automatically extracts key phrases, sentiment, and topics from text, making it suitable for the requirement to analyze thousands of customer support interactions, identify frequently asked questions, and develop insights. It can automatically identify patterns and topics from large volumes of text data.\n\nIncorrect answer analysis\n\nA: Amazon Lex is a service for building conversational chatbots and serves a different purpose from analyzing existing text data.\n\nC: Amazon Transcribe only performs the function of converting audio speech to text and has no capability to analyze text content and derive insights.\n\nD: Amazon Translate is a service for translating text into other languages and has no capability to analyze customer support content or identify FAQs."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 46,
+    "question": "한 회사가 ML 모델을 사용하여 소셜 미디어 게시물의 댓글 섹션에서 유해한 언어를 식별하고자 합니다. 이 회사는 레이블이 지정된 데이터를 사용하여 모델을 훈련시키지 않습니다. 이 회사는 유해한 언어를 식별하기 위해 어떤 전략을 사용해야 합니까?",
+    "questionEn": "A company wants to identify harmful language in the comments section of social media posts by using an ML model. The company will not use labeled data to train the model. Which strategy should the company use to identify harmful language?",
+    "options": [
+      "Amazon Rekognition 조정 기능을 사용합니다.",
+      "Amazon Comprehend 독성 감지를 사용합니다.",
+      "Amazon SageMaker 내장 알고리즘을 사용하여 모델을 훈련합니다.",
+      "Amazon Polly를 사용하여 댓글을 모니터링합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon Rekognition moderation.",
+      "Use Amazon Comprehend toxicity detection.",
+      "Use Amazon SageMaker built-in algorithms to train the model.",
+      "Use Amazon Polly to monitor comments."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nAmazon Comprehend의 독성 감지 API는 사전 훈련된 모델을 사용하여 레이블 데이터 없이도 텍스트에서 유해한 언어를 즉시 식별합니다. 레이블된 데이터로 모델을 훈련하지 않겠다는 조건 하에서 유해 언어를 식별해야 하는 요구 사항에 가장 적합합니다.\n\n오답 분석\n\nA: Amazon Rekognition은 이미지와 비디오 콘텐츠의 모더레이션을 위한 서비스로, 텍스트 기반 유해 언어 탐지와는 다릅니다.\n\nC: Amazon SageMaker는 모델을 직접 구축하고 훈련하기 위한 플랫폼으로, 레이블 데이터 없이 즉시 사용 가능한 Comprehend의 독성 감지 기능보다 불필요한 개발 노력이 필요합니다.\n\nD: Amazon Polly는 텍스트를 음성으로 변환하는 TTS 서비스로, 텍스트 콘텐츠를 모니터링하거나 분석하는 기능이 없습니다.",
+    "explanationEn": "정답: B\n\nAmazon Comprehend's toxicity detection API uses a pre-trained model to immediately identify harmful language in text without labeled data. It is the most suitable for the requirement to identify harmful language under the condition that the model will not be trained with labeled data.\n\nIncorrect answer analysis\n\nA: Amazon Rekognition is a service for moderating image and video content and differs from text-based harmful language detection.\n\nC: Amazon SageMaker is a platform for directly building and training models, which requires more development effort than Comprehend's ready-to-use toxicity detection without labeled data.\n\nD: Amazon Polly is a TTS service that converts text to speech and has no capability to monitor or analyze text content."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 47,
+    "question": "제조 회사가 여러 언어로 제품 설명을 만들고 싶어합니다. 어떤 AWS 서비스가 이 작업을 자동화할까요?",
+    "questionEn": "A manufacturing company wants to create product descriptions in multiple languages. Which AWS service will automate this task?",
+    "options": [
+      "Amazon Translate",
+      "Amazon Transcribe",
+      "Amazon Kendra",
+      "Amazon Polly"
+    ],
+    "optionsEn": [
+      "Amazon Translate",
+      "Amazon Transcribe",
+      "Amazon Kendra",
+      "Amazon Polly"
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nAmazon Translate는 신경망 기반 기계 번역으로 제품 설명을 여러 언어로 자동 변환하는 서비스입니다. 여러 언어로 제품 설명을 만들어야 하는 요구 사항을 자동화하는 데 가장 직접적으로 부합합니다.\n\n오답 분석\n\nB: Amazon Transcribe는 오디오 음성을 텍스트로 변환하는 STT(Speech-to-Text) 서비스로, 텍스트 번역 기능과는 다릅니다.\n\nC: Amazon Kendra는 다국어 콘텐츠를 검색하는 기능을 지원하지만, 텍스트를 다른 언어로 번역하는 기능은 제공하지 않습니다.\n\nD: Amazon Polly는 텍스트를 음성으로 변환하는 TTS(Text-to-Speech) 서비스로, 텍스트를 다른 언어로 번역하는 것과는 다릅니다.",
+    "explanationEn": "정답: A\n\nAmazon Translate is a service that automatically converts product descriptions into multiple languages using neural network-based machine translation. It most directly meets the requirement to automate the creation of product descriptions in multiple languages.\n\nIncorrect answer analysis\n\nB: Amazon Transcribe is an STT (Speech-to-Text) service that converts audio speech to text, which differs from text translation.\n\nC: Amazon Kendra supports searching multilingual content but does not provide the capability to translate text into other languages.\n\nD: Amazon Polly is a TTS (Text-to-Speech) service that converts text to speech, which differs from translating text into other languages."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 48,
+    "question": "한 병원이 임상 노트 작성 시 직원들의 기술 향상을 돕기 위해 음성-텍스트 기능을 갖춘 생성형 AI 솔루션을 사용하려고 합니다. 이 요구사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A hospital wants to use a generative AI solution with speech-to-text functionality to help improve employee skills in dictating clinical notes. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Q Developer",
+      "Amazon Polly",
+      "Amazon Rekognition",
+      "AWS HealthScribe"
+    ],
+    "optionsEn": [
+      "Amazon Q Developer",
+      "Amazon Polly",
+      "Amazon Rekognition",
+      "AWS HealthScribe"
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\nAWS HealthScribe는 의료 분야에 특화된 음성 인식과 임상 노트 생성을 자동화하는 생성형 AI 서비스로, 의료진의 임상 노트 작성 능력 향상을 지원합니다. 음성-텍스트 기능을 갖춘 생성형 AI 솔루션으로 임상 노트 작성을 돕는다는 요구 사항에 정확히 부합합니다.\n\n오답 분석\n\nA: Amazon Q Developer는 소프트웨어 개발을 지원하는 AI 코딩 도우미로, 의료 음성 인식 및 임상 노트 생성과는 무관합니다.\n\nB: Amazon Polly는 텍스트를 음성으로 변환하는 TTS(Text-to-Speech) 서비스로, 음성을 텍스트로 변환해야 하는 이 요구 사항과는 반대 방향입니다.\n\nC: Amazon Rekognition은 이미지와 비디오를 분석하는 서비스로, 의료 음성 인식 및 임상 노트 생성과는 관련이 없습니다.",
+    "explanationEn": "정답: D\n\nAWS HealthScribe is a generative AI service that automates medical-specialized speech recognition and clinical note generation, supporting healthcare professionals in improving their clinical note dictation skills. It precisely meets the requirement for a generative AI solution with speech-to-text functionality to assist with clinical note dictation.\n\nIncorrect answer analysis\n\nA: Amazon Q Developer is an AI coding assistant that supports software development and is unrelated to medical speech recognition and clinical note generation.\n\nB: Amazon Polly is a TTS (Text-to-Speech) service that converts text to speech, which is the opposite direction from the requirement to convert speech to text.\n\nC: Amazon Rekognition is a service for analyzing images and videos and is unrelated to medical speech recognition and clinical note generation."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 49,
+    "question": "한 의료회사가 구조화된 환자 기록에 접근하여 관련 정보를 추출하고 간결한 요약을 생성하는 AI 애플리케이션을 개발하려고 합니다. 어떤 솔루션이 이 요구사항을 충족할까요?",
+    "questionEn": "A medical company wants to develop an AI application that can access structured patient records, extract relevant information, and generate concise summaries. Which solution will meet these requirements?",
+    "options": [
+      "Amazon Comprehend Medical을 사용하여 관련 의료 엔티티와 관계를 추출합니다. 규칙 기반 로직을 적용하여 요약을 구조화하고 형식화합니다.",
+      "Amazon Personalize를 사용하여 환자 참여 패턴을 분석합니다. 출력을 범용 텍스트 요약 도구와 통합합니다.",
+      "Amazon Textract를 사용하여 스캔 문서를 디지털 텍스트로 변환합니다. 키워드 추출 시스템을 설계하여 요약 생성합니다.",
+      "Amazon Kendra를 구현하여 의료 기록에 대한 검색 가능한 인덱스를 제공합니다. 템플릿 기반 시스템을 사용하여 요약 형식화합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon Comprehend Medical to extract relevant medical entities and relationships. Apply rule-based logic to structure and format summaries.",
+      "Use Amazon Personalize to analyze patient engagement patterns. Integrate the output with a general purpose text summarization tool.",
+      "Use Amazon Textract to convert scanned documents into digital text. Design a keyword extraction system to generate summaries.",
+      "Implement Amazon Kendra to provide a searchable index for medical records. Use a template-based system to format summaries."
+    ],
+    "answer": 0,
+    "explanation": "정답: A\n\nAmazon Comprehend Medical은 구조화된 환자 기록에서 증상, 진단, 약물 등 의료 관련 개체와 관계를 추출하는 의료 전문 NLP 서비스입니다. 규칙 기반 로직을 적용하여 추출된 정보를 간결한 요약으로 구성하는 방식이 의료 기록 접근, 정보 추출, 요약 생성 요구 사항을 충족합니다.\n\n오답 분석\n\nB: Amazon Personalize는 사용자 참여 패턴을 분석하여 개인화 추천을 제공하는 서비스로, 구조화된 의료 기록에서 정보를 추출하고 요약하는 데는 부적합합니다.\n\nC: Amazon Textract는 스캔된 문서에서 텍스트를 추출하는 OCR 서비스이지만, 의료 전문 개체를 인식하고 관계를 파악하는 기능이 부족합니다.\n\nD: Amazon Kendra는 의료 기록에 대한 검색 기능을 제공하지만, 의료 정보를 정밀하게 추출하고 구조화된 요약을 생성하는 데는 한계가 있습니다.",
+    "explanationEn": "정답: A\n\nAmazon Comprehend Medical is a medical-specialized NLP service that extracts medical entities and relationships such as symptoms, diagnoses, and medications from structured patient records. The approach of applying rule-based logic to compose the extracted information into concise summaries meets the requirements for accessing medical records, extracting information, and generating summaries.\n\nIncorrect answer analysis\n\nB: Amazon Personalize is a service that analyzes user engagement patterns to provide personalized recommendations and is unsuitable for extracting information from and summarizing structured medical records.\n\nC: Amazon Textract is an OCR service that extracts text from scanned documents but lacks the capability to recognize medical-specialized entities and identify their relationships.\n\nD: Amazon Kendra provides search capability for medical records but has limitations in precisely extracting medical information and generating structured summaries."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 50,
+    "question": "애니메이션 회사가 콘텐츠에 자막을 제공하려고 합니다. 이 요구사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "An animation company wants to provide subtitles for its content. Which AWS service meets this requirement?",
+    "options": [
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Transcribe",
+      "Amazon Translate"
+    ],
+    "optionsEn": [
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Transcribe",
+      "Amazon Translate"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nAmazon Transcribe는 오디오 음성을 텍스트로 자동 변환하는 STT(Speech-to-Text) 서비스로, 애니메이션 콘텐츠의 음성을 텍스트 자막으로 변환하는 데 사용할 수 있습니다. 자막을 제공해야 한다는 요구 사항에 가장 직접적으로 부합합니다.\n\n오답 분석\n\nA: Amazon Comprehend는 NLP 기능을 제공하는 텍스트 분석 서비스로, 오디오 음성을 직접 처리하여 자막을 생성하는 기능이 없습니다.\n\nB: Amazon Polly는 텍스트를 음성으로 변환하는 TTS(Text-to-Speech) 서비스로, 자막 생성에 필요한 음성-텍스트 변환과는 반대 방향입니다.\n\nD: Amazon Translate는 텍스트를 다른 언어로 번역하는 신경망 기반 기계 번역 서비스로, 음성에서 자막을 생성하는 기능과는 다릅니다.",
+    "explanationEn": "정답: C\n\nAmazon Transcribe is an STT (Speech-to-Text) service that automatically converts audio speech to text, which can be used to convert the audio of animation content into text subtitles. It most directly meets the requirement to provide subtitles.\n\nIncorrect answer analysis\n\nA: Amazon Comprehend is a text analysis service that provides NLP capabilities and has no capability to directly process audio to generate subtitles.\n\nB: Amazon Polly is a TTS (Text-to-Speech) service that converts text to speech, which is the opposite direction from the speech-to-text conversion needed for subtitle generation.\n\nD: Amazon Translate is a neural network-based machine translation service that translates text into other languages and differs from generating subtitles from audio."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 51,
+    "question": "회사는 사용자가 여행 예약을 할 수 있는 웹사이트를 운영합니다. 회사는 웹사이트의 호텔에 대한 일관된 브랜딩을 만드는 데 도움이 되는 AI 솔루션을 원합니다. AI 솔루션은 일관된 작문 스타일로 웹사이트용 호텔 설명을 생성해야 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A company runs a website for users to make travel reservations. The company wants an AI solution to help create consistent branding for hotels on the website. The AI solution needs to generate hotel descriptions for the website in a consistent writing style. Which AWS service will meet these requirements?",
+    "options": [
+      "Amazon Comprehend",
+      "Amazon Personalize",
+      "Amazon Rekognition",
+      "Amazon Bedrock"
+    ],
+    "optionsEn": [
+      "Amazon Comprehend",
+      "Amazon Personalize",
+      "Amazon Rekognition",
+      "Amazon Bedrock"
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\nAmazon Bedrock은 FM을 통해 일관된 작문 스타일로 호텔 설명 텍스트를 생성할 수 있는 생성형 AI 플랫폼입니다. 프롬프트에 브랜드 톤과 스타일 지침을 지정하여 일관된 브랜딩의 호텔 설명을 자동 생성하는 요구 사항에 적합합니다.\n\n오답 분석\n\nA: Amazon Comprehend는 텍스트를 분석하는 NLP 서비스로, 새로운 텍스트를 생성하는 기능이 없습니다.\n\nB: Amazon Personalize는 사용자 행동 기반 개인화 추천을 제공하는 서비스로, 호텔 설명 텍스트를 생성하는 것이 아닙니다.\n\nC: Amazon Rekognition은 이미지와 비디오를 분석하는 서비스로, 텍스트 콘텐츠를 생성하는 것과는 무관합니다.",
+    "explanationEn": "정답: D\n\nAmazon Bedrock is a generative AI platform that can generate hotel description text in a consistent writing style through FMs. It is suitable for the requirement to automatically generate hotel descriptions with consistent branding by specifying brand tone and style guidelines in prompts.\n\nIncorrect answer analysis\n\nA: Amazon Comprehend is an NLP service that analyzes text and has no capability to generate new text.\n\nB: Amazon Personalize is a service that provides personalized recommendations based on user behavior and is not for generating hotel description text.\n\nC: Amazon Rekognition is a service that analyzes images and videos and is unrelated to generating text content."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 52,
+    "question": "미디어 스트리밍 플랫폼은 사용자의 계정 이력을 기반으로 사용자에게 영화 추천을 제공하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A media streaming platform wants to provide movie recommendations to users based on the users' account history. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Polly",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+      "Amazon Personalize"
+    ],
+    "optionsEn": [
+      "Amazon Polly",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+      "Amazon Personalize"
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\nAmazon Personalize는 사용자의 계정 이력과 시청 행동 데이터를 기반으로 실시간 개인화 추천을 제공하는 완전 관리형 ML 서비스입니다. 사용자 계정 이력을 바탕으로 영화 추천을 제공해야 하는 요구 사항에 최적화된 서비스입니다.\n\n오답 분석\n\nA: Amazon Polly는 텍스트를 음성으로 변환하는 TTS(Text-to-Speech) 서비스로, 사용자에게 콘텐츠를 추천하는 것과는 무관합니다.\n\nB: Amazon Comprehend는 텍스트를 분석하는 NLP 서비스로, 개인화된 콘텐츠 추천 기능이 없습니다.\n\nC: Amazon Transcribe는 음성을 텍스트로 변환하는 STT(Speech-to-Text) 서비스로, 사용자에게 영화를 추천하는 것과는 무관합니다.",
+    "explanationEn": "정답: D\n\nAmazon Personalize is a fully managed ML service that provides real-time personalized recommendations based on users' account history and behavioral data. It is an optimized service for the requirement to provide movie recommendations based on user account history.\n\nIncorrect answer analysis\n\nA: Amazon Polly is a TTS (Text-to-Speech) service that converts text to speech and is unrelated to recommending content to users.\n\nB: Amazon Comprehend is an NLP service that analyzes text and has no personalized content recommendation capability.\n\nC: Amazon Transcribe is an STT (Speech-to-Text) service that converts speech to text and is unrelated to recommending movies to users."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 53,
+    "question": "대량의 교육 자료를 보유한 온라인 학습 회사는 엔터프라이즈 검색을 사용하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "An online learning company with large volumes of education materials wants to use enterprise search. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Comprehend",
+      "Amazon Kendra",
+      "Amazon Bedrock",
+      "Amazon Personalize"
+    ],
+    "optionsEn": [
+      "Amazon Comprehend",
+      "Amazon Kendra",
+      "Amazon Bedrock",
+      "Amazon Personalize"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nAmazon Kendra는 ML 기반의 지능형 엔터프라이즈 검색 서비스로, 대량의 문서에서 자연어 질의를 통해 정확한 답변을 검색합니다. 대량의 교육 자료를 보유한 회사가 엔터프라이즈 검색을 사용하려는 요구 사항에 최적화된 서비스입니다.\n\n오답 분석\n\nA: Amazon Comprehend는 텍스트를 분석하는 NLP 서비스로, 대량 문서에서 정보를 검색하는 엔터프라이즈 검색 기능이 없습니다.\n\nC: Amazon Bedrock는 생성형 AI 애플리케이션을 구축하기 위한 FM 플랫폼으로, 엔터프라이즈 문서 검색에 특화된 서비스가 아닙니다.\n\nD: Amazon Personalize는 개인화 추천을 제공하는 서비스로, 대량의 문서에서 정보를 검색하는 것과는 다른 목적을 가집니다.",
+    "explanationEn": "정답: B\n\nAmazon Kendra is an ML-powered intelligent enterprise search service that searches for accurate answers from large volumes of documents using natural language queries. It is an optimized service for the requirement of a company with large volumes of educational materials wanting to use enterprise search.\n\nIncorrect answer analysis\n\nA: Amazon Comprehend is an NLP service that analyzes text and has no enterprise search capability for searching information from large volumes of documents.\n\nC: Amazon Bedrock is an FM platform for building generative AI applications and is not a service specialized in enterprise document search.\n\nD: Amazon Personalize is a service that provides personalized recommendations and serves a different purpose from searching for information in large volumes of documents."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 54,
+    "question": "금융 회사는 ML 예측에 대한 인적 검토 워크플로를 구축하려고 합니다. 회사는 사용 사례에 대한 신뢰도 임계값을 정의하고 시간이 지남에 따라 임계값을 조정하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A financial company wants to build workflows for human review of ML predictions. The company wants to define confidence thresholds for its use case and adjust the thresholds over time. Which AWS service meets these requirements?",
+    "options": [
+      "Amazon Personalize",
+      "Amazon Augmented AI(Amazon A2I)",
+      "Amazon Inspector",
+      "AWS Audit Manager"
+    ],
+    "optionsEn": [
+      "Amazon Personalize",
+      "Amazon Augmented AI (Amazon A2I)",
+      "Amazon Inspector",
+      "AWS Audit Manager"
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nAmazon A2I(Amazon Augmented AI)는 ML 예측 결과에 대해 사람이 직접 검토하는 human-in-the-loop 워크플로우를 제공하는 서비스입니다. 신뢰도 임계값을 설정하여 사람의 검토가 필요한 저신뢰도 케이스를 자동으로 필터링하고 검토 워크플로우를 구성할 수 있습니다.\n\n오답 분석\n\nA: Amazon Personalize는 개인화 추천을 제공하는 서비스로, ML 예측에 대한 사람의 검토 워크플로우 기능이 없습니다.\n\nC: Amazon Inspector는 AWS 리소스의 보안 취약점을 자동으로 스캔하는 서비스로, ML 모델 결과 검토와는 다른 목적을 가집니다.\n\nD: AWS Audit Manager는 규정 준수 감사 보고서를 자동으로 생성하기 위한 서비스로, ML 예측 검토 워크플로우와는 다릅니다.",
+    "explanationEn": "정답: B\n\nAmazon A2I (Amazon Augmented AI) is a service that provides human-in-the-loop review workflows where humans directly review ML prediction results. It automatically filters low-confidence cases requiring human review by setting confidence thresholds and configures review workflows.\n\nIncorrect answer analysis\n\nA: Amazon Personalize is a service that provides personalized recommendations and has no workflow capability for human review of ML predictions.\n\nC: Amazon Inspector is a service that automatically scans AWS resources for security vulnerabilities and serves a different purpose from reviewing ML model results.\n\nD: AWS Audit Manager is a service for automatically generating compliance audit reports and differs from ML prediction review workflows."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 55,
+    "question": "다큐멘터리 영화 제작자는 더 많은 시청자에게 다가가고 싶어합니다. 영화 제작자는 영화에 여러 언어로 자막과 음성 해설을 자동으로 추가하려고 합니다. 이러한 요구 사항을 충족하는 단계의 조합은 무엇입니까? (2개 선택)",
+    "questionEn": "A documentary filmmaker wants to reach more viewers. The filmmaker wants to automatically add subtitles and voice-overs in multiple languages to their films. Which combination of steps will meet these requirements? (Choose two.)",
+    "options": [
+      "Amazon Transcribe와 Amazon Translate를 사용하여 다른 언어로 자막을 생성합니다.",
+      "Amazon Textract와 Amazon Translate를 사용하여 다른 언어로 자막을 생성합니다.",
+      "Amazon Polly를 사용하여 다른 언어로 음성 해설을 생성합니다.",
+      "Amazon Translate를 사용하여 다른 언어로 음성 해설을 생성합니다.",
+      "Amazon Textract를 사용하여 다른 언어로 음성 해설을 생성합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon Transcribe and Amazon Translate to generate subtitles in other languages.",
+      "Use Amazon Textract and Amazon Translate to generate subtitles in other languages.",
+      "Use Amazon Polly to generate voice-overs in other languages.",
+      "Use Amazon Translate to generate voice-overs in other languages.",
+      "Use Amazon Textract to generate voice-overs in other languages."
+    ],
+    "answer": -1,
+    "explanation": "",
+    "explanationEn": ""
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 56,
+    "question": "뉴스 에이전시는 영어로 기사를 발행합니다. 에이전시는 기사를 다른 언어로 제공하려고 합니다. 이러한 요구 사항을 충족하는 솔루션은 무엇입니까?",
+    "questionEn": "A news agency publishes articles in English. The agency wants to make articles available in other languages. Which solution meets these requirements?",
+    "options": [
+      "Amazon Transcribe를 회사 웹사이트에 사용합니다.",
+      "Amazon Translate 실시간 번역 기능을 사용합니다.",
+      "Amazon Personalize를 회사 웹사이트에 추가합니다.",
+      "Amazon Textract 실시간 문서 처리 기능을 사용합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon Transcribe on the company's website.",
+      "Use the Amazon Translate real-time translation feature.",
+      "Add Amazon Personalize to the company's website.",
+      "Use the Amazon Textract real-time document processing feature."
+    ],
+    "answer": 1,
+    "explanation": "정답: B\n\nAmazon Translate는 신경망 기반 기계 번역 서비스로 영문 기사 텍스트를 다른 언어로 실시간 번역합니다. 영어 기사를 다른 언어로 제공해야 하는 요구 사항에 가장 직접적으로 부합합니다.\n\n오답 분석\n\nA: Amazon Transcribe는 오디오 음성을 텍스트로 변환하는 STT(Speech-to-Text) 서비스로, 텍스트를 다른 언어로 번역하는 기능이 없습니다.\n\nC: Amazon Personalize는 개인화 추천을 제공하는 서비스로, 기사를 다른 언어로 번역하는 것과는 무관합니다.\n\nD: Amazon Textract는 문서나 이미지에서 텍스트를 추출하는 OCR 서비스로, 텍스트를 다른 언어로 번역하는 기능이 없습니다.",
+    "explanationEn": "정답: B\n\nAmazon Translate is a neural network-based machine translation service that translates English article text into other languages in real-time. It most directly meets the requirement to make articles available in other languages.\n\nIncorrect answer analysis\n\nA: Amazon Transcribe is an STT (Speech-to-Text) service that converts audio speech to text and has no capability to translate text into other languages.\n\nC: Amazon Personalize is a service that provides personalized recommendations and is unrelated to translating articles into other languages.\n\nD: Amazon Textract is an OCR service that extracts text from documents or images and has no capability to translate text into other languages."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 57,
+    "question": "지능형 문서 처리(IDP)의 사용 사례를 설명하는 작업은 무엇입니까?",
+    "questionEn": "Which task describes a use case for intelligent document processing (IDP)?",
+    "options": [
+      "사기 거래 예측",
+      "제품 제공 개인화",
+      "사용자 피드백 분석 및 감성 분석 수행",
+      "스캔된 파일에서 데이터를 자동으로 추출 및 포맷팅"
+    ],
+    "optionsEn": [
+      "Predict fraudulent transactions",
+      "Personalize product offerings",
+      "Analyze user feedback and perform sentiment analysis",
+      "Automatically extract and format data from scanned files"
+    ],
+    "answer": 3,
+    "explanation": "정답: D\n\n지능형 문서 처리(IDP)는 Amazon Textract와 같은 서비스를 사용하여 송장, 영수증, 양식과 같은 스캔된 문서에서 데이터의 추출, 분류 및 포맷팅을 자동화합니다.\n\n오답 분석\n\nA: 사기 거래 예측은 이상 탐지 또는 분류 모델에서 처리하는 사기 탐지 사용 사례이며, 문서 처리와는 관련이 없습니다.\n\nB: 제품 제공 개인화는 추천 시스템 사용 사례이며, 문서에서 데이터를 추출하는 것과는 관련이 없습니다.\n\nC: 감성 분석은 텍스트에서 의견과 감정을 처리하는 NLP 작업으로, 문서 데이터 추출과는 구별됩니다.",
+    "explanationEn": "정답: D\n\nIntelligent document processing (IDP) automates the extraction, classification, and formatting of data from scanned documents such as invoices, receipts, and forms, using services like Amazon Textract.\n\nIncorrect answer analysis\n\nA: Predicting fraudulent transactions is a fraud detection use case typically handled by anomaly detection or classification models, not document processing.\n\nB: Personalizing product offerings is a recommendation system use case, unrelated to extracting data from documents.\n\nC: Sentiment analysis processes text for opinions and emotions, which is an NLP task distinct from document data extraction."
+  },
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 58,
+    "question": "한 금융 회사가 사기 행위 패턴을 데이터베이스에 저장하고 있습니다. 회사는 이 데이터를 사용하여 조사를 수행합니다. 회사는 이러한 조사를 지원하는 AI 도구를 개발하기 위해 그래프 기반 ML 솔루션을 사용하려고 합니다. 이러한 요구 사항을 충족하는 AWS 서비스는 무엇입니까?",
+    "questionEn": "A financial company stores patterns of fraudulent behavior in a database. The company uses this data to conduct investigations. The company wants to use a graph-based ML solution to develop an AI tool that helps with these investigations. Which AWS service will meet these requirements?",
+    "options": [
+      "Amazon OpenSearch Service",
+      "Amazon Aurora",
+      "Amazon Neptune",
+      "Amazon MemoryDB"
+    ],
+    "optionsEn": [
+      "Amazon OpenSearch Service",
+      "Amazon Aurora",
+      "Amazon Neptune",
+      "Amazon MemoryDB"
+    ],
+    "answer": 2,
+    "explanation": "정답: C\n\nAmazon Neptune은 사기 행위와 같은 데이터의 관계와 패턴을 분석하기 위한 그래프 기반 ML 기능이 내장된 관리형 그래프 데이터베이스 서비스입니다.\n\n오답 분석\n\nA: Amazon OpenSearch Service는 검색 및 분석 엔진이며, 그래프 기반 ML 솔루션을 위한 그래프 데이터베이스가 아닙니다.\n\nB: Amazon Aurora는 관계형 데이터베이스이며, 그래프 기반 ML 워크로드를 기본적으로 지원하지 않습니다.\n\nD: Amazon MemoryDB는 Redis 호환 인메모리 데이터베이스이며, 그래프 기반 ML 분석용으로 설계되지 않았습니다.",
+    "explanationEn": "정답: C\n\nAmazon Neptune is a managed graph database service with built-in graph-based ML capabilities for analyzing relationships and patterns in data such as fraudulent behavior.\n\nIncorrect answer analysis\n\nA: Amazon OpenSearch Service is a search and analytics engine, not a graph database for graph-based ML solutions.\n\nB: Amazon Aurora is a relational database that does not natively support graph-based ML workloads.\n\nD: Amazon MemoryDB is an in-memory database compatible with Redis, not designed for graph-based ML analysis."
+  }
+]

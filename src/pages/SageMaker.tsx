@@ -3,7 +3,8 @@ import { useProgress } from '../contexts/ProgressContext'
 import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
-import Quiz, { QuizQuestion } from '../components/Quiz'
+import Quiz from '../components/Quiz'
+import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
   { id: 'overview', title: 'SageMaker 개요' },
@@ -14,18 +15,7 @@ const sections = [
   { id: 'quiz', title: '도장깨기 퀴즈' },
 ]
 
-const quizQuestions: QuizQuestion[] = [
-  { question: 'SageMaker Ground Truth의 주요 기능은?', options: ['모델 학습', '데이터 라벨링', '모델 배포', '비용 분석'], answer: 1, explanation: 'Ground Truth는 ML 학습 데이터에 라벨(정답)을 붙이는 서비스입니다. 사람 라벨러 + 자동 라벨링을 결합합니다.' },
-  { question: 'SageMaker Data Wrangler의 역할은?', options: ['모델 편향 감지', '데이터 전처리 및 변환', '모델 배포 자동화', '코드 없는 ML'], answer: 1, explanation: 'Data Wrangler는 시각적 인터페이스로 데이터를 탐색, 정제, 변환하는 전처리 도구입니다.' },
-  { question: 'SageMaker Feature Store의 용도는?', options: ['모델 버전 관리', 'ML 피처 저장 및 공유', '학습 데이터 라벨링', '모델 성능 모니터링'], answer: 1, explanation: 'Feature Store는 ML 피처를 중앙에서 저장, 검색, 공유하는 저장소입니다.' },
-  { question: 'SageMaker Clarify의 기능이 아닌 것은?', options: ['모델 편향 감지', '모델 설명 가능성', '피처 중요도 분석', '자동 하이퍼파라미터 튜닝'], answer: 3, explanation: '자동 하이퍼파라미터 튜닝은 SageMaker Automatic Model Tuning의 기능입니다. Clarify는 편향 감지와 설명 가능성을 제공합니다.' },
-  { question: 'SageMaker JumpStart의 역할은?', options: ['사전 학습된 모델 및 솔루션 템플릿 제공', '실시간 추론 엔드포인트', '데이터 라벨링', '피처 저장소'], answer: 0, explanation: 'JumpStart는 사전 학습된 FM/ML 모델, 솔루션 템플릿, 예제 노트북을 제공하여 빠른 시작을 돕습니다.' },
-  { question: 'SageMaker Model Monitor의 기능은?', options: ['모델 학습 자동화', '프로덕션 모델 품질 모니터링', '데이터 라벨링', '코드 없는 ML'], answer: 1, explanation: 'Model Monitor는 배포된 모델의 데이터 드리프트, 모델 품질, 편향, 피처 중요도를 지속 모니터링합니다.' },
-  { question: 'SageMaker Canvas의 특징은?', options: ['Python 코딩 필요', '코드 없이 시각적으로 ML 모델 구축', '대규모 분산 학습 전용', '실시간 스트리밍 처리'], answer: 1, explanation: 'Canvas는 비즈니스 분석가를 위한 No-Code ML 도구로, 코딩 없이 포인트앤클릭으로 모델을 구축합니다.' },
-  { question: 'SageMaker Autopilot의 기능은?', options: ['데이터 라벨링 자동화', 'AutoML - 자동으로 최적 ML 모델 생성', '모델 배포만 자동화', '데이터 시각화'], answer: 1, explanation: 'Autopilot은 AutoML 서비스로, 데이터를 분석하고 자동으로 여러 모델을 학습/비교하여 최적 모델을 추천합니다.' },
-  { question: 'SageMaker 실시간 추론에 사용되는 것은?', options: ['배치 변환 작업', '실시간 엔드포인트', 'Processing Job', 'Ground Truth'], answer: 1, explanation: '실시간 엔드포인트는 밀리초 단위의 지연 시간으로 실시간 추론을 제공합니다.' },
-  { question: 'SageMaker Studio의 역할은?', options: ['데이터 웨어하우스', 'ML 개발용 통합 IDE', '서버리스 컴퓨팅', '네트워크 관리'], answer: 1, explanation: 'SageMaker Studio는 ML 개발의 모든 단계를 하나의 웹 기반 IDE에서 수행할 수 있는 통합 환경입니다.' },
-]
+const quizQuestions = getQuestionsByCategory('sagemaker')
 
 export default function SageMaker() {
   const { markStudied } = useProgress()

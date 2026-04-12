@@ -91,5 +91,15 @@
 .practice-cat-icon { font-size: 1.1rem; flex-shrink: 0; }
 .practice-cat-title { font-size: 0.88rem; font-weight: 600; flex: 1; }
 .practice-cat-count { font-size: 0.78rem; color: var(--text-secondary); white-space: nowrap; }
+.practice-question-count { margin-bottom: 24px; }
+.practice-question-count h3 { font-size: 1.1rem; margin-bottom: 12px; }
+.practice-count-options { display: flex; gap: 8px; flex-wrap: wrap; }
+.practice-count-btn {
+  padding: 10px 20px; border: 2px solid var(--border); border-radius: var(--radius);
+  cursor: pointer; font-family: var(--font); font-size: 0.88rem; font-weight: 600;
+  background: var(--bg); transition: all var(--transition);
+}
+.practice-count-btn:hover { border-color: var(--primary); }
+.practice-count-btn.selected { border-color: var(--primary); background: rgba(255,153,0,0.08); color: var(--primary-dark); }
 .practice-start { text-align: center; margin-top: 24px; }
 .practice-back { margin-bottom: 24px; }

@@ -1,0 +1,28 @@
+[
+  {
+    "categoryId": "security-governance",
+    "number": 16,
+    "question": "글로벌 금융 회사가 주식 시장 데이터를 분석하고 주식 시장 동향을 제공하는 ML 애플리케이션을 개발했습니다. 이 회사는 애플리케이션 개발 단계를 지속적으로 모니터링하고 회사 정책과 산업 규정이 준수되도록 하려고 합니다. 어떤 AWS 서비스가 회사가 규정 준수 요구 사항을 평가하는 데 도움이 될까요? (2개를 선택하세요.)",
+    "questionEn": "A global financial company has developed an ML application to analyze stock market data and provide stock market trends. The company wants to continuously monitor the application development phases and to ensure that company policies and industry regulations are followed. Which AWS services will help the company assess compliance requirements? (Choose two.)",
+    "options": [
+      "AWS Audit Manager",
+      "AWS Config",
+      "Amazon Inspector",
+      "Amazon CloudWatch",
+      "AWS CloudTrail"
+    ],
+    "optionsEn": [
+      "AWS Audit Manager",
+      "AWS Config",
+      "Amazon Inspector",
+      "Amazon CloudWatch",
+      "AWS CloudTrail"
+    ],
+    "answer": [
+      0,
+      1
+    ],
+    "explanation": "정답: A, B\n\nAWS Audit Manager는 규정 준수 평가를 자동화하고, AWS Config는 리소스 구성이 정책을 준수하는지 지속적으로 모니터링합니다. 두 서비스를 함께 사용하면 개발 단계에서 규정 준수 여부를 체계적으로 평가할 수 있습니다.\n\n오답 분석\n\nC: Amazon Inspector는 AWS 리소스의 보안 취약점을 자동으로 스캔하는 서비스로, 규정 준수 평가보다는 보안 위협 탐지에 특화되어 있습니다.\n\nD: CloudWatch는 애플리케이션 성능 지표와 로그 모니터링에 초점을 맞춘 서비스로, 규정 준수 평가 기능은 제공하지 않습니다.\n\nE: CloudTrail은 API 호출 기록과 감사 추적을 제공하지만, 수집된 로그를 바탕으로 규정 준수 여부를 자동으로 평가하는 기능은 없으며 감사 증거 수집 도구에 해당합니다.",
+    "explanationEn": "정답: A, B\n\nAWS Audit Manager automates compliance assessment, and AWS Config continuously monitors whether resource configurations comply with policies. Using both services together allows systematically evaluating compliance during development phases.\n\nIncorrect answer analysis\n\nC: Amazon Inspector is a service that automatically scans AWS resources for security vulnerabilities, specializing in security threat detection rather than compliance assessment.\n\nD: CloudWatch is a service focused on application performance metrics and log monitoring and does not provide compliance assessment functionality.\n\nE: CloudTrail provides API call records and audit trails, but lacks functionality to automatically evaluate compliance based on collected logs and is an audit evidence collection tool."
+  }
+]

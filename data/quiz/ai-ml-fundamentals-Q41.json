@@ -1,0 +1,28 @@
+[
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 41,
+    "question": "한 전자상거래 회사에서 제품에 대한 서면 고객 리뷰를 기반으로 고객 감정을 파악할 수 있는 솔루션을 구축하고자 합니다. 어떤 AWS 서비스가 이러한 요구 사항을 충족합니까? (2개를 선택하세요.)",
+    "questionEn": "An ecommerce company wants to build a solution to determine customer sentiments based on written customer reviews of products. Which AWS services meet these requirements? (Choose two.)",
+    "options": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Bedrock",
+      "Amazon Rekognition"
+    ],
+    "optionsEn": [
+      "Amazon Lex",
+      "Amazon Comprehend",
+      "Amazon Polly",
+      "Amazon Bedrock",
+      "Amazon Rekognition"
+    ],
+    "answer": [
+      1,
+      3
+    ],
+    "explanation": "정답: B, D\n\nAmazon Comprehend는 기본 제공 감정 분석 API를 통해 텍스트에서 고객 감정을 직접 파악할 수 있으며, Amazon Bedrock은 LLM 기반의 고급 감정 분석을 가능하게 해 두 서비스 모두 활용 가능합니다. 서면 고객 리뷰를 기반으로 감정을 파악해야 하는 요구 사항을 두 서비스 모두 충족합니다.\n\n오답 분석\n\nA: Amazon Lex는 대화형 인터페이스와 챗봇을 구축하기 위한 서비스로, 서면 리뷰에 대한 감정 분석 기능은 제한적입니다.\n\nC: Amazon Polly는 텍스트를 음성으로 변환하는 TTS(Text-to-Speech) 서비스로, 감정 분석과는 관련이 없습니다.\n\nE: Amazon Rekognition은 이미지와 비디오를 분석하는 서비스로, 텍스트 기반의 감정 분석은 수행할 수 없습니다.",
+    "explanationEn": "정답: B, D\n\nAmazon Comprehend can directly determine customer sentiment from text through its built-in sentiment analysis API, and Amazon Bedrock enables advanced LLM-based sentiment analysis, making both services applicable. Both services meet the requirement to determine sentiment based on written customer reviews.\n\nIncorrect answer analysis\n\nA: Amazon Lex is a service for building conversational interfaces and chatbots, and has limited sentiment analysis capability for written reviews.\n\nC: Amazon Polly is a TTS (Text-to-Speech) service that converts text to speech and is unrelated to sentiment analysis.\n\nE: Amazon Rekognition is a service for analyzing images and videos and cannot perform text-based sentiment analysis."
+  }
+]

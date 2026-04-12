@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useProgress } from '../contexts/ProgressContext'
 
 export interface QuizQuestion {
@@ -8,6 +8,7 @@ export interface QuizQuestion {
   optionsEn?: string[]
   answer: number | number[]
   explanation: string
+  explanationEn?: string
 }
 
 interface QuizProps {
@@ -29,7 +30,70 @@ function isAnswerIndex(answer: number | number[], idx: number): boolean {
   return Array.isArray(answer) ? answer.includes(idx) : answer === idx
 }
 
-export default function Quiz({ categoryId, categoryTitle, questions }: QuizProps) {
+function formatAnswerLabel(answer: number | number[]): string {
+  if (Array.isArray(answer)) return answer.map(a => String.fromCharCode(65 + a)).join(', ')
+  return String.fromCharCode(65 + answer)
+}
+
+function shuffleAndPick<T>(arr: T[], count: number): T[] {
+  const shuffled = [...arr].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, count)
+}
+
+/** Browse mode - shows all questions with accordion explanations */
+function BrowseMode({ questions, lang }: { questions: QuizQuestion[]; lang: 'ko' | 'en' }) {
+  const [openIdx, setOpenIdx] = useState<number | null>(null)
+
+  return (
+    <div className="quiz-browse">
+      {questions.map((q, i) => {
+        const isOpen = openIdx === i
+        const questionText = lang === 'en' && q.questionEn ? q.questionEn : q.question
+        const options = lang === 'en' && q.optionsEn ? q.optionsEn : q.options
+        const explanation = lang === 'en' && q.explanationEn ? q.explanationEn : q.explanation
+
+        return (
+          <div key={i} className={`quiz-browse-item ${isOpen ? 'open' : ''}`}>
+            <button
+              className="quiz-browse-header"
+              onClick={() => setOpenIdx(isOpen ? null : i)}
+            >
+              <span className="quiz-browse-num">Q{i + 1}</span>
+              <span className="quiz-browse-q">{questionText}</span>
+              <span className="quiz-browse-toggle">{isOpen ? '-' : '+'}</span>
+            </button>
+            {isOpen && (
+              <div className="quiz-browse-body">
+                <div className="quiz-browse-options">
+                  {options.map((opt, idx) => (
+                    <div
+                      key={idx}
+                      className={`quiz-browse-option ${isAnswerIndex(q.answer, idx) ? 'correct' : ''}`}
+                    >
+                      <span className="quiz-option-letter">{String.fromCharCode(65 + idx)}</span>
+                      {opt}
+                    </div>
+                  ))}
+                </div>
+                <div className="quiz-browse-answer">
+                  <strong>정답: {formatAnswerLabel(q.answer)}</strong>
+                </div>
+                {explanation && (
+                  <div className="quiz-browse-explanation">
+                    {explanation}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+/** Quiz mode - interactive quiz with scoring */
+function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
   const { saveQuizResult, progress } = useProgress()
   const [currentQ, setCurrentQ] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
@@ -130,7 +194,7 @@ export default function Quiz({ categoryId, categoryTitle, questions }: QuizProps
   }
 
   return (
-    <div className="quiz-container">
+    <>
       <div className="quiz-header">
         <h3>📝 도장깨기 퀴즈 - {categoryTitle}</h3>
         <span className="quiz-progress">{currentQ + 1} / {questions.length}</span>
@@ -180,6 +244,63 @@ export default function Quiz({ categoryId, categoryTitle, questions }: QuizProps
           </button>
         )}
       </div>
+    </>
+  )
+}
+
+const QUIZ_COUNT = 10
+
+export default function Quiz({ categoryId, categoryTitle, questions }: QuizProps) {
+  const [mode, setMode] = useState<'quiz' | 'browse'>('quiz')
+  const [lang, setLang] = useState<'ko' | 'en'>('ko')
+  const [quizKey, setQuizKey] = useState(0) // for re-shuffling
+
+  const quizQuestions = useMemo(() => {
+    return shuffleAndPick(questions, QUIZ_COUNT)
+  }, [questions, quizKey])
+
+  const startNewQuiz = () => {
+    setQuizKey(k => k + 1)
+    setMode('quiz')
+  }
+
+  return (
+    <div className="quiz-container">
+      <div className="quiz-mode-bar">
+        <div className="quiz-mode-tabs">
+          <button
+            className={`quiz-mode-tab ${mode === 'quiz' ? 'active' : ''}`}
+            onClick={startNewQuiz}
+          >
+            📝 도장깨기 ({QUIZ_COUNT}문제)
+          </button>
+          <button
+            className={`quiz-mode-tab ${mode === 'browse' ? 'active' : ''}`}
+            onClick={() => setMode('browse')}
+          >
+            📖 전체 보기 ({questions.length}문제)
+          </button>
+        </div>
+        {mode === 'browse' && (
+          <button
+            className="quiz-lang-toggle"
+            onClick={() => setLang(l => l === 'ko' ? 'en' : 'ko')}
+          >
+            {lang === 'ko' ? '🇰🇷 한국어' : '🇺🇸 English'}
+          </button>
+        )}
+      </div>
+
+      {mode === 'quiz' ? (
+        <QuizMode
+          key={quizKey}
+          categoryId={categoryId}
+          categoryTitle={categoryTitle}
+          questions={quizQuestions}
+        />
+      ) : (
+        <BrowseMode questions={questions} lang={lang} />
+      )}
     </div>
   )
 }

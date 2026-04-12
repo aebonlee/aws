@@ -1,0 +1,28 @@
+[
+  {
+    "categoryId": "fm-evaluation",
+    "number": 15,
+    "question": "한 출판회사가 사용자가 출판된 콘텐츠와 상호작용할 수 있는 능력을 제공하기 위해 Retrieval Augmented Generation(RAG) 기반 솔루션을 구축했습니다. 매일 새로운 콘텐츠가 출판됩니다. 회사는 사용자에게 거의 실시간 경험을 제공하려고 합니다. 이 요구사항을 충족하기 위해 회사가 오프라인 배치 처리를 사용하여 구현해야 하는 RAG 파이프라인의 단계는 무엇입니까? (2개를 선택합니다.)",
+    "questionEn": "A publishing company built a Retrieval Augmented Generation (RAG) based solution to give its users the ability to interact with published content. New content is published daily. The company wants to provide a near real time experience to users. Which steps in the RAG pipeline should the company implement by using offline batch processing to meet these requirements? (Choose two.)",
+    "options": [
+      "콘텐츠 임베딩 생성",
+      "사용자 쿼리에 대한 임베딩 생성",
+      "검색 인덱스 생성",
+      "관련 콘텐츠 검색",
+      "사용자를 위한 응답 생성"
+    ],
+    "optionsEn": [
+      "Generation of content embeddings",
+      "Generation of embeddings for user queries",
+      "Creation of the search index",
+      "Retrieval of relevant content",
+      "Response generation for the user"
+    ],
+    "answer": [
+      0,
+      2
+    ],
+    "explanation": "정답: A, C\n\n콘텐츠 임베딩 생성과 검색 인덱스 구축은 계산 집약적이므로 오프라인 배치로 사전 처리하여 효율성이 극대화됩니다.\n\n오답 분석\n\nB: 사용자 쿼리 임베딩은 실시간으로 생성해야 최신 의도를 반영합니다.\n\nD: 관련 콘텐츠 검색은 사용자 대기 중 실시간으로 수행합니다.\n\nE: 응답 생성은 검색 결과 기반으로 실시간 생성합니다.",
+    "explanationEn": "정답: A, C\n\nContent embedding generation and search index construction are computationally intensive, so preprocessing them offline in batches maximizes efficiency.\n\nIncorrect answer analysis\n\nB: User query embeddings must be generated in real time to reflect the latest intent.\n\nD: Relevant content retrieval is performed in real time while the user is waiting.\n\nE: Response generation is performed in real time based on retrieval results."
+  }
+]

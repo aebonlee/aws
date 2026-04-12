@@ -3,7 +3,8 @@ import { useProgress } from '../contexts/ProgressContext'
 import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
-import Quiz, { QuizQuestion } from '../components/Quiz'
+import Quiz from '../components/Quiz'
+import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
   { id: 'principles', title: '책임감 있는 AI 원칙' },
@@ -13,18 +14,7 @@ const sections = [
   { id: 'quiz', title: '도장깨기 퀴즈' },
 ]
 
-const quizQuestions: QuizQuestion[] = [
-  { question: '책임감 있는 AI의 핵심 원칙이 아닌 것은?', options: ['공정성 (Fairness)', '투명성 (Transparency)', '수익 극대화 (Profit Max)', '개인정보 보호 (Privacy)'], answer: 2, explanation: '책임감 있는 AI 원칙: 공정성, 설명 가능성, 개인정보 보호, 안전성, 투명성. 수익 극대화는 원칙이 아닙니다.' },
-  { question: '샘플링 편향(Sampling Bias)이란?', options: ['알고리즘의 구조적 결함', '학습 데이터가 실제 모집단을 대표하지 못하는 편향', '측정 도구의 오류', '확인하고 싶은 것만 보는 편향'], answer: 1, explanation: '샘플링 편향은 학습 데이터가 전체 모집단을 대표하지 못할 때 발생합니다. 예: 특정 연령대만 포함된 데이터.' },
-  { question: 'SHAP의 역할은?', options: ['모델 학습 속도 향상', '각 피처의 예측 기여도를 설명', '데이터 암호화', '모델 압축'], answer: 1, explanation: 'SHAP(SHapley Additive exPlanations)은 게임 이론 기반으로 각 피처가 예측에 얼마나 기여했는지 설명합니다.' },
-  { question: 'PDP(Partial Dependence Plot)의 용도는?', options: ['모델 학습 과정 시각화', '특정 피처와 예측값의 관계를 시각화', '데이터 분포 시각화', '네트워크 구조 시각화'], answer: 1, explanation: 'PDP는 다른 피처를 평균화하고, 특정 피처가 변할 때 예측값이 어떻게 변하는지 보여줍니다.' },
-  { question: 'SageMaker Clarify의 기능은?', options: ['모델 배포 자동화', '편향 감지 및 모델 설명 가능성', '데이터 라벨링', '코드 생성'], answer: 1, explanation: 'Clarify는 학습 전/후 데이터 편향 감지와 SHAP 기반 모델 설명 가능성을 제공합니다.' },
-  { question: 'Bedrock Guardrails의 역할은?', options: ['모델 학습 가속', 'FM 입출력의 안전성과 적절성 보장', '비용 절감', '데이터 백업'], answer: 1, explanation: 'Guardrails는 유해 콘텐츠, PII 노출, 주제 이탈 등을 필터링하여 안전한 AI 사용을 보장합니다.' },
-  { question: '확인 편향(Confirmation Bias)이란?', options: ['데이터 수집 오류', '기존 가설을 확인하는 방향으로 데이터를 해석하는 편향', '알고리즘 결함', '라벨링 오류'], answer: 1, explanation: '확인 편향은 사람이 기존 믿음에 부합하는 데이터만 선택하거나 해석하는 경향입니다.' },
-  { question: 'LIME의 특징은?', options: ['글로벌 설명 방법', '개별 예측에 대한 로컬 설명 제공', '모델 학습 방법', '데이터 전처리 도구'], answer: 1, explanation: 'LIME(Local Interpretable Model-agnostic Explanations)은 개별 예측을 간단한 모델로 근사하여 설명합니다.' },
-  { question: 'Model Cards의 용도는?', options: ['모델 학습 코드 저장', '모델의 성능, 한계, 편향을 문서화', '모델 배포 자동화', '비용 관리'], answer: 1, explanation: 'Model Cards는 모델의 목적, 성능 메트릭, 한계, 편향, 윤리적 고려사항을 표준화된 형식으로 문서화합니다.' },
-  { question: '알고리즘 편향의 원인은?', options: ['데이터 수집 오류만', '모델의 설계나 학습 과정에서 특정 그룹에 불공정한 결과', '하드웨어 오류', '네트워크 문제'], answer: 1, explanation: '알고리즘 편향은 모델 구조, 최적화 방법, 또는 학습 과정에서 특정 그룹에 불리한 결과가 나오는 것입니다.' },
-]
+const quizQuestions = getQuestionsByCategory('responsible-ai')
 
 export default function ResponsibleAi() {
   const { markStudied } = useProgress()

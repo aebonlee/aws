@@ -1,0 +1,28 @@
+[
+  {
+    "categoryId": "security-governance",
+    "number": 16,
+    "question": "회사는 Amazon Bedrock API에 대한 모든 요청을 기록해야 합니다. 회사는 가능한 최저 비용으로 5년 동안 로그를 안전하게 보관해야 합니다. 이러한 요구 사항을 충족하는 AWS 서비스와 스토리지 클래스의 조합은 무엇입니까?(2개를 선택하세요.)",
+    "questionEn": "A company needs to log all requests made to its Amazon Bedrock API. The company must retain the logs securely for 5 years at the lowest possible cost. Which combination of AWS service and storage class meets these requirements? (Choose two.)",
+    "options": [
+      "AWS CloudTrail",
+      "Amazon CloudWatch",
+      "AWS Audit Manager",
+      "Amazon S3 Intelligent-Tiering",
+      "Amazon S3 Standard"
+    ],
+    "optionsEn": [
+      "AWS CloudTrail",
+      "Amazon CloudWatch",
+      "AWS Audit Manager",
+      "Amazon S3 Intelligent-Tiering",
+      "Amazon S3 Standard"
+    ],
+    "answer": [
+      0,
+      3
+    ],
+    "explanation": "정답: A, D\n\nCloudTrail로 Bedrock API 호출 로그를 수집하고, S3 Intelligent-Tiering으로 5년간 비용 효율적으로 보관할 수 있습니다. Intelligent-Tiering은 접근 패턴에 따라 자동으로 스토리지 티어를 이동하여 장기 보관 비용을 최소화합니다.\n\n오답 분석\n\nB: CloudWatch는 메트릭과 로그 모니터링에 적합한 서비스로, 5년 장기 보관에는 비용 측면에서 비효율적입니다.\n\nC: Audit Manager는 규정 준수 평가를 자동화하는 감사 도구로, API 호출 로그를 직접 수집하는 기능이 없습니다.\n\nE: S3 Standard는 빈번한 접근이 필요한 데이터에 최적화된 스토리지 클래스로, 5년 장기 보관 용도로는 비용이 비효율적입니다.",
+    "explanationEn": "정답: A, D\n\nCloudTrail collects Bedrock API call logs, and S3 Intelligent-Tiering enables cost-effective retention for 5 years. Intelligent-Tiering automatically moves data between storage tiers based on access patterns to minimize long-term retention costs.\n\nIncorrect answer analysis\n\nB: CloudWatch is a service suited for metrics and log monitoring, which is cost-inefficient for 5-year long-term retention.\n\nC: Audit Manager is an audit tool that automates compliance assessment and does not have functionality to directly collect API call logs.\n\nE: S3 Standard is a storage class optimized for frequently accessed data, which is cost-inefficient for 5-year long-term retention purposes."
+  }
+]

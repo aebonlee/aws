@@ -3,7 +3,8 @@ import { useProgress } from '../contexts/ProgressContext'
 import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
-import Quiz, { QuizQuestion } from '../components/Quiz'
+import Quiz from '../components/Quiz'
+import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
   { id: 'foundation-model', title: 'Foundation Model (FM)' },
@@ -14,18 +15,7 @@ const sections = [
   { id: 'quiz', title: '도장깨기 퀴즈' },
 ]
 
-const quizQuestions: QuizQuestion[] = [
-  { question: 'Foundation Model(FM)의 특징으로 올바른 것은?', options: ['소량의 특정 데이터로만 학습', '대규모 데이터로 사전 학습된 범용 모델', '하나의 작업만 수행 가능', '규칙 기반으로 동작'], answer: 1, explanation: 'FM은 대규모 데이터로 사전 학습된 범용 모델로, 파인 튜닝이나 프롬프트로 다양한 작업에 적용할 수 있습니다.' },
-  { question: 'Temperature 값이 높을수록 생성 결과는?', options: ['더 결정적이고 일관됨', '더 다양하고 창의적', '더 짧아짐', '변화 없음'], answer: 1, explanation: 'Temperature가 높으면 확률 분포가 평탄해져 다양한 토큰이 선택될 수 있어 창의적인 결과가 나옵니다.' },
-  { question: 'Top-P (Nucleus Sampling)의 역할은?', options: ['최대 토큰 수 제한', '누적 확률 P까지의 토큰만 후보로 선택', '학습률 조정', '배치 크기 설정'], answer: 1, explanation: 'Top-P는 누적 확률이 P에 도달할 때까지의 토큰만 후보로 포함합니다. P=0.9면 상위 90% 확률의 토큰만 선택됩니다.' },
-  { question: 'Transformer 아키텍처의 핵심 메커니즘은?', options: ['CNN (합성곱)', 'RNN (순환)', 'Self-Attention (자기 주의)', 'Decision Tree'], answer: 2, explanation: 'Transformer는 Self-Attention 메커니즘으로 입력 시퀀스의 모든 토큰 간 관계를 병렬로 처리합니다.' },
-  { question: '토큰(Token)에 대한 설명으로 올바른 것은?', options: ['항상 하나의 단어와 일치', 'LLM이 처리하는 텍스트의 기본 단위', '이미지 처리에만 사용', '문장 단위로 분할'], answer: 1, explanation: '토큰은 LLM이 텍스트를 처리하는 기본 단위입니다. 단어, 서브워드, 문자 등 다양한 크기가 될 수 있습니다.' },
-  { question: '임베딩(Embedding)의 역할은?', options: ['텍스트를 이미지로 변환', '단어/문장을 고차원 벡터로 표현', '모델 압축', '데이터 암호화'], answer: 1, explanation: '임베딩은 텍스트를 수치 벡터로 변환합니다. 의미적으로 유사한 텍스트는 벡터 공간에서 가까이 위치합니다.' },
-  { question: 'Diffusion Model의 이미지 생성 원리는?', options: ['GAN처럼 생성자/판별자 경쟁', '노이즈에서 점진적으로 이미지 복원', 'VAE의 잠재 공간 샘플링', '규칙 기반 이미지 합성'], answer: 1, explanation: 'Diffusion Model은 노이즈를 점진적으로 제거(denoising)하여 이미지를 생성합니다. Stable Diffusion이 대표적입니다.' },
-  { question: 'GAN의 구성 요소는?', options: ['인코더와 디코더', '생성자(Generator)와 판별자(Discriminator)', 'Attention과 FFN', 'Agent와 Environment'], answer: 1, explanation: 'GAN은 생성자가 가짜 데이터를 만들고, 판별자가 진짜/가짜를 구분하며 서로 경쟁하며 학습합니다.' },
-  { question: 'Hallucination(환각)이란?', options: ['모델이 학습을 중단하는 현상', '모델이 사실이 아닌 정보를 생성하는 현상', '과적합의 다른 이름', '모델 추론 속도 저하'], answer: 1, explanation: '환각은 LLM이 그럴듯하지만 사실이 아닌 정보를 자신 있게 생성하는 현상입니다.' },
-  { question: 'Temperature=0으로 설정하면?', options: ['가장 창의적인 결과', '항상 가장 확률 높은 토큰 선택 (결정적)', '출력이 없음', '최대 길이 출력'], answer: 1, explanation: 'Temperature=0이면 항상 가장 높은 확률의 토큰만 선택하여 동일 입력에 동일 출력(결정적)이 됩니다.' },
-]
+const quizQuestions = getQuestionsByCategory('gen-ai-basics')
 
 export default function GenAiBasics() {
   const { markStudied } = useProgress()

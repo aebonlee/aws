@@ -3,7 +3,8 @@ import { useProgress } from '../contexts/ProgressContext'
 import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
-import Quiz, { QuizQuestion } from '../components/Quiz'
+import Quiz from '../components/Quiz'
+import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
   { id: 'improvement', title: 'FM 성능 개선 방법' },
@@ -13,18 +14,7 @@ const sections = [
   { id: 'quiz', title: '도장깨기 퀴즈' },
 ]
 
-const quizQuestions: QuizQuestion[] = [
-  { question: 'RAG의 핵심 목적은?', options: ['모델 파라미터 수정', '외부 지식으로 FM 응답 품질 향상', '모델 크기 축소', '학습 속도 향상'], answer: 1, explanation: 'RAG는 질문과 관련된 외부 문서를 검색하여 FM에 컨텍스트로 제공, 더 정확한 응답을 생성합니다.' },
-  { question: 'Fine-tuning과 RAG의 차이는?', options: ['동일한 기법이다', 'Fine-tuning은 모델 가중치 수정, RAG는 외부 지식 참조', 'RAG가 항상 더 좋다', 'Fine-tuning은 프롬프트만 수정'], answer: 1, explanation: 'Fine-tuning은 모델 가중치를 직접 업데이트하고, RAG는 모델을 수정하지 않고 외부 지식을 활용합니다.' },
-  { question: 'BLEU 스코어가 측정하는 것은?', options: ['생성 텍스트의 감성', '생성 텍스트와 참조 텍스트의 n-gram 유사도', '모델 학습 속도', '토큰 수'], answer: 1, explanation: 'BLEU는 기계 번역 품질을 평가하며, 생성 텍스트와 참조 텍스트 간 n-gram 일치 비율을 측정합니다.' },
-  { question: 'ROUGE가 주로 평가하는 작업은?', options: ['이미지 분류', '텍스트 요약', '음성 인식', '객체 감지'], answer: 1, explanation: 'ROUGE는 텍스트 요약 품질을 평가하며, 참조 요약과 생성 요약 간 n-gram 재현율을 측정합니다.' },
-  { question: 'RLHF의 의미는?', options: ['규칙 기반 강화 학습', '인간 피드백 기반 강화 학습', '자동 하이퍼파라미터 튜닝', '데이터 증강 기법'], answer: 1, explanation: 'RLHF(Reinforcement Learning from Human Feedback)는 인간의 선호도 피드백으로 FM을 정렬(align)합니다.' },
-  { question: 'RAG 파이프라인의 올바른 순서는?', options: ['질문→검색→생성', '생성→검색→질문', '학습→검색→배포', '검색→학습→생성'], answer: 0, explanation: 'RAG: 질문 입력 → 벡터 DB에서 관련 문서 검색 → 검색된 문서와 질문을 FM에 전달 → 응답 생성.' },
-  { question: 'BERTScore의 특징은?', options: ['단어 빈도 기반 비교', 'BERT 임베딩으로 의미적 유사성 평가', 'n-gram 일치만 측정', '문법 오류 감지'], answer: 1, explanation: 'BERTScore는 BERT 임베딩을 활용하여 생성/참조 텍스트의 의미적 유사성을 측정합니다.' },
-  { question: 'FM 성능 개선 시 모델 수정 없이 가장 빠른 방법은?', options: ['Fine-tuning', '프롬프트 엔지니어링', 'RLHF', '사전 학습'], answer: 1, explanation: '프롬프트 엔지니어링은 모델을 수정하지 않고 입력만 최적화하여 빠르게 성능을 개선할 수 있습니다.' },
-  { question: 'Perplexity가 낮을수록 의미하는 것은?', options: ['모델이 더 혼란스러움', '모델의 예측 성능이 더 좋음', '학습 데이터가 부족', '과적합 발생'], answer: 1, explanation: 'Perplexity가 낮을수록 모델이 다음 토큰을 잘 예측한다는 의미로, 언어 모델 성능이 좋습니다.' },
-  { question: '인간 평가(Human Evaluation)가 필요한 이유는?', options: ['자동 메트릭이 존재하지 않아서', '유창성, 유용성 등 주관적 품질은 자동 메트릭으로 완전히 측정 불가', '비용이 저렴해서', '항상 자동 메트릭보다 빠르므로'], answer: 1, explanation: '자동 메트릭은 표면적 유사도만 측정하며, 응답의 유용성, 정확성, 안전성 등은 인간 평가가 필요합니다.' },
-]
+const quizQuestions = getQuestionsByCategory('fm-evaluation')
 
 export default function FmEvaluation() {
   const { markStudied } = useProgress()

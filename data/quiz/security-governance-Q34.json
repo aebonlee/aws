@@ -1,0 +1,28 @@
+[
+  {
+    "categoryId": "security-governance",
+    "number": 16,
+    "question": "한 회사에서 고객 질문에 답변하기 위해 대화형 챗봇을 배포하려고 합니다. 챗봇은 파인튜닝된 Amazon SageMaker JumpStart 모델을 기반으로 합니다. 애플리케이션은 여러 규제 프레임워크를 준수해야 합니다. 회사에서 규정 준수를 입증할 수 있는 기능은 무엇입니까?(2개를 선택하세요.)",
+    "questionEn": "A company wants to deploy a conversational chatbot to answer customer questions. The chatbot is based on a fine-tuned Amazon SageMaker JumpStart model. The application must comply with multiple regulatory frameworks. Which capabilities can the company show compliance for? (Choose two.)",
+    "options": [
+      "자동 스케일링 추론 엔드포인트",
+      "위협 탐지",
+      "데이터 보호",
+      "비용 최적화",
+      "느슨하게 결합된 마이크로서비스"
+    ],
+    "optionsEn": [
+      "Auto scaling inference endpoints",
+      "Threat detection",
+      "Data protection",
+      "Cost optimization",
+      "Loosely coupled microservices"
+    ],
+    "answer": [
+      1,
+      2
+    ],
+    "explanation": "정답: B, C\n\n위협 탐지는 보안 공격을 방어하고, 데이터 보호는 민감 정보의 암호화와 접근 제어를 통해 규제 요구사항을 충족합니다. 이 두 가지 기능은 대부분의 규제 프레임워크에서 필수적으로 요구하는 보안 역량에 해당합니다.\n\n오답 분석\n\nA: 자동 스케일링은 서비스 가용성과 성능을 향상하는 기능으로, 규정 준수와 직접적인 관련이 없습니다.\n\nD: 비용 최적화는 운영 효율성 지표로, 규제 프레임워크의 준수 요구사항과는 무관합니다.\n\nE: 마이크로서비스는 소프트웨어 아키텍처 패턴으로, 규정 준수 입증과는 별개의 개념에 해당합니다.",
+    "explanationEn": "정답: B, C\n\nThreat detection defends against security attacks, and data protection meets regulatory requirements through encryption of sensitive information and access control. These two capabilities constitute security competencies that are mandatorily required by most regulatory frameworks.\n\nIncorrect answer analysis\n\nA: Auto scaling is a feature that improves service availability and performance, which has no direct relation to regulatory compliance.\n\nD: Cost optimization is an operational efficiency metric, which is unrelated to the compliance requirements of regulatory frameworks.\n\nE: Microservices is a software architecture pattern, which is a separate concept from demonstrating regulatory compliance."
+  }
+]

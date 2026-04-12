@@ -1,0 +1,28 @@
+[
+  {
+    "categoryId": "ai-ml-fundamentals",
+    "number": 41,
+    "question": "다큐멘터리 영화 제작자는 더 많은 시청자에게 다가가고 싶어합니다. 영화 제작자는 영화에 여러 언어로 자막과 음성 해설을 자동으로 추가하려고 합니다. 이러한 요구 사항을 충족하는 단계의 조합은 무엇입니까? (2개 선택)",
+    "questionEn": "A documentary filmmaker wants to reach more viewers. The filmmaker wants to automatically add subtitles and voice-overs in multiple languages to their films. Which combination of steps will meet these requirements? (Choose two.)",
+    "options": [
+      "Amazon Transcribe와 Amazon Translate를 사용하여 다른 언어로 자막을 생성합니다.",
+      "Amazon Textract와 Amazon Translate를 사용하여 다른 언어로 자막을 생성합니다.",
+      "Amazon Polly를 사용하여 다른 언어로 음성 해설을 생성합니다.",
+      "Amazon Translate를 사용하여 다른 언어로 음성 해설을 생성합니다.",
+      "Amazon Textract를 사용하여 다른 언어로 음성 해설을 생성합니다."
+    ],
+    "optionsEn": [
+      "Use Amazon Transcribe and Amazon Translate to generate subtitles in other languages.",
+      "Use Amazon Textract and Amazon Translate to generate subtitles in other languages.",
+      "Use Amazon Polly to generate voice-overs in other languages.",
+      "Use Amazon Translate to generate voice-overs in other languages.",
+      "Use Amazon Textract to generate voice-overs in other languages."
+    ],
+    "answer": [
+      0,
+      2
+    ],
+    "explanation": "정답: A, C\n\nAmazon Transcribe(음성-텍스트 변환)와 Amazon Translate(텍스트 번역)를 조합하여 다국어 자막을 생성하고, Amazon Polly(텍스트-음성 변환)를 사용하여 번역된 텍스트를 다국어 음성 해설로 변환할 수 있습니다. 이 두 단계의 조합으로 여러 언어의 자막과 음성 해설을 자동으로 추가하는 요구 사항을 충족합니다.\n\n오답 분석\n\nB: Amazon Textract는 이미지와 문서에서 텍스트를 추출하는 OCR 서비스로, 영상의 음성에서 자막을 생성하는 데는 사용할 수 없습니다.\n\nD: Amazon Translate는 텍스트를 다른 언어로 번역하는 서비스로, 텍스트를 음성으로 변환하는 TTS 기능이 없습니다.\n\nE: Amazon Textract는 이미지나 문서에서 텍스트를 추출하는 OCR 서비스로, 음성 해설을 생성하는 것과는 완전히 무관합니다.",
+    "explanationEn": "정답: A, C\n\nAmazon Transcribe (speech-to-text) combined with Amazon Translate (text translation) generates multilingual subtitles, and Amazon Polly (text-to-speech) converts translated text into multilingual voice-overs. The combination of these two steps meets the requirement to automatically add subtitles and voice-overs in multiple languages.\n\nIncorrect answer analysis\n\nB: Amazon Textract is an OCR service that extracts text from images and documents and cannot be used to generate subtitles from video audio.\n\nD: Amazon Translate is a service for translating text into other languages and has no TTS capability to convert text to speech.\n\nE: Amazon Textract is an OCR service that extracts text from images or documents and is completely unrelated to generating voice-overs."
+  }
+]
