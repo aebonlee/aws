@@ -61,6 +61,30 @@
 }
 .nav-divider { width: 1px; height: 20px; background: var(--border); margin: 0 6px; flex-shrink: 0; }
 
+/* AIF-C01 Highlight */
+.nav-dropdown-highlight {
+  background: rgba(255,153,0,0.06); border-left: 3px solid var(--primary);
+  font-weight: 600;
+}
+.nav-dropdown-highlight:hover { background: rgba(255,153,0,0.14); }
+.nav-code-highlight {
+  background: var(--primary) !important; color: #fff !important;
+  font-weight: 800;
+}
+.nav-dropdown-badge-main {
+  font-size: 0.6rem; font-weight: 800; color: #fff; background: var(--primary);
+  padding: 1px 5px; border-radius: 8px; letter-spacing: 0.5px; flex-shrink: 0;
+}
+.nav-mobile-highlight {
+  background: rgba(255,153,0,0.08); border-left: 3px solid var(--primary);
+  font-weight: 600; padding-left: 9px;
+}
+
+/* Lock icon for protected routes */
+.nav-dropdown-lock {
+  font-size: 0.7rem; flex-shrink: 0; opacity: 0.6;
+}
+
 /* Actions */
 .nav-actions { display: flex; align-items: center; gap: 8px; }
 .theme-toggle {

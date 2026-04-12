@@ -4,6 +4,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { ProgressProvider } from './contexts/ProgressContext'
 import PublicLayout from './layouts/PublicLayout'
+import ProtectedRoute from './components/ProtectedRoute'
 
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
@@ -43,6 +44,7 @@ function App() {
       <PublicLayout>
         <Suspense fallback={<div className="loading-spinner">로딩 중...</div>}>
           <Routes>
+            {/* Public - AIF-C01 core content */}
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/ai-ml-basics" element={<AiMlBasics />} />
@@ -53,24 +55,27 @@ function App() {
             <Route path="/fm-evaluation" element={<FmEvaluation />} />
             <Route path="/responsible-ai" element={<ResponsibleAi />} />
             <Route path="/security-governance" element={<SecurityGovernance />} />
-            <Route path="/clf-c02" element={<ClfC02 />} />
-            <Route path="/saa-c03" element={<SaaC03 />} />
-            <Route path="/dva-c02" element={<DvaC02 />} />
-            <Route path="/soa-c02" element={<SoaC02 />} />
-            <Route path="/dea-c01" element={<DeaC01 />} />
-            <Route path="/mla-c01" element={<MlaC01 />} />
-            <Route path="/sap-c02" element={<SapC02 />} />
-            <Route path="/dop-c02" element={<DopC02 />} />
-            <Route path="/scs-c02" element={<ScsC02 />} />
-            <Route path="/ans-c01" element={<AnsC01 />} />
-            <Route path="/stamp" element={<StampBreaking />} />
-            <Route path="/practice" element={<Practice />} />
-            <Route path="/community/notices" element={<Notices />} />
-            <Route path="/community/board" element={<Board />} />
-            <Route path="/community/success-stories" element={<SuccessStories />} />
-            <Route path="/community/tips" element={<Tips />} />
             <Route path="/login" element={<Login />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
+
+            {/* Protected - requires login */}
+            <Route path="/clf-c02" element={<ProtectedRoute><ClfC02 /></ProtectedRoute>} />
+            <Route path="/saa-c03" element={<ProtectedRoute><SaaC03 /></ProtectedRoute>} />
+            <Route path="/dva-c02" element={<ProtectedRoute><DvaC02 /></ProtectedRoute>} />
+            <Route path="/soa-c02" element={<ProtectedRoute><SoaC02 /></ProtectedRoute>} />
+            <Route path="/dea-c01" element={<ProtectedRoute><DeaC01 /></ProtectedRoute>} />
+            <Route path="/mla-c01" element={<ProtectedRoute><MlaC01 /></ProtectedRoute>} />
+            <Route path="/sap-c02" element={<ProtectedRoute><SapC02 /></ProtectedRoute>} />
+            <Route path="/dop-c02" element={<ProtectedRoute><DopC02 /></ProtectedRoute>} />
+            <Route path="/scs-c02" element={<ProtectedRoute><ScsC02 /></ProtectedRoute>} />
+            <Route path="/ans-c01" element={<ProtectedRoute><AnsC01 /></ProtectedRoute>} />
+            <Route path="/stamp" element={<ProtectedRoute><StampBreaking /></ProtectedRoute>} />
+            <Route path="/practice" element={<ProtectedRoute><Practice /></ProtectedRoute>} />
+            <Route path="/community/notices" element={<ProtectedRoute><Notices /></ProtectedRoute>} />
+            <Route path="/community/board" element={<ProtectedRoute><Board /></ProtectedRoute>} />
+            <Route path="/community/success-stories" element={<ProtectedRoute><SuccessStories /></ProtectedRoute>} />
+            <Route path="/community/tips" element={<ProtectedRoute><Tips /></ProtectedRoute>} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
