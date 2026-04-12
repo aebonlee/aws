@@ -20,8 +20,8 @@
 
 (async () => {
   // ============ 여기만 수정 ============
-  const SET_NAME = 'ai-ml-fundamentals';
-  const TOTAL = 58;
+  const SET_NAME = 'genai-fundamentals';
+  const TOTAL = 55;
   // =====================================
 
   const results = [];

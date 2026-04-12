@@ -155,3 +155,39 @@ src/data/practice/aifC01.ts
 | 영어 전환 시 상태 꼬임 | 영어에서 불필요한 재제출 | 이미 제출된 상태에서 바로 추출 |
 | 해설 끝 "마이" 잔존 | 네비 텍스트 정리 불완전 | 정규식 패턴 추가 |
 | `element.click()` 미동작 | 사이트의 React 이벤트 핸들링 | `realClick()` — 실제 마우스 이벤트 시퀀스 |
+
+---
+
+## 9. 스크래핑 진행 현황
+
+### 완료된 카테고리
+
+| # | SET_NAME | 카테고리 | 문제 수 | 정답 | 해설(KR) | 해설(EN) | 영어문제 | 상태 |
+|---|----------|---------|---------|------|---------|---------|---------|------|
+| 1 | ai-ml-fundamentals | Fundamentals of AI & ML | 58 | - | - | - | - | 미완료 (초기 60문제 혼합 추출) |
+| 2 | ml-development | ML Development | 48 | 46/47 | 47/47 | 47/47 | 47/47 | ✅ 완료 (47항목, Q25 다중정답 미추출, Q36 번호누락) |
+| 3 | sagemaker | Amazon SageMaker | 42 | 42/42 | 42/42 | 42/42 | 42/42 | ✅ 완벽 |
+
+### 대기 중인 카테고리
+
+| # | SET_NAME | 카테고리 | 문제 수 | 상태 |
+|---|----------|---------|---------|------|
+| 4 | genai-fundamentals | Fundamentals of Generative AI | 55 | 다음 추출 대상 |
+| 5 | fm-utilization | FM Utilization | 82 | 대기 |
+| 6 | fm-evaluation | FM Evaluation and Improvement | 62 | 대기 |
+| 7 | responsible-ai | Guidelines for Responsible AI | 32 | 대기 |
+| 8 | security-governance | Security, Compliance and Governance | 45 | 대기 |
+
+### SageMaker 스크래핑 상세 결과 (2026-04-12)
+- **파일**: `data/sagemaker-2026-04-12.json`
+- **문항 수**: 42/42 (완벽)
+- **정답**: 42/42 (모두 단일 정답, 다중정답 없음)
+- **해설(KR)**: 42/42
+- **해설(EN)**: 42/42
+- **영어 문제/선지**: 42/42
+- **번호**: 1~42 순차 정렬, 중복 없음
+- **정답 분포**: A(17), B(14), C(5), D(6)
+
+### 최종 계획
+- 8개 카테고리 개별 추출 완료 후
+- 424문제 전체를 100개 단위 배치로 재추출하여 크로스 체크 예정
