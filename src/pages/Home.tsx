@@ -3,10 +3,11 @@ import { useProgress } from '../contexts/ProgressContext'
 import { CATEGORIES } from '../lib/categories'
 
 export default function Home() {
-  const { progress, getCompletionRate, isCleared, resetProgress } = useProgress()
-  const completionRate = getCompletionRate()
+  const { progress, isCleared, resetProgress } = useProgress()
   const clearedCount = CATEGORIES.filter(c => isCleared(c.id)).length
   const studiedCount = CATEGORIES.filter(c => progress[c.id]?.studied).length
+  // 학습 50% + 퀴즈합격 50% 가중 진행률
+  const completionRate = Math.round(((studiedCount * 50 + clearedCount * 50) / (8 * 100)) * 100)
 
   return (
     <>

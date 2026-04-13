@@ -604,3 +604,46 @@ About | AWS Certification ▾ | AIF-C01 AI Practitioner ▾ | 도장깨기 | 문
 134 modules → dist/
 빌드 성공
 ```
+
+---
+
+### Phase 13: 홈페이지 진행률 링 수정 + 커뮤니티 DB 스키마
+
+#### 홈페이지 진행률 계산 수정 (`src/pages/Home.tsx`)
+- **문제**: `getCompletionRate()`가 퀴즈 합격(completedAt)만 카운트 → 학습 완료 6/8인데 0% 표시
+- **수정**: 학습(studied) 50% + 퀴즈합격(cleared) 50% 가중 진행률
+- `completionRate = Math.round(((studiedCount * 50 + clearedCount * 50) / (8 * 100)) * 100)`
+- 예: 6/8 학습 + 0/8 합격 → 38%, 8/8 학습 + 8/8 합격 → 100%
+
+#### 커뮤니티 SQL 스크립트 (`sql/community.sql`)
+Supabase에서 실행할 커뮤니티 테이블 생성 SQL (신규 파일):
+
+**테이블 8개:**
+| 테이블 | 용도 |
+|--------|------|
+| `profiles` | 사용자 프로필 (auth.users 1:1, 자동 생성 트리거) |
+| `notices` | 공지사항 (관리자 전용 작성) |
+| `posts` | 게시판 (general/question/discussion/study-group) |
+| `success_stories` | 시험합격수기 (점수, 학습기간, 난이도 포함) |
+| `tips` | 시험팁공유 (study-method/exam-strategy/resource 등) |
+| `comments` | 댓글 (polymorphic, 대댓글 지원) |
+| `likes` | 좋아요 (유저당 1회, UNIQUE 제약) |
+| `reports` | 신고 (spam/abuse/inappropriate 등) |
+
+**자동화:** 프로필 자동생성 트리거, updated_at 갱신, comment_count/like_count 자동 카운트
+
+**보안:** 전체 RLS 활성화, SELECT 모두 허용, INSERT 본인만, DELETE 본인+관리자, notices 관리자 전용
+
+**뷰 5개:** `*_with_author` (작성자 정보 조인)
+
+#### 수정/추가 파일
+| 파일 | 변경 내용 |
+|------|----------|
+| `src/pages/Home.tsx` | 진행률 가중 계산 (studied 50% + cleared 50%) |
+| `sql/community.sql` | 커뮤니티 8테이블 + 트리거 + RLS + 뷰 (신규) |
+
+#### 빌드 결과
+```
+134 modules → dist/
+빌드 성공
+```
