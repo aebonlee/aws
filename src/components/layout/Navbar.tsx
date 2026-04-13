@@ -132,7 +132,6 @@ export default function Navbar() {
                     to={cat.path}
                     className={`nav-dropdown-item ${location.pathname === cat.path ? 'active' : ''}`}
                   >
-                    <span className="nav-dropdown-code">{cat.icon}</span>
                     <span className="nav-dropdown-title">{cat.title}</span>
                     <span className="nav-dropdown-weight">{cat.weight}</span>
                   </Link>
@@ -299,7 +298,7 @@ export default function Navbar() {
                   className={`nav-link nav-mobile-sub ${location.pathname === cat.path ? 'active' : ''}`}
                   onClick={() => setMobileOpen(false)}
                 >
-                  <span>{cat.icon}</span> {cat.title}
+                  {cat.title}
                 </Link>
               ))}
             </div>
