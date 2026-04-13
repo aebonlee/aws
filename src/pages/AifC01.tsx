@@ -140,14 +140,14 @@ export default function AifC01() {
               style={{
                 display: 'block',
                 padding: '1.2rem',
-                border: '1px solid var(--border-color)',
+                border: '1px solid rgba(200,200,200,0.4)',
                 borderRadius: '0.75rem',
                 textDecoration: 'none',
                 color: 'inherit',
                 transition: 'border-color 0.2s, box-shadow 0.2s',
               }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(255,153,0,0.15)' }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.boxShadow = 'none' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(200,200,200,0.4)'; e.currentTarget.style.boxShadow = 'none' }}
             >
               <div style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.5rem' }}>{cat.title}</div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>{cat.description}</div>
