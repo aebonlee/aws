@@ -74,33 +74,29 @@ export default function AifC01() {
       <section id="exam-resources">
         <h2>시험 참고 자료</h2>
         <p>AWS 공식 시험 가이드와 핵심 정리 자료를 확인하세요.</p>
-
-        <div style={{ marginTop: '1.5rem' }}>
-          <h3 style={{ marginBottom: '0.75rem' }}>AIF-C01 시험 가이드</h3>
-          <div style={{ border: '1px solid var(--border-color)', borderRadius: '0.75rem', overflow: 'hidden' }}>
-            <iframe
-              src="/ai-practitioner-01.pdf"
-              title="AIF-C01 시험 가이드"
-              style={{ width: '100%', height: '600px', border: 'none', display: 'block' }}
-            />
-            <div style={{ padding: '0.5rem 1rem', borderTop: '1px solid var(--border-color)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-              <a href="/ai-practitioner-01.pdf" target="_blank" rel="noopener noreferrer">새 탭에서 열기</a>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+          <a
+            href="/ai-practitioner-01.pdf"
+            download
+            className="exam-resource-card"
+          >
+            <span className="exam-resource-icon">&#128196;</span>
+            <div>
+              <div className="exam-resource-title">AIF-C01 시험 가이드</div>
+              <div className="exam-resource-desc">AWS 공식 시험 안내 문서 (PDF)</div>
             </div>
-          </div>
-        </div>
-
-        <div style={{ marginTop: '2rem' }}>
-          <h3 style={{ marginBottom: '0.75rem' }}>AIF-C01 핵심 정리</h3>
-          <div style={{ border: '1px solid var(--border-color)', borderRadius: '0.75rem', overflow: 'hidden' }}>
-            <iframe
-              src="/c.pdf"
-              title="AIF-C01 핵심 정리"
-              style={{ width: '100%', height: '600px', border: 'none', display: 'block' }}
-            />
-            <div style={{ padding: '0.5rem 1rem', borderTop: '1px solid var(--border-color)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-              <a href="/c.pdf" target="_blank" rel="noopener noreferrer">새 탭에서 열기</a>
+          </a>
+          <a
+            href="/c.pdf"
+            download
+            className="exam-resource-card"
+          >
+            <span className="exam-resource-icon">&#128203;</span>
+            <div>
+              <div className="exam-resource-title">AIF-C01 핵심 정리</div>
+              <div className="exam-resource-desc">시험 대비 핵심 요약 자료 (PDF)</div>
             </div>
-          </div>
+          </a>
         </div>
       </section>
 

@@ -114,6 +114,27 @@
   border: 1px dashed var(--border);
 }
 
+/* Exam resource download cards */
+.exam-resource-card {
+  flex: 1 1 280px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.exam-resource-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(255, 153, 0, 0.15);
+}
+.exam-resource-icon { font-size: 2rem; flex-shrink: 0; }
+.exam-resource-title { font-weight: 700; margin-bottom: 0.25rem; }
+.exam-resource-desc { font-size: 0.82rem; color: var(--text-secondary); }
+
 /* Quiz history dots */
 .quiz-history-dots { display: flex; gap: 4px; align-items: center; }
 .quiz-dot {

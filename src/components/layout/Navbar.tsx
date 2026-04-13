@@ -13,10 +13,6 @@ const COMMUNITY_MENU = [
   { title: '문의하기', path: '/community/inquiry', icon: '💬' },
 ]
 
-const PDF_MENU = [
-  { title: '시험 가이드', path: '/pdf/exam-guide', icon: '📄' },
-  { title: '핵심 정리', path: '/pdf/summary', icon: '📋' },
-]
 
 // AIF-C01 study pages (public)
 const PUBLIC_PATHS = new Set([
@@ -140,35 +136,6 @@ export default function Navbar() {
                   >
                     <span className="nav-dropdown-title">{cat.title}</span>
                     <span className="nav-dropdown-weight">{cat.weight}</span>
-                    {!user && <span className="nav-dropdown-lock">🔒</span>}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* PDF 자료실 dropdown */}
-          <div
-            className="nav-dropdown"
-            onMouseEnter={() => handleMouseEnter('pdf')}
-            onMouseLeave={handleMouseLeave}
-          >
-            <button
-              className={`nav-link nav-dropdown-trigger ${location.pathname.startsWith('/pdf') ? 'active' : ''}`}
-            >
-              자료실 <span className="nav-arrow">&#9662;</span>
-            </button>
-            {openDropdown === 'pdf' && (
-              <div className="nav-dropdown-menu">
-                {PDF_MENU.map(item => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`nav-dropdown-item ${location.pathname === item.path ? 'active' : ''}`}
-                    onClick={e => handleProtectedClick(e, item.path)}
-                  >
-                    <span className="nav-dropdown-code">{item.icon}</span>
-                    <span className="nav-dropdown-title">{item.title}</span>
                     {!user && <span className="nav-dropdown-lock">🔒</span>}
                   </Link>
                 ))}
@@ -335,32 +302,6 @@ export default function Navbar() {
                   onClick={e => { handleProtectedClick(e, cat.path); if (user) setMobileOpen(false) }}
                 >
                   {cat.title}
-                  {!user && <span className="nav-dropdown-lock">🔒</span>}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* PDF 자료실 accordion */}
-        <div className="nav-mobile-group">
-          <button
-            className="nav-mobile-group-header"
-            onClick={() => setMobileAccordion(mobileAccordion === 'pdf' ? null : 'pdf')}
-          >
-            <span>자료실</span>
-            <span className={`nav-arrow ${mobileAccordion === 'pdf' ? 'open' : ''}`}>&#9662;</span>
-          </button>
-          {mobileAccordion === 'pdf' && (
-            <div className="nav-mobile-group-items">
-              {PDF_MENU.map(item => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="nav-link nav-mobile-sub"
-                  onClick={e => { handleProtectedClick(e, item.path); if (user) setMobileOpen(false) }}
-                >
-                  <span>{item.icon}</span> {item.title}
                   {!user && <span className="nav-dropdown-lock">🔒</span>}
                 </Link>
               ))}
