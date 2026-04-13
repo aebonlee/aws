@@ -44,6 +44,7 @@ const Inquiry = lazy(() => import('./pages/community/Inquiry'))
 const InquiryDetail = lazy(() => import('./pages/community/InquiryDetail'))
 const Login = lazy(() => import('./pages/Login'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
+const PdfViewer = lazy(() => import('./pages/PdfViewer'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
@@ -83,6 +84,7 @@ function App() {
             <Route path="/ans-c01" element={<FreeTrialGuard><AnsC01 /></FreeTrialGuard>} />
             <Route path="/stamp" element={<FreeTrialGuard><StampBreaking /></FreeTrialGuard>} />
             <Route path="/practice" element={<FreeTrialGuard><Practice /></FreeTrialGuard>} />
+            <Route path="/pdf/:docId" element={<FreeTrialGuard><PdfViewer /></FreeTrialGuard>} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/community/notices" element={<ProtectedRoute><Notices /></ProtectedRoute>} />
             <Route path="/community/notices/:id" element={<ProtectedRoute><NoticeDetail /></ProtectedRoute>} />

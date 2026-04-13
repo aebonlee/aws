@@ -74,57 +74,33 @@ export default function AifC01() {
       <section id="exam-resources">
         <h2>시험 참고 자료</h2>
         <p>AWS 공식 시험 가이드와 핵심 정리 자료를 확인하세요.</p>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
-          <a
-            href="/ai-practitioner-01.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              flex: '1 1 280px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem',
-              padding: '1.2rem',
-              border: '1px solid var(--border-color)',
-              borderRadius: '0.75rem',
-              textDecoration: 'none',
-              color: 'inherit',
-              transition: 'border-color 0.2s, box-shadow 0.2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(255,153,0,0.15)' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.boxShadow = 'none' }}
-          >
-            <span style={{ fontSize: '2rem' }}>📄</span>
-            <div>
-              <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>AIF-C01 시험 가이드</div>
-              <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>AWS 공식 시험 안내 문서 (PDF)</div>
+
+        <div style={{ marginTop: '1.5rem' }}>
+          <h3 style={{ marginBottom: '0.75rem' }}>AIF-C01 시험 가이드</h3>
+          <div style={{ border: '1px solid var(--border-color)', borderRadius: '0.75rem', overflow: 'hidden' }}>
+            <iframe
+              src="/ai-practitioner-01.pdf"
+              title="AIF-C01 시험 가이드"
+              style={{ width: '100%', height: '600px', border: 'none', display: 'block' }}
+            />
+            <div style={{ padding: '0.5rem 1rem', borderTop: '1px solid var(--border-color)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+              <a href="/ai-practitioner-01.pdf" target="_blank" rel="noopener noreferrer">새 탭에서 열기</a>
             </div>
-          </a>
-          <a
-            href="/c.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              flex: '1 1 280px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem',
-              padding: '1.2rem',
-              border: '1px solid var(--border-color)',
-              borderRadius: '0.75rem',
-              textDecoration: 'none',
-              color: 'inherit',
-              transition: 'border-color 0.2s, box-shadow 0.2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(255,153,0,0.15)' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.boxShadow = 'none' }}
-          >
-            <span style={{ fontSize: '2rem' }}>📋</span>
-            <div>
-              <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>AIF-C01 핵심 정리</div>
-              <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>시험 대비 핵심 요약 자료 (PDF)</div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: '2rem' }}>
+          <h3 style={{ marginBottom: '0.75rem' }}>AIF-C01 핵심 정리</h3>
+          <div style={{ border: '1px solid var(--border-color)', borderRadius: '0.75rem', overflow: 'hidden' }}>
+            <iframe
+              src="/c.pdf"
+              title="AIF-C01 핵심 정리"
+              style={{ width: '100%', height: '600px', border: 'none', display: 'block' }}
+            />
+            <div style={{ padding: '0.5rem 1rem', borderTop: '1px solid var(--border-color)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+              <a href="/c.pdf" target="_blank" rel="noopener noreferrer">새 탭에서 열기</a>
             </div>
-          </a>
+          </div>
         </div>
       </section>
 
