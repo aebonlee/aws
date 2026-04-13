@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 
 interface ToggleSectionProps {
   title: string
@@ -6,16 +6,14 @@ interface ToggleSectionProps {
   children: ReactNode
 }
 
-export default function ToggleSection({ title, defaultOpen = false, children }: ToggleSectionProps) {
-  const [open, setOpen] = useState(defaultOpen)
-
+export default function ToggleSection({ title, children }: ToggleSectionProps) {
   return (
     <div className="toggle-section">
-      <div className="toggle-header" onClick={() => setOpen(!open)}>
-        <span className={`toggle-arrow ${open ? 'open' : ''}`}>▶</span>
+      <div className="toggle-header">
+        <span className="toggle-arrow open">▶</span>
         {title}
       </div>
-      {open && <div className="toggle-body">{children}</div>}
+      <div className="toggle-body">{children}</div>
     </div>
   )
 }
