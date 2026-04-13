@@ -16,6 +16,7 @@ const PromptEngineering = lazy(() => import('./pages/PromptEngineering'))
 const FmEvaluation = lazy(() => import('./pages/FmEvaluation'))
 const ResponsibleAi = lazy(() => import('./pages/ResponsibleAi'))
 const SecurityGovernance = lazy(() => import('./pages/SecurityGovernance'))
+const AifC01 = lazy(() => import('./pages/AifC01'))
 const ClfC02 = lazy(() => import('./pages/ClfC02'))
 const SaaC03 = lazy(() => import('./pages/SaaC03'))
 const DvaC02 = lazy(() => import('./pages/DvaC02'))
@@ -63,6 +64,7 @@ function App() {
             <Route path="/fm-evaluation" element={<FmEvaluation />} />
             <Route path="/responsible-ai" element={<ResponsibleAi />} />
             <Route path="/security-governance" element={<SecurityGovernance />} />
+            <Route path="/aif-c01" element={<AifC01 />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/auth/callback" element={<AuthCallback />} />

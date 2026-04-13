@@ -35,7 +35,7 @@ export const CERT_LEVELS: CertLevel[] = [
         title: 'AI Practitioner',
         titleKo: 'AI 실무자',
         level: 'foundational',
-        path: '/',
+        path: '/aif-c01',
         available: true,
         description: 'AI/ML 기초, 생성형 AI, 프롬프트 엔지니어링, Responsible AI, AWS AI 서비스',
       },

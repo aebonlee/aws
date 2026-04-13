@@ -15,7 +15,7 @@ const COMMUNITY_MENU = [
 
 // AIF-C01 study pages (public)
 const PUBLIC_PATHS = new Set([
-  '/', '/about', '/login', '/auth/callback',
+  '/', '/about', '/login', '/auth/callback', '/aif-c01',
   ...CATEGORIES.map(c => c.path),
 ])
 
@@ -87,18 +87,18 @@ export default function Navbar() {
                   <div key={level.id} className="nav-mega-group">
                     <div className="nav-mega-header">{level.title} <span className="nav-mega-header-ko">{level.titleKo}</span></div>
                     {level.certs.map(cert => {
-                      const isAif = cert.code === 'AIF-C01'
-                      const needsLogin = !isAif && cert.path !== '/' && !user
+                      const isPublic = cert.code === 'AIF-C01'
+                      const needsLogin = !isPublic && !user
                       return (
                         <Link
                           key={cert.code}
                           to={cert.available ? cert.path : '#'}
                           className={`nav-dropdown-item ${!cert.available ? 'disabled' : ''} ${
-                            isAif || (cert.available && (cert.path === '/' ? isAifPage : location.pathname === cert.path)) ? 'active' : ''
+                            cert.available && location.pathname === cert.path ? 'active' : ''
                           }`}
                           onClick={e => {
                             if (!cert.available) { e.preventDefault(); return }
-                            handleProtectedClick(e, cert.path)
+                            if (!isPublic) handleProtectedClick(e, cert.path)
                           }}
                         >
                           <span className="nav-dropdown-code">{cert.code}</span>
@@ -121,9 +121,9 @@ export default function Navbar() {
             onMouseLeave={handleMouseLeave}
           >
             <button
-              className="nav-link nav-dropdown-trigger active"
+              className={`nav-link nav-dropdown-trigger ${isAifPage ? 'active' : ''}`}
             >
-              AIF-C01 AI Practitioner <span className="nav-arrow">&#9662;</span>
+              AIF-C01 학습 <span className="nav-arrow">&#9662;</span>
             </button>
             {openDropdown === 'aif' && (
               <div className="nav-dropdown-menu">
@@ -256,8 +256,8 @@ export default function Navbar() {
                 <div key={level.id}>
                   <div className="nav-mobile-level-header">{level.title} ({level.titleKo})</div>
                   {level.certs.map(cert => {
-                    const isAif = cert.code === 'AIF-C01'
-                    const needsLogin = !isAif && cert.path !== '/' && !user
+                    const isPublic = cert.code === 'AIF-C01'
+                    const needsLogin = !isPublic && !user
                     return (
                       <Link
                         key={cert.code}
@@ -265,8 +265,8 @@ export default function Navbar() {
                         className={`nav-link nav-mobile-sub ${!cert.available ? 'disabled' : ''}`}
                         onClick={e => {
                           if (!cert.available) { e.preventDefault(); return }
-                          handleProtectedClick(e, cert.path)
-                          if (cert.available && (user || isAif)) setMobileOpen(false)
+                          if (!isPublic) handleProtectedClick(e, cert.path)
+                          if (cert.available && (user || isPublic)) setMobileOpen(false)
                         }}
                       >
                         <span className="nav-dropdown-code">{cert.code}</span> {cert.title}
@@ -287,7 +287,7 @@ export default function Navbar() {
             className="nav-mobile-group-header"
             onClick={() => setMobileAccordion(mobileAccordion === 'aif' ? null : 'aif')}
           >
-            <span>AIF-C01 AI Practitioner</span>
+            <span>AIF-C01 학습</span>
             <span className={`nav-arrow ${mobileAccordion === 'aif' ? 'open' : ''}`}>&#9662;</span>
           </button>
           {mobileAccordion === 'aif' && (
