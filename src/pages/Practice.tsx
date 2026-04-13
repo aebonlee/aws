@@ -16,6 +16,8 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
   const [isCorrect, setIsCorrect] = useState(false)
   const [score, setScore] = useState(0)
   const [showResult, setShowResult] = useState(false)
+  const [lang, setLang] = useState<'ko' | 'en'>('ko')
+  const [showExplanation, setShowExplanation] = useState(false)
 
   const q = questions[currentQ]
   const isMulti = Array.isArray(q.answer)
@@ -52,6 +54,7 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
       setSelectedMulti([])
       setAnswered(false)
       setIsCorrect(false)
+      setShowExplanation(false)
     } else {
       setShowResult(true)
     }
@@ -65,6 +68,7 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
     setScore(0)
     setAnswered(false)
     setIsCorrect(false)
+    setShowExplanation(false)
   }
 
   if (showResult) {
@@ -97,22 +101,35 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
     return ''
   }
 
+  const displayQuestion = lang === 'en' && q.questionEn ? q.questionEn : q.question
+  const displayOptions = lang === 'en' && q.optionsEn ? q.optionsEn : q.options
+  const displayExplanation = lang === 'en' && q.explanationEn ? q.explanationEn : q.explanation
+
   return (
     <div className="quiz-container">
       <div className="quiz-header">
         <h3>{title}</h3>
-        <span className="quiz-progress">{currentQ + 1} / {questions.length}</span>
+        <div className="quiz-header-actions">
+          <button
+            className={`btn btn-sm quiz-lang-toggle ${lang === 'en' ? 'active' : ''}`}
+            onClick={() => setLang(lang === 'ko' ? 'en' : 'ko')}
+            title="한/영 전환"
+          >
+            {lang === 'ko' ? 'EN' : '한'}
+          </button>
+          <span className="quiz-progress">{currentQ + 1} / {questions.length}</span>
+        </div>
       </div>
       <div className="quiz-progress-bar">
         <div className="quiz-progress-fill" style={{ width: `${((currentQ + 1) / questions.length) * 100}%` }} />
       </div>
       <div className="quiz-question">
-        <p className="quiz-q-text">{q.question}</p>
+        <p className="quiz-q-text">{displayQuestion}</p>
         {isMulti && !answered && (
           <p className="quiz-multi-hint">{requiredCount}개를 선택하세요 ({selectedMulti.length}/{requiredCount})</p>
         )}
         <div className="quiz-options">
-          {q.options.map((opt, idx) => (
+          {displayOptions.map((opt, idx) => (
             <button
               key={idx}
               className={`quiz-option ${getOptionClass(idx)}`}
@@ -133,10 +150,26 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
             정답 확인
           </button>
         )}
+        <div className="quiz-action-row">
+          {!answered && !showExplanation && (
+            <button
+              className="btn btn-secondary quiz-explain-btn"
+              onClick={() => setShowExplanation(true)}
+            >
+              해설 보기
+            </button>
+          )}
+        </div>
         {answered && (
           <div className={`quiz-explanation ${isCorrect ? 'correct' : 'wrong'}`}>
             <p><strong>{isCorrect ? 'O 정답!' : 'X 오답!'}</strong></p>
-            <p>{q.explanation}</p>
+            <p style={{ whiteSpace: 'pre-line' }}>{displayExplanation}</p>
+          </div>
+        )}
+        {!answered && showExplanation && (
+          <div className="quiz-explanation neutral">
+            <p><strong>해설</strong></p>
+            <p style={{ whiteSpace: 'pre-line' }}>{displayExplanation}</p>
           </div>
         )}
         {answered && (
