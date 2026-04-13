@@ -33,6 +33,7 @@ const StampBreaking = lazy(() => import('./pages/StampBreaking'))
 const Practice = lazy(() => import('./pages/Practice'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const Pricing = lazy(() => import('./pages/Pricing'))
+const Library = lazy(() => import('./pages/Library'))
 const Notices = lazy(() => import('./pages/community/Notices'))
 const NoticeDetail = lazy(() => import('./pages/community/NoticeDetail'))
 const Board = lazy(() => import('./pages/community/Board'))
@@ -60,6 +61,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/library" element={<Library />} />
             <Route path="/login" element={<Login />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
 

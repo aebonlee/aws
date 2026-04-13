@@ -195,10 +195,17 @@ export default function Navbar() {
           </div>
 
           <Link
+            to="/library"
+            className={`nav-link ${location.pathname === '/library' ? 'active' : ''}`}
+          >
+            {lang === 'en' ? 'Library' : '자료실'}
+          </Link>
+
+          <Link
             to="/pricing"
             className={`nav-link ${location.pathname === '/pricing' ? 'active' : ''}`}
           >
-            요금제
+            {lang === 'en' ? 'Pricing' : '요금제'}
           </Link>
         </div>
 
@@ -357,11 +364,18 @@ export default function Navbar() {
         </div>
 
         <Link
+          to="/library"
+          className="nav-link"
+          onClick={() => setMobileOpen(false)}
+        >
+          {lang === 'en' ? 'Library' : '자료실'}
+        </Link>
+        <Link
           to="/pricing"
           className="nav-link"
           onClick={() => setMobileOpen(false)}
         >
-          요금제
+          {lang === 'en' ? 'Pricing' : '요금제'}
         </Link>
 
         {user && (
