@@ -53,3 +53,25 @@
 [data-theme="dark"] .stamp-tier-gold { background: linear-gradient(135deg, #422006, #78350f); color: #fde68a; }
 [data-theme="dark"] .stamp-tier-silver { background: linear-gradient(135deg, #1e293b, #334155); color: #cbd5e1; }
 [data-theme="dark"] .stamp-tier-bronze { background: linear-gradient(135deg, #431407, #7c2d12); color: #fed7aa; }
+
+/* Community dark mode */
+[data-theme="dark"] .community-placeholder { background: var(--bg-section); }
+[data-theme="dark"] .community-card { background: var(--bg-section); }
+[data-theme="dark"] .community-card.pinned { background: rgba(255,153,0,0.05); }
+[data-theme="dark"] .community-filter-tab { background: var(--bg); }
+[data-theme="dark"] .community-like-btn { background: var(--bg-section); }
+[data-theme="dark"] .community-like-btn.liked { background: rgba(239,68,68,0.1); }
+[data-theme="dark"] .community-comment-input textarea { background: var(--bg-section); }
+[data-theme="dark"] .community-comment-input button { background: var(--primary); }
+[data-theme="dark"] .community-form-group input,
+[data-theme="dark"] .community-form-group textarea,
+[data-theme="dark"] .community-form-group select { background: var(--bg-section); }
+[data-theme="dark"] .community-story-card { background: var(--bg-section); }
+[data-theme="dark"] .community-detail-meta-panel { background: #1c2129; }
+[data-theme="dark"] .community-load-more button { background: var(--bg-section); }
+[data-theme="dark"] .community-detail-edit { background: var(--bg-section); }
+[data-theme="dark"] .community-detail-delete { background: var(--bg-section); }
+[data-theme="dark"] .login-box { background: var(--bg-section); }
+[data-theme="dark"] .login-google { background: #2d2d2d; color: #e8eaed; border-color: #5f6368; }
+[data-theme="dark"] .login-google:hover { background: #3c3c3c; }
+[data-theme="dark"] .login-kakao { background: #FEE500; color: #3C1E1E; }

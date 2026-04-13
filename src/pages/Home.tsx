@@ -61,19 +61,18 @@ export default function Home() {
             </div>
             <div className="progress-metrics">
               <div className="progress-metric progress-metric-ring">
-                <div className="progress-ring-wrap">
-                  <svg className="progress-ring" viewBox="0 0 80 80">
-                    <circle className="progress-ring-bg" cx="40" cy="40" r="34" />
-                    <circle
-                      className="progress-ring-fill"
-                      cx="40" cy="40" r="34"
-                      strokeDasharray={`${2 * Math.PI * 34}`}
-                      strokeDashoffset={`${2 * Math.PI * 34 * (1 - completionRate / 100)}`}
-                    />
-                  </svg>
-                  <span className="progress-ring-text">{completionRate}%</span>
-                </div>
-                <div className="progress-metric-label">진행률</div>
+                <svg className="progress-ring" viewBox="0 0 80 80">
+                  <circle className="progress-ring-bg" cx="40" cy="40" r="34" />
+                  <circle
+                    className="progress-ring-fill"
+                    cx="40" cy="40" r="34"
+                    strokeDasharray={`${2 * Math.PI * 34}`}
+                    strokeDashoffset={`${2 * Math.PI * 34 * (1 - completionRate / 100)}`}
+                    transform="rotate(-90 40 40)"
+                  />
+                  <text x="40" y="37" textAnchor="middle" dominantBaseline="central" className="progress-ring-pct">{completionRate}%</text>
+                  <text x="40" y="54" textAnchor="middle" dominantBaseline="central" className="progress-ring-label">진행률</text>
+                </svg>
               </div>
               <div className="progress-metric">
                 <span className="progress-metric-icon">📖</span>
