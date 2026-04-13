@@ -34,8 +34,9 @@
   }
   .nav-mobile.open { display: flex; }
   .nav-mobile .nav-link { padding: 10px 16px; width: 100%; }
-  .footer-content { grid-template-columns: 1fr; }
-  .footer-links { grid-template-columns: repeat(2, 1fr); }
+  .footer-content { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links ul { columns: 2; }
+  .footer-family select { max-width: 100%; }
   .guide-hero h1 { font-size: 1.4rem; }
   .about-cert-grid { grid-template-columns: 1fr; }
   .about-steps { grid-template-columns: 1fr; }
