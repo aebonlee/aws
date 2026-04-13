@@ -257,7 +257,37 @@ export function isAdmin(user: User | null): boolean {
 
 ---
 
-## 10. 빌드 확인
+## 10. 상단 메뉴(Navbar) 레이아웃 수정
+
+### 문제
+상단 네비게이션 메뉴 항목들이 왼쪽으로 치우쳐 배치되어 비율적으로 불균형한 레이아웃 발생.
+
+### 원인
+`.nav-links`가 `flex: 1`로 남은 공간을 차지하지만, `justify-content`가 기본값(`flex-start`)이어서 메뉴 항목들이 로고 바로 오른쪽에 몰려 있고 우측 액션 영역과의 사이에 빈 공간이 과도하게 발생.
+
+### 해결
+
+| 파일 | 변경 내용 |
+|------|----------|
+| `src/styles/navbar.css` | `.nav-links`에 `justify-content: center` 추가 |
+
+```css
+/* Before */
+.nav-links {
+  display: flex; align-items: center; gap: 2px; flex: 1;
+}
+
+/* After */
+.nav-links {
+  display: flex; align-items: center; gap: 2px; flex: 1; justify-content: center;
+}
+```
+
+이로써 메뉴 항목들이 로고와 우측 액션(테마 토글, 사용자 정보) 사이에서 중앙 배치되어 균형 잡힌 레이아웃 구현.
+
+---
+
+## 11. 빌드 확인
 
 - `npm run build` 성공 (tsc + vite build)
 - 148 modules transformed
