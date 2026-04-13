@@ -9,6 +9,7 @@ import { CATEGORIES } from '../lib/categories'
 const sections = [
   { id: 'exam-overview', title: '시험 개요' },
   { id: 'domains', title: '출제 도메인' },
+  { id: 'exam-resources', title: '시험 참고 자료' },
   { id: 'study-guide', title: '학습 가이드' },
   { id: 'quiz', title: '실력 점검 퀴즈' },
 ]
@@ -70,6 +71,63 @@ export default function AifC01() {
         </TipBox>
       </section>
 
+      <section id="exam-resources">
+        <h2>시험 참고 자료</h2>
+        <p>AWS 공식 시험 가이드와 핵심 정리 자료를 확인하세요.</p>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+          <a
+            href="/ai-practitioner-01.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              flex: '1 1 280px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1rem',
+              padding: '1.2rem',
+              border: '1px solid var(--border-color)',
+              borderRadius: '0.75rem',
+              textDecoration: 'none',
+              color: 'inherit',
+              transition: 'border-color 0.2s, box-shadow 0.2s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(255,153,0,0.15)' }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.boxShadow = 'none' }}
+          >
+            <span style={{ fontSize: '2rem' }}>📄</span>
+            <div>
+              <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>AIF-C01 시험 가이드</div>
+              <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>AWS 공식 시험 안내 문서 (PDF)</div>
+            </div>
+          </a>
+          <a
+            href="/c.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              flex: '1 1 280px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1rem',
+              padding: '1.2rem',
+              border: '1px solid var(--border-color)',
+              borderRadius: '0.75rem',
+              textDecoration: 'none',
+              color: 'inherit',
+              transition: 'border-color 0.2s, box-shadow 0.2s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(255,153,0,0.15)' }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.boxShadow = 'none' }}
+          >
+            <span style={{ fontSize: '2rem' }}>📋</span>
+            <div>
+              <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>AIF-C01 핵심 정리</div>
+              <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>시험 대비 핵심 요약 자료 (PDF)</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
       <section id="study-guide">
         <h2>학습 가이드</h2>
         <p>8개 카테고리별 상세 학습 페이지에서 깊이 있는 내용을 확인하세요.</p>
@@ -91,7 +149,7 @@ export default function AifC01() {
               onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(255,153,0,0.15)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.boxShadow = 'none' }}
             >
-              <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{cat.icon} {cat.title}</div>
+              <div style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.5rem' }}>{cat.title}</div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>{cat.description}</div>
               <div style={{ display: 'flex', gap: '0.5rem', fontSize: '0.78rem' }}>
                 <span className="badge badge-info">{cat.weight}</span>
