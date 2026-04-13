@@ -20,10 +20,12 @@
 
 (async () => {
   // ============ 여기만 수정 ============
-  const SET_NAME = 'genai-fundamentals';
-  const TOTAL = 55;
+  const SET_NAME = 'security-governance';
+  const TOTAL = 45;        // Security, Compliance and Governance 전체 45문제
+  const NUMBER_OFFSET = 0; // 처음부터
   // =====================================
 
+  const SKIP = 0; // 사용 안 함 (56번 페이지에서 직접 시작)
   const results = [];
   const KEY = `__quiz_${SET_NAME}`; // localStorage 백업 키
   const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -238,7 +240,7 @@
   }
 
   // ========== 메인 루프 ==========
-  console.log(`%c▶ [${SET_NAME}] 추출 시작: ${TOTAL}문제`, 'font-size:16px; color:#FF9900;');
+  console.log(`%c▶ [${SET_NAME}] 추출 시작: Q${NUMBER_OFFSET + 1}~Q${NUMBER_OFFSET + TOTAL} (${TOTAL}문제)`, 'font-size:16px; color:#FF9900;');
 
   for (let i = 0; i < TOTAL; i++) {
     try {
@@ -333,7 +335,7 @@
 
       const item = {
         categoryId: SET_NAME,
-        number: qa.number || (i + 1),
+        number: NUMBER_OFFSET + (i - SKIP) + 1,
         question: qa.question,
         questionEn,
         options: qa.options,
@@ -421,7 +423,8 @@
     const blob = new Blob([JSON.stringify(results, null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `${SET_NAME}-${new Date().toISOString().slice(0, 10)}.json`;
+    const suffix = NUMBER_OFFSET > 0 ? `-Q${NUMBER_OFFSET + 1}-Q${NUMBER_OFFSET + TOTAL}` : '';
+    a.download = `${SET_NAME}${suffix}-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     window.__quizData = results;
     console.log(`window.__quizData / localStorage.${KEY}`);
