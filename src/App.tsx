@@ -4,6 +4,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { ProgressProvider } from './contexts/ProgressContext'
+import { CouponProvider } from './contexts/CouponContext'
 import PublicLayout from './layouts/PublicLayout'
 import ProtectedRoute from './components/ProtectedRoute'
 import FreeTrialGuard from './components/FreeTrialGuard'
@@ -34,6 +35,7 @@ const Practice = lazy(() => import('./pages/Practice'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const Pricing = lazy(() => import('./pages/Pricing'))
 const Library = lazy(() => import('./pages/Library'))
+const AdminCoupons = lazy(() => import('./pages/AdminCoupons'))
 const Notices = lazy(() => import('./pages/community/Notices'))
 const NoticeDetail = lazy(() => import('./pages/community/NoticeDetail'))
 const Board = lazy(() => import('./pages/community/Board'))
@@ -51,6 +53,7 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 function App() {
   return (
     <AuthProvider>
+    <CouponProvider>
     <ThemeProvider>
     <LanguageProvider>
       <ProgressProvider>
@@ -88,6 +91,7 @@ function App() {
             <Route path="/stamp" element={<FreeTrialGuard><StampBreaking /></FreeTrialGuard>} />
             <Route path="/practice" element={<FreeTrialGuard><Practice /></FreeTrialGuard>} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/admin/coupons" element={<ProtectedRoute><AdminCoupons /></ProtectedRoute>} />
             <Route path="/community/notices" element={<ProtectedRoute><Notices /></ProtectedRoute>} />
             <Route path="/community/notices/:id" element={<ProtectedRoute><NoticeDetail /></ProtectedRoute>} />
             <Route path="/community/board" element={<ProtectedRoute><Board /></ProtectedRoute>} />
@@ -106,6 +110,7 @@ function App() {
       </ProgressProvider>
     </LanguageProvider>
     </ThemeProvider>
+    </CouponProvider>
     </AuthProvider>
   )
 }

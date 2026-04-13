@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { useProgress } from '../contexts/ProgressContext'
+import { useCoupon } from '../contexts/CouponContext'
 import { CATEGORIES } from '../lib/categories'
 import StampTierBadge from '../components/StampTierBadge'
+import CouponInput from '../components/CouponInput'
 import '../styles/dashboard.css'
+import '../styles/coupon.css'
 
 export default function Dashboard() {
   const { user } = useAuth()
+  const { hasActiveAccess, remainingTime } = useCoupon()
   const { getOverallStats, getStampTier, getQuizHistory, getSectionProgress } = useProgress()
   const stats = getOverallStats()
   const userName = user?.user_metadata?.full_name || user?.email?.split('@')[0] || '학습자'
@@ -53,6 +57,19 @@ export default function Dashboard() {
             </svg>
           </div>
         </div>
+
+        {/* Period pass status */}
+        {hasActiveAccess ? (
+          <div className="dashboard-coupon-card">
+            <h3>이용권 사용 중</h3>
+            <p>만료: {remainingTime}</p>
+          </div>
+        ) : (
+          <div className="dashboard-coupon-input-section">
+            <h3>쿠폰 코드 입력</h3>
+            <CouponInput />
+          </div>
+        )}
 
         {/* Key metrics */}
         <div className="dashboard-metrics">

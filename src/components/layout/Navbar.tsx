@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTheme } from '../../contexts/ThemeContext'
 import { useLang } from '../../contexts/LanguageContext'
 import { useAuth } from '../../contexts/AuthContext'
+import { isAdmin } from '../../lib/community'
 import { CERT_LEVELS } from '../../lib/certifications'
 import { CATEGORIES } from '../../lib/categories'
 
@@ -24,6 +25,7 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const { lang, toggleLang } = useLang()
   const { user, signOut } = useAuth()
+  const admin = isAdmin(user)
   const location = useLocation()
   const navigate = useNavigate()
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -233,6 +235,7 @@ export default function Navbar() {
                 <div className="nav-user-tooltip">
                   <Link to="/dashboard" className="nav-user-tooltip-item">대시보드</Link>
                   <Link to="/profile" className="nav-user-tooltip-item">개인정보</Link>
+                  {admin && <Link to="/admin/coupons" className="nav-user-tooltip-item">쿠폰 관리</Link>}
                   <div className="nav-user-tooltip-divider" />
                   <button className="nav-user-tooltip-item nav-user-tooltip-logout" onClick={signOut}>로그아웃</button>
                 </div>
@@ -388,6 +391,15 @@ export default function Navbar() {
             >
               대시보드
             </Link>
+            {admin && (
+              <Link
+                to="/admin/coupons"
+                className="nav-link nav-link-accent"
+                onClick={() => setMobileOpen(false)}
+              >
+                쿠폰 관리
+              </Link>
+            )}
           </>
         )}
 

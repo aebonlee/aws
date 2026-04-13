@@ -73,6 +73,17 @@
 [data-theme="dark"] .pricing-info { background: var(--bg-section); }
 [data-theme="dark"] .pricing-error { background: rgba(239,68,68,0.15); }
 
+/* Coupon dark mode */
+[data-theme="dark"] .coupon-input-field { background: var(--bg-section); border-color: var(--border); }
+[data-theme="dark"] .admin-coupon-form { background: var(--bg-section); }
+[data-theme="dark"] .admin-coupon-field input,
+[data-theme="dark"] .admin-coupon-field select { background: var(--bg); border-color: var(--border); }
+[data-theme="dark"] .admin-coupon-gen-btn { background: var(--bg); border-color: var(--border); }
+[data-theme="dark"] .admin-coupon-table th { background: #1c2129; }
+[data-theme="dark"] .period-pass-banner { background: rgba(16,185,129,0.1); }
+[data-theme="dark"] .period-pass-banner-float { background: var(--bg); }
+[data-theme="dark"] .dashboard-coupon-card { background: rgba(16,185,129,0.1); }
+
 /* Section status bar dark mode */
 [data-theme="dark"] .section-status-bar { background: var(--bg-section); }
 [data-theme="dark"] .btn-section { background: var(--bg); }
