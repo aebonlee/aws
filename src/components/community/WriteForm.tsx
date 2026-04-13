@@ -74,7 +74,11 @@ export default function WriteForm({ type, editPost, onCancel, backPath }: WriteF
         .from('posts')
         .update(base)
         .eq('id', editPost.id)
-      if (!error) navigate(`${backPath}/${editPost.id}`)
+      if (error) {
+        alert(`수정 실패: ${error.message}`)
+      } else {
+        navigate(`${backPath}/${editPost.id}`)
+      }
     } else {
       base.author_id = user.id
       const { data, error } = await supabase
@@ -82,7 +86,11 @@ export default function WriteForm({ type, editPost, onCancel, backPath }: WriteF
         .insert(base)
         .select('id')
         .single()
-      if (!error && data) navigate(`${backPath}/${data.id}`)
+      if (error) {
+        alert(`작성 실패: ${error.message}`)
+      } else if (data) {
+        navigate(`${backPath}/${data.id}`)
+      }
     }
 
     setSubmitting(false)

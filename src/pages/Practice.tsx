@@ -109,16 +109,7 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
     <div className="quiz-container">
       <div className="quiz-header">
         <h3>{title}</h3>
-        <div className="quiz-header-actions">
-          <button
-            className={`btn btn-sm quiz-lang-toggle ${lang === 'en' ? 'active' : ''}`}
-            onClick={() => setLang(lang === 'ko' ? 'en' : 'ko')}
-            title="한/영 전환"
-          >
-            {lang === 'ko' ? 'EN' : '한'}
-          </button>
-          <span className="quiz-progress">{currentQ + 1} / {questions.length}</span>
-        </div>
+        <span className="quiz-progress">{currentQ + 1} / {questions.length}</span>
       </div>
       <div className="quiz-progress-bar">
         <div className="quiz-progress-fill" style={{ width: `${((currentQ + 1) / questions.length) * 100}%` }} />
@@ -151,7 +142,13 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
           </button>
         )}
         <div className="quiz-action-row">
-          {!answered && !showExplanation && (
+          <button
+            className={`btn quiz-lang-toggle ${lang === 'en' ? 'active' : ''}`}
+            onClick={() => setLang(lang === 'ko' ? 'en' : 'ko')}
+          >
+            {lang === 'ko' ? '영어로 보기' : '한국어로 보기'}
+          </button>
+          {!showExplanation && !answered && (
             <button
               className="btn btn-secondary quiz-explain-btn"
               onClick={() => setShowExplanation(true)}

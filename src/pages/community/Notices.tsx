@@ -64,7 +64,9 @@ export default function Notices() {
       .select('id')
       .single()
 
-    if (!error && data) {
+    if (error) {
+      alert(`작성 실패: ${error.message}`)
+    } else if (data) {
       navigate(`/community/notices/${data.id}`)
     }
     setSubmitting(false)
