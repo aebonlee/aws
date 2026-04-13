@@ -61,23 +61,29 @@
 }
 .nav-divider { width: 1px; height: 20px; background: var(--border); margin: 0 6px; flex-shrink: 0; }
 
-/* AIF-C01 Highlight */
-.nav-dropdown-highlight {
-  background: rgba(255,153,0,0.06); border-left: 3px solid var(--primary);
-  font-weight: 600;
+/* Mega menu for AWS Certification */
+.nav-mega-menu {
+  min-width: 340px; max-height: 80vh; overflow-y: auto;
 }
-.nav-dropdown-highlight:hover { background: rgba(255,153,0,0.14); }
-.nav-code-highlight {
-  background: var(--primary) !important; color: #fff !important;
-  font-weight: 800;
+.nav-mega-group { padding: 4px 0; }
+.nav-mega-group + .nav-mega-group { border-top: 1px solid var(--border); }
+.nav-mega-header {
+  padding: 8px 14px 4px; font-size: 0.7rem; font-weight: 700;
+  color: var(--primary-dark); text-transform: uppercase; letter-spacing: 0.5px;
 }
-.nav-dropdown-badge-main {
-  font-size: 0.6rem; font-weight: 800; color: #fff; background: var(--primary);
-  padding: 1px 5px; border-radius: 8px; letter-spacing: 0.5px; flex-shrink: 0;
+.nav-mega-header-ko {
+  font-size: 0.68rem; font-weight: 500; color: var(--text-secondary);
+  text-transform: none; letter-spacing: 0; margin-left: 4px;
 }
-.nav-mobile-highlight {
-  background: rgba(255,153,0,0.08); border-left: 3px solid var(--primary);
-  font-weight: 600; padding-left: 9px;
+.nav-dropdown-weight {
+  font-size: 0.68rem; color: var(--text-secondary); background: var(--bg-section);
+  padding: 1px 6px; border-radius: 10px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* Mobile level header inside certification accordion */
+.nav-mobile-level-header {
+  padding: 8px 16px 4px; font-size: 0.72rem; font-weight: 700;
+  color: var(--primary-dark); text-transform: uppercase; letter-spacing: 0.5px;
 }
 
 /* Lock icon for protected routes */
@@ -117,7 +123,11 @@
 /* User Info */
 .nav-user-info {
   display: flex; align-items: center; gap: 8px; white-space: nowrap;
+  position: relative; cursor: pointer;
+  padding: 4px 8px; border-radius: var(--radius);
+  transition: background var(--transition);
 }
+.nav-user-info:hover { background: rgba(255,153,0,0.06); }
 .nav-user-avatar {
   width: 28px; height: 28px; border-radius: 50%; object-fit: cover;
   border: 1px solid var(--border);
@@ -126,6 +136,26 @@
   font-size: 0.82rem; font-weight: 600; color: var(--text);
   max-width: 100px; overflow: hidden; text-overflow: ellipsis;
 }
+
+/* User tooltip dropdown */
+.nav-user-tooltip {
+  position: absolute; top: 100%; right: 0; min-width: 140px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow-lg); padding: 4px; margin-top: 4px; z-index: 1001;
+}
+.nav-user-tooltip-item {
+  display: block; width: 100%; padding: 8px 14px; border-radius: 6px;
+  font-size: 0.84rem; color: var(--text); text-decoration: none;
+  transition: all var(--transition); text-align: left;
+  background: none; border: none; cursor: pointer; font-family: var(--font);
+}
+.nav-user-tooltip-item:hover { background: rgba(255,153,0,0.08); color: var(--primary-dark); }
+.nav-user-tooltip-divider { height: 1px; background: var(--border); margin: 4px 0; }
+.nav-user-tooltip-logout { color: var(--text-secondary); }
+.nav-user-tooltip-logout:hover { background: #fee2e2; color: #dc2626; }
+[data-theme="dark"] .nav-user-tooltip { background: var(--bg-section); border-color: var(--border); }
+[data-theme="dark"] .nav-user-tooltip-logout:hover { background: #450a0a; color: #fca5a5; }
+
 .nav-logout-btn {
   padding: 4px 10px; border: 1px solid var(--border); border-radius: var(--radius);
   background: none; color: var(--text-secondary); font-size: 0.75rem;

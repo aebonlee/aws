@@ -51,6 +51,7 @@ export default function Navbar() {
   }
 
   const isAifPage = CATEGORIES.some(c => location.pathname === c.path) || location.pathname === '/'
+  const isCertPage = CERT_LEVELS.some(l => l.certs.some(c => c.available && location.pathname === c.path))
 
   return (
     <nav className="navbar">
@@ -68,49 +69,77 @@ export default function Navbar() {
             About
           </Link>
 
-          {CERT_LEVELS.map(level => (
-            <div
-              key={level.id}
-              className="nav-dropdown"
-              onMouseEnter={() => handleMouseEnter(level.id)}
-              onMouseLeave={handleMouseLeave}
+          {/* AWS Certification mega dropdown */}
+          <div
+            className="nav-dropdown"
+            onMouseEnter={() => handleMouseEnter('certifications')}
+            onMouseLeave={handleMouseLeave}
+          >
+            <button
+              className={`nav-link nav-dropdown-trigger ${isCertPage && !isAifPage ? 'active' : ''}`}
             >
-              <button
-                className={`nav-link nav-dropdown-trigger ${
-                  level.id === 'foundational' && isAifPage ? 'active' : ''
-                }`}
-              >
-                {level.title} <span className="nav-arrow">&#9662;</span>
-              </button>
-              {openDropdown === level.id && (
-                <div className="nav-dropdown-menu">
-                  {level.certs.map(cert => {
-                    const isAif = cert.code === 'AIF-C01'
-                    const needsLogin = !isAif && cert.path !== '/' && !user
-                    return (
-                      <Link
-                        key={cert.code}
-                        to={cert.available ? cert.path : '#'}
-                        className={`nav-dropdown-item ${!cert.available ? 'disabled' : ''} ${
-                          cert.available && (cert.path === '/' ? isAifPage : location.pathname === cert.path) ? 'active' : ''
-                        } ${isAif ? 'nav-dropdown-highlight' : ''}`}
-                        onClick={e => {
-                          if (!cert.available) { e.preventDefault(); return }
-                          handleProtectedClick(e, cert.path)
-                        }}
-                      >
-                        <span className={`nav-dropdown-code ${isAif ? 'nav-code-highlight' : ''}`}>{cert.code}</span>
-                        <span className="nav-dropdown-title">{cert.title}</span>
-                        {isAif && <span className="nav-dropdown-badge-main">MAIN</span>}
-                        {!cert.available && <span className="nav-dropdown-soon">준비 중</span>}
-                        {needsLogin && cert.available && <span className="nav-dropdown-lock">🔒</span>}
-                      </Link>
-                    )
-                  })}
-                </div>
-              )}
-            </div>
-          ))}
+              AWS Certification <span className="nav-arrow">&#9662;</span>
+            </button>
+            {openDropdown === 'certifications' && (
+              <div className="nav-dropdown-menu nav-mega-menu">
+                {CERT_LEVELS.map(level => (
+                  <div key={level.id} className="nav-mega-group">
+                    <div className="nav-mega-header">{level.title} <span className="nav-mega-header-ko">{level.titleKo}</span></div>
+                    {level.certs.map(cert => {
+                      const isAif = cert.code === 'AIF-C01'
+                      const needsLogin = !isAif && cert.path !== '/' && !user
+                      return (
+                        <Link
+                          key={cert.code}
+                          to={cert.available ? cert.path : '#'}
+                          className={`nav-dropdown-item ${!cert.available ? 'disabled' : ''} ${
+                            cert.available && (cert.path === '/' ? isAifPage : location.pathname === cert.path) ? 'active' : ''
+                          }`}
+                          onClick={e => {
+                            if (!cert.available) { e.preventDefault(); return }
+                            handleProtectedClick(e, cert.path)
+                          }}
+                        >
+                          <span className="nav-dropdown-code">{cert.code}</span>
+                          <span className="nav-dropdown-title">{cert.title}</span>
+                          {!cert.available && <span className="nav-dropdown-soon">준비 중</span>}
+                          {needsLogin && cert.available && <span className="nav-dropdown-lock">🔒</span>}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* AIF-C01 AI Practitioner dropdown */}
+          <div
+            className="nav-dropdown"
+            onMouseEnter={() => handleMouseEnter('aif')}
+            onMouseLeave={handleMouseLeave}
+          >
+            <button
+              className={`nav-link nav-dropdown-trigger ${isAifPage ? 'active' : ''}`}
+            >
+              AIF-C01 AI Practitioner <span className="nav-arrow">&#9662;</span>
+            </button>
+            {openDropdown === 'aif' && (
+              <div className="nav-dropdown-menu">
+                {CATEGORIES.map(cat => (
+                  <Link
+                    key={cat.id}
+                    to={cat.path}
+                    className={`nav-dropdown-item ${location.pathname === cat.path ? 'active' : ''}`}
+                  >
+                    <span className="nav-dropdown-code">{cat.icon}</span>
+                    <span className="nav-dropdown-title">{cat.title}</span>
+                    <span className="nav-dropdown-weight">{cat.weight}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
 
           <div className="nav-divider" />
 
@@ -127,22 +156,6 @@ export default function Navbar() {
             onClick={e => handleProtectedClick(e, '/practice')}
           >
             문제풀이{!user && ' 🔒'}
-          </Link>
-
-          {user && (
-            <Link
-              to="/dashboard"
-              className={`nav-link nav-link-accent ${location.pathname === '/dashboard' ? 'active' : ''}`}
-            >
-              대시보드
-            </Link>
-          )}
-
-          <Link
-            to="/pricing"
-            className={`nav-link ${location.pathname === '/pricing' ? 'active' : ''}`}
-          >
-            요금제
           </Link>
 
           <div
@@ -176,6 +189,13 @@ export default function Navbar() {
               </div>
             )}
           </div>
+
+          <Link
+            to="/pricing"
+            className={`nav-link ${location.pathname === '/pricing' ? 'active' : ''}`}
+          >
+            요금제
+          </Link>
         </div>
 
         {/* Actions */}
@@ -184,14 +204,25 @@ export default function Navbar() {
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
           {user ? (
-            <div className="nav-user-info">
+            <div
+              className="nav-user-info"
+              onMouseEnter={() => handleMouseEnter('user-menu')}
+              onMouseLeave={handleMouseLeave}
+            >
               <img
                 src={user.user_metadata?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.user_metadata?.full_name || user.email || 'U')}&background=FF9900&color=fff&size=32`}
                 alt="avatar"
                 className="nav-user-avatar"
               />
               <span className="nav-user-name">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
-              <button className="nav-logout-btn" onClick={signOut}>로그아웃</button>
+              {openDropdown === 'user-menu' && (
+                <div className="nav-user-tooltip">
+                  <Link to="/dashboard" className="nav-user-tooltip-item">대시보드</Link>
+                  <Link to="/profile" className="nav-user-tooltip-item">개인정보</Link>
+                  <div className="nav-user-tooltip-divider" />
+                  <button className="nav-user-tooltip-item nav-user-tooltip-logout" onClick={signOut}>로그아웃</button>
+                </div>
+              )}
             </div>
           ) : (
             <Link to="/login" className="nav-login-btn">로그인</Link>
@@ -210,42 +241,70 @@ export default function Navbar() {
         <Link to="/" className="nav-link" onClick={() => setMobileOpen(false)}>홈</Link>
         <Link to="/about" className="nav-link" onClick={() => setMobileOpen(false)}>About</Link>
 
-        {CERT_LEVELS.map(level => (
-          <div key={level.id} className="nav-mobile-group">
-            <button
-              className="nav-mobile-group-header"
-              onClick={() => setMobileAccordion(mobileAccordion === level.id ? null : level.id)}
-            >
-              <span>{level.title} ({level.titleKo})</span>
-              <span className={`nav-arrow ${mobileAccordion === level.id ? 'open' : ''}`}>&#9662;</span>
-            </button>
-            {mobileAccordion === level.id && (
-              <div className="nav-mobile-group-items">
-                {level.certs.map(cert => {
-                  const isAif = cert.code === 'AIF-C01'
-                  const needsLogin = !isAif && cert.path !== '/' && !user
-                  return (
-                    <Link
-                      key={cert.code}
-                      to={cert.available ? cert.path : '#'}
-                      className={`nav-link nav-mobile-sub ${!cert.available ? 'disabled' : ''} ${isAif ? 'nav-mobile-highlight' : ''}`}
-                      onClick={e => {
-                        if (!cert.available) { e.preventDefault(); return }
-                        handleProtectedClick(e, cert.path)
-                        if (cert.available && (user || isAif)) setMobileOpen(false)
-                      }}
-                    >
-                      <span className={`nav-dropdown-code ${isAif ? 'nav-code-highlight' : ''}`}>{cert.code}</span> {cert.title}
-                      {isAif && <span className="nav-dropdown-badge-main">MAIN</span>}
-                      {!cert.available && <span className="nav-dropdown-soon">준비 중</span>}
-                      {needsLogin && cert.available && <span className="nav-dropdown-lock">🔒</span>}
-                    </Link>
-                  )
-                })}
-              </div>
-            )}
-          </div>
-        ))}
+        {/* AWS Certification accordion */}
+        <div className="nav-mobile-group">
+          <button
+            className="nav-mobile-group-header"
+            onClick={() => setMobileAccordion(mobileAccordion === 'certifications' ? null : 'certifications')}
+          >
+            <span>AWS Certification</span>
+            <span className={`nav-arrow ${mobileAccordion === 'certifications' ? 'open' : ''}`}>&#9662;</span>
+          </button>
+          {mobileAccordion === 'certifications' && (
+            <div className="nav-mobile-group-items">
+              {CERT_LEVELS.map(level => (
+                <div key={level.id}>
+                  <div className="nav-mobile-level-header">{level.title} ({level.titleKo})</div>
+                  {level.certs.map(cert => {
+                    const isAif = cert.code === 'AIF-C01'
+                    const needsLogin = !isAif && cert.path !== '/' && !user
+                    return (
+                      <Link
+                        key={cert.code}
+                        to={cert.available ? cert.path : '#'}
+                        className={`nav-link nav-mobile-sub ${!cert.available ? 'disabled' : ''}`}
+                        onClick={e => {
+                          if (!cert.available) { e.preventDefault(); return }
+                          handleProtectedClick(e, cert.path)
+                          if (cert.available && (user || isAif)) setMobileOpen(false)
+                        }}
+                      >
+                        <span className="nav-dropdown-code">{cert.code}</span> {cert.title}
+                        {!cert.available && <span className="nav-dropdown-soon">준비 중</span>}
+                        {needsLogin && cert.available && <span className="nav-dropdown-lock">🔒</span>}
+                      </Link>
+                    )
+                  })}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* AIF-C01 AI Practitioner accordion */}
+        <div className="nav-mobile-group">
+          <button
+            className="nav-mobile-group-header"
+            onClick={() => setMobileAccordion(mobileAccordion === 'aif' ? null : 'aif')}
+          >
+            <span>AIF-C01 AI Practitioner</span>
+            <span className={`nav-arrow ${mobileAccordion === 'aif' ? 'open' : ''}`}>&#9662;</span>
+          </button>
+          {mobileAccordion === 'aif' && (
+            <div className="nav-mobile-group-items">
+              {CATEGORIES.map(cat => (
+                <Link
+                  key={cat.id}
+                  to={cat.path}
+                  className={`nav-link nav-mobile-sub ${location.pathname === cat.path ? 'active' : ''}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span>{cat.icon}</span> {cat.title}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
 
         <div className="nav-mobile-divider" />
 
@@ -262,24 +321,6 @@ export default function Navbar() {
           onClick={e => { handleProtectedClick(e, '/practice'); if (user) setMobileOpen(false) }}
         >
           문제풀이{!user && ' 🔒'}
-        </Link>
-
-        {user && (
-          <Link
-            to="/dashboard"
-            className="nav-link nav-link-accent"
-            onClick={() => setMobileOpen(false)}
-          >
-            대시보드
-          </Link>
-        )}
-
-        <Link
-          to="/pricing"
-          className="nav-link"
-          onClick={() => setMobileOpen(false)}
-        >
-          요금제
         </Link>
 
         <div className="nav-mobile-group">
@@ -306,6 +347,27 @@ export default function Navbar() {
             </div>
           )}
         </div>
+
+        <Link
+          to="/pricing"
+          className="nav-link"
+          onClick={() => setMobileOpen(false)}
+        >
+          요금제
+        </Link>
+
+        {user && (
+          <>
+            <div className="nav-mobile-divider" />
+            <Link
+              to="/dashboard"
+              className="nav-link nav-link-accent"
+              onClick={() => setMobileOpen(false)}
+            >
+              대시보드
+            </Link>
+          </>
+        )}
 
         <div className="nav-mobile-divider" />
         {user ? (

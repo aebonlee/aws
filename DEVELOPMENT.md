@@ -498,3 +498,55 @@ git push origin main
 134 modules → dist/
 빌드 성공
 ```
+
+---
+
+### Phase 11: 네비게이션 메뉴 재구조화 + 유저 툴팁
+
+#### 개요
+상단 메뉴가 4개 레벨 드롭다운(Foundational/Associate/Professional/Specialty)으로 복잡했던 구조를 단순화.
+유저 아바타에 풍선도움말(대시보드/개인정보/로그아웃) 추가.
+
+#### 메뉴 구조 변경
+
+**Before (Phase 10):**
+```
+About | Foundational ▾ | Associate ▾ | Professional ▾ | Specialty ▾ | 도장깨기 | 문제풀이 | 대시보드 | 요금제 | 커뮤니티 ▾
+```
+
+**After (Phase 11):**
+```
+About | AWS Certification ▾ | AIF-C01 AI Practitioner ▾ | 도장깨기 | 문제풀이 | 커뮤니티 ▾ | 요금제
+```
+
+#### AWS Certification 메가 드롭다운
+- 4개 레벨 드롭다운 → 1개 **"AWS Certification" 메가 메뉴**로 통합
+- 레벨별 섹션 헤더 (Foundational 기초 / Associate 어소시에이트 / Professional 프로페셔널 / Specialty 전문 분야)
+- 각 섹션 아래에 해당 자격증 항목 배치 (2차→3차 메뉴 구조)
+
+#### AIF-C01 AI Practitioner 드롭다운
+- AIF-C01 학습 콘텐츠 전용 드롭다운 신설
+- 8개 학습 카테고리 표시 (아이콘 + 제목 + 출제비율 weight 뱃지)
+
+#### 유저 툴팁 (풍선도움말)
+- 로그인 유저 아바타/이름 hover 시 드롭다운 표시
+- **대시보드** → `/dashboard` 링크
+- **개인정보** → `/profile` 링크
+- **로그아웃** 버튼
+- 대시보드 메뉴를 메인 네비에서 제거, 유저 툴팁으로 이동
+
+#### 수정된 파일
+| 파일 | 변경 내용 |
+|------|----------|
+| `src/components/layout/Navbar.tsx` | 메가 메뉴 구조, AIF-C01 드롭다운, 유저 툴팁 |
+| `src/styles/navbar.css` | `.nav-mega-menu`, `.nav-mega-group`, `.nav-mega-header`, `.nav-dropdown-weight`, `.nav-user-tooltip`, `.nav-mobile-level-header` 추가 |
+
+#### 모바일 네비도 동일 구조 반영
+- **AWS Certification** 아코디언 (내부에 레벨별 헤더 + 자격증 목록)
+- **AIF-C01 AI Practitioner** 아코디언 (8개 학습 카테고리)
+
+#### 빌드 결과
+```
+134 modules → dist/
+빌드 성공
+```
