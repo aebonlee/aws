@@ -10,7 +10,7 @@ function isAnswerIndex(answer: number | number[], idx: number): boolean {
 }
 
 function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: string }) {
-  const { lang } = useLang()
+  const { lang, toggleLang } = useLang()
   const [currentQ, setCurrentQ] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
   const [selectedMulti, setSelectedMulti] = useState<number[]>([])
@@ -117,6 +117,12 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
       </div>
       <div className="quiz-question">
         <div className="quiz-action-row">
+          <button
+            className="btn btn-secondary quiz-lang-btn"
+            onClick={toggleLang}
+          >
+            {lang === 'ko' ? '영어로 보기' : '한국어로 보기'}
+          </button>
           {!showExplanation && !answered && (
             <button
               className="btn btn-secondary quiz-explain-btn"

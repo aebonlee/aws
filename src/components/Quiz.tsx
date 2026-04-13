@@ -112,7 +112,7 @@ function BrowseMode({ questions }: { questions: QuizQuestion[] }) {
 /** Quiz mode - interactive quiz with scoring */
 function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
   const { saveQuizResult, progress, getStampTier, getQuizHistory } = useProgress()
-  const { lang } = useLang()
+  const { lang, toggleLang } = useLang()
   const [currentQ, setCurrentQ] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
   const [selectedMulti, setSelectedMulti] = useState<number[]>([])
@@ -259,6 +259,12 @@ function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
       </div>
       <div className="quiz-question">
         <div className="quiz-action-row">
+          <button
+            className="btn btn-secondary quiz-lang-btn"
+            onClick={toggleLang}
+          >
+            {lang === 'ko' ? '영어로 보기' : '한국어로 보기'}
+          </button>
           {!showExplanation && !answered && (
             <button
               className="btn btn-secondary quiz-explain-btn"
