@@ -1,5 +1,26 @@
 .pricing-page { padding: 40px 0 60px; }
 
+.pricing-trial-banner {
+  max-width: 800px; margin: 0 auto 32px; padding: 20px 24px;
+  background: linear-gradient(135deg, rgba(255,153,0,0.1), rgba(255,153,0,0.05));
+  border: 1px solid rgba(255,153,0,0.4); border-radius: var(--radius-lg);
+  text-align: center;
+}
+.pricing-trial-banner strong {
+  display: block; font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 6px;
+}
+.pricing-trial-banner p {
+  font-size: 0.88rem; color: var(--text-secondary); margin: 0;
+}
+
+.free-trial-banner {
+  position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+  padding: 10px 18px; border-radius: var(--radius);
+  background: var(--bg); border: 1px solid var(--primary);
+  box-shadow: var(--shadow-lg); font-size: 0.82rem; font-weight: 600;
+  color: var(--primary-dark);
+}
+
 .pricing-hero { text-align: center; margin-bottom: 40px; }
 .pricing-hero h1 { font-size: 2rem; margin-bottom: 8px; }
 .pricing-hero p { color: var(--text-secondary); font-size: 1rem; }

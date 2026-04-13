@@ -15,8 +15,7 @@ const COMMUNITY_MENU = [
 
 // AIF-C01 study pages (public)
 const PUBLIC_PATHS = new Set([
-  '/', '/about', '/login', '/auth/callback', '/aif-c01',
-  ...CATEGORIES.map(c => c.path),
+  '/', '/about', '/login', '/auth/callback', '/pricing',
 ])
 
 export default function Navbar() {
@@ -132,9 +131,11 @@ export default function Navbar() {
                     key={cat.id}
                     to={cat.path}
                     className={`nav-dropdown-item ${location.pathname === cat.path ? 'active' : ''}`}
+                    onClick={e => handleProtectedClick(e, cat.path)}
                   >
                     <span className="nav-dropdown-title">{cat.title}</span>
                     <span className="nav-dropdown-weight">{cat.weight}</span>
+                    {!user && <span className="nav-dropdown-lock">🔒</span>}
                   </Link>
                 ))}
               </div>
@@ -297,9 +298,10 @@ export default function Navbar() {
                   key={cat.id}
                   to={cat.path}
                   className={`nav-link nav-mobile-sub ${location.pathname === cat.path ? 'active' : ''}`}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={e => { handleProtectedClick(e, cat.path); if (user) setMobileOpen(false) }}
                 >
                   {cat.title}
+                  {!user && <span className="nav-dropdown-lock">🔒</span>}
                 </Link>
               ))}
             </div>

@@ -5,6 +5,7 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import { ProgressProvider } from './contexts/ProgressContext'
 import PublicLayout from './layouts/PublicLayout'
 import ProtectedRoute from './components/ProtectedRoute'
+import FreeTrialGuard from './components/FreeTrialGuard'
 
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
@@ -53,35 +54,35 @@ function App() {
       <PublicLayout>
         <Suspense fallback={<div className="loading-spinner">로딩 중...</div>}>
           <Routes>
-            {/* Public - AIF-C01 core content */}
+            {/* Public - always accessible */}
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/ai-ml-basics" element={<AiMlBasics />} />
-            <Route path="/ml-development" element={<MlDevelopment />} />
-            <Route path="/sagemaker" element={<SageMaker />} />
-            <Route path="/gen-ai-basics" element={<GenAiBasics />} />
-            <Route path="/prompt-engineering" element={<PromptEngineering />} />
-            <Route path="/fm-evaluation" element={<FmEvaluation />} />
-            <Route path="/responsible-ai" element={<ResponsibleAi />} />
-            <Route path="/security-governance" element={<SecurityGovernance />} />
-            <Route path="/aif-c01" element={<AifC01 />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
 
-            {/* Protected - requires login */}
-            <Route path="/clf-c02" element={<ProtectedRoute><ClfC02 /></ProtectedRoute>} />
-            <Route path="/saa-c03" element={<ProtectedRoute><SaaC03 /></ProtectedRoute>} />
-            <Route path="/dva-c02" element={<ProtectedRoute><DvaC02 /></ProtectedRoute>} />
-            <Route path="/soa-c02" element={<ProtectedRoute><SoaC02 /></ProtectedRoute>} />
-            <Route path="/dea-c01" element={<ProtectedRoute><DeaC01 /></ProtectedRoute>} />
-            <Route path="/mla-c01" element={<ProtectedRoute><MlaC01 /></ProtectedRoute>} />
-            <Route path="/sap-c02" element={<ProtectedRoute><SapC02 /></ProtectedRoute>} />
-            <Route path="/dop-c02" element={<ProtectedRoute><DopC02 /></ProtectedRoute>} />
-            <Route path="/scs-c02" element={<ProtectedRoute><ScsC02 /></ProtectedRoute>} />
-            <Route path="/ans-c01" element={<ProtectedRoute><AnsC01 /></ProtectedRoute>} />
-            <Route path="/stamp" element={<ProtectedRoute><StampBreaking /></ProtectedRoute>} />
-            <Route path="/practice" element={<ProtectedRoute><Practice /></ProtectedRoute>} />
+            {/* Free trial - login + 5 page limit */}
+            <Route path="/ai-ml-basics" element={<FreeTrialGuard><AiMlBasics /></FreeTrialGuard>} />
+            <Route path="/ml-development" element={<FreeTrialGuard><MlDevelopment /></FreeTrialGuard>} />
+            <Route path="/sagemaker" element={<FreeTrialGuard><SageMaker /></FreeTrialGuard>} />
+            <Route path="/gen-ai-basics" element={<FreeTrialGuard><GenAiBasics /></FreeTrialGuard>} />
+            <Route path="/prompt-engineering" element={<FreeTrialGuard><PromptEngineering /></FreeTrialGuard>} />
+            <Route path="/fm-evaluation" element={<FreeTrialGuard><FmEvaluation /></FreeTrialGuard>} />
+            <Route path="/responsible-ai" element={<FreeTrialGuard><ResponsibleAi /></FreeTrialGuard>} />
+            <Route path="/security-governance" element={<FreeTrialGuard><SecurityGovernance /></FreeTrialGuard>} />
+            <Route path="/aif-c01" element={<FreeTrialGuard><AifC01 /></FreeTrialGuard>} />
+            <Route path="/clf-c02" element={<FreeTrialGuard><ClfC02 /></FreeTrialGuard>} />
+            <Route path="/saa-c03" element={<FreeTrialGuard><SaaC03 /></FreeTrialGuard>} />
+            <Route path="/dva-c02" element={<FreeTrialGuard><DvaC02 /></FreeTrialGuard>} />
+            <Route path="/soa-c02" element={<FreeTrialGuard><SoaC02 /></FreeTrialGuard>} />
+            <Route path="/dea-c01" element={<FreeTrialGuard><DeaC01 /></FreeTrialGuard>} />
+            <Route path="/mla-c01" element={<FreeTrialGuard><MlaC01 /></FreeTrialGuard>} />
+            <Route path="/sap-c02" element={<FreeTrialGuard><SapC02 /></FreeTrialGuard>} />
+            <Route path="/dop-c02" element={<FreeTrialGuard><DopC02 /></FreeTrialGuard>} />
+            <Route path="/scs-c02" element={<FreeTrialGuard><ScsC02 /></FreeTrialGuard>} />
+            <Route path="/ans-c01" element={<FreeTrialGuard><AnsC01 /></FreeTrialGuard>} />
+            <Route path="/stamp" element={<FreeTrialGuard><StampBreaking /></FreeTrialGuard>} />
+            <Route path="/practice" element={<FreeTrialGuard><Practice /></FreeTrialGuard>} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/community/notices" element={<ProtectedRoute><Notices /></ProtectedRoute>} />
             <Route path="/community/notices/:id" element={<ProtectedRoute><NoticeDetail /></ProtectedRoute>} />

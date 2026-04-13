@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { requestPayment } from '../lib/portone'
 import '../styles/pricing.css'
 
@@ -43,6 +43,8 @@ const PLANS = [
 export default function Pricing() {
   const { user } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
+  const fromTrial = (location.state as { fromTrial?: boolean })?.fromTrial === true
   const [processing, setProcessing] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
 
@@ -73,6 +75,13 @@ export default function Pricing() {
   return (
     <div className="pricing-page">
       <div className="container">
+        {fromTrial && (
+          <div className="pricing-trial-banner">
+            <strong>무료 체험이 종료되었습니다</strong>
+            <p>5개 페이지를 무료로 체험하셨습니다. 요금제를 선택하시면 모든 학습 콘텐츠를 무제한으로 이용할 수 있습니다.</p>
+          </div>
+        )}
+
         <div className="pricing-hero">
           <h1>요금제</h1>
           <p>AWS 자격증 학습을 위한 합리적인 요금제를 선택하세요.</p>
@@ -121,7 +130,7 @@ export default function Pricing() {
             </div>
             <div className="pricing-faq-item">
               <strong>환불은 가능한가요?</strong>
-              <p>결제 후 7일 이내 미사용 시 전액 환불 가능합니다.</p>
+              <p>환불은 개인 대시보드에 학습 내역이 없을 때 가능합니다.</p>
             </div>
             <div className="pricing-faq-item">
               <strong>요금제 기간이 지나면?</strong>
