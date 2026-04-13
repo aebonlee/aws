@@ -30,6 +30,26 @@ DROP FUNCTION IF EXISTS public.update_comment_count() CASCADE;
 DROP FUNCTION IF EXISTS public.update_updated_at() CASCADE;
 DROP FUNCTION IF EXISTS public.handle_new_user() CASCADE;
 
+-- 고아 인덱스 정리 (이전 부분 실행으로 테이블 없이 남은 인덱스)
+DROP INDEX IF EXISTS public.idx_notices_created_at;
+DROP INDEX IF EXISTS public.idx_notices_pinned;
+DROP INDEX IF EXISTS public.idx_posts_created_at;
+DROP INDEX IF EXISTS public.idx_posts_category;
+DROP INDEX IF EXISTS public.idx_posts_author;
+DROP INDEX IF EXISTS public.idx_success_stories_created_at;
+DROP INDEX IF EXISTS public.idx_success_stories_exam;
+DROP INDEX IF EXISTS public.idx_tips_created_at;
+DROP INDEX IF EXISTS public.idx_tips_tag;
+DROP INDEX IF EXISTS public.idx_comments_target;
+DROP INDEX IF EXISTS public.idx_comments_parent;
+DROP INDEX IF EXISTS public.idx_comments_author;
+DROP INDEX IF EXISTS public.idx_likes_target;
+DROP INDEX IF EXISTS public.idx_likes_user;
+DROP INDEX IF EXISTS public.idx_reports_status;
+
+-- 트리거 정리
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+
 
 -- ============================================================
 -- 1. 사용자 프로필 (profiles)
