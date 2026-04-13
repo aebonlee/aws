@@ -149,13 +149,10 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
   )
 }
 
-type QuestionCount = 10 | 20 | 0  // 0 = all
-
 export default function Practice() {
   const { progress } = useProgress()
   const [mode, setMode] = useState<'select' | 'quiz'>('select')
   const [selectedCats, setSelectedCats] = useState<string[]>([])
-  const [questionCount, setQuestionCount] = useState<QuestionCount>(20)
   const [quizKey, setQuizKey] = useState(0)
 
   const filteredQuestions = useMemo((): PracticeQuestion[] => {
@@ -164,12 +161,8 @@ export default function Practice() {
   }, [selectedCats])
 
   const quizQuestions = useMemo(() => {
-    if (questionCount === 0) {
-      // All questions in order
-      return [...filteredQuestions]
-    }
-    return [...filteredQuestions].sort(() => Math.random() - 0.5).slice(0, questionCount)
-  }, [filteredQuestions, questionCount, quizKey])
+    return [...filteredQuestions].sort(() => Math.random() - 0.5)
+  }, [filteredQuestions, quizKey])
 
   const toggleCat = (catId: string) => {
     setSelectedCats(prev =>
@@ -186,9 +179,7 @@ export default function Practice() {
     const title = selectedCats.length === 0
       ? '전체 랜덤 문제풀이'
       : selectedCats.map(id => CATEGORIES.find(c => c.id === id)?.title).filter(Boolean).join(', ')
-    const subtitle = questionCount === 0
-      ? `(전체 ${quizQuestions.length}문제)`
-      : `(${quizQuestions.length}문제 랜덤)`
+    const subtitle = `(${quizQuestions.length}문제)`
     return (
       <div className="practice-page">
         <div className="container">
@@ -230,24 +221,9 @@ export default function Practice() {
           </div>
         </div>
 
-        <div className="practice-question-count">
-          <h3>문제 수 선택</h3>
-          <div className="practice-count-options">
-            {([10, 20, 0] as QuestionCount[]).map(count => (
-              <button
-                key={count}
-                className={`practice-count-btn ${questionCount === count ? 'selected' : ''}`}
-                onClick={() => setQuestionCount(count)}
-              >
-                {count === 0 ? `전체 (${filteredQuestions.length}문제)` : `${count}문제`}
-              </button>
-            ))}
-          </div>
-        </div>
-
         <div className="practice-start">
           <button className="btn btn-primary" onClick={startQuiz}>
-            문제 풀기 시작 ({selectedCats.length === 0 ? '전체' : `${selectedCats.length}개 카테고리`}{questionCount > 0 ? ` / ${questionCount}문제` : ' / 전체'})
+            문제 풀기 시작 ({selectedCats.length === 0 ? '전체' : `${selectedCats.length}개 카테고리`} / {filteredQuestions.length}문제)
           </button>
         </div>
       </div>
