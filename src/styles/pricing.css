@@ -1,0 +1,61 @@
+.pricing-page { padding: 40px 0 60px; }
+
+.pricing-hero { text-align: center; margin-bottom: 40px; }
+.pricing-hero h1 { font-size: 2rem; margin-bottom: 8px; }
+.pricing-hero p { color: var(--text-secondary); font-size: 1rem; }
+
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  max-width: 800px; margin: 0 auto 40px;
+}
+
+.pricing-card {
+  position: relative; padding: 32px; border-radius: var(--radius-lg);
+  background: var(--bg); border: 2px solid var(--border);
+  display: flex; flex-direction: column; transition: all var(--transition);
+}
+.pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.pricing-card.highlight { border-color: var(--primary); }
+
+.pricing-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--primary); color: #fff; font-size: 0.78rem; font-weight: 700;
+  padding: 4px 16px; border-radius: 20px;
+}
+
+.pricing-plan-name { font-size: 1.2rem; margin-bottom: 12px; text-align: center; }
+
+.pricing-price { text-align: center; margin-bottom: 4px; }
+.pricing-amount { font-size: 2.2rem; font-weight: 800; color: var(--primary-dark); }
+.pricing-period { font-size: 0.9rem; color: var(--text-secondary); margin-left: 4px; }
+.pricing-per-month {
+  text-align: center; font-size: 0.85rem; color: var(--text-secondary);
+  margin-bottom: 20px; font-weight: 600;
+}
+
+.pricing-features {
+  list-style: none; padding: 0; margin-bottom: 24px; flex: 1;
+}
+.pricing-features li {
+  padding: 6px 0; font-size: 0.88rem; display: flex; align-items: center; gap: 8px;
+}
+.pricing-check { color: var(--success); font-weight: 700; }
+
+.pricing-btn { width: 100%; justify-content: center; padding: 12px; font-size: 1rem; }
+
+.pricing-error {
+  max-width: 800px; margin: -20px auto 30px; padding: 12px 20px;
+  background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3);
+  border-radius: var(--radius); color: var(--danger); font-size: 0.88rem; text-align: center;
+}
+
+.pricing-info {
+  max-width: 800px; margin: 0 auto;
+  padding: 30px; background: var(--bg-section); border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+.pricing-info h3 { font-size: 1.1rem; margin-bottom: 16px; }
+
+.pricing-faq { display: flex; flex-direction: column; gap: 16px; }
+.pricing-faq-item strong { display: block; font-size: 0.9rem; margin-bottom: 4px; }
+.pricing-faq-item p { font-size: 0.85rem; color: var(--text-secondary); }

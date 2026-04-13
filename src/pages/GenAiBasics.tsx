@@ -4,6 +4,7 @@ import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
 import Quiz from '../components/Quiz'
+import SectionStatusBar from '../components/SectionStatusBar'
 import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
@@ -34,6 +35,7 @@ export default function GenAiBasics() {
           <tr><td><strong>전이 학습</strong></td><td>사전 학습된 지식을 새 작업에 전이</td></tr>
         </tbody></table>
         <TipBox type="important"><p>시험에서 FM = 대규모 사전학습 + 범용 + 다양한 다운스트림 작업에 적용 가능한 모델로 이해하세요.</p></TipBox>
+        <SectionStatusBar categoryId="gen-ai-basics" sectionId="foundation-model" />
       </section>
 
       <section id="llm">
@@ -50,6 +52,7 @@ export default function GenAiBasics() {
             <tr><td>Jurassic</td><td>AI21 Labs</td><td>다국어 텍스트 생성</td></tr>
           </tbody></table>
         </ToggleSection>
+        <SectionStatusBar categoryId="gen-ai-basics" sectionId="llm" />
       </section>
 
       <section id="parameters">
@@ -65,6 +68,7 @@ export default function GenAiBasics() {
         <ToggleSection title="Temperature 활용 예시">
           <ul><li><strong>Temperature=0:</strong> 코드 생성, 수학 문제, 정확한 정보 추출</li><li><strong>Temperature=0.3~0.5:</strong> 요약, 질의응답, 일반 대화</li><li><strong>Temperature=0.7~1.0:</strong> 창작 글쓰기, 브레인스토밍, 시 쓰기</li></ul>
         </ToggleSection>
+        <SectionStatusBar categoryId="gen-ai-basics" sectionId="parameters" />
       </section>
 
       <section id="gen-ai-types">
@@ -83,6 +87,7 @@ export default function GenAiBasics() {
             <tr><td><strong>Diffusion</strong></td><td>노이즈에서 점진적으로 이미지 복원 (denoising)</td></tr>
           </tbody></table>
         </ToggleSection>
+        <SectionStatusBar categoryId="gen-ai-basics" sectionId="gen-ai-types" />
       </section>
 
       <section id="tokens-embeddings">
@@ -94,6 +99,7 @@ export default function GenAiBasics() {
         <p>텍스트를 고차원 수치 벡터로 변환합니다. 의미적으로 유사한 텍스트는 벡터 공간에서 가까이 위치합니다.</p>
         <ul><li><strong>Amazon Titan Embeddings:</strong> 텍스트를 벡터로 변환하는 임베딩 모델</li><li><strong>RAG의 핵심:</strong> 문서를 임베딩 → 벡터 DB 저장 → 질문과 유사 문서 검색</li></ul>
         <TipBox type="important"><p><strong>Hallucination(환각)</strong>: FM이 그럴듯하지만 사실이 아닌 정보를 생성하는 현상. RAG, Guardrails 등으로 완화합니다.</p></TipBox>
+        <SectionStatusBar categoryId="gen-ai-basics" sectionId="tokens-embeddings" />
       </section>
 
       <section id="quiz">

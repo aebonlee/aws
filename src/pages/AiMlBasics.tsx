@@ -4,6 +4,7 @@ import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
 import Quiz from '../components/Quiz'
+import SectionStatusBar from '../components/SectionStatusBar'
 import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
@@ -32,6 +33,7 @@ export default function AiMlBasics() {
           <tr><td><strong>DL</strong></td><td>인공 신경망을 활용하는 ML 하위 분야</td><td>대량 데이터와 GPU 필요</td><td>이미지 인식, 음성 인식</td></tr>
         </tbody></table>
         <TipBox type="important" title="시험 핵심"><p><strong>AI ⊃ ML ⊃ DL</strong> 관계를 기억하세요. 생성형 AI는 새로운 콘텐츠를 생성하는 DL 기반 기술입니다.</p></TipBox>
+        <SectionStatusBar categoryId="ai-ml-basics" sectionId="ai-ml-dl" />
       </section>
 
       <section id="ml-types">
@@ -44,6 +46,7 @@ export default function AiMlBasics() {
         <ToggleSection title="강화 학습 구성 요소">
           <ul><li><strong>에이전트:</strong> 학습하고 행동을 결정하는 주체</li><li><strong>환경:</strong> 상호작용하는 세계</li><li><strong>보상:</strong> 행동의 결과 피드백</li><li><strong>정책:</strong> 상태에서 행동을 결정하는 전략</li></ul>
         </ToggleSection>
+        <SectionStatusBar categoryId="ai-ml-basics" sectionId="ml-types" />
       </section>
 
       <section id="classification-regression">
@@ -54,6 +57,7 @@ export default function AiMlBasics() {
           <tr><td>알고리즘</td><td>로지스틱 회귀, SVM, 랜덤포레스트</td><td>선형 회귀, 다항 회귀</td></tr>
         </tbody></table>
         <TipBox type="warning"><p>\"로지스틱 회귀\"는 이름에 회귀가 있지만 실제로는 <strong>분류</strong> 알고리즘입니다!</p></TipBox>
+        <SectionStatusBar categoryId="ai-ml-basics" sectionId="classification-regression" />
       </section>
 
       <section id="aws-ai-services">
@@ -75,6 +79,7 @@ export default function AiMlBasics() {
         <ToggleSection title="Polly vs Transcribe 구분">
           <p><strong>Polly = 텍스트→음성(TTS)</strong>, <strong>Transcribe = 음성→텍스트(STT)</strong>. 방향이 반대입니다.</p>
         </ToggleSection>
+        <SectionStatusBar categoryId="ai-ml-basics" sectionId="aws-ai-services" />
       </section>
 
       <section id="quiz">

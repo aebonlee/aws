@@ -28,6 +28,8 @@ const ScsC02 = lazy(() => import('./pages/ScsC02'))
 const AnsC01 = lazy(() => import('./pages/AnsC01'))
 const StampBreaking = lazy(() => import('./pages/StampBreaking'))
 const Practice = lazy(() => import('./pages/Practice'))
+const Dashboard = lazy(() => import('./pages/Dashboard'))
+const Pricing = lazy(() => import('./pages/Pricing'))
 const Notices = lazy(() => import('./pages/community/Notices'))
 const Board = lazy(() => import('./pages/community/Board'))
 const SuccessStories = lazy(() => import('./pages/community/SuccessStories'))
@@ -55,6 +57,7 @@ function App() {
             <Route path="/fm-evaluation" element={<FmEvaluation />} />
             <Route path="/responsible-ai" element={<ResponsibleAi />} />
             <Route path="/security-governance" element={<SecurityGovernance />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
 
@@ -71,6 +74,7 @@ function App() {
             <Route path="/ans-c01" element={<ProtectedRoute><AnsC01 /></ProtectedRoute>} />
             <Route path="/stamp" element={<ProtectedRoute><StampBreaking /></ProtectedRoute>} />
             <Route path="/practice" element={<ProtectedRoute><Practice /></ProtectedRoute>} />
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/community/notices" element={<ProtectedRoute><Notices /></ProtectedRoute>} />
             <Route path="/community/board" element={<ProtectedRoute><Board /></ProtectedRoute>} />
             <Route path="/community/success-stories" element={<ProtectedRoute><SuccessStories /></ProtectedRoute>} />

@@ -6,5 +6,7 @@
 @import './styles/quiz.css';
 @import './styles/footer.css';
 @import './styles/community.css';
+@import './styles/dashboard.css';
+@import './styles/pricing.css';
 @import './styles/dark-mode.css';
 @import './styles/responsive.css';

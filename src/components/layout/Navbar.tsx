@@ -129,6 +129,22 @@ export default function Navbar() {
             문제풀이{!user && ' 🔒'}
           </Link>
 
+          {user && (
+            <Link
+              to="/dashboard"
+              className={`nav-link nav-link-accent ${location.pathname === '/dashboard' ? 'active' : ''}`}
+            >
+              대시보드
+            </Link>
+          )}
+
+          <Link
+            to="/pricing"
+            className={`nav-link ${location.pathname === '/pricing' ? 'active' : ''}`}
+          >
+            요금제
+          </Link>
+
           <div
             className="nav-dropdown"
             onMouseEnter={() => handleMouseEnter('community')}
@@ -246,6 +262,24 @@ export default function Navbar() {
           onClick={e => { handleProtectedClick(e, '/practice'); if (user) setMobileOpen(false) }}
         >
           문제풀이{!user && ' 🔒'}
+        </Link>
+
+        {user && (
+          <Link
+            to="/dashboard"
+            className="nav-link nav-link-accent"
+            onClick={() => setMobileOpen(false)}
+          >
+            대시보드
+          </Link>
+        )}
+
+        <Link
+          to="/pricing"
+          className="nav-link"
+          onClick={() => setMobileOpen(false)}
+        >
+          요금제
         </Link>
 
         <div className="nav-mobile-group">

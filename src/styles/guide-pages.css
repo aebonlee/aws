@@ -46,3 +46,84 @@
 .stamp-icon { font-size: 2.5rem; }
 .stamp-info h3 { font-size: 1rem; margin-bottom: 4px; }
 .stamp-info p { font-size: 0.85rem; color: var(--text-secondary); }
+
+/* Section Status Bar */
+.section-status-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 16px; margin-top: 20px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--bg-section);
+}
+.section-status-bar.status-completed { border-color: var(--success); background: rgba(16,185,129,0.05); }
+.section-status-bar.status-review { border-color: var(--warning); background: rgba(245,158,11,0.05); }
+
+.section-badge {
+  font-size: 0.8rem; font-weight: 700; padding: 3px 10px; border-radius: 20px;
+}
+.section-badge.status-none { background: var(--bg-section); color: var(--text-secondary); border: 1px solid var(--border); }
+.section-badge.status-completed { background: rgba(16,185,129,0.15); color: #059669; }
+.section-badge.status-review { background: rgba(245,158,11,0.15); color: #d97706; }
+
+.section-status-actions { display: flex; gap: 6px; }
+
+.btn-section {
+  padding: 5px 14px; border: 1px solid var(--border); border-radius: var(--radius);
+  cursor: pointer; font-family: var(--font); font-size: 0.8rem; font-weight: 600;
+  background: var(--bg); color: var(--text-secondary); transition: all var(--transition);
+}
+.btn-section:hover { border-color: var(--primary); color: var(--primary-dark); }
+.btn-section-complete:hover { border-color: var(--success); color: #059669; background: rgba(16,185,129,0.05); }
+.btn-section-review:hover { border-color: var(--warning); color: #d97706; background: rgba(245,158,11,0.05); }
+
+/* Sidebar section status icons */
+.sidebar-link-with-status { display: flex; align-items: center; gap: 6px; }
+.sidebar-section-icon { font-size: 0.75rem; flex-shrink: 0; }
+.sidebar-progress-mini {
+  display: flex; align-items: center; gap: 6px; padding: 8px 12px; margin-top: 8px;
+  font-size: 0.78rem; color: var(--text-secondary); border-top: 1px solid var(--border);
+}
+.sidebar-progress-bar {
+  flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden;
+}
+.sidebar-progress-fill { height: 100%; background: var(--success); border-radius: 2px; transition: width 0.3s ease; }
+
+/* Stamp Tier Badge */
+.stamp-tier-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: 20px; font-weight: 700;
+}
+.stamp-tier-sm { font-size: 0.72rem; padding: 2px 8px; }
+.stamp-tier-sm .stamp-tier-emoji { font-size: 0.8rem; }
+.stamp-tier-md { font-size: 0.82rem; }
+.stamp-tier-lg { font-size: 1rem; padding: 6px 16px; }
+.stamp-tier-lg .stamp-tier-emoji { font-size: 1.3rem; }
+
+.stamp-tier-gold {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #92400e; border: 1px solid #f59e0b;
+}
+.stamp-tier-silver {
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  color: #475569; border: 1px solid #94a3b8;
+}
+.stamp-tier-bronze {
+  background: linear-gradient(135deg, #fef2e8, #fed7aa);
+  color: #9a3412; border: 1px solid #ea580c;
+}
+.stamp-tier-none {
+  background: var(--bg-section); color: var(--text-secondary);
+  border: 1px dashed var(--border);
+}
+
+/* Quiz history dots */
+.quiz-history-dots { display: flex; gap: 4px; align-items: center; }
+.quiz-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.quiz-dot.passed { background: var(--success); }
+.quiz-dot.failed { background: var(--danger); }
+
+/* Stamp page tier counts */
+.stamp-tier-counts { display: flex; gap: 20px; justify-content: center; margin: 20px 0; }
+.stamp-tier-count { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.stamp-tier-count-num { font-size: 1.8rem; font-weight: 800; }
+.stamp-tier-count-label { font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; }

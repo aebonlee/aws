@@ -4,6 +4,7 @@ import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
 import Quiz from '../components/Quiz'
+import SectionStatusBar from '../components/SectionStatusBar'
 import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
@@ -36,6 +37,7 @@ export default function MlDevelopment() {
           <tr><td><strong>R 패밀리</strong></td><td>메모리 최적화</td><td>대규모 데이터셋 처리</td></tr>
         </tbody></table>
         <TipBox type="important"><p><strong>P = 학습(Training)</strong>, <strong>Inf = 추론(Inference)</strong>, <strong>Trn = Trainium 학습</strong>으로 구분하세요.</p></TipBox>
+        <SectionStatusBar categoryId="ml-development" sectionId="ec2-families" />
       </section>
 
       <section id="ml-process">
@@ -43,6 +45,7 @@ export default function MlDevelopment() {
         <p>ML 프로젝트는 반복적(iterative) 프로세스를 따릅니다.</p>
         <ol><li><strong>비즈니스 문제 정의:</strong> 해결할 문제와 성공 기준 정의</li><li><strong>데이터 수집:</strong> 관련 데이터 수집 및 저장</li><li><strong>데이터 전처리:</strong> 정제, 변환, 피처 엔지니어링</li><li><strong>모델 선택 및 학습:</strong> 알고리즘 선택, 하이퍼파라미터 튜닝</li><li><strong>모델 평가:</strong> 검증 데이터로 성능 측정</li><li><strong>배포:</strong> 프로덕션 환경에 모델 배포</li><li><strong>모니터링:</strong> 성능 모니터링 및 재학습</li></ol>
         <TipBox type="info"><p>데이터 분할: <strong>학습(Training) 70-80%</strong>, <strong>검증(Validation) 10-15%</strong>, <strong>테스트(Test) 10-15%</strong></p></TipBox>
+        <SectionStatusBar categoryId="ml-development" sectionId="ml-process" />
       </section>
 
       <section id="data-preprocessing">
@@ -56,6 +59,7 @@ export default function MlDevelopment() {
             <tr><td><strong>피처 엔지니어링</strong></td><td>새로운 특성 생성, 특성 선택</td></tr>
           </tbody></table>
         </ToggleSection>
+        <SectionStatusBar categoryId="ml-development" sectionId="data-preprocessing" />
       </section>
 
       <section id="model-evaluation">
@@ -76,6 +80,7 @@ export default function MlDevelopment() {
           <tr><td><strong>RMSE</strong></td><td>Root MSE - MSE의 제곱근</td></tr>
           <tr><td><strong>R² Score</strong></td><td>결정계수 - 모델 설명력 (0~1)</td></tr>
         </tbody></table>
+        <SectionStatusBar categoryId="ml-development" sectionId="model-evaluation" />
       </section>
 
       <section id="overfitting">
@@ -88,6 +93,7 @@ export default function MlDevelopment() {
         <ToggleSection title="과적합 해결 기법 상세">
           <ul><li><strong>정규화 (Regularization):</strong> L1(Lasso), L2(Ridge) 패널티로 가중치 제한</li><li><strong>드롭아웃 (Dropout):</strong> 학습 시 랜덤하게 뉴런 비활성화</li><li><strong>조기 종료 (Early Stopping):</strong> 검증 성능 하락 시 학습 중단</li><li><strong>데이터 증강:</strong> 이미지 회전, 반전 등으로 데이터 다양화</li><li><strong>교차 검증 (Cross-Validation):</strong> K-Fold로 안정적 성능 평가</li></ul>
         </ToggleSection>
+        <SectionStatusBar categoryId="ml-development" sectionId="overfitting" />
       </section>
 
       <section id="quiz">

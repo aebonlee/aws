@@ -1,5 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useProgress } from '../contexts/ProgressContext'
+import StampTierBadge from './StampTierBadge'
+import type { StampTier } from '../contexts/ProgressContext'
 
 export interface QuizQuestion {
   question: string
@@ -38,6 +40,13 @@ function formatAnswerLabel(answer: number | number[]): string {
 function shuffleAndPick<T>(arr: T[], count: number): T[] {
   const shuffled = [...arr].sort(() => Math.random() - 0.5)
   return shuffled.slice(0, count)
+}
+
+function getNextTierInfo(currentTier: StampTier, percentage: number): string | null {
+  if (currentTier === 'gold') return null
+  if (currentTier === 'silver') return '90%+ 3회 연속 또는 100%로 Gold 달성!'
+  if (currentTier === 'bronze') return `85% 이상으로 Silver 달성! (현재 최고: ${percentage}%)`
+  return '70% 이상으로 Bronze 달성!'
 }
 
 /** Browse mode - shows all questions with accordion explanations */
@@ -94,7 +103,7 @@ function BrowseMode({ questions, lang }: { questions: QuizQuestion[]; lang: 'ko'
 
 /** Quiz mode - interactive quiz with scoring */
 function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
-  const { saveQuizResult, progress } = useProgress()
+  const { saveQuizResult, progress, getStampTier, getQuizHistory } = useProgress()
   const [currentQ, setCurrentQ] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
   const [selectedMulti, setSelectedMulti] = useState<number[]>([])
@@ -156,17 +165,50 @@ function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
 
   if (showResult) {
     const passed = score / questions.length >= 0.7
+    const percentage = Math.round(score / questions.length * 100)
+    const tier = getStampTier(categoryId)
+    const history = getQuizHistory(categoryId)
+    const recentHistory = history.slice(-5)
+    const nextTierMsg = getNextTierInfo(tier, percentage)
+
     return (
       <div className="quiz-result">
         <div className={`quiz-result-card ${passed ? 'passed' : 'failed'}`}>
           <div className="quiz-result-icon">{passed ? '🎉' : '😢'}</div>
           <h3>{passed ? '도장 획득!' : '아쉽게 실패...'}</h3>
-          <p className="quiz-score">{score} / {questions.length} ({Math.round(score / questions.length * 100)}%)</p>
+          <p className="quiz-score">{score} / {questions.length} ({percentage}%)</p>
+
+          {/* Stamp tier badge */}
+          <div style={{ margin: '16px 0' }}>
+            <StampTierBadge tier={tier} size="lg" />
+          </div>
+
           <p className="quiz-result-msg">
             {passed
               ? `${categoryTitle} 도장을 깼습니다! 70% 이상 정답!`
               : '70% 이상 맞혀야 도장을 깰 수 있습니다. 다시 학습 후 도전하세요!'}
           </p>
+
+          {/* Next tier hint */}
+          {nextTierMsg && (
+            <p style={{ fontSize: '0.85rem', color: 'var(--primary-dark)', marginBottom: '12px' }}>
+              {nextTierMsg}
+            </p>
+          )}
+
+          {/* Quiz history dots */}
+          {recentHistory.length > 0 && (
+            <div className="quiz-history-dots" style={{ justifyContent: 'center', marginBottom: '16px' }}>
+              {recentHistory.map((h, i) => (
+                <span
+                  key={i}
+                  className={`quiz-dot ${h.passed ? 'passed' : 'failed'}`}
+                  title={`${h.percentage}%`}
+                />
+              ))}
+            </div>
+          )}
+
           <button className="btn btn-primary" onClick={handleRetry}>
             {passed ? '다시 풀기' : '재도전'}
           </button>

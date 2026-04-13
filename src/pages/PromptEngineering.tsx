@@ -4,6 +4,7 @@ import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
 import Quiz from '../components/Quiz'
+import SectionStatusBar from '../components/SectionStatusBar'
 import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
@@ -29,6 +30,7 @@ export default function PromptEngineering() {
         <h3>좋은 프롬프트의 구성 요소</h3>
         <ul><li><strong>역할 (Role):</strong> 모델의 역할 정의 ("당신은 AWS 전문가입니다")</li><li><strong>지시 (Instruction):</strong> 수행할 작업 명확히 기술</li><li><strong>컨텍스트 (Context):</strong> 배경 정보 제공</li><li><strong>입력 데이터 (Input):</strong> 처리할 데이터</li><li><strong>출력 형식 (Output Format):</strong> 원하는 응답 형식 지정</li></ul>
         <TipBox type="important"><p>이 카테고리는 <strong>출제비율 24.2%</strong>로 가장 높습니다. 프롬프트 기법과 Bedrock 서비스를 확실히 익히세요.</p></TipBox>
+        <SectionStatusBar categoryId="prompt-engineering" sectionId="prompt-basics" />
       </section>
 
       <section id="techniques">
@@ -43,6 +45,7 @@ export default function PromptEngineering() {
         <ToggleSection title="프롬프트 최적화 팁">
           <ul><li>명확하고 구체적인 지시를 사용</li><li>구분자(delimiter)로 입력 데이터 구분: {"```"}, {"---"}, {"<>"}</li><li>출력 형식 지정: JSON, 표, 불릿 포인트 등</li><li>네거티브 프롬프트: 하지 말아야 할 것도 명시</li><li>단계적으로 복잡한 작업을 분해</li></ul>
         </ToggleSection>
+        <SectionStatusBar categoryId="prompt-engineering" sectionId="techniques" />
       </section>
 
       <section id="bedrock">
@@ -57,6 +60,7 @@ export default function PromptEngineering() {
           <tr><td><strong>Model Evaluation</strong></td><td>자동/사람 평가로 모델 성능 비교</td></tr>
         </tbody></table>
         <TipBox type="info"><p><strong>Bedrock vs SageMaker:</strong> Bedrock은 사전 학습된 FM 활용, SageMaker는 커스텀 ML 모델 전체 라이프사이클 관리.</p></TipBox>
+        <SectionStatusBar categoryId="prompt-engineering" sectionId="bedrock" />
       </section>
 
       <section id="amazon-q">
@@ -70,6 +74,7 @@ export default function PromptEngineering() {
         <ToggleSection title="PartyRock">
           <p>Amazon Bedrock 기반의 생성형 AI 앱 빌더입니다. 코드 없이 프롬프트만으로 AI 앱을 프로토타이핑할 수 있습니다.</p>
         </ToggleSection>
+        <SectionStatusBar categoryId="prompt-engineering" sectionId="amazon-q" />
       </section>
 
       <section id="quiz">

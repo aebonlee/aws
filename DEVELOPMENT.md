@@ -423,3 +423,78 @@ git push origin main
 | `src/styles/footer.css` | ~30 | 푸터 |
 | `src/styles/dark-mode.css` | ~28 | 다크 모드 |
 | `src/styles/responsive.css` | 32 | 반응형 |
+
+---
+
+### Phase 7: Supabase 인증 + 커뮤니티 + EmailJS 연동
+
+*(Phase 3-6 이후, Phase 7은 별도 커밋으로 진행됨)*
+
+---
+
+### Phase 10: 대시보드 + 3단계 도장 + 섹션별 학습추적 + 요금제 결제
+
+#### 개요
+- **3단계 도장 시스템**: 단일 합격→ Bronze/Silver/Gold 3티어
+- **섹션별 학습 추적**: 각 학습 섹션 완료/재복습 상태 관리
+- **개인 대시보드**: 로그인 후 종합 학습 현황 페이지
+- **요금제 + PortOne 결제**: 1개월/3개월 요금제 + 카드 결제
+
+#### ProgressContext 확장 (`src/contexts/ProgressContext.tsx`)
+- **스키마 마이그레이션**: v1 → v2 자동 변환 (`_schemaVersion` 체크)
+- **새 타입**: `SectionProgress`, `QuizAttempt`, `StampTier`, `OverallStats`
+- **StampTier 계산**: Bronze(70%+), Silver(85%+), Gold(100% 또는 90%+ 3회 연속)
+- **새 메서드 7개**: `markSectionComplete`, `markSectionNeedsReview`, `getSectionProgress`, `getStampTier`, `getQuizHistory`, `getOverallStats`, `recordStudyVisit`
+- **퀴즈 히스토리**: `quizHistory` 배열 (최대 20건), 자동 티어 재계산
+
+#### categories.ts 섹션 추가 (`src/lib/categories.ts`)
+- `SectionInfo` 인터페이스 + 각 카테고리에 `sections: SectionInfo[]` 추가
+- 8개 카테고리 × 4~5섹션 = 총 35개 학습 섹션
+
+#### 신규 컴포넌트
+| 파일 | 설명 |
+|------|------|
+| `src/components/SectionStatusBar.tsx` | 섹션 학습완료/재복습 토글 바 |
+| `src/components/StampTierBadge.tsx` | Gold/Silver/Bronze/None 도장 뱃지 (sm/md/lg) |
+
+#### 수정된 컴포넌트
+| 파일 | 변경 내용 |
+|------|----------|
+| `src/components/GuideLayout.tsx` | 사이드바 섹션 상태 아이콘 (✅/🔄) + 미니 진행률 바 |
+| `src/components/Quiz.tsx` | 결과에 StampTierBadge + 다음 티어 안내 + 히스토리 dots |
+| `src/pages/StampBreaking.tsx` | 3단계 도장 + 히어로 통계 + 티어 가이드 + 히스토리 dots |
+
+#### 8개 학습 페이지 수정
+모든 학습 페이지에 `<SectionStatusBar>` 추가 (퀴즈 섹션 제외):
+- AiMlBasics, MlDevelopment, SageMaker, GenAiBasics
+- PromptEngineering, FmEvaluation, ResponsibleAi, SecurityGovernance
+
+#### 신규 페이지
+| 파일 | 설명 |
+|------|------|
+| `src/pages/Dashboard.tsx` | 개인 대시보드 (프로그레스 링, 도장 컬렉션, 카테고리 상세, 퀴즈 타임라인, 취약 영역) |
+| `src/pages/Pricing.tsx` | 요금제 (1개월 9,900원 / 3개월 19,900원) + PortOne 결제 |
+| `src/lib/portone.ts` | PortOne(아임포트) SDK 래퍼 (`requestPayment()`) |
+
+#### 신규 CSS
+| 파일 | 설명 |
+|------|------|
+| `src/styles/dashboard.css` | 대시보드 전체 스타일 |
+| `src/styles/pricing.css` | 요금제 카드, FAQ 스타일 |
+
+#### 수정된 CSS/설정
+| 파일 | 변경 내용 |
+|------|----------|
+| `src/styles/guide-pages.css` | SectionStatusBar, StampTierBadge, 퀴즈 히스토리 dots, 티어 가이드 스타일 |
+| `src/styles/dark-mode.css` | Dashboard, Pricing, SectionStatusBar, StampTierBadge 다크 모드 |
+| `src/styles/responsive.css` | Dashboard(768px/480px), Pricing(768px), SectionStatusBar(768px) 반응형 |
+| `src/index.css` | dashboard.css, pricing.css import 추가 |
+| `src/App.tsx` | /dashboard (ProtectedRoute), /pricing 라우트 추가 |
+| `src/components/layout/Navbar.tsx` | 대시보드(로그인시)/요금제 메뉴 추가 |
+| `index.html` | PortOne SDK 스크립트 추가 |
+
+#### 빌드 결과
+```
+134 modules → dist/
+빌드 성공
+```

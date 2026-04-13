@@ -35,6 +35,22 @@
   .about-cert-grid { grid-template-columns: 1fr; }
   .about-steps { grid-template-columns: 1fr; }
 }
+@media (max-width: 768px) {
+  /* Dashboard responsive */
+  .dashboard-hero { flex-direction: column; text-align: center; }
+  .dashboard-metrics { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-stamps-grid { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-detail-table { font-size: 0.78rem; }
+  .dashboard-detail-table th, .dashboard-detail-table td { padding: 6px 8px; }
+
+  /* Pricing responsive */
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-amount { font-size: 1.8rem; }
+
+  /* Section status bar responsive */
+  .section-status-bar { flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
   .hero, .about-hero { padding: 60px 0 50px; }
@@ -45,4 +61,9 @@
   h2 { font-size: 1.3rem; }
   .info-table { font-size: 0.82rem; }
   .info-table th, .info-table td { padding: 8px 10px; }
+
+  /* Dashboard mobile */
+  .dashboard-metrics { grid-template-columns: 1fr 1fr; }
+  .dashboard-stamps-grid { grid-template-columns: 1fr 1fr; }
+  .stamp-tier-counts { flex-direction: row; gap: 12px; }
 }

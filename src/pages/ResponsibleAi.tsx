@@ -4,6 +4,7 @@ import GuideLayout from '../components/GuideLayout'
 import TipBox from '../components/TipBox'
 import ToggleSection from '../components/ToggleSection'
 import Quiz from '../components/Quiz'
+import SectionStatusBar from '../components/SectionStatusBar'
 import { getQuestionsByCategory } from '../data/quizData'
 
 const sections = [
@@ -35,6 +36,7 @@ export default function ResponsibleAi() {
           <tr><td><strong>거버넌스 (Governance)</strong></td><td>AI 개발/배포의 체계적 관리</td></tr>
         </tbody></table>
         <TipBox type="important"><p>시험에서는 각 원칙의 정의와 해당 원칙이 적용되는 시나리오를 구분하는 문제가 출제됩니다.</p></TipBox>
+        <SectionStatusBar categoryId="responsible-ai" sectionId="principles" />
       </section>
 
       <section id="bias">
@@ -47,6 +49,7 @@ export default function ResponsibleAi() {
           <tr><td><strong>제외 편향</strong></td><td>중요한 특성/그룹을 데이터에서 제외</td><td>장애인 데이터 누락</td></tr>
           <tr><td><strong>리포팅 편향</strong></td><td>결과를 선택적으로 보고</td><td>좋은 결과만 발표</td></tr>
         </tbody></table>
+        <SectionStatusBar categoryId="responsible-ai" sectionId="bias" />
       </section>
 
       <section id="explainability">
@@ -61,6 +64,7 @@ export default function ResponsibleAi() {
         <ToggleSection title="로컬 vs 글로벌 설명">
           <ul><li><strong>로컬 (Local):</strong> 개별 예측에 대한 설명 (왜 이 고객에게 대출 거부?)</li><li><strong>글로벌 (Global):</strong> 모델 전체의 동작 패턴 설명 (어떤 피처가 가장 중요?)</li></ul>
         </ToggleSection>
+        <SectionStatusBar categoryId="responsible-ai" sectionId="explainability" />
       </section>
 
       <section id="aws-responsible">
@@ -73,6 +77,7 @@ export default function ResponsibleAi() {
           <tr><td><strong>Amazon A2I</strong></td><td>ML 예측에 인간 검토 추가</td></tr>
         </tbody></table>
         <TipBox type="info"><p><strong>Guardrails 필터링:</strong> 유해 콘텐츠, PII 노출, 주제 이탈, 할루시네이션 등을 정책 기반으로 차단합니다.</p></TipBox>
+        <SectionStatusBar categoryId="responsible-ai" sectionId="aws-responsible" />
       </section>
 
       <section id="quiz">

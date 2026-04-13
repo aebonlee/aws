@@ -29,3 +29,25 @@
 [data-theme="dark"] .about-cert-code { background: #0d1117; }
 [data-theme="dark"] .about-quote { background: #1c2129; }
 [data-theme="dark"] .about-card { background: var(--bg-section); }
+
+/* Dashboard dark mode */
+[data-theme="dark"] .dashboard-metric { background: var(--bg-section); }
+[data-theme="dark"] .dashboard-stamp-slot { background: var(--bg-section); }
+[data-theme="dark"] .dashboard-timeline-item { background: var(--bg-section); }
+[data-theme="dark"] .dashboard-weak-card.weak-score { background: rgba(239,68,68,0.1); }
+[data-theme="dark"] .dashboard-weak-card.weak-review { background: rgba(245,158,11,0.1); }
+[data-theme="dark"] .stamp-tier-guide { background: var(--bg-section); }
+
+/* Pricing dark mode */
+[data-theme="dark"] .pricing-card { background: var(--bg-section); }
+[data-theme="dark"] .pricing-info { background: var(--bg-section); }
+[data-theme="dark"] .pricing-error { background: rgba(239,68,68,0.15); }
+
+/* Section status bar dark mode */
+[data-theme="dark"] .section-status-bar { background: var(--bg-section); }
+[data-theme="dark"] .btn-section { background: var(--bg); }
+
+/* Stamp tier badge dark mode */
+[data-theme="dark"] .stamp-tier-gold { background: linear-gradient(135deg, #422006, #78350f); color: #fde68a; }
+[data-theme="dark"] .stamp-tier-silver { background: linear-gradient(135deg, #1e293b, #334155); color: #cbd5e1; }
+[data-theme="dark"] .stamp-tier-bronze { background: linear-gradient(135deg, #431407, #7c2d12); color: #fed7aa; }
