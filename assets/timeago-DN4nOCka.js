@@ -1,0 +1,1 @@
+function h(e){const a=Date.now(),f=new Date(e).getTime(),c=Math.max(0,a-f),s=Math.floor(c/1e3);if(s<60)return"방금 전";const t=Math.floor(s/60);if(t<60)return`${t}분 전`;const o=Math.floor(t/60);if(o<24)return`${o}시간 전`;const n=Math.floor(o/24);if(n<30)return`${n}일 전`;const r=Math.floor(n/30);return r<12?`${r}개월 전`:`${Math.floor(r/12)}년 전`}export{h as t};
