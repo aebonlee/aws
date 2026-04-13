@@ -550,3 +550,57 @@ About | AWS Certification ▾ | AIF-C01 AI Practitioner ▾ | 도장깨기 | 문
 134 modules → dist/
 빌드 성공
 ```
+
+---
+
+### Phase 12: 빈 페이지 수정 + About 사이드바 + PDF 뷰어 + PortOne 실정보
+
+#### 커밋 목록
+- `8cc39e9` — fix: Supabase 빈 페이지 수정 (fallback 크리덴셜)
+- `0cf0e00` — fix: AIF-C01 드롭다운 이모지 제거
+- `95a455b` — feat: About 사이드바 + PDF 뷰어 + PortOne 실정보
+
+#### 빈 페이지 수정 (`src/lib/supabase.ts`)
+- **원인**: GitHub Actions 빌드 시 `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY` 환경변수 부재
+- `createClient(undefined, undefined)` 호출로 전체 React 앱 크래시
+- **수정**: Supabase anon key(공개키)를 fallback 값으로 하드코딩
+- `.github/workflows/deploy.yml`에 `${{ secrets.VITE_SUPABASE_* }}` env 전달 추가
+
+#### About 페이지 사이드바 레이아웃 (`src/pages/About.tsx`)
+- **Before**: 단일 컬럼 긴 페이지
+- **After**: 왼쪽 sticky 사이드바 + 오른쪽 콘텐츠 2칼럼
+- IntersectionObserver로 스크롤 시 현재 섹션 자동 하이라이트
+- 6개 섹션: 자격증 선택 방법 / 레벨별 구분 / 직무별 추천 경로 / 시험 준비 4단계 / 취득 후기 / 자격증 경로 PDF
+- 1024px 이하에서 사이드바 → 상단 가로 탭 변환
+
+#### PDF 미리보기 (`public/AWS_certification_paths.pdf`)
+- `data/AWS_certification_paths.pdf` → `public/` 복사 (static asset)
+- iframe 기반 PDF 임베딩 (700px 높이)
+- "PDF 새 탭에서 열기" 버튼
+
+#### PortOne 실제 가맹점 정보 (`src/lib/portone.ts`)
+- 가맹점 코드: `imp61949262` (환경변수 `VITE_IMP_CODE`)
+- PG 제공자: `html5_inicis.MOIkorcom1` (환경변수 `VITE_PG_PROVIDER`)
+- `.env`에 `VITE_IMP_CODE`, `VITE_PG_PROVIDER`, `VITE_SITE_URL` 추가
+
+#### AIF-C01 드롭다운 이모지 제거 (`src/components/layout/Navbar.tsx`)
+- 데스크톱/모바일 AIF-C01 메뉴 항목에서 `cat.icon` 이모지 삭제
+
+#### 수정된 파일
+| 파일 | 변경 내용 |
+|------|----------|
+| `src/lib/supabase.ts` | Supabase fallback 크리덴셜 추가 |
+| `.github/workflows/deploy.yml` | VITE_SUPABASE 환경변수 전달 |
+| `src/pages/About.tsx` | 사이드바 레이아웃 + PDF 뷰어 + IntersectionObserver |
+| `src/styles/about.css` | `.about-layout`, `.about-sidebar`, `.about-pdf-viewer` 등 |
+| `src/styles/responsive.css` | About 사이드바 반응형 (1024px) |
+| `src/styles/dark-mode.css` | About 사이드바/PDF 다크 모드 |
+| `src/lib/portone.ts` | 실제 가맹점 코드 + PG 제공자 |
+| `src/components/layout/Navbar.tsx` | AIF-C01 이모지 제거 |
+| `public/AWS_certification_paths.pdf` | PDF static asset (신규) |
+
+#### 빌드 결과
+```
+134 modules → dist/
+빌드 성공
+```
