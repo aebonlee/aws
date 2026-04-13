@@ -8,7 +8,35 @@
 .about-hero h1 { font-size: 2.2rem; margin-bottom: 12px; }
 .about-hero p { font-size: 1.05rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
 
-.about-section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+/* Sidebar layout */
+.about-layout {
+  display: grid; grid-template-columns: 200px 1fr; gap: 32px;
+  padding-top: 32px; align-items: start;
+}
+.about-sidebar {
+  position: sticky; top: calc(var(--nav-height) + 16px);
+  max-height: calc(100vh - var(--nav-height) - 32px);
+  overflow-y: auto;
+}
+.about-sidebar-nav {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 12px; background: var(--bg-section); border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+.about-sidebar-link {
+  display: block; padding: 8px 12px; font-size: 0.82rem; font-weight: 500;
+  color: var(--text-secondary); border-radius: var(--radius);
+  text-decoration: none; transition: all var(--transition);
+}
+.about-sidebar-link:hover { color: var(--primary-dark); background: rgba(255,153,0,0.08); }
+.about-sidebar-link.active {
+  color: var(--primary-dark); background: rgba(255,153,0,0.12);
+  font-weight: 700; border-left: 3px solid var(--primary); padding-left: 9px;
+}
+
+/* Content area */
+.about-content { min-width: 0; }
+.about-section { padding: 32px 0; border-bottom: 1px solid var(--border); }
 .about-section:last-child { border-bottom: none; }
 .about-section h2 { font-size: 1.5rem; margin-bottom: 8px; }
 .about-section-desc { color: var(--text-secondary); margin-bottom: 24px; }
@@ -87,3 +115,15 @@
 }
 .about-quote p { font-size: 0.9rem; line-height: 1.7; font-style: italic; margin-bottom: 10px; }
 .about-quote cite { font-size: 0.82rem; font-style: normal; color: var(--primary-dark); font-weight: 600; }
+
+/* PDF Viewer */
+.about-pdf-viewer {
+  margin-top: 16px; border: 1px solid var(--border); border-radius: var(--radius-lg);
+  overflow: hidden; background: var(--bg-section);
+}
+.about-pdf-frame {
+  width: 100%; height: 700px; border: none; display: block;
+}
+.about-pdf-download {
+  display: inline-block; margin: 16px; font-size: 0.85rem;
+}

@@ -3,6 +3,11 @@
   .guide-sidebar { position: static; max-height: none; display: flex; gap: 4px; flex-wrap: wrap; padding: 12px; }
   .sidebar-title { display: none; }
   .sidebar-link { padding: 6px 10px; font-size: 0.8rem; }
+  .about-layout { grid-template-columns: 1fr; }
+  .about-sidebar { position: static; max-height: none; }
+  .about-sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  .about-sidebar-link { padding: 6px 10px; font-size: 0.8rem; }
+  .about-sidebar-link.active { border-left: none; padding-left: 10px; }
   .about-cards-row { grid-template-columns: 1fr; }
   .about-steps { grid-template-columns: repeat(2, 1fr); }
   .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -34,6 +39,7 @@
   .guide-hero h1 { font-size: 1.4rem; }
   .about-cert-grid { grid-template-columns: 1fr; }
   .about-steps { grid-template-columns: 1fr; }
+  .about-pdf-frame { height: 400px; }
 }
 @media (max-width: 768px) {
   /* Dashboard responsive */

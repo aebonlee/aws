@@ -18,10 +18,10 @@ export function requestPayment(options: PaymentOptions): Promise<any> {
       return
     }
 
-    window.IMP.init('imp00000000') // 실제 가맹점 코드로 교체 필요
+    window.IMP.init(import.meta.env.VITE_IMP_CODE || 'imp61949262')
     window.IMP.request_pay(
       {
-        pg: 'html5_inicis',
+        pg: import.meta.env.VITE_PG_PROVIDER || 'html5_inicis.MOIkorcom1',
         pay_method: 'card',
         merchant_uid: `order_${Date.now()}`,
         name: options.planName,
