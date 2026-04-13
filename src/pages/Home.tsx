@@ -55,24 +55,25 @@ export default function Home() {
         <div className="container">
           <div className="progress-card">
             <div className="progress-header">
-              <div>
-                <h2 className="progress-title">나의 학습 현황</h2>
-                <p className="progress-subtitle">도메인별 도장을 모두 모아 시험 준비를 완료하세요</p>
-              </div>
-              <div className="progress-ring-wrap">
-                <svg className="progress-ring" viewBox="0 0 80 80">
-                  <circle className="progress-ring-bg" cx="40" cy="40" r="34" />
-                  <circle
-                    className="progress-ring-fill"
-                    cx="40" cy="40" r="34"
-                    strokeDasharray={`${2 * Math.PI * 34}`}
-                    strokeDashoffset={`${2 * Math.PI * 34 * (1 - completionRate / 100)}`}
-                  />
-                </svg>
-                <span className="progress-ring-text">{completionRate}%</span>
-              </div>
+              <h2 className="progress-title">나의 학습 현황</h2>
+              <p className="progress-subtitle">도메인별 도장을 모두 모아 시험 준비를 완료하세요</p>
             </div>
             <div className="progress-metrics">
+              <div className="progress-metric progress-metric-ring">
+                <div className="progress-ring-wrap">
+                  <svg className="progress-ring" viewBox="0 0 80 80">
+                    <circle className="progress-ring-bg" cx="40" cy="40" r="34" />
+                    <circle
+                      className="progress-ring-fill"
+                      cx="40" cy="40" r="34"
+                      strokeDasharray={`${2 * Math.PI * 34}`}
+                      strokeDashoffset={`${2 * Math.PI * 34 * (1 - completionRate / 100)}`}
+                    />
+                  </svg>
+                  <span className="progress-ring-text">{completionRate}%</span>
+                </div>
+                <div className="progress-metric-label">진행률</div>
+              </div>
               <div className="progress-metric">
                 <span className="progress-metric-icon">📖</span>
                 <div>
