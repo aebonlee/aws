@@ -27,7 +27,7 @@ export default function Home() {
             <span className="hero-dot" />
             <span>합격선 70%</span>
             <span className="hero-dot" />
-            <span>150 USD</span>
+            <span>100 USD</span>
           </div>
           <div className="hero-cta">
             <Link to="/study/ai-ml-basics" className="btn btn-primary btn-lg">학습 시작하기</Link>

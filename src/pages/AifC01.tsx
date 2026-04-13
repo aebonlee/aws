@@ -26,16 +26,16 @@ export default function AifC01() {
   useEffect(() => { markStudied('aif-c01') }, [markStudied])
 
   return (
-    <GuideLayout title="AWS AI Practitioner" description="AI/ML 기초, 생성형 AI, 프롬프트 엔지니어링, 책임감 있는 AI, AWS AI 서비스에 대한 이해를 검증합니다." icon="🤖" badges={[{ label: '기초 레벨', type: 'primary' }, { label: '85문제 / 120분', type: 'info' }]} sections={sections} categoryId="aif-c01">
+    <GuideLayout title="AWS AI Practitioner" description="AI/ML 기초, 생성형 AI, 프롬프트 엔지니어링, 책임감 있는 AI, AWS AI 서비스에 대한 이해를 검증합니다." icon="🤖" badges={[{ label: '기초 레벨', type: 'primary' }, { label: '65문제 / 90분', type: 'info' }]} sections={sections} categoryId="aif-c01">
 
       <section id="exam-overview">
         <h2>시험 개요</h2>
         <table className="info-table"><thead><tr><th>항목</th><th>내용</th></tr></thead><tbody>
           <tr><td><strong>시험 코드</strong></td><td>AIF-C01</td></tr>
-          <tr><td><strong>문항 수</strong></td><td>85문제 (채점 65 + 비채점 20)</td></tr>
-          <tr><td><strong>시험 시간</strong></td><td>120분</td></tr>
+          <tr><td><strong>문항 수</strong></td><td>65문제 (채점 50 + 비채점 15)</td></tr>
+          <tr><td><strong>시험 시간</strong></td><td>130분 (시험 90분 + 설문 10분 + 타국어 핸디캡 30분)</td></tr>
           <tr><td><strong>합격 점수</strong></td><td>700 / 1000</td></tr>
-          <tr><td><strong>시험 비용</strong></td><td>$150 USD</td></tr>
+          <tr><td><strong>시험 비용</strong></td><td>$100 USD</td></tr>
           <tr><td><strong>유효 기간</strong></td><td>3년</td></tr>
           <tr><td><strong>문제 형식</strong></td><td>객관식 + 복수 선택</td></tr>
           <tr><td><strong>시험 언어</strong></td><td>영어, 일본어, 한국어, 포르투갈어, 중국어</td></tr>
