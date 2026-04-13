@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTheme } from '../../contexts/ThemeContext'
+import { useLang } from '../../contexts/LanguageContext'
 import { useAuth } from '../../contexts/AuthContext'
 import { CERT_LEVELS } from '../../lib/certifications'
 import { CATEGORIES } from '../../lib/categories'
@@ -21,6 +22,7 @@ const PUBLIC_PATHS = new Set([
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
+  const { lang, toggleLang } = useLang()
   const { user, signOut } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
@@ -202,6 +204,9 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className="nav-actions">
+          <button className="theme-toggle" onClick={toggleLang} title={lang === 'ko' ? 'Switch to English' : '한국어로 전환'}>
+            {lang === 'ko' ? 'EN' : 'KO'}
+          </button>
           <button className="theme-toggle" onClick={toggleTheme} title="테마 전환">
             {theme === 'light' ? '🌙' : '☀️'}
           </button>

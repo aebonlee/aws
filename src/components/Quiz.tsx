@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useProgress } from '../contexts/ProgressContext'
+import { useLang } from '../contexts/LanguageContext'
 import StampTierBadge from './StampTierBadge'
 import type { StampTier } from '../contexts/ProgressContext'
 
@@ -49,17 +50,24 @@ function getNextTierInfo(currentTier: StampTier, percentage: number): string | n
   return '70% 이상으로 Bronze 달성!'
 }
 
+function getDisplayTexts(q: QuizQuestion, lang: 'ko' | 'en') {
+  return {
+    question: lang === 'en' && q.questionEn ? q.questionEn : q.question,
+    options: lang === 'en' && q.optionsEn ? q.optionsEn : q.options,
+    explanation: lang === 'en' && q.explanationEn ? q.explanationEn : q.explanation,
+  }
+}
+
 /** Browse mode - shows all questions with accordion explanations */
-function BrowseMode({ questions, lang }: { questions: QuizQuestion[]; lang: 'ko' | 'en' }) {
+function BrowseMode({ questions }: { questions: QuizQuestion[] }) {
+  const { lang } = useLang()
   const [openIdx, setOpenIdx] = useState<number | null>(null)
 
   return (
     <div className="quiz-browse">
       {questions.map((q, i) => {
         const isOpen = openIdx === i
-        const questionText = lang === 'en' && q.questionEn ? q.questionEn : q.question
-        const options = lang === 'en' && q.optionsEn ? q.optionsEn : q.options
-        const explanation = lang === 'en' && q.explanationEn ? q.explanationEn : q.explanation
+        const d = getDisplayTexts(q, lang)
 
         return (
           <div key={i} className={`quiz-browse-item ${isOpen ? 'open' : ''}`}>
@@ -68,13 +76,13 @@ function BrowseMode({ questions, lang }: { questions: QuizQuestion[]; lang: 'ko'
               onClick={() => setOpenIdx(isOpen ? null : i)}
             >
               <span className="quiz-browse-num">Q{i + 1}</span>
-              <span className="quiz-browse-q">{questionText}</span>
+              <span className="quiz-browse-q">{d.question}</span>
               <span className="quiz-browse-toggle">{isOpen ? '-' : '+'}</span>
             </button>
             {isOpen && (
               <div className="quiz-browse-body">
                 <div className="quiz-browse-options">
-                  {options.map((opt, idx) => (
+                  {d.options.map((opt, idx) => (
                     <div
                       key={idx}
                       className={`quiz-browse-option ${isAnswerIndex(q.answer, idx) ? 'correct' : ''}`}
@@ -85,11 +93,11 @@ function BrowseMode({ questions, lang }: { questions: QuizQuestion[]; lang: 'ko'
                   ))}
                 </div>
                 <div className="quiz-browse-answer">
-                  <strong>정답: {formatAnswerLabel(q.answer)}</strong>
+                  <strong>{lang === 'en' ? 'Answer' : '정답'}: {formatAnswerLabel(q.answer)}</strong>
                 </div>
-                {explanation && (
+                {d.explanation && (
                   <div className="quiz-browse-explanation">
-                    {explanation}
+                    <p style={{ whiteSpace: 'pre-line' }}>{d.explanation}</p>
                   </div>
                 )}
               </div>
@@ -104,6 +112,7 @@ function BrowseMode({ questions, lang }: { questions: QuizQuestion[]; lang: 'ko'
 /** Quiz mode - interactive quiz with scoring */
 function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
   const { saveQuizResult, progress, getStampTier, getQuizHistory } = useProgress()
+  const { lang } = useLang()
   const [currentQ, setCurrentQ] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
   const [selectedMulti, setSelectedMulti] = useState<number[]>([])
@@ -111,11 +120,13 @@ function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
   const [score, setScore] = useState(0)
   const [answered, setAnswered] = useState(false)
   const [isCorrect, setIsCorrect] = useState(false)
+  const [showExplanation, setShowExplanation] = useState(false)
 
   const prevResult = progress[categoryId]
   const q = questions[currentQ]
   const isMulti = Array.isArray(q.answer)
   const requiredCount = isMulti ? (q.answer as number[]).length : 1
+  const d = getDisplayTexts(q, lang)
 
   const handleSelect = (idx: number) => {
     if (answered) return
@@ -146,6 +157,7 @@ function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
       setSelectedMulti([])
       setAnswered(false)
       setIsCorrect(false)
+      setShowExplanation(false)
     } else {
       const finalScore = score
       saveQuizResult(categoryId, finalScore, questions.length)
@@ -161,6 +173,7 @@ function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
     setScore(0)
     setAnswered(false)
     setIsCorrect(false)
+    setShowExplanation(false)
   }
 
   if (showResult) {
@@ -178,7 +191,6 @@ function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
           <h3>{passed ? '도장 획득!' : '아쉽게 실패...'}</h3>
           <p className="quiz-score">{score} / {questions.length} ({percentage}%)</p>
 
-          {/* Stamp tier badge */}
           <div style={{ margin: '16px 0' }}>
             <StampTierBadge tier={tier} size="lg" />
           </div>
@@ -189,14 +201,12 @@ function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
               : '70% 이상 맞혀야 도장을 깰 수 있습니다. 다시 학습 후 도전하세요!'}
           </p>
 
-          {/* Next tier hint */}
           {nextTierMsg && (
             <p style={{ fontSize: '0.85rem', color: 'var(--primary-dark)', marginBottom: '12px' }}>
               {nextTierMsg}
             </p>
           )}
 
-          {/* Quiz history dots */}
           {recentHistory.length > 0 && (
             <div className="quiz-history-dots" style={{ justifyContent: 'center', marginBottom: '16px' }}>
               {recentHistory.map((h, i) => (
@@ -241,19 +251,29 @@ function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
         <h3>📝 도장깨기 퀴즈 - {categoryTitle}</h3>
         <span className="quiz-progress">{currentQ + 1} / {questions.length}</span>
         {prevResult?.quizScore !== null && prevResult?.quizScore !== undefined && (
-          <span className="quiz-prev-score">이전 점수: {prevResult.quizScore}/{prevResult.quizTotal}</span>
+          <span className="quiz-prev-score">{lang === 'en' ? 'Prev' : '이전 점수'}: {prevResult.quizScore}/{prevResult.quizTotal}</span>
         )}
       </div>
       <div className="quiz-progress-bar">
         <div className="quiz-progress-fill" style={{ width: `${((currentQ + 1) / questions.length) * 100}%` }} />
       </div>
       <div className="quiz-question">
-        <p className="quiz-q-text">{q.question}</p>
+        <div className="quiz-action-row">
+          {!showExplanation && !answered && (
+            <button
+              className="btn btn-secondary quiz-explain-btn"
+              onClick={() => setShowExplanation(true)}
+            >
+              {lang === 'en' ? 'Show Explanation' : '해설 보기'}
+            </button>
+          )}
+        </div>
+        <p className="quiz-q-text">{d.question}</p>
         {isMulti && !answered && (
-          <p className="quiz-multi-hint">{requiredCount}개를 선택하세요 ({selectedMulti.length}/{requiredCount})</p>
+          <p className="quiz-multi-hint">{requiredCount}{lang === 'en' ? ' selections required' : '개를 선택하세요'} ({selectedMulti.length}/{requiredCount})</p>
         )}
         <div className="quiz-options">
-          {q.options.map((opt, idx) => (
+          {d.options.map((opt, idx) => (
             <button
               key={idx}
               className={`quiz-option ${getOptionClass(idx)}`}
@@ -271,18 +291,26 @@ function QuizMode({ categoryId, categoryTitle, questions }: QuizProps) {
             onClick={handleMultiSubmit}
             disabled={selectedMulti.length !== requiredCount}
           >
-            정답 확인
+            {lang === 'en' ? 'Check Answer' : '정답 확인'}
           </button>
         )}
         {answered && (
           <div className={`quiz-explanation ${isCorrect ? 'correct' : 'wrong'}`}>
             <p><strong>{isCorrect ? '✅ 정답!' : '❌ 오답!'}</strong></p>
-            <p>{q.explanation}</p>
+            <p style={{ whiteSpace: 'pre-line' }}>{d.explanation}</p>
+          </div>
+        )}
+        {!answered && showExplanation && (
+          <div className="quiz-explanation neutral">
+            <p><strong>{lang === 'en' ? 'Explanation' : '해설'}</strong></p>
+            <p style={{ whiteSpace: 'pre-line' }}>{d.explanation}</p>
           </div>
         )}
         {answered && (
           <button className="btn btn-primary quiz-next-btn" onClick={handleNext}>
-            {currentQ < questions.length - 1 ? '다음 문제 →' : '결과 보기'}
+            {currentQ < questions.length - 1
+              ? (lang === 'en' ? 'Next' : '다음 문제 →')
+              : (lang === 'en' ? 'View Results' : '결과 보기')}
           </button>
         )}
       </div>
@@ -294,8 +322,7 @@ const QUIZ_COUNT = 10
 
 export default function Quiz({ categoryId, categoryTitle, questions }: QuizProps) {
   const [mode, setMode] = useState<'quiz' | 'browse'>('quiz')
-  const [lang, setLang] = useState<'ko' | 'en'>('ko')
-  const [quizKey, setQuizKey] = useState(0) // for re-shuffling
+  const [quizKey, setQuizKey] = useState(0)
 
   const quizQuestions = useMemo(() => {
     return shuffleAndPick(questions, QUIZ_COUNT)
@@ -323,14 +350,6 @@ export default function Quiz({ categoryId, categoryTitle, questions }: QuizProps
             📖 전체 보기 ({questions.length}문제)
           </button>
         </div>
-        {mode === 'browse' && (
-          <button
-            className="quiz-lang-toggle"
-            onClick={() => setLang(l => l === 'ko' ? 'en' : 'ko')}
-          >
-            {lang === 'ko' ? '🇰🇷 한국어' : '🇺🇸 English'}
-          </button>
-        )}
       </div>
 
       {mode === 'quiz' ? (
@@ -341,7 +360,7 @@ export default function Quiz({ categoryId, categoryTitle, questions }: QuizProps
           questions={quizQuestions}
         />
       ) : (
-        <BrowseMode questions={questions} lang={lang} />
+        <BrowseMode questions={questions} />
       )}
     </div>
   )

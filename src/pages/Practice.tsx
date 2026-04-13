@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useProgress } from '../contexts/ProgressContext'
+import { useLang } from '../contexts/LanguageContext'
 import { CATEGORIES } from '../lib/categories'
 import { allQuestions, type PracticeQuestion } from '../data/quizData'
 import type { QuizQuestion } from '../components/Quiz'
@@ -9,6 +10,7 @@ function isAnswerIndex(answer: number | number[], idx: number): boolean {
 }
 
 function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: string }) {
+  const { lang } = useLang()
   const [currentQ, setCurrentQ] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
   const [selectedMulti, setSelectedMulti] = useState<number[]>([])
@@ -16,7 +18,6 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
   const [isCorrect, setIsCorrect] = useState(false)
   const [score, setScore] = useState(0)
   const [showResult, setShowResult] = useState(false)
-  const [lang, setLang] = useState<'ko' | 'en'>('ko')
   const [showExplanation, setShowExplanation] = useState(false)
 
   const q = questions[currentQ]
@@ -78,7 +79,7 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
         <div className={`quiz-result-card ${pct >= 70 ? 'passed' : 'failed'}`}>
           <h3>{pct >= 70 ? '훌륭합니다!' : '조금 더 노력해봐요!'}</h3>
           <p className="quiz-score">{score} / {questions.length} ({pct}%)</p>
-          <button className="btn btn-primary" onClick={handleRetry}>다시 풀기</button>
+          <button className="btn btn-primary" onClick={handleRetry}>{lang === 'en' ? 'Retry' : '다시 풀기'}</button>
         </div>
       </div>
     )
@@ -115,9 +116,19 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
         <div className="quiz-progress-fill" style={{ width: `${((currentQ + 1) / questions.length) * 100}%` }} />
       </div>
       <div className="quiz-question">
+        <div className="quiz-action-row">
+          {!showExplanation && !answered && (
+            <button
+              className="btn btn-secondary quiz-explain-btn"
+              onClick={() => setShowExplanation(true)}
+            >
+              {lang === 'en' ? 'Show Explanation' : '해설 보기'}
+            </button>
+          )}
+        </div>
         <p className="quiz-q-text">{displayQuestion}</p>
         {isMulti && !answered && (
-          <p className="quiz-multi-hint">{requiredCount}개를 선택하세요 ({selectedMulti.length}/{requiredCount})</p>
+          <p className="quiz-multi-hint">{requiredCount}{lang === 'en' ? ' selections required' : '개를 선택하세요'} ({selectedMulti.length}/{requiredCount})</p>
         )}
         <div className="quiz-options">
           {displayOptions.map((opt, idx) => (
@@ -138,40 +149,26 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
             onClick={handleMultiSubmit}
             disabled={selectedMulti.length !== requiredCount}
           >
-            정답 확인
+            {lang === 'en' ? 'Check Answer' : '정답 확인'}
           </button>
         )}
-        <div className="quiz-action-row">
-          <button
-            className={`btn quiz-lang-toggle ${lang === 'en' ? 'active' : ''}`}
-            onClick={() => setLang(lang === 'ko' ? 'en' : 'ko')}
-          >
-            {lang === 'ko' ? '영어로 보기' : '한국어로 보기'}
-          </button>
-          {!showExplanation && !answered && (
-            <button
-              className="btn btn-secondary quiz-explain-btn"
-              onClick={() => setShowExplanation(true)}
-            >
-              해설 보기
-            </button>
-          )}
-        </div>
         {answered && (
           <div className={`quiz-explanation ${isCorrect ? 'correct' : 'wrong'}`}>
-            <p><strong>{isCorrect ? 'O 정답!' : 'X 오답!'}</strong></p>
+            <p><strong>{isCorrect ? '✅ 정답!' : '❌ 오답!'}</strong></p>
             <p style={{ whiteSpace: 'pre-line' }}>{displayExplanation}</p>
           </div>
         )}
         {!answered && showExplanation && (
           <div className="quiz-explanation neutral">
-            <p><strong>해설</strong></p>
+            <p><strong>{lang === 'en' ? 'Explanation' : '해설'}</strong></p>
             <p style={{ whiteSpace: 'pre-line' }}>{displayExplanation}</p>
           </div>
         )}
         {answered && (
           <button className="btn btn-primary quiz-next-btn" onClick={handleNext}>
-            {currentQ < questions.length - 1 ? '다음 문제' : '결과 보기'}
+            {currentQ < questions.length - 1
+              ? (lang === 'en' ? 'Next' : '다음 문제')
+              : (lang === 'en' ? 'View Results' : '결과 보기')}
           </button>
         )}
       </div>
@@ -181,6 +178,7 @@ function PracticeQuiz({ questions, title }: { questions: QuizQuestion[]; title: 
 
 export default function Practice() {
   const { progress } = useProgress()
+  const { lang } = useLang()
   const [mode, setMode] = useState<'select' | 'quiz'>('select')
   const [selectedCats, setSelectedCats] = useState<string[]>([])
   const [quizKey, setQuizKey] = useState(0)
@@ -207,14 +205,14 @@ export default function Practice() {
 
   if (mode === 'quiz' && quizQuestions.length > 0) {
     const title = selectedCats.length === 0
-      ? '전체 랜덤 문제풀이'
+      ? (lang === 'en' ? 'All Random Questions' : '전체 랜덤 문제풀이')
       : selectedCats.map(id => CATEGORIES.find(c => c.id === id)?.title).filter(Boolean).join(', ')
-    const subtitle = `(${quizQuestions.length}문제)`
+    const subtitle = `(${quizQuestions.length}${lang === 'en' ? ' Q' : '문제'})`
     return (
       <div className="practice-page">
         <div className="container">
           <button className="btn btn-secondary practice-back" onClick={() => setMode('select')}>
-            카테고리 선택으로
+            {lang === 'en' ? 'Back to Categories' : '카테고리 선택으로'}
           </button>
           <PracticeQuiz questions={quizQuestions} title={`${title} ${subtitle}`} />
         </div>
@@ -226,13 +224,15 @@ export default function Practice() {
     <div className="practice-page">
       <div className="container">
         <div className="practice-hero">
-          <h1>문제풀이</h1>
-          <p>카테고리를 선택하고 문제를 풀어보세요. 총 {allQuestions.length}문제가 준비되어 있습니다.</p>
+          <h1>{lang === 'en' ? 'Practice Questions' : '문제풀이'}</h1>
+          <p>{lang === 'en'
+            ? `Select categories and start practicing. ${allQuestions.length} questions available.`
+            : `카테고리를 선택하고 문제를 풀어보세요. 총 ${allQuestions.length}문제가 준비되어 있습니다.`}</p>
         </div>
 
         <div className="practice-categories">
-          <h2>카테고리 선택</h2>
-          <p className="practice-hint">선택하지 않으면 전체 카테고리에서 출제됩니다.</p>
+          <h2>{lang === 'en' ? 'Select Categories' : '카테고리 선택'}</h2>
+          <p className="practice-hint">{lang === 'en' ? 'All categories if none selected.' : '선택하지 않으면 전체 카테고리에서 출제됩니다.'}</p>
           <div className="practice-cat-grid">
             {CATEGORIES.map(cat => {
               const cleared = progress[cat.id]?.completedAt != null
@@ -244,7 +244,7 @@ export default function Practice() {
                 >
                   <span className="practice-cat-icon">{cleared ? 'O' : '-'}</span>
                   <span className="practice-cat-title">{cat.title}</span>
-                  <span className="practice-cat-count">{cat.questions}문제</span>
+                  <span className="practice-cat-count">{cat.questions}{lang === 'en' ? ' Q' : '문제'}</span>
                 </button>
               )
             })}
@@ -253,7 +253,9 @@ export default function Practice() {
 
         <div className="practice-start">
           <button className="btn btn-primary" onClick={startQuiz}>
-            문제 풀기 시작 ({selectedCats.length === 0 ? '전체' : `${selectedCats.length}개 카테고리`} / {filteredQuestions.length}문제)
+            {lang === 'en'
+              ? `Start (${selectedCats.length === 0 ? 'All' : `${selectedCats.length} cat.`} / ${filteredQuestions.length} Q)`
+              : `문제 풀기 시작 (${selectedCats.length === 0 ? '전체' : `${selectedCats.length}개 카테고리`} / ${filteredQuestions.length}문제)`}
           </button>
         </div>
       </div>

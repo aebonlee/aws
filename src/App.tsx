@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
 import { ThemeProvider } from './contexts/ThemeContext'
+import { LanguageProvider } from './contexts/LanguageContext'
 import { ProgressProvider } from './contexts/ProgressContext'
 import PublicLayout from './layouts/PublicLayout'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -50,6 +51,7 @@ function App() {
   return (
     <AuthProvider>
     <ThemeProvider>
+    <LanguageProvider>
       <ProgressProvider>
       <PublicLayout>
         <Suspense fallback={<div className="loading-spinner">로딩 중...</div>}>
@@ -100,6 +102,7 @@ function App() {
         </Suspense>
       </PublicLayout>
       </ProgressProvider>
+    </LanguageProvider>
     </ThemeProvider>
     </AuthProvider>
   )
