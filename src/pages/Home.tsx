@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useProgress } from '../contexts/ProgressContext'
+import { useAuth } from '../contexts/AuthContext'
+import { isAdmin } from '../lib/community'
 import { CATEGORIES } from '../lib/categories'
 
 export default function Home() {
   const { progress, isCleared, resetProgress } = useProgress()
+  const { user } = useAuth()
+  const admin = isAdmin(user)
   const clearedCount = CATEGORIES.filter(c => isCleared(c.id)).length
   const studiedCount = CATEGORIES.filter(c => progress[c.id]?.studied).length
   // 학습 50% + 퀴즈합격 50% 가중 진행률
@@ -176,14 +180,14 @@ export default function Home() {
         </div>
       </section>
 
-      {Object.keys(progress).length > 0 && (
+      {admin && Object.keys(progress).length > 0 && (
         <section className="section">
           <div className="container" style={{ textAlign: 'center' }}>
             <button
               className="btn btn-reset"
               onClick={() => { if (confirm('모든 진행 상황을 초기화하시겠습니까?')) resetProgress() }}
             >
-              진행 상황 초기화
+              진행 상황 초기화 (관리자)
             </button>
           </div>
         </section>

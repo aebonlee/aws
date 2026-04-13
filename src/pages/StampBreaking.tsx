@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useProgress } from '../contexts/ProgressContext'
+import { useAuth } from '../contexts/AuthContext'
+import { isAdmin } from '../lib/community'
 import { CATEGORIES } from '../lib/categories'
 import StampTierBadge from '../components/StampTierBadge'
 
 export default function StampBreaking() {
   const { progress, getCompletionRate, resetProgress, getStampTier, getQuizHistory, getSectionProgress } = useProgress()
+  const { user } = useAuth()
+  const admin = isAdmin(user)
   const rate = getCompletionRate()
   const clearedCount = CATEGORIES.filter(c => progress[c.id]?.completedAt).length
   const goldCount = CATEGORIES.filter(c => getStampTier(c.id) === 'gold').length
@@ -141,12 +145,12 @@ export default function StampBreaking() {
           })}
         </div>
 
-        {clearedCount > 0 && (
+        {admin && clearedCount > 0 && (
           <div className="stamp-reset">
             <button className="btn btn-secondary" onClick={() => {
               if (confirm('진행 상황을 모두 초기화하시겠습니까?')) resetProgress()
             }}>
-              진행 상황 초기화
+              진행 상황 초기화 (관리자)
             </button>
           </div>
         )}
