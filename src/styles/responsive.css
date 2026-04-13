@@ -5,11 +5,20 @@
   .sidebar-link { padding: 6px 10px; font-size: 0.8rem; }
   .about-cards-row { grid-template-columns: 1fr; }
   .about-steps { grid-template-columns: repeat(2, 1fr); }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .categories-grid, .stamp-grid, .practice-cat-grid { grid-template-columns: 1fr; }
   .hero h1, .about-hero h1 { font-size: 1.8rem; }
-  .hero-stats { gap: 20px; }
+  .hero { padding: 80px 0 60px; }
+  .hero-stats { flex-wrap: wrap; padding: 16px; gap: 0; }
+  .hero-stat { padding: 0 20px; }
+  .hero-stat-divider { display: none; }
+  .hero-exam-info { flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .hero-cta { flex-direction: column; align-items: center; }
+  .progress-header { flex-direction: column; text-align: center; gap: 16px; }
+  .progress-metrics { flex-direction: column; }
+  .features-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; align-items: center; justify-content: center; }
   .nav-mobile {
@@ -28,8 +37,11 @@
 }
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
-  .hero, .about-hero { padding: 60px 0 40px; }
+  .hero, .about-hero { padding: 60px 0 50px; }
   .hero h1, .about-hero h1 { font-size: 1.5rem; }
+  .hero-subtitle { font-size: 0.95rem; }
+  .hero-stat-value { font-size: 1.4rem; }
+  .progress-card { padding: 20px; }
   h2 { font-size: 1.3rem; }
   .info-table { font-size: 0.82rem; }
   .info-table th, .info-table td { padding: 8px 10px; }

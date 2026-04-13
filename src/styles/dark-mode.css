@@ -7,6 +7,11 @@
 }
 [data-theme="dark"] .navbar { background: rgba(13,17,23,0.9); }
 [data-theme="dark"] .category-card { background: var(--bg-section); }
+[data-theme="dark"] .progress-card { background: var(--bg-section); }
+[data-theme="dark"] .progress-metric { background: #1c2129; }
+[data-theme="dark"] .feature-card { background: var(--bg-section); }
+[data-theme="dark"] .btn-ghost { border-color: rgba(255,255,255,0.2); }
+[data-theme="dark"] .btn-reset { background: #1c2129; }
 [data-theme="dark"] .info-table th { background: #1c2129; }
 [data-theme="dark"] .tip-box { background: #1a2332; }
 [data-theme="dark"] .tip-box.warning { background: #2a2010; }
