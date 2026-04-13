@@ -9,7 +9,7 @@ import {
 } from '../../lib/community'
 
 interface WriteFormProps {
-  type: 'board' | 'tip' | 'success_story'
+  type: 'board' | 'tip' | 'success_story' | 'inquiry'
   editPost?: Post | null
   onCancel: () => void
   backPath: string

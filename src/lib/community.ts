@@ -1,9 +1,20 @@
+import type { User } from '@supabase/supabase-js'
+
+// ── Admin ──
+
+const ADMIN_EMAILS = ['aebon@kakao.com'] as const
+
+export function isAdmin(user: User | null): boolean {
+  if (!user) return false
+  return ADMIN_EMAILS.includes(user.email as typeof ADMIN_EMAILS[number])
+}
+
 // ── Community Types ──
 
 export interface Post {
   id: string
   author_id: string
-  type: 'board' | 'tip' | 'success_story'
+  type: 'board' | 'tip' | 'success_story' | 'inquiry'
   title: string
   content: string
   category?: string

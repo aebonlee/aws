@@ -1,4 +1,4 @@
-# 개발일지 - Phase 13: 커뮤니티 4개 페이지 CRUD 구현
+# 개발일지 - Phase 13: 커뮤니티 5개 페이지 CRUD + 관리자 시스템
 
 **날짜**: 2026-04-13
 **Phase**: 13
@@ -135,10 +135,11 @@ function getAvatarUrl(name?: string, avatarUrl?: string): string {
 
 ## 5. 페이지별 기능 명세
 
-### 공지사항 (읽기 전용)
+### 공지사항 (관리자 전용 CRUD)
 - 목록: `notices_with_author` 뷰, pinned 상단 고정, 20개 페이지네이션
-- 상세: 내용 표시 + 조회수 (댓글/좋아요 없음)
-- 권한: 관리자만 작성 (DB RLS)
+- 관리자(`aebon@kakao.com`): 글쓰기 버튼 표시, 상단 고정 옵션
+- 상세: 내용 표시 + 조회수 + 관리자만 수정/삭제 버튼
+- 권한: `isAdmin(user)` 프론트 체크 + DB RLS
 
 ### 게시판 (Full CRUD)
 - 목록: 카테고리 필터 (전체/일반/질문/토론/스터디그룹), 글쓰기 버튼
@@ -198,6 +199,8 @@ function getAvatarUrl(name?: string, avatarUrl?: string): string {
 /community/success-stories/:id  → SuccessStoryDetail (메타 패널 + 상세)
 /community/tips                 → Tips (목록 + 태그 필터 + 글쓰기)
 /community/tips/:id             → TipDetail (상세 + 댓글 + 좋아요)
+/community/inquiry              → Inquiry (문의 목록 + 글쓰기)
+/community/inquiry/:id          → InquiryDetail (상세 + 댓글)
 ```
 
 모든 라우트는 `<ProtectedRoute>` 감싸기 (로그인 필수).
@@ -223,9 +226,39 @@ function getAvatarUrl(name?: string, avatarUrl?: string): string {
 
 ---
 
-## 9. 빌드 확인
+## 9. 관리자 시스템 + 문의하기
+
+### 관리자 판별 (`src/lib/community.ts`)
+```typescript
+const ADMIN_EMAILS = ['aebon@kakao.com'] as const
+
+export function isAdmin(user: User | null): boolean {
+  if (!user) return false
+  return ADMIN_EMAILS.includes(user.email as typeof ADMIN_EMAILS[number])
+}
+```
+
+### 적용 범위
+| 기능 | 일반 사용자 | 관리자 (aebon@kakao.com) |
+|------|------------|------------------------|
+| 공지사항 읽기 | O | O |
+| 공지사항 작성/수정/삭제 | X | O |
+| 게시판/팁/합격수기 CRUD | 본인 글만 | 본인 글만 |
+| 문의하기 작성 | O | O |
+| 문의하기 목록 조회 | 본인 문의만 | 전체 문의 |
+| 문의 상세 열람 | 본인 문의만 | 전체 문의 |
+| 문의 답변 (댓글) | 본인 문의에만 | 모든 문의에 |
+| 문의 삭제 | 본인 문의만 | 모든 문의 |
+
+### 문의하기 페이지
+- 일반 사용자: 본인이 작성한 문의만 목록에 표시 (`author_id` 필터)
+- 관리자: 전체 문의 조회 가능, 댓글로 답변
+- 라우트: `/community/inquiry`, `/community/inquiry/:id`
+
+---
+
+## 10. 빌드 확인
 
 - `npm run build` 성공 (tsc + vite build)
-- 146 modules transformed
+- 148 modules transformed
 - 모든 TypeScript 타입 체크 통과
-- community 관련 청크: CommentSection 4.17kB, WriteForm 3.90kB, SuccessStoryDetail 4.09kB 등

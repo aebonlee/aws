@@ -10,6 +10,7 @@ const COMMUNITY_MENU = [
   { title: '게시판', path: '/community/board', icon: '📋' },
   { title: '시험합격수기', path: '/community/success-stories', icon: '🏆' },
   { title: '시험팁공유', path: '/community/tips', icon: '💡' },
+  { title: '문의하기', path: '/community/inquiry', icon: '💬' },
 ]
 
 // AIF-C01 study pages (public)

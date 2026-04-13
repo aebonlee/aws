@@ -1,14 +1,25 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
-import { getAvatarUrl, PAGE_SIZE, type Notice } from '../../lib/community'
+import { useAuth } from '../../contexts/AuthContext'
+import { getAvatarUrl, isAdmin, PAGE_SIZE, type Notice } from '../../lib/community'
 import { timeAgo } from '../../lib/timeago'
 
 export default function Notices() {
+  const { user } = useAuth()
+  const navigate = useNavigate()
+  const admin = isAdmin(user)
   const [notices, setNotices] = useState<Notice[]>([])
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(0)
   const [hasMore, setHasMore] = useState(false)
+  const [showWrite, setShowWrite] = useState(false)
+
+  // write form state
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
+  const [pinned, setPinned] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   const load = useCallback(async (pageNum: number, append = false) => {
     setLoading(true)
@@ -37,6 +48,63 @@ export default function Notices() {
     load(next, true)
   }
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!user || !admin || !title.trim() || !content.trim()) return
+    setSubmitting(true)
+
+    const { data, error } = await supabase
+      .from('notices')
+      .insert({
+        author_id: user.id,
+        title: title.trim(),
+        content: content.trim(),
+        is_pinned: pinned,
+      })
+      .select('id')
+      .single()
+
+    if (!error && data) {
+      navigate(`/community/notices/${data.id}`)
+    }
+    setSubmitting(false)
+  }
+
+  if (showWrite && admin) {
+    return (
+      <section className="community-page">
+        <div className="container">
+          <form className="community-write-form" onSubmit={handleSubmit}>
+            <h2>공지사항 작성</h2>
+            <div className="community-form-group">
+              <label>제목</label>
+              <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="공지 제목을 입력하세요" required />
+            </div>
+            <div className="community-form-group">
+              <label>내용</label>
+              <textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="공지 내용을 입력하세요" required />
+            </div>
+            <div className="community-form-group">
+              <label style={{ display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
+                <input type="checkbox" checked={pinned} onChange={(e) => setPinned(e.target.checked)} />
+                상단 고정
+              </label>
+            </div>
+            <div className="community-form-actions">
+              <button type="button" className="btn" onClick={() => setShowWrite(false)}
+                style={{ background: 'var(--bg-section)', color: 'var(--text-secondary)', border: '1px solid var(--border)' }}>
+                취소
+              </button>
+              <button type="submit" className="btn btn-primary" disabled={submitting}>
+                {submitting ? '저장 중...' : '작성 완료'}
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="community-page">
       <div className="container">
@@ -44,6 +112,15 @@ export default function Notices() {
           <h1>공지사항</h1>
           <p>서비스 관련 중요 공지를 확인하세요.</p>
         </div>
+
+        {admin && (
+          <div className="community-toolbar">
+            <div />
+            <button className="btn btn-primary" onClick={() => setShowWrite(true)}>
+              공지 작성
+            </button>
+          </div>
+        )}
 
         {notices.length === 0 && !loading ? (
           <div className="community-empty">

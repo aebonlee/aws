@@ -38,6 +38,8 @@ const SuccessStories = lazy(() => import('./pages/community/SuccessStories'))
 const SuccessStoryDetail = lazy(() => import('./pages/community/SuccessStoryDetail'))
 const Tips = lazy(() => import('./pages/community/Tips'))
 const TipDetail = lazy(() => import('./pages/community/TipDetail'))
+const Inquiry = lazy(() => import('./pages/community/Inquiry'))
+const InquiryDetail = lazy(() => import('./pages/community/InquiryDetail'))
 const Login = lazy(() => import('./pages/Login'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
 const NotFound = lazy(() => import('./pages/NotFound'))
@@ -87,6 +89,8 @@ function App() {
             <Route path="/community/success-stories/:id" element={<ProtectedRoute><SuccessStoryDetail /></ProtectedRoute>} />
             <Route path="/community/tips" element={<ProtectedRoute><Tips /></ProtectedRoute>} />
             <Route path="/community/tips/:id" element={<ProtectedRoute><TipDetail /></ProtectedRoute>} />
+            <Route path="/community/inquiry" element={<ProtectedRoute><Inquiry /></ProtectedRoute>} />
+            <Route path="/community/inquiry/:id" element={<ProtectedRoute><InquiryDetail /></ProtectedRoute>} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
