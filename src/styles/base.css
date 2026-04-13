@@ -111,3 +111,6 @@ pre code { background: none; padding: 0; color: inherit; }
 .badge-primary { background: rgba(255,153,0,0.15); color: var(--primary-dark); }
 .badge-success { background: rgba(16,185,129,0.15); color: #059669; }
 .badge-info { background: rgba(59,130,246,0.15); color: #2563eb; }
+.badge-danger { background: rgba(239,68,68,0.15); color: #dc2626; }
+.badge-warning { background: rgba(245,158,11,0.15); color: #d97706; }
+.badge-exam { background: rgba(239,68,68,0.15); color: #dc2626; font-size: 0.72rem; }

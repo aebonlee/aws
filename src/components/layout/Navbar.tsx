@@ -77,7 +77,7 @@ export default function Navbar() {
             onMouseLeave={handleMouseLeave}
           >
             <button
-              className={`nav-link nav-dropdown-trigger ${isCertPage && !isAifPage ? 'active' : ''}`}
+              className={`nav-link nav-dropdown-trigger ${isCertPage ? 'active' : ''}`}
             >
               AWS Certification <span className="nav-arrow">&#9662;</span>
             </button>
@@ -94,7 +94,7 @@ export default function Navbar() {
                           key={cert.code}
                           to={cert.available ? cert.path : '#'}
                           className={`nav-dropdown-item ${!cert.available ? 'disabled' : ''} ${
-                            cert.available && (cert.path === '/' ? isAifPage : location.pathname === cert.path) ? 'active' : ''
+                            isAif || (cert.available && (cert.path === '/' ? isAifPage : location.pathname === cert.path)) ? 'active' : ''
                           }`}
                           onClick={e => {
                             if (!cert.available) { e.preventDefault(); return }
@@ -121,7 +121,7 @@ export default function Navbar() {
             onMouseLeave={handleMouseLeave}
           >
             <button
-              className={`nav-link nav-dropdown-trigger ${isAifPage ? 'active' : ''}`}
+              className="nav-link nav-dropdown-trigger active"
             >
               AIF-C01 AI Practitioner <span className="nav-arrow">&#9662;</span>
             </button>
