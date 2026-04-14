@@ -47,6 +47,8 @@ export function CouponProvider({ children }: { children: ReactNode }) {
     try {
       const pass = await getActivePeriodPass(user.id)
       setActivePeriodPass(pass)
+    } catch {
+      // Table may not exist yet — silently ignore
     } finally {
       setLoading(false)
     }
