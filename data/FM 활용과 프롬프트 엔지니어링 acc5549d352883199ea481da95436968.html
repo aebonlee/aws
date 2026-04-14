@@ -1,0 +1,744 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>FM 활용과 프롬프트 엔지니어링</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="acc5549d-3528-8319-9ea4-81da95436968" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">5️⃣</span></div><h1 class="page-title" dir="auto">FM 활용과 프롬프트 엔지니어링</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-relation"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-northeast_gray.svg" style="width:14px;height:14px;display:block"/></span>계산용 관계용 속성</th><td><a href="AI%EC%99%80%20ML%EC%9D%98%20%EA%B8%B0%EC%B4%88%20c225549d35288266a8508112fbda64bb.html"><span class="icon">1️⃣</span>AI와 ML의 기초</a>, <a href="FM%20%ED%99%9C%EC%9A%A9%EA%B3%BC%20%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8%20%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%20acc5549d352883199ea481da95436968.html"><span class="icon">5️⃣</span>FM 활용과 프롬프트 엔지니어링</a>, <a href="Responsible%20AI,%20AI%EB%A5%BC%20%EC%B1%85%EC%9E%84%EA%B0%90%EC%9E%88%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B0%A9%EC%8B%9D%206a55549d352882568ac581afc55e9ed2.html"><span class="icon">7️⃣</span>Responsible AI, AI를 책임감있게 만드는 방식</a>, <a href="AI%20%EC%86%94%EB%A3%A8%EC%85%98%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%B3%B4%EC%95%88,%20%EA%B7%9C%EC%A0%95%20%EC%A4%80%EC%88%98,%20%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%208f85549d35288228915301798c5ba83f.html"><span class="icon">8️⃣</span>AI 솔루션을 위한 보안, 규정 준수, 거버넌스</a>, <a href="Amazon%20SageMaker%20a015549d352882439f6701b2f401abad.html"><span class="icon">3️⃣</span>Amazon SageMaker</a>, , , <a href="ML%20%EA%B0%9C%EB%B0%9C%206d35549d352882fe820781a0c08421e1.html"><span class="icon">2️⃣</span>ML 개발</a></td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>문제수</th><td>72</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>분류</th><td><span class="selected-value select-value-color-pink">콘텐츠</span></td></tr><tr class="property-row property-row-formula"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/formula_gray.svg" style="width:14px;height:14px;display:block"/></span>비중</th><td>24.2%</td></tr><tr class="property-row property-row-rollup"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/search_gray.svg" style="width:14px;height:14px;display:block"/></span>합계</th><td>297</td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="60b5549d-3528-8275-b6d8-81aef0503432"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="6b25549d-3528-8308-9b7f-01a4997577bb" class="">같은 AI에게 같은 질문을 해도 <strong>어떻게 물어보느냐</strong>에 따라 답변의 질이 완전히 달라진다는 사실, 알고 계셨나요?</p></div><div style="display:contents" dir="auto"><p id="ede5549d-3528-821a-8679-01cf4ed75436" class="">&quot;요약해줘&quot;보다 &quot;이 글을 초등학생도 이해할 수 있게 3줄로 요약해줘&quot;라고 하면 훨씬 더 원하는 답변을 얻을 수 있습니다. 이처럼 AI에게 효과적으로 질문하고 지시하는 기술을 <strong>프롬프트 엔지니어링</strong>이라고 합니다. 여기서는 기초 모델(FM)을 200% 활용하는 방법과 다양한 프롬프트 기법을 알아보겠습니다.</p></div></div></figure></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">프롬프트 엔지니어링</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="a8f5549d-3528-83b9-b76b-0106664c069b" class="bulleted-list"><li style="list-style-type:disc">AI 모델이 더 정확하고 원하는 방식으로 응답을 생성하도록 입력(prompt)을 최적화하는 기술</li></ul></div><div style="display:contents" dir="auto"><ul id="6295549d-3528-82a0-afd5-813dd0d4425d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>파인튜닝 없이도 모델 성능을 향상</strong></mark>시킬 수 있어 다양한 AI 활용 사례에서 중요</li></ul></div><div style="display:contents" dir="auto"><ul id="0805549d-3528-8315-82fd-01bd9bb93367" class="bulleted-list"><li style="list-style-type:disc">핵심 목표<div style="display:contents" dir="auto"><ul id="c705549d-3528-8277-95fd-01e0c8a83e64" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red"><strong>최소한의 노력</strong></mark>으로 최상의 결과 도출 (프롬프트 조정)</li></ul></div><div style="display:contents" dir="auto"><ul id="6fe5549d-3528-8203-9b18-01c89bcdbbac" class="bulleted-list"><li style="list-style-type:circle">명확한 지침과 컨텍스트 제공 (효과적인 프롬프트 설계)</li></ul></div><div style="display:contents" dir="auto"><ul id="52f5549d-3528-83b9-9a03-8147447a3657" class="bulleted-list"><li style="list-style-type:circle">불필요한 응답 제거 및 원하는 출력 형식 유지</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="bff5549d-3528-833a-a45e-81cd00506eca" class="toggle"><li><details open=""><summary>기본 원칙</summary><div style="display:contents" dir="auto"><ul id="12f5549d-3528-83e0-ad70-01ad59022967" class="bulleted-list"><li style="list-style-type:disc">최대한 구체적으로 작성<div style="display:contents" dir="auto"><ul id="7535549d-3528-821b-a6a4-01e7f22293f1" class="bulleted-list"><li style="list-style-type:circle">모든 것을 포괄하는 만능 프롬프트는 없음</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="31f5549d-3528-8295-a9f4-814a38daf13a" class="bulleted-list"><li style="list-style-type:disc">원하는 출력 형식과 길이를 포함 (예. 5분 길이, 3단락 등)</li></ul></div><div style="display:contents" dir="auto"><ul id="1935549d-3528-826c-8c87-81fe11a2aa74" class="bulleted-list"><li style="list-style-type:disc">모델 재학습, 파인튜닝, RAG를 적용하기 전에 프롬프트부터 조정<div style="display:contents" dir="auto"><ul id="a205549d-3528-82a7-804a-817d0e4f0154" class="bulleted-list"><li style="list-style-type:circle">모델이 원하는 응답을 생성할 때까지 실험하고 수정</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="5965549d-3528-8224-9f94-01ae8a3acbfb" class="bulleted-list"><li style="list-style-type:disc">프롬프트 설계의 4대 구성 요소<div style="display:contents" dir="auto"><ul id="0895549d-3528-8365-b907-01583ac4a5be" class="bulleted-list"><li style="list-style-type:circle">효과적인 프롬프트는 아래 네 가지 요소를 포함하여 반복적 개선(iterative refinement)을 지원<div style="display:contents" dir="ltr"><table id="c7d5549d-3528-8241-b638-0174b5501d57" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="b695549d-3528-8270-8dea-81b271bca4ce"><th id="]`ob" class="simple-table-header-color simple-table-header" style="width:112.66192626953125px">구성 요소</th><th id="leKy" class="simple-table-header-color simple-table-header" style="width:366.99998474121094px">정의</th><th id="sZNT" class="simple-table-header-color simple-table-header" style="width:270.99998474121094px">예시</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="5fd5549d-3528-83aa-a4a6-01723bf9fb82"><td id="]`ob" class="" style="width:112.66192626953125px">Task <br/>(작업)</td><td id="leKy" class="" style="width:366.99998474121094px">모델의 <strong>사용 사례</strong>를 지정</td><td id="sZNT" class="" style="width:270.99998474121094px">&quot;제품 설명을 바탕으로 마케팅 슬로건을 작성하세요&quot;</td></tr></div><div style="display:contents" dir="ltr"><tr id="4105549d-3528-8209-963f-81e7dd46539d"><td id="]`ob" class="" style="width:112.66192626953125px">Role <br/>(역할)</td><td id="leKy" class="" style="width:366.99998474121094px">요구 사항을 효과적으로 충족하기 위해 모델이 맡아야 할 <strong>페르소나</strong>를 정의</td><td id="sZNT" class="" style="width:270.99998474121094px">&quot;당신은 10년 경력의 카피라이터입니다&quot;</td></tr></div><div style="display:contents" dir="ltr"><tr id="cc25549d-3528-821e-b02e-81e1aee10a46"><td id="]`ob" class="" style="width:112.66192626953125px">Response style <br/>(응답 스타일)</td><td id="leKy" class="" style="width:366.99998474121094px">모델이 따라야 할 <strong>어조, 형식, 구조</strong>를 설명</td><td id="sZNT" class="" style="width:270.99998474121094px">&quot;캐주얼한 톤, 15자 이내, 한 줄로 작성&quot;</td></tr></div><div style="display:contents" dir="ltr"><tr id="0f75549d-3528-82ee-b1cc-011277ab4541"><td id="]`ob" class="" style="width:112.66192626953125px">Success criteria <br/>(성공 기준)</td><td id="leKy" class="" style="width:366.99998474121094px">모델 출력이 기대치를 충족하는지 평가하기 위한 <strong>명확한 지표</strong>를 설정</td><td id="sZNT" class="" style="width:270.99998474121094px">&quot;브랜드 키워드를 반드시 포함, 부정적 표현 없음&quot;</td></tr></div></tbody></table></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="5935549d-3528-8321-bc38-01c0c22deb21" class="bulleted-list"><li style="list-style-type:disc">시스템 프롬프트 (System Prompt)<div style="display:contents" dir="auto"><ul id="39b5549d-3528-82eb-8f90-810d6462a1c6" class="bulleted-list"><li style="list-style-type:circle">AI 모델의 <strong>역할(Role)</strong>, 페르소나, <strong>행동 경계(behavioral boundaries)</strong>를 사전에 정의하는 지침</li></ul></div><div style="display:contents" dir="auto"><ul id="3f05549d-3528-82e7-ac75-8117043ff429" class="bulleted-list"><li style="list-style-type:circle">사용자의 질문과 별도로 모델이 &quot;어떻게 행동해야 하는지&quot;를 안내</li></ul></div><div style="display:contents" dir="auto"><ul id="2e15549d-3528-8244-b6e2-01576a7b82a6" class="bulleted-list"><li style="list-style-type:circle">예. &quot;당신은 AWS 전문 기술 지원 엔지니어입니다. 제품 관련 질문에만 답변하고, 정치나 종교 관련 질문에는 답변을 거부하세요.&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="e375549d-3528-83e8-96fd-81c5bb14105e" class="bulleted-list"><li style="list-style-type:circle">시스템 프롬프트 vs. 사용자 프롬프트<div style="display:contents" dir="ltr"><table id="a085549d-3528-8291-9e36-812fd79423e6" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="5c75549d-3528-83d9-90b6-81155934676a"><th id="AQ{g" class="simple-table-header-color simple-table-header">구분</th><th id="^bQJ" class="simple-table-header-color simple-table-header">시스템 프롬프트</th><th id="PIWq" class="simple-table-header-color simple-table-header">사용자 프롬프트</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="fa35549d-3528-8294-8d8a-81f556f391bc"><td id="AQ{g" class="">목적</td><td id="^bQJ" class="">모델의 역할, 톤, 제약 조건 설정</td><td id="PIWq" class="">구체적인 질문이나 요청</td></tr></div><div style="display:contents" dir="ltr"><tr id="d225549d-3528-82eb-92dc-811303adb33f"><td id="AQ{g" class="">설정 주체</td><td id="^bQJ" class="">개발자/관리자</td><td id="PIWq" class="">최종 사용자</td></tr></div><div style="display:contents" dir="ltr"><tr id="d6f5549d-3528-824c-965b-8154d0597ae8"><td id="AQ{g" class="">변경 빈도</td><td id="^bQJ" class="">앱 배포 시 고정</td><td id="PIWq" class="">매 대화마다 변경</td></tr></div></tbody></table></div></li></ul></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="f9c5549d-3528-83ec-a953-0195acb39ae0" class="toggle"><li><details open=""><summary>주요 기법</summary><div style="display:contents" dir="ltr"><table id="a085549d-3528-83ea-b066-81922e52a80c" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="5fb5549d-3528-82a9-b6a0-0118b279272b"><td id="w;QZ" class="" style="width:98.00001525878906px">이름</td><td id=":bcX" class="" style="width:656.9874877929688px">설명</td></tr></div><div style="display:contents" dir="ltr"><tr id="5075549d-3528-833b-9dce-815a2faef31e"><td id="w;QZ" class="" style="width:98.00001525878906px">Zero-shot prompting</td><td id=":bcX" class="" style="width:656.9874877929688px">예제(example) 없이 질문만으로 AI가 자유롭게 추론하고 답을 생성하도록 유도하는 방식<br/>모델의 자유로운 추론 유도</td></tr></div><div style="display:contents" dir="ltr"><tr id="88c5549d-3528-8324-ae2a-01bbd6545cfd"><td id="w;QZ" class="" style="width:98.00001525878906px">Few-shot prompting</td><td id=":bcX" class="" style="width:656.9874877929688px">도메인 특화 예시나 명시적 지침을 제공하여, 이를 통해 모델이 원하는 결과물의 패턴이나 형식을 참고하는 방식<br/>특정 형식의 응답 유도</td></tr></div><div style="display:contents" dir="ltr"><tr id="b275549d-3528-82a2-a832-0199acdc094d"><td id="w;QZ" class="" style="width:98.00001525878906px">Prompt chaining</td><td id=":bcX" class="" style="width:656.9874877929688px">복잡한 작업을 여러 개의 작은 하위 작업으로 분할하여 순차적으로 처리하는 기법<br/>앞선 프롬프트의 결과를 다음 프롬프트의 입력으로 사용하여 과제를 해결</td></tr></div><div style="display:contents" dir="ltr"><tr id="c165549d-3528-832d-bf86-01f544663e62"><td id="w;QZ" class="" style="width:98.00001525878906px">Positive prompting</td><td id=":bcX" class="" style="width:656.9874877929688px">원하는 결과(특정 톤, 형식, 정보 포함 등)를 얻기 위해 구체적인 조건을 명시하여 모델을 활용하는 방식</td></tr></div><div style="display:contents" dir="ltr"><tr id="5e95549d-3528-8392-9899-81d499ad62c4"><td id="w;QZ" class="" style="width:98.00001525878906px">Negative prompting</td><td id=":bcX" class="" style="width:656.9874877929688px">원하지 않는 결과(예: 유해한 콘텐츠, 특정 주제)를 생성하지 않도록 명시적으로 지시하는 기법<br/>사용자의 프롬프트에서 공격 패턴을 탐지하도록 지시하는 시스템 프롬프트 템플릿도 여기에 해당</td></tr></div><div style="display:contents" dir="ltr"><tr id="0355549d-3528-829b-ad63-01bb54a63f75"><td id="w;QZ" class="" style="width:98.00001525878906px">Chain-of-thought prompting</td><td id=":bcX" class="" style="width:656.9874877929688px">모델에게 문제 해결 과정을 논리적으로 생각하고 설명하도록 요구하여 추론의 정확도를 높이는 방식<br/>예1: 단계별로 생각하라(Let&#x27;s think step by step)<br/>예2: Think step by step and walk me through your thinking.</td></tr></div><div style="display:contents" dir="ltr"><tr id="5f75549d-3528-8354-a005-01981b17ec08"><td id="w;QZ" class="" style="width:98.00001525878906px">ReAct <br/>prompting</td><td id=":bcX" class="" style="width:656.9874877929688px">추론(Reasoning)과 행동(Acting)을 반복하며 <mark class="highlight-red"><strong>외부 도구나 API와 상호작용</strong></mark>하여 문제를 해결하는 기법<br/>모델이 사고 과정을 명시적으로 표현하고, 필요한 행동을 취한 후 그 결과를 바탕으로 다시 추론하는 순환 구조<br/>예: Thought: 재고 확인이 필요함 → Action: inventory_API 호출 → Observation: 재고 5개 → Thought: 충분한 재고 확인</td></tr></div><div style="display:contents" dir="ltr"><tr id="5b35549d-3528-83c5-9c51-01aecf10981c"><td id="w;QZ" class="" style="width:98.00001525878906px">Message History</td><td id=":bcX" class="" style="width:656.9874877929688px">이전 대화 기록을 프롬프트에 포함하여 문맥을 유지하고 일관된 답변을 얻는 방식<br/>문맥 유지 및 대화 흐름 개선<br/>대부분의 챗봇 서비스는 자동으로 적용하지만, API 사용시에는 대화 기록을 전달해야 함</td></tr></div></tbody></table></div></details></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Amazon Bedrock</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="a5a5549d-3528-8302-ab80-81fe6f60aa69" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>완전 관리형</strong></mark> 서버리스 생성형 AI 서비스</li></ul></div><div style="display:contents" dir="auto"><ul id="4645549d-3528-8300-90b1-8128daa29d9c" class="bulleted-list"><li style="list-style-type:disc">여러 AI 기업들의 기초 모델(FM)을 단일 <mark class="highlight-red"><strong>API</strong></mark>를 통해 제공<div style="display:contents" dir="auto"><ul id="d805549d-3528-821d-9928-810e92dc39c2" class="bulleted-list"><li style="list-style-type:circle">텍스트 생성 모델, 이미지 생성 모델, 임베딩 생성 모델을 사용한 만큼한 지불(Pay-as-you-go)</li></ul></div><div style="display:contents" dir="auto"><ul id="a675549d-3528-8253-9b29-010cee0f3b93" class="bulleted-list"><li style="list-style-type:circle">기업의 프라이빗 데이터로 모델 커스터마이징 가능</li></ul></div><div style="display:contents" dir="auto"><ul id="d015549d-3528-8272-87c9-8155db1e4002" class="bulleted-list"><li style="list-style-type:circle">Amazon Nova: AWS의 자체 차세대 멀티모달 파운데이션 모델 제품군<div style="display:contents" dir="ltr"><table id="8d65549d-3528-83f5-b1c3-81f52b730264" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="8f55549d-3528-835d-9597-019063f054bc"><td id="JQmM" class="" style="width:115.64630126953125px">모델</td><td id="@:Nt" class="" style="width:547.6604919433594px">특징</td></tr></div><div style="display:contents" dir="ltr"><tr id="c695549d-3528-836a-9da5-017f724bec92"><td id="JQmM" class="" style="width:115.64630126953125px">Nova Micro</td><td id="@:Nt" class="" style="width:547.6604919433594px"><mark class="highlight-red"><strong>텍스트 전용(Text-only)</strong></mark> 모델로, 이미지·비디오 입력을 지원하지 않음<br/>- Nova 제품군 중 <mark class="highlight-red"><strong>가장 낮은 지연 시간과 비용</strong></mark> 제공<br/>- 텍스트 요약, 간단한 Q&amp;A, 분류 등 텍스트만으로 충분한 작업에 적합</td></tr></div><div style="display:contents" dir="ltr"><tr id="ef25549d-3528-83b5-a010-01843f9385ae"><td id="JQmM" class="" style="width:115.64630126953125px">Nova Lite</td><td id="@:Nt" class="" style="width:547.6604919433594px">- <mark class="highlight-red"><strong>초저지연(Low latency)</strong></mark> 및 <mark class="highlight-red"><strong>저비용</strong></mark> 처리에 최적화된 모델 (<strong>텍스트+이미지+비디오</strong> 지원)<br/>- 간단한 챗봇, 요약, 대규모 텍스트 처리 등 <mark class="highlight-red"><strong>속도와 가성비</strong></mark>가 중요한 작업에 적합</td></tr></div><div style="display:contents" dir="ltr"><tr id="b355549d-3528-83ce-800e-015842e533ad"><td id="JQmM" class="" style="width:115.64630126953125px">Nova Pro</td><td id="@:Nt" class="" style="width:547.6604919433594px">- <mark class="highlight-red"><strong>복잡한 추론(Reasoning)</strong></mark>, 코딩, 수학적 문제 해결 등 <mark class="highlight-red"><strong>고성능</strong></mark>이 요구되는 작업에 최적화<br/>- 정확도와 속도의 균형이 뛰어나며, 다양한 도메인의 범용적인 업무 수행 가능</td></tr></div><div style="display:contents" dir="ltr"><tr id="0ef5549d-3528-8223-bf81-81db00de1baf"><td id="JQmM" class="" style="width:115.64630126953125px">Nova Canvas</td><td id="@:Nt" class="" style="width:547.6604919433594px">- 텍스트 프롬프트를 통해 전문가 수준의 고품질<strong> </strong><mark class="highlight-red"><strong>이미지를 생성</strong></mark> 및 편집하는 모델<br/>- 로고 디자인, 마케팅 자산 생성, 이미지 인페인팅/아웃페인팅 지원</td></tr></div><div style="display:contents" dir="ltr"><tr id="a6a5549d-3528-8202-a22e-01f1c69f7c79"><td id="JQmM" class="" style="width:115.64630126953125px">Nova Reel</td><td id="@:Nt" class="" style="width:547.6604919433594px">- 텍스트를 입력하여 <mark class="highlight-red"><strong>고화질 비디오를 생성</strong></mark>하는 모델<br/>- 소셜 미디어 콘텐츠, 광고 영상, 시각 효과 등 영상 제작 업무에 특화</td></tr></div></tbody></table></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="52a5549d-3528-83c0-9a93-8184c15e1ce6" class="bulleted-list"><li style="list-style-type:disc">엄격한 데이터 격리 정책으로 완전한 기밀성 보장<div style="display:contents" dir="auto"><ul id="a535549d-3528-82ad-9240-816f3d4bc95c" class="bulleted-list"><li style="list-style-type:circle">사용자의 입력 프롬프트와 모델 출력을 서드파티 모델 제공업체(Anthropic, AI21 Labs 등)와 절대 공유하지 않음</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="7055549d-3528-82e3-a93c-012c8ae3f924" class="bulleted-list"><li style="list-style-type:disc">과금 모델<div style="display:contents" dir="ltr"><table id="d805549d-3528-8382-b4c2-0179090daa21" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="b6d5549d-3528-82f5-9e86-017dad8923df"><td id="bRLf" class="" style="width:135px">모델</td><td id="nec~" class="" style="width:123.01786041259766px">핵심 특징	</td><td id="KrF&gt;" class="" style="width:515.9886169433594px">설명</td></tr></div><div style="display:contents" dir="ltr"><tr id="b5f5549d-3528-8221-8161-814ef4cbc7c5"><td id="bRLf" class="" style="width:135px">온디맨드<br/>(On-Demand)</td><td id="nec~" class="" style="width:123.01786041259766px">Flexibility  <br/><strong>사용한 만큼 지불</strong></td><td id="KrF&gt;" class="" style="width:515.9886169433594px">- 별도의 약정 없이 <mark class="highlight-red"><strong>사용한 만큼만 비용을 지불</strong></mark>하는 유연한 모델<br/>- 입출력 데이터의 양(토큰 수)과 사용한 파운데이션 모델(FM) 종류에 따라 비용이 책정<br/>- <mark class="highlight-red"><strong>예산이 제한적이거나 사용량을 예측하기 어려운 경우</strong></mark>에 가장 적합</td></tr></div><div style="display:contents" dir="ltr"><tr id="f705549d-3528-83a4-acfb-0162f4890203"><td id="bRLf" class="" style="width:135px">배치<br/>(Batch)</td><td id="nec~" class="" style="width:123.01786041259766px">Cost-efficiency<br/><strong>비동기 워크로드 할인</strong></td><td id="KrF&gt;" class="" style="width:515.9886169433594px">- 즉각적인 응답이 필요 없는 대량 처리 작업에 대해 <strong>토큰당 요금을 50% 할인</strong><br/>- 주간 카탈로그 업데이트, 대량 합성 데이터 생성 등 <strong>예약된 비긴급 작업</strong>에 가장 비용 효율적<br/>- 비동기적으로 처리되므로 처리 완료 시간은 보장되지 않음</td></tr></div><div style="display:contents" dir="ltr"><tr id="1e25549d-3528-8322-8d64-01b128dc7167"><td id="bRLf" class="" style="width:135px">프로비저닝된 처리량<br/>(Provisioned Throughput)</td><td id="nec~" class="" style="width:123.01786041259766px">Performance  <br/><strong>안정적인 성능 보장</strong></td><td id="KrF&gt;" class="" style="width:515.9886169433594px">- 특정 기간(1개월 또는 6개월) 동안 <mark class="highlight-red"><strong>일정 수준의 처리량을 약정하여 구매</strong></mark><strong><br/>- </strong><mark class="highlight-red"><strong>대규모의 안정적인 처리</strong></mark>가 필요하거나, <mark class="highlight-red"><strong>일관된 지연 시간</strong></mark>이 중요한 프로덕션 환경에 적합<br/>- 기본 비용은 매우 비쌈. 장기 약정을 통해 온디맨드보다 저렴하게 사용 가능</td></tr></div></tbody></table></div></li></ul></div><div style="display:contents" dir="auto"><ul id="c4d5549d-3528-8204-b792-01e45461ee7e" class="bulleted-list"><li style="list-style-type:disc">주요 기능<div style="display:contents" dir="ltr"><table id="eae5549d-3528-82f5-89d6-01c70b3bd53e" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="3d65549d-3528-8379-80d3-81f312adb251"><td id="]FZr" class="" style="width:136.41192626953125px">기능</td><td id="OxFl" class="" style="width:711.9583740234375px">설명</td></tr></div><div style="display:contents" dir="ltr"><tr id="5d45549d-3528-83d8-89dd-81f8ae2ac5bc"><td id="]FZr" class="" style="width:136.41192626953125px">모델 커스터마이징<br/>(Model <br/>Customization)</td><td id="OxFl" class="" style="width:711.9583740234375px">- 기존의 기초 모델(FM)을 특정 요구사항에 맞게 조정하는 기능 (예: 기업 특화 데이터로 성능 최적화)<br/>- fine-tuning은 JSONL(JSON Lines) 형식의 입력-출력 쌍(labeled data) 필요<br/>- Amazon Bedrock에서 <mark class="highlight-red"><strong>커스텀 모델을 사용하려면 프로비저닝된 처리량을 필수</strong></mark>로 사용해야 함<br/> - AWS가 각 모델을 위한 전용 컴퓨팅 리소스를 미리 할당해야 하기 때문<br/>- Custom Model Import: Amazon SageMaker AI 등 <mark class="highlight-red"><strong>외부에서 훈련한 모델을 Bedrock으로 가져와서 배포</strong></mark>할 수 있는 기능<br/>  - SageMaker에서 fine-tuning → Bedrock으로 import → Bedrock API로 서빙<br/>  - Bedrock에서 직접 지원하지 않는 고급 커스터마이징이 필요할 때 활용</td></tr></div><div style="display:contents" dir="ltr"><tr id="f905549d-3528-838b-bc46-01d2b2ec22e0"><td id="]FZr" class="" style="width:136.41192626953125px">프롬프트 관리<br/>(Prompt <br/>Management)</td><td id="OxFl" class="" style="width:711.9583740234375px">- 프롬프트를 생성, 테스트, 버전 관리 및 배포할 수 있는 중앙 집중식 도구<br/>- 다양한 모델 간 프롬프트 성능 비교 및 최적화 지원<br/>- 프롬프트 변수(Prompt Variables): <code>{{input}}</code> 등의 변수를 사용하여 재사용 가능한 템플릿 생성<br/>- 도구 구성(Tools configuration): 프롬프트 내에서 외부 API 호출 정의(Function calling)를 설정하여 외부 시스템과 상호작용 가능</td></tr></div><div style="display:contents" dir="ltr"><tr id="c7f5549d-3528-83b0-ad23-01118b462aa6"><td id="]FZr" class="" style="width:136.41192626953125px">에이전트<br/>(Agent)</td><td id="OxFl" class="" style="width:711.9583740234375px">- FM에 외부 데이터 소스 연결, API 호출, 다단계 추론, 응답 우선순위 결정 등 <mark class="highlight-red"><strong>자율적 태스크 수행 능력 </strong></mark>부여<br/>- 반복적인 작업을 자동화하고 복잡한 워크플로우를 오케스트레이션<br/>- 단순한 텍스트 생성(단일 FM)으로는 해결할 수 없는 <strong>외부 시스템과의 상호작용이 필요한</strong> 작업에 적합<br/>- 여러 단계의 작업을 순차적으로 실행하고, 필요한 경우 외부 도구를 사용 (예: API 호출)<br/> - 예1. 고객 문의 자동 처리 및 응답<br/> - 예2. OpenSearch에서 고객 데이터 검색 → CSV 파일 생성 → S3에 업로드를 하나의 자연어 요청으로 처리<br/>- Model Context Protocol (MCP) 지원</td></tr></div><div style="display:contents" dir="ltr"><tr id="8895549d-3528-83f7-8854-01e36795959a"><td id="]FZr" class="" style="width:136.41192626953125px">지식 기반<br/>(Knowledge Base)</td><td id="OxFl" class="" style="width:711.9583740234375px">- AI 모델이 참조할 수 있는 구조화된 지식 저장소<br/>- 외부 문서, 기업 데이터, 정책 문서, 최신 데이터 등을 포함<br/> - 예1. 챗봇이 고객 질문에 답변할 때 제품 매뉴얼 참조<br/> - 예2. AI 모델이 회사 정책에 맞는 응답 생성 시 내부 규정 확인<br/> - 예3. 특정 도메인의 전문 지식이 필요한 작업 수행 시 관련 자료 활용</td></tr></div><div style="display:contents" dir="ltr"><tr id="0905549d-3528-8302-b89b-8142530417db"><td id="]FZr" class="" style="width:136.41192626953125px">워터마크 감지<br/>(Watermark <br/>Detection)</td><td id="OxFl" class="" style="width:711.9583740234375px">- Amazon Titan Image Generator가 생성한 이미지를 식별하는 기능<br/>- 이미지의 진위 여부를 확인하고, AI가 생성한 이미지와 실제 이미지를 구분</td></tr></div><div style="display:contents" dir="ltr"><tr id="1505549d-3528-82aa-b95f-01b696a99eda"><td id="]FZr" class="" style="width:136.41192626953125px">가드레일<br/>(Guardrails)</td><td id="OxFl" class="" style="width:711.9583740234375px">- Bedrock이 생성하는 콘텐츠 통제. 규정 위반 여부에 대한 사용자 입력 모니터링. 책임감 있는 AI(Responsible AI)를 보장<br/>- 주요 정책 유형<br/> - 콘텐츠 필터(Content Filters): 혐오 발언, 모욕, 성적 콘텐츠, 폭력 등 <mark class="highlight-red"><strong>유해 카테고리별 필터링</strong></mark> 강도를 설정<br/> - 거부 주제(Denied Topics): 관리자가 정의한 <mark class="highlight-red"><strong>특정 주제 영역의 논의를 차단</strong></mark><mark class="highlight-red"> </mark>(예: 투자/법률 조언, 의료/ 진단, 정치)<br/> - 프롬프트 공격(Prompt Attacks): <mark class="highlight-red"><strong>프롬프트 인젝션 및 탈옥(Jailbreak) 시도를 탐지</strong></mark>하고 차단. AI의 내장 안전 기능을 우회하려는 시도를 방지<br/> - 민감 정보 필터(Sensitive Information Filters): 입출력에서 <mark class="highlight-red"><strong>PII(개인 식별 정보) 또는 민감 데이터를 탐지하고 마스킹/삭제</strong></mark><br/> - 문맥 기반 근거 확인(Contextual Grounding Check): 모델 응답이 <mark class="highlight-red"><strong>제공된 소스 자료에 근거하는지 검증</strong></mark>. 환각(Hallucination) 방지에 활용<br/> - 단어 필터(Word filters): 공격적인 용어를 감지하고 차단 (예: 경쟁사 언급 금지)</td></tr></div><div style="display:contents" dir="ltr"><tr id="e785549d-3528-839a-8ec1-014ca3010886"><td id="]FZr" class="" style="width:136.41192626953125px">모델 평가<br/>(Model Evaluation)</td><td id="OxFl" class="" style="width:711.9583740234375px">- 사용 사례에 가장 적합한 기초 모델을 평가, 비교, 선택할 수 있게 해주는 기능<br/>- 인적 기반(human-based) 모델 평가 작업 지원 (예: 전문가 팀이 모델 출력을 직접 평가하고 비교)</td></tr></div><div style="display:contents" dir="ltr"><tr id="bcd5549d-3528-8216-8e20-8161b77fa701"><td id="]FZr" class="" style="width:136.41192626953125px">호출 로깅<br/>(Invocation Logging)</td><td id="OxFl" class="" style="width:711.9583740234375px">- 활성화할 경우, 모델 호출 로그를 저장<br/>- 모델 입력 및 출력 데이터를 모니터링 가능</td></tr></div><div style="display:contents" dir="ltr"><tr id="67f5549d-3528-8201-ac4a-81ed1cae7b9b"><td id="]FZr" class="" style="width:136.41192626953125px">배치 추론<br/>(Batch<br/>Inference)</td><td id="OxFl" class="" style="width:711.9583740234375px">- 대량의 프롬프트를 <mark class="highlight-red"><strong>비동기적(asynchronously)</strong></mark>으로 처리하는 기능<br/>- 즉각적인 응답이 필요하지 않은 대규모 워크로드에 적합<br/>  - 예. 주간 보고서, 수천 개의 제품 설명 생성, 합성 데이터 응답 대량 생성<br/>- 실시간 추론 대비 토큰 요금 50% 할인</td></tr></div></tbody></table></div></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">AWS의 기타 생성형 AI 관련 서비스</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="1025549d-3528-834e-8a95-81071e9e32cd" class="toggle"><li><details open=""><summary>Amazon Partyrock</summary><div style="display:contents" dir="auto"><ul id="e9b5549d-3528-8274-b15a-81936c0cef65" class="bulleted-list"><li style="list-style-type:disc"><a href="https://partyrock.aws/">https://partyrock.aws/</a></li></ul></div><div style="display:contents" dir="auto"><ul id="db75549d-3528-82df-b240-01d7bd1cc9f3" class="bulleted-list"><li style="list-style-type:disc">Amazon Bedrock 기반 <mark class="highlight-red"><strong>무료</strong></mark> AI 앱 놀이터</li></ul></div><div style="display:contents" dir="auto"><ul id="3aa5549d-3528-825b-8585-81f5b2c60754" class="bulleted-list"><li style="list-style-type:disc">코딩 없이 생성형 AI 앱을 빌드하고 테스트 가능</li></ul></div><div style="display:contents" dir="auto"><ul id="2235549d-3528-82e5-8fd0-016060c18e6b" class="bulleted-list"><li style="list-style-type:disc">학습/프로토타이핑에 가장 비용 효율적</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="f455549d-3528-8231-bfea-8162bfd6187c" class="toggle"><li><details open=""><summary>Amazon OpenSearch Service: <mark class="highlight-red"><strong>벡터 데이터베이스</strong></mark> </summary><div style="display:contents" dir="auto"><ul id="1135549d-3528-828a-b63a-01372ee34100" class="bulleted-list"><li style="list-style-type:disc">대규모 데이터셋에서 벡터 기반 유사도 검색과 분석을 제공하는 완전 관리형 서비스</li></ul></div><div style="display:contents" dir="auto"><ul id="e555549d-3528-8305-8bed-814edba3211b" class="bulleted-list"><li style="list-style-type:disc">K-NN(최근접 이웃) 알고리즘을 통한 실시간 유사도 검색</li></ul></div><div style="display:contents" dir="auto"><ul id="bc25549d-3528-8218-ad2f-8193e81f40a1" class="bulleted-list"><li style="list-style-type:disc">자동화된 클러스터 확장과 인덱스 관리</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="0785549d-3528-8284-952d-01c8cef5154f" class="toggle"><li><details open=""><summary>Amazon Q: 생성형 AI 기반의 업무용 어시스턴트</summary><div style="display:contents" dir="auto"><ul id="2495549d-3528-83ac-9934-01016bf1383f" class="bulleted-list"><li style="list-style-type:disc">접근 제어(access control): 기존 시스템의 접근 제어를 재활용 → 별도의 권한 설정 없이 기존 보안 체계 유지</li></ul></div><div style="display:contents" dir="auto"><ul id="3e15549d-3528-822a-b28a-012364f6b399" class="bulleted-list"><li style="list-style-type:disc">가드레일(guardrails): 특정 내용을 차단하거나 필터링 → 기업의 정책과 규정 준수 </li></ul></div><div style="display:contents" dir="auto"><ul id="c5a5549d-3528-82b7-a422-0138462c4420" class="bulleted-list"><li style="list-style-type:disc">내부적으로 Amazon Bedrock이 제공하는 다양한 기초 모델(FMs)을 사용<div style="display:contents" dir="auto"><ul id="6155549d-3528-831a-88ec-01fa0c72f570" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red"><strong>사용자가 LLM을 직접 선택할 수는 없음</strong></mark></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="0b05549d-3528-82a2-a745-012eada31891" class="bulleted-list"><li style="list-style-type:disc">종류<div style="display:contents" dir="ltr"><table id="9545549d-3528-82e3-9ec3-018a55bb3a3d" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="da55549d-3528-8313-9abd-01d3ece6b93e"><td id="VPde" class="" style="width:108.20625305175781px">Amazon Q <br/>Business</td><td id="rfXG" class="" style="width:683.998291015625px">1. 기업 내부 데이터(문서, 위키, 이메일 등)를 연결하여 질의응답이 가능한(인덱싱) <mark class="highlight-red"><strong>생성형 AI 어시스턴트</strong></mark> 서비스<br/>2. 40개 이상의 내장 커넥터를 통해 기업의 다양한 시스템과 연동 <br/> - Amazon S3, Salesforce, Google Drive, Microsoft 365와 같은 기업용 스토리지 시스템<br/> - ServiceNow, Gmail, Slack, Atlassian, Zendesk와 같은 협업 및 고객 서비스 도구<br/>3. 애플리케이션 <mark class="highlight-red"><strong>가드레일</strong></mark>: 관리자가 주제 수준 제어를 정의하여 AI 어시스턴트가 <mark class="highlight-red"><strong>회사 승인 주제에만 응답</strong></mark>하도록 제한 가능</td></tr></div><div style="display:contents" dir="ltr"><tr id="6e45549d-3528-830c-966c-81c03944fcad"><td id="VPde" class="" style="width:108.20625305175781px">Amazon Q <br/>Developer</td><td id="rfXG" class="" style="width:683.998291015625px">1. AWS 솔루션 개발과 운영을 지원하는 생성형 AI 기반 대화형 어시스턴스<br/>  - 특정 AWS 서비스를 사용한 경험이 거의 없어도 대화를 통해 문제 해결 <br/>2. 코드/테스트케이스 생성 및 검토, 소프트웨어 스니펫 생성, 참조 추적, 문서화, 오픈 소스 라이선스 추적</td></tr></div><div style="display:contents" dir="ltr"><tr id="8dc5549d-3528-83cc-a318-019532383b80"><td id="VPde" class="" style="width:108.20625305175781px">Amazon Q in <br/>QuickSight</td><td id="rfXG" class="" style="width:683.998291015625px">1. BI 및 리포팅 도구 (<mark class="highlight-red"><strong>데이터 시각화</strong></mark>)<br/>2. 자연어로 데이터 소스를 쿼리하고 차트나 도표를 생성하는 기능에 특화</td></tr></div></tbody></table></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="3955549d-3528-834f-902d-01a2fb6eaf2f" class="toggle"><li><details open=""><summary>Generative AI Security Scoping Matrix(생성형 AI 보안 범위 정의 매트릭스)</summary><div style="display:contents" dir="auto"><ul id="70b5549d-3528-8331-aa69-0111e2e5f1f1" class="bulleted-list"><li style="list-style-type:disc">생성형 AI 사용 사례를 분류하고, AI 솔루션에 필요한 소유권 수준을 평가하거나 보안 문제의 우선순위를 정하기 위한 프레임워크<div style="display:contents" dir="auto"><ul id="6485549d-3528-8212-8dc3-818c16540f57" class="bulleted-list"><li style="list-style-type:circle">마치 자동차의 안전 등급을 매기는 것과 비슷. 일반 승용차, 어린이 통학버스, 현금 수송차는 각각 다른 수준의 안전 장치가 필요한 것처럼, AI 시스템도 용도에 따라 적절한 보안 수준이 필요</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="b815549d-3528-8347-99c0-0193a6cabf5b" class="bulleted-list"><li style="list-style-type:disc">기업이 생성형 AI를 도입할 때 &quot;어떤 수준의 보안이 필요한지&quot;, &quot;어떤 위험이 있는지&quot;, &quot;어떤 보호 조치를 먼저 해야 하는지&quot;를 체계적으로 판단 가능</li></ul></div><div style="display:contents" dir="auto"><ul id="7295549d-3528-8273-bd35-01376d198b40" class="bulleted-list"><li style="list-style-type:disc">보안 책임(the ownership of security responsibilities)의 크기 비교 <div style="display:contents" dir="ltr"><table id="62a5549d-3528-8383-910b-8140ce818151" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="ac35549d-3528-83ac-a51e-8117b465d278"><td id="w;QZ" class="" style="width:480px">접근 방식</td><td id=":bcX" class="" style="width:396px">설명</td></tr></div><div style="display:contents" dir="ltr"><tr id="1b95549d-3528-82cb-96ee-01f7c29596ff"><td id="w;QZ" class="" style="width:480px">생성형 AI 기능이 내장된 서드파티 기업용 애플리케이션 사용</td><td id=":bcX" class="" style="width:396px">가장 기본적인 접근 방식(가장 낮은 책임)<br/>이미 만들어진 AI 기능이 포함된 소프트웨어를 그대로 사용하는 것</td></tr></div><div style="display:contents" dir="ltr"><tr id="4c05549d-3528-83da-bccd-81c2a8e25319"><td id="w;QZ" class="" style="width:480px">기존 서드파티 생성형 AI 기초 모델(FM)을 활용한 애플리케이션 구축</td><td id=":bcX" class="" style="width:396px">한 단계 더 깊이 들어가는 방식<br/>기존의 AI 모델을 기반으로 자신만의 애플리케이션을 만드는 것(예. GPT 모델을 활용해 고객 서비스 챗봇을 구현)</td></tr></div><div style="display:contents" dir="ltr"><tr id="0635549d-3528-837b-9391-017ccba0d3c8"><td id="w;QZ" class="" style="width:480px">기업 특화 데이터를 사용하여 기존 서드파티 생성형 AI 기초 모델(FM)을 미세 조정</td><td id=":bcX" class="" style="width:396px">기존 AI 모델을 자신의 필요에 맞게 추가 학습시키는 방식<br/>(예. 법률 회사가 기존 언어 모델을 법률 문서로 추가 학습시켜 법률 전문 AI로 만드는 경우)</td></tr></div><div style="display:contents" dir="ltr"><tr id="ed75549d-3528-83df-9d74-817f40d2ae6b"><td id="w;QZ" class="" style="width:480px">고객이 보유한 특정 데이터를 사용하여 처음부터 생성형 AI 모델을 구축하고 훈련</td><td id=":bcX" class="" style="width:396px">가장 깊은 수준의 접근 방식(가장 높은 책임)<br/>AI 모델을 완전히 처음부터 만드는 것</td></tr></div></tbody></table></div></li></ul></div></details></li></ul></div></div></details></div><div style="display:contents" dir="auto"><p id="af55549d-3528-820b-88e9-81954b3a13b0" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

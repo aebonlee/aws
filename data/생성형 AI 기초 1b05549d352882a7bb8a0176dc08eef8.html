@@ -1,0 +1,744 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>생성형 AI 기초</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1b05549d-3528-82a7-bb8a-0176dc08eef8" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">4️⃣</span></div><h1 class="page-title" dir="auto">생성형 AI 기초</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-relation"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-northeast_gray.svg" style="width:14px;height:14px;display:block"/></span>계산용 관계용 속성</th><td><a href="AI%EC%99%80%20ML%EC%9D%98%20%EA%B8%B0%EC%B4%88%20c225549d35288266a8508112fbda64bb.html"><span class="icon">1️⃣</span>AI와 ML의 기초</a>, <a href="%EC%83%9D%EC%84%B1%ED%98%95%20AI%20%EA%B8%B0%EC%B4%88%201b05549d352882a7bb8a0176dc08eef8.html"><span class="icon">4️⃣</span>생성형 AI 기초</a>, <a href="Responsible%20AI,%20AI%EB%A5%BC%20%EC%B1%85%EC%9E%84%EA%B0%90%EC%9E%88%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B0%A9%EC%8B%9D%206a55549d352882568ac581afc55e9ed2.html"><span class="icon">7️⃣</span>Responsible AI, AI를 책임감있게 만드는 방식</a>, <a href="AI%20%EC%86%94%EB%A3%A8%EC%85%98%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%B3%B4%EC%95%88,%20%EA%B7%9C%EC%A0%95%20%EC%A4%80%EC%88%98,%20%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%208f85549d35288228915301798c5ba83f.html"><span class="icon">8️⃣</span>AI 솔루션을 위한 보안, 규정 준수, 거버넌스</a>, <a href="Amazon%20SageMaker%20a015549d352882439f6701b2f401abad.html"><span class="icon">3️⃣</span>Amazon SageMaker</a>, , , <a href="ML%20%EA%B0%9C%EB%B0%9C%206d35549d352882fe820781a0c08421e1.html"><span class="icon">2️⃣</span>ML 개발</a></td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>문제수</th><td>66</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>분류</th><td><span class="selected-value select-value-color-pink">콘텐츠</span></td></tr><tr class="property-row property-row-formula"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/formula_gray.svg" style="width:14px;height:14px;display:block"/></span>비중</th><td>22.7%</td></tr><tr class="property-row property-row-rollup"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/search_gray.svg" style="width:14px;height:14px;display:block"/></span>합계</th><td>291</td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7675549d-3528-828f-ba47-8197d966ddd0"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="7685549d-3528-8357-bec5-01d4b16ab81e" class="">여러분은 ChatGPT나 Claude 같은 AI와 대화해 본 적이 있으신가요?</p></div><div style="display:contents" dir="auto"><p id="bb55549d-3528-82ee-a01f-819505ec5fa3" class="">질문을 하면 마치 사람처럼 대답하고, 글을 써달라고 하면 뚝딱 만들어주고, 심지어 그림까지 그려주죠. 이렇게 <strong>새로운 콘텐츠를 스스로 만들어내는 AI</strong>를 생성형 AI(Generative AI)라고 합니다. 기존 AI가 &quot;이 사진은 고양이다&quot;처럼 분류하는 데 그쳤다면, 생성형 AI는 &quot;고양이 그림을 그려줘&quot;라는 요청에 직접 그림을 그려줄 수 있습니다. 지금부터 이 놀라운 기술의 기초를 함께 알아보겠습니다.</p></div></div></figure></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">생성형 AI의 분류</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="8cc5549d-3528-826b-b6ad-01eb3cab2b05" class="bulleted-list"><li style="list-style-type:disc">생성형 AI(Generative AI, Gen AI)는 새로운 콘텐츠를 만들어낼 수 있는 모든 AI 시스템을 말합니다. 합성 데이터(synthetic data, 새롭게 만들어 낸 데이터)를 생성하는 데에도 활용합니다. 이는 다음과 같이 분류됩니다.<div style="display:contents" dir="auto"><ul id="f775549d-3528-833e-8c07-81afb3add91d" class="toggle"><li><details open=""><summary>1. 기초 모델(Foundation Model, FM)</summary><div style="display:contents" dir="auto"><ul id="aac5549d-3528-8226-b027-010eb9e4d5bb" class="bulleted-list"><li style="list-style-type:disc">대규모 데이터(예. GPT-4의 경우 250p 책 약 20억권을 학습)로 사전 학습되어, 다양한 하위 작업(downstream task)에 응용될 수 있는 범용적인 AI 모델</li></ul></div><div style="display:contents" dir="auto"><ul id="4fb5549d-3528-8230-baed-017ea37f153c" class="bulleted-list"><li style="list-style-type:disc">주요 특징<div style="display:contents" dir="auto"><ul id="b3b5549d-3528-8280-9735-0195f823e0b6" class="bulleted-list"><li style="list-style-type:circle">높은 적응성(High Adaptability) 및 범용성: 하나의 모델이 별도의 대규모 재학습 없이 요약, 번역, 창작 등 다양한 작업에 쉽게 적응</li></ul></div><div style="display:contents" dir="auto"><ul id="d545549d-3528-8375-8f78-013327ae0571" class="bulleted-list"><li style="list-style-type:circle">전이 학습(Transfer Learning): 특정 영역에서 학습한 지식을 새로운 작업이나 데이터에 효과적으로 전이하여 활용</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2e15549d-3528-8341-af9b-013a4d6ac511" class="bulleted-list"><li style="list-style-type:disc">기초 모델을 ‘기초(Foundation)’ 모델이라고 부르는 이유<div style="display:contents" dir="auto"><ul id="9f75549d-3528-8313-8318-815dd491130a" class="bulleted-list"><li style="list-style-type:circle">전통적인 AI: 하나의 특정 작업(예: 번역)만 수행하도록 개발</li></ul></div><div style="display:contents" dir="auto"><ul id="c035549d-3528-824d-9c92-81eb5970b031" class="bulleted-list"><li style="list-style-type:circle">기초 모델: 별도의 재학습 없이 프롬프트 변경이나 약간의 파인튜닝만으로 요약, 창작, 질의응답 등 <mark class="highlight-red"><strong>다양한 작업에 쉽게 적응. 다양한 AI 모델과 애플리케이션을 구축하는 데 &#x27;기초(Foundation)&#x27;</strong></mark>가 됨<div style="display:contents" dir="auto"><ul id="6295549d-3528-82b5-a2d2-8105f5cd4e6c" class="bulleted-list"><li style="list-style-type:square">텍스트 완성(Text completion) 모델, 지시 따르기(Instruction following) 모델, 텍스트 임베딩(Text embeddings) 모델, 이미지 생성(Image generation) 모델 등</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="88d5549d-3528-8274-9ce5-816d618ded1d" class="bulleted-list"><li style="list-style-type:disc">자기 지도 학습(Self-supervised learning)과 <mark class="highlight-red"><strong>대규모</strong></mark> <mark class="highlight-red"><strong>사전 학습</strong></mark>(Pre-trained)을 결합<div style="display:contents" dir="auto"><ul id="c885549d-3528-82eb-9355-01a2ceec4cb1" class="bulleted-list"><li style="list-style-type:circle">레이블이 지정되지 않은 방대한 데이터로부터 스스로 학습하여, 언어와 이미지에 대한 근본적인 이해와 패턴을 내재화. 지도 학습과 비지도 학습의 중간 형태</li></ul></div><div style="display:contents" dir="auto"><ul id="4605549d-3528-820e-b8bf-012659af7909" class="bulleted-list"><li style="list-style-type:circle">마치 백과사전처럼 엄청난 양의 정보를 가지고 있는 AI(예. GPT, BERT)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="c2a5549d-3528-83e4-a879-8166d003d126" class="bulleted-list"><li style="list-style-type:disc">대표적인 예시<div style="display:contents" dir="auto"><ul id="b2d5549d-3528-826f-a5cf-81978153438b" class="toggle"><li><details open=""><summary>LLM(거대 언어 모델, Large Language Model): 텍스트 특화 모델</summary><div style="display:contents" dir="auto"><ul id="bb25549d-3528-8270-8b7f-81c09c34a4f0" class="bulleted-list"><li style="list-style-type:disc">주로 트랜스포머 구조 사용(Generative pre-trained transformers, GPT, <strong>OpenAI 제품 모델 지칭 아님</strong>)<div style="display:contents" dir="auto"><ul id="f445549d-3528-82d7-87b6-01560ade803d" class="bulleted-list"><li style="list-style-type:circle">핵심 원리: <mark class="highlight-red"><strong>셀프 어텐션(self-attention)</strong></mark> 메커니즘<div style="display:contents" dir="auto"><ul id="7765549d-3528-8233-9882-0183e76bead1" class="bulleted-list"><li style="list-style-type:square">문장 내 모든 단어의 관계를 동시에 계산하여(병렬 처리), 어떤 단어가 서로에게 중요한 영향을 미치는지 파악</li></ul></div><div style="display:contents" dir="auto"><ul id="8f05549d-3528-827d-9dfb-01b732cc1210" class="bulleted-list"><li style="list-style-type:square">문장 전체의 <mark class="highlight-red"><strong>맥락적 관계(contextual relationships)</strong></mark>를 효과적으로 학습</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="da25549d-3528-825d-ae8d-01819ebb6d26" class="bulleted-list"><li style="list-style-type:circle">예. 자연어 처리(NLP, 감정분석, 번역, 챗봇 등), 자연어 입력을 SQL 쿼리로 <mark class="highlight-red"><strong>변환</strong></mark>하여 데이터베이스 분석 지원 </li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="7705549d-3528-83fd-a2cb-810748607e45" class="bulleted-list"><li style="list-style-type:disc">양방향(Bidirectional) 문맥 이해를 위한 트랜스포머 기반 모델도 존재(<mark class="highlight-red"><strong>Bidirectional</strong></mark> Encoder Representations from <mark class="highlight-red"><strong>Transformers</strong></mark>, BERT)<div style="display:contents" dir="auto"><ul id="ccb5549d-3528-8266-9644-810ef50f6bf0" class="bulleted-list"><li style="list-style-type:circle">예. 문서에서 누락된 단어를 채움. 누락된 단어의 앞뒤를 파악해 문맥을 이해하여 단어 유추</li></ul></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="d435549d-3528-82db-b4e2-812e4a83d09d" class="toggle"><li><details open=""><summary>확산 모델(Diffussion Model): 이미지 생성에 특화</summary><div style="display:contents" dir="auto"><ul id="fcf5549d-3528-8335-80e4-01710e5a12f2" class="bulleted-list"><li style="list-style-type:disc">순수 노이즈/무작위 데이터에서 시작해 의미 있는 정보를 점진적으로 추가</li></ul></div><div style="display:contents" dir="auto"><ul id="8d65549d-3528-8393-b6ba-01e64dc0e3a7" class="bulleted-list"><li style="list-style-type:disc">StableDiffusion이 대표적</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="c5a5549d-3528-82a3-9abe-81458ef27186" class="bulleted-list"><li style="list-style-type:circle">멀티 모달(Multi Modal): 다중 양식(텍스트, 이미지 등) 처리<div style="display:contents" dir="auto"><ul id="b535549d-3528-83cb-ad11-81fd193f9b18" class="bulleted-list"><li style="list-style-type:square">Modal: 모델이 처리/생성하는 데이터 유형(텍스트, 이미지, 오디오 등)</li></ul></div></li></ul></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="4dc5549d-3528-8222-a8aa-813c15020df4" class="toggle"><li><details open=""><summary>2. 기타 생성 모델 (전통적인 생성 모델 방식)</summary><div style="display:contents" dir="auto"><ul id="b945549d-3528-837b-a787-0100ff69230c" class="bulleted-list"><li style="list-style-type:disc">GAN(생성적 적대 신경망): 생성기와 판별기의 경쟁 학습. 생성기가 판별기를 속일 수 있는 데이터(주로 <mark class="highlight-red"><strong>이미지</strong></mark>) 생성 시도</li></ul></div><div style="display:contents" dir="auto"><ul id="f275549d-3528-828b-b7fd-810572042506" class="bulleted-list"><li style="list-style-type:disc">VAE(변분 오토인코더): 데이터의 잠재 공간을 활용. <mark class="highlight-red"><strong>이미지 </strong></mark>생성/압축용</li></ul></div></details></li></ul></div></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">생성형 AI의 주요 개념</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="2285549d-3528-8245-bf2a-813383f294d6" class="bulleted-list"><li style="list-style-type:disc">생성형 AI 안에 기초 모델(FM)이 있고, 기초 모델 안에 LLM이 있음</li></ul></div><div style="display:contents" dir="auto"><ul id="02e5549d-3528-83e8-ad49-01266ee14311" class="toggle"><li><details open=""><summary>LLM의 주요 용어</summary><div style="display:contents" dir="ltr"><table id="d145549d-3528-83b2-8e67-81d221ff56ab" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="97c5549d-3528-82bf-b0a3-010d5c924749"><td id="RaOU" class="">용어</td><td id="Dar_" class="" style="width:696.0625px">설명</td></tr></div><div style="display:contents" dir="ltr"><tr id="f8c5549d-3528-823c-9d2d-81b11c48c3ed"><td id="RaOU" class="">Token</td><td id="Dar_" class="" style="width:696.0625px">1. LLM이 텍스트를 처리하는 기본 단위<br/>2. 단어, 부분 단어, 문자 등이 될 수 있음<br/> - 예. &quot;안녕하세요&quot;라는 단어는 &quot;안녕&quot;, &quot;하세&quot;, &quot;요&quot;로 분리될 수 있음<br/>3. 과금(pricing)의 단위로도 사용<br/> - 모델 사용 비용은 입력 토큰과 출력 토큰 수에 기반하여 계산됨<br/> - LLM 사용 비용을 줄이고 싶은 경우, 제일 먼저 토큰의 수를 줄이는 것을 먼저 고려<br/> - 모델마다 토큰당 비용이 다름(예: Claude 3 Haiku는 입력 토큰 $0.25/백만 토큰, 출력 토큰 $1.25/백만 토큰)<br/> - 긴 프롬프트나 대화 기록은 토큰 사용량을 증가시켜 비용이 증가할 수 있음<br/> - 토큰 한도를 초과하면 일부 텍스트가 무시되거나 오류가 발생할 수 있음</td></tr></div><div style="display:contents" dir="ltr"><tr id="b9a5549d-3528-82e8-af63-815399953e8a"><td id="RaOU" class="">Context Window</td><td id="Dar_" class="" style="width:696.0625px">1. LLM이 한 번에 처리할 수 있는 최대 텍스트 길이(토큰 한도)<br/> - 단일 프롬프트에 담을 수 있는 정보량<br/> - 입력 토큰이 모델의 컨텍스트 크기를 초과하면<br/>  - 초과된 입력이 잘리거나  <br/>  - 오류가 발생해 모델이 아예 응답을 생성하지 못함</td></tr></div><div style="display:contents" dir="ltr"><tr id="e515549d-3528-82e2-93b1-01c456187220"><td id="RaOU" class="">SLM<br/>(Small Language Model)</td><td id="Dar_" class="" style="width:696.0625px">1. 파라미터 수가 적고, 학습 데이터셋이 작거나 모델의 구조가 단순한 모델<br/> - 크기가 작아 큰 모델(GPT, Claude 등)에 비해 언어 이해나 생성 능력이 떨어짐<br/> - 단순한 자연어 처리나 제한된 도메인에서 주로 사용<br/>2. 그대신 제한된 컴퓨팅 자원(스마트폰, PC, 엣지 디바이스)에서도 운영될 수 있고, 빠른 학습과 추론 속도를 제공<br/>3. 더 세분화해서 SLM 외에도 sLLM(smaller Large Language Model)으로 용어를 구분해서 쓰기도 하지만 자격증 수준에서는 구분하지 않아도 됨</td></tr></div><div style="display:contents" dir="ltr"><tr id="2ab5549d-3528-839c-9a45-012413b26ddf"><td id="RaOU" class="">Hallucination<br/>(환각)</td><td id="Dar_" class="" style="width:696.0625px">1. LLM이 그럴듯하고 사실처럼 들리지만 실제로는 잘못된 내용을 생성하는 현상 <br/> - 예1. 거짓된 역사적 사실을 진실처럼 서술 (세종대왕 맥북 프로 던짐 사건)<br/> - 예2. 마케팅 캠페인에서 존재하지 않는 제품 특징을 설명<br/> - 예3. 실제하지 않는 연구나 통계를 인용</td></tr></div><div style="display:contents" dir="ltr"><tr id="e0d5549d-3528-8395-92c5-01b47f09df3b"><td id="RaOU" class="">Inference latency<br/>(추론 지연시간)</td><td id="Dar_" class="" style="width:696.0625px">1. 파운데이션 모델(FM)이 입력 요청을 처리하고 출력을 반환하는 데 걸리는 시간(속도)<br/>- 모델이 프롬프트를 받고 응답을 생성하기까지의 지연 시간<br/>2. 모델 선택 시 중요한 고려 요소<br/>- 실시간 챗봇: 낮은 지연 시간 필요<br/>- 배치 분석: 지연 시간보다 처리량(throughput)이 중요<br/>3. 혼동하기 쉬운 개념 비교<br/>- 모델 크기(Model size): 모델의 매개변수 수 → 지연 시간에 영향을 줄 수 있지만 속도 자체를 의미하지 않음<br/>- 컨텍스트 윈도우(Context window): 한 번에 수용 가능한 최대 입력 토큰 수 → 처리 용량이지 속도가 아님<br/>- 파인 튜닝(Fine-tuning): 모델을 특정 작업에 맞게 조정하는 프로세스 → 학습 과정이지 속도가 아님</td></tr></div><div style="display:contents" dir="ltr"><tr id="90c5549d-3528-82ca-95c6-81dca2d70206"><td id="RaOU" class="">Embeddings</td><td id="Dar_" class="" style="width:696.0625px">1. 텍스트, 이미지 등의 데이터를 수치적 표현(예. 벡터)으로 변환<br/> - 수치적 표현은 AI가 자연어를 이해하기 위한 수단<br/> - 고차원 데이터(텍스트, 이미지)가 저차원 밀집 데이터로 재표현<br/> - 이미지 내용을 분석하고 메타 데이터를 생성하는 데에도 사용<br/>2. 임베딩된 데이터는 축소된 차원 공간의 수치로 표현됨<br/>  - <mark class="highlight-red"><strong>의미적 관계를 포착</strong></mark>: 의미적으로 유사한 데이터들은 비슷한 수치(예. 벡터 공간의 좌표)로 변환<br/>  - 데이터(텍스트, 이미지)를 수학적으로 비교할 수 있는 능력을 제공<br/>  - 이 좌표를 통해 벡터 검색이 가능해 짐</td></tr></div></tbody></table></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="2755549d-3528-8213-8caa-81e6cc50f010" class="toggle"><li><details open=""><summary>FM의 학습 단계</summary><div style="display:contents" dir="auto"><ul id="6e15549d-3528-8290-acc9-015f1abdffa4" class="bulleted-list"><li style="list-style-type:disc">파운데이션 모델은 크게 두 단계를 거쳐 완성됨</li></ul></div><div style="display:contents" dir="auto"><ul id="fa15549d-3528-8363-82a7-0116bd37d1e2" class="bulleted-list"><li style="list-style-type:disc">1단계: 사전 훈련(Pre-training)<div style="display:contents" dir="auto"><ul id="8125549d-3528-8211-a5fe-810fbf3a2042" class="bulleted-list"><li style="list-style-type:circle">모델 가중치를 <strong>무작위로 초기화(random initialization)</strong>한 상태에서 시작</li></ul></div><div style="display:contents" dir="auto"><ul id="9e85549d-3528-827c-be72-81d35bc04da9" class="bulleted-list"><li style="list-style-type:circle">대규모 웹 데이터 등 방대한 비지도(unlabeled) 데이터 코퍼스를 사용</li></ul></div><div style="display:contents" dir="auto"><ul id="70d5549d-3528-824f-93fe-81e60601f953" class="bulleted-list"><li style="list-style-type:circle"><strong>언어 모델링 목적 함수(language modeling objective)</strong>를 통해 &quot;다음 단어 예측&quot; 등의 패턴을 학습</li></ul></div><div style="display:contents" dir="auto"><ul id="2955549d-3528-820c-bc33-813bb7354ffd" class="bulleted-list"><li style="list-style-type:circle">이 단계의 결과로 범용적인 언어 이해 능력을 갖춘 기초 모델이 생성됨</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3875549d-3528-830e-940b-81842c4a8be9" class="bulleted-list"><li style="list-style-type:disc">2단계: 파인 튜닝(Fine-tuning)<div style="display:contents" dir="auto"><ul id="5525549d-3528-82c4-b404-818b3564c848" class="bulleted-list"><li style="list-style-type:circle"><strong>이미 사전 훈련된 모델</strong>에서 시작 (가중치를 무작위로 초기화하지 않음)</li></ul></div><div style="display:contents" dir="auto"><ul id="ae15549d-3528-83e3-a081-814ad8d971cc" class="bulleted-list"><li style="list-style-type:circle">레이블이 지정된 소규모 데이터셋으로 특정 작업에 맞게 모델을 조정</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="14b5549d-3528-827e-aea7-011dccccad83" class="bulleted-list"><li style="list-style-type:disc">구분 포인트<div style="display:contents" dir="ltr"><table id="0e55549d-3528-838d-b269-01f5244c86a5" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="08d5549d-3528-82f5-b585-817ea57289ed"><th id="UGJl" class="simple-table-header-color simple-table-header" style="width:102.99999237060547px">구분</th><th id="K{&gt;|" class="simple-table-header-color simple-table-header">Pre-training</th><th id=";iJV" class="simple-table-header-color simple-table-header">Fine-tuning</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="d365549d-3528-83d2-9810-81f26cb80ade"><td id="UGJl" class="" style="width:102.99999237060547px">시작점</td><td id="K{&gt;|" class="">무작위 가중치</td><td id=";iJV" class="">사전 훈련된 가중치</td></tr></div><div style="display:contents" dir="ltr"><tr id="4285549d-3528-83a4-88cf-015c4aac365f"><td id="UGJl" class="" style="width:102.99999237060547px">데이터</td><td id="K{&gt;|" class="">대규모, 레이블 없음</td><td id=";iJV" class="">소규모, 레이블 있음</td></tr></div><div style="display:contents" dir="ltr"><tr id="6a55549d-3528-8391-9645-8141deca952c"><td id="UGJl" class="" style="width:102.99999237060547px">목적</td><td id="K{&gt;|" class="">범용 언어 이해</td><td id=";iJV" class="">특정 작업 최적화</td></tr></div><div style="display:contents" dir="ltr"><tr id="1215549d-3528-8303-9e05-0136192b4529"><td id="UGJl" class="" style="width:102.99999237060547px">비용</td><td id="K{&gt;|" class="">매우 높음</td><td id=";iJV" class="">상대적으로 낮음</td></tr></div></tbody></table></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="a175549d-3528-82ba-a61a-814e1e751966" class="toggle"><li><details open=""><summary>FM의 주요 파라미터</summary><div style="display:contents" dir="auto"><ul id="0685549d-3528-8357-a03d-01835f71c41b" class="bulleted-list"><li style="list-style-type:disc">생성형 AI 안에 기초 모델(FM)이 있고, 기초 모델 안에 LLM과 Diffusion Model이 있음</li></ul></div><div style="display:contents" dir="auto"><ul id="b6a5549d-3528-836d-9ef2-0186277fdcba" class="toggle"><li><details open=""><summary>Text Generation (LLM - GPT, BERT)</summary><div style="display:contents" dir="auto"><ul id="7ce5549d-3528-83ab-8bd9-81efdbd25183" class="bulleted-list"><li style="list-style-type:disc">모델의 응답은 비결정적(non-deterministic)</li></ul></div><div style="display:contents" dir="auto"><ul id="4195549d-3528-8245-99e9-01e0344df7aa" class="toggle"><li><details open=""><summary>온도(Temperature)</summary><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="99b5549d-3528-8336-90a5-81302cbf9b76"><div style="font-size:1.5em"><span class="icon">🗣️</span></div><div style="width:100%"><strong>Cool head and warm heart. - Alfred Marshall (1842~1924)</strong></div></figure></div><div style="display:contents" dir="auto"><ul id="1755549d-3528-82b6-a082-012c4effd0ef" class="bulleted-list"><li style="list-style-type:disc">응답의 창의성(creativity)과 다양성, 무작위성(randomness) 조절</li></ul></div><div style="display:contents" dir="auto"><ul id="aaa5549d-3528-820d-8df3-0132dfea8354" class="bulleted-list"><li style="list-style-type:disc">높을수록: 모델이 높은 확률의 단어뿐만 아니라 낮은 확률의 단어도 선택할 가능성이 커짐<div style="display:contents" dir="auto"><ul id="53d5549d-3528-8223-958e-81d4b0050fa4" class="bulleted-list"><li style="list-style-type:circle">창의적이지만 불안정하거나 무관한 응답. story telling, poetry에 적합</li></ul></div><div style="display:contents" dir="auto"><ul id="3555549d-3528-82d9-9b67-81b2ddd2227c" class="bulleted-list"><li style="list-style-type:circle">환각(근거 없는 정보)를 생성할 가능성이 증가</li></ul></div><div style="display:contents" dir="auto"><ul id="5e85549d-3528-8233-bf58-8133d4745838" class="bulleted-list"><li style="list-style-type:circle">하지만 너무 낮으면 단조롭고 반복적인 응답을 할 수도 있음</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3205549d-3528-82e0-9ca4-81c01caf0714" class="bulleted-list"><li style="list-style-type:disc">낮을수록: 모델이 가장 확률이 높은 단어를 우선적으로 선택하여 더 결정론적(deterministic)인 응답을 생성<div style="display:contents" dir="auto"><ul id="0e25549d-3528-8275-87d1-011c79fb8fe2" class="bulleted-list"><li style="list-style-type:circle">답변의 일관성이 높아지고, 논리적으로 안정적인 결과를 제공</li></ul></div><div style="display:contents" dir="auto"><ul id="acc5549d-3528-8345-a50b-8130b67e8aa2" class="bulleted-list"><li style="list-style-type:circle">사실 기반 질의응답(Q&amp;A), 기술적 설명, 법률, 의료, 데이터 분석 등 <strong>정확성이 중요한 작업에 적합</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="b5c5549d-3528-8375-8d60-819a007ea4ce" class="bulleted-list"><li style="list-style-type:circle">하지만 창의성이 제한될 수 있으며, 반복적이고 예상 가능한 응답을 할 가능성이 높음</li></ul></div></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1955549d-3528-83b5-8592-012ac76badd4" class="toggle"><li><details open=""><summary>Top P (Top K)</summary><div style="display:contents" dir="auto"><ul id="d6b5549d-3528-8219-834c-01d9aa862494" class="bulleted-list"><li style="list-style-type:disc">다음 토큰 선택시 고려(sampling)할 확률 범위</li></ul></div><div style="display:contents" dir="auto"><ul id="a1c5549d-3528-8397-9201-016ee359ef0d" class="bulleted-list"><li style="list-style-type:disc">예. Top P = 0.9는 상위 90% 확률의 토큰만 고려</li></ul></div><div style="display:contents" dir="auto"><ul id="31c5549d-3528-831f-a864-81e065ca86a4" class="toggle"><li><details open=""><summary>개발 프로세스를 통한 Top P 이해하기</summary><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9f65549d-3528-82cc-89e8-012244b8bf12"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="0265549d-3528-8286-a1b7-015904a73f3d" class="">Top P는 언어 모델이 다음에 올 단어나 구절을 선택할 때 얼마나 다양한 옵션을 고려할지 결정하는 핵심 파라미터입니다. 마치 작사가가 다음 가사를 쓸 때 여러 선택지 중에서 고르는 것과 비슷합니다.<br/></p></div><div style="display:contents" dir="auto"><p id="8605549d-3528-821b-a250-01146a0aac02" class=""><strong>가사 생성 시나리오</strong></p></div><div style="display:contents" dir="auto"><p id="0ae5549d-3528-82a3-94e8-014f0a671777" class="">다음과 같은 가사의 시작 부분이 있다고 해 봅시다. </p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a1f5549d-3528-825c-86ba-81c9174518c4" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&quot;머리부터 발끝까지&quot;</code></pre></div><div style="display:contents" dir="auto"><p id="e775549d-3528-829e-8b95-81dc4c871e88" class="">AI는 이어질 가사로 여러 선택지를 고려합니다.<div class="indented"><div style="display:contents" dir="auto"><ul id="bee5549d-3528-8200-beff-01ee8ae93b08" class="bulleted-list"><li style="list-style-type:disc">‘오로나민 C’ (확률 40%)</li></ul></div><div style="display:contents" dir="auto"><ul id="7e85549d-3528-835f-b35f-81950db3667f" class="bulleted-list"><li style="list-style-type:disc">‘핫 이슈’ (확률 30%)</li></ul></div><div style="display:contents" dir="auto"><ul id="ba55549d-3528-82d1-90ed-013fad0f47e1" class="bulleted-list"><li style="list-style-type:disc">‘사랑스러워’ (확률 20%)</li></ul></div><div style="display:contents" dir="auto"><ul id="d9d5549d-3528-82bc-9331-81fcc295ad10" class="bulleted-list"><li style="list-style-type:disc">‘밀리오레’ (확률 10%)</li></ul></div></div></p></div><div style="display:contents" dir="auto"><p id="ffa5549d-3528-83ce-9d26-81d45bf320e1" class=""><br/><strong>Top P 적용</strong></p></div><div style="display:contents" dir="auto"><p id="0525549d-3528-8323-8665-8144fb40a462" class="">Top P가 0.9로 설정된 경우 확률을 더했을 때 90%가 될 때까지의 선택지만 고려합니다. 즉, 40% + 30% + 20% = 90%이므로 처음 세 개의 옵션만 고려 대상이 됩니다. ‘밀리오레’는 제외됩니다.</p></div><div style="display:contents" dir="ltr"><table id="4665549d-3528-82ad-9402-81318acb7d51" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="c8b5549d-3528-823d-a4ec-8107a330b82b"><td id="QiGY" class="">Top P</td><td id="vGw\" class="">결과</td></tr></div><div style="display:contents" dir="ltr"><tr id="7535549d-3528-839a-8d12-818ae3bf1025"><td id="QiGY" class="">0.4</td><td id="vGw\" class="">‘오로나민 C’만 고려</td></tr></div><div style="display:contents" dir="ltr"><tr id="2c25549d-3528-83fb-b40e-01edbdc0532e"><td id="QiGY" class="">0.7</td><td id="vGw\" class="">‘오로나민 C’와 ‘핫 이슈’만 고려</td></tr></div><div style="display:contents" dir="ltr"><tr id="2b15549d-3528-82a1-b328-0195c3dcd5b0"><td id="QiGY" class="">0.9</td><td id="vGw\" class="">상위 3개 옵션 고려</td></tr></div><div style="display:contents" dir="ltr"><tr id="14c5549d-3528-8384-a74a-0126a47cbba0"><td id="QiGY" class="">1.0</td><td id="vGw\" class="">모든 옵션 고려</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="f295549d-3528-82d7-873e-01f675ecaa75" class="">Top P 값이 높을수록 더 창의적이고 다양한 응답을 생성할 수 있습니다. 하지만 너무 높으면 부적절하거나 맥락에 맞지 않는 응답이 생성될 수 있습니다.</p></div><div style="display:contents" dir="auto"><p id="f5b5549d-3528-82da-8adc-81bce0c47684" class="">이러한 Top P 설정은 챗봇 응답, 스토리 생성, 코드 자동 완성 등 다양한 분야에서 활용됩니다. 각 용도에 맞게 Top P 값을 조정하여 최적의 결과를 얻을 수 있습니다.</p></div></div></figure></div></details></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="5dd5549d-3528-82f3-80df-01abccc54442" class="toggle"><li><details open=""><summary>Temperature vs. Top P</summary><div style="display:contents" dir="auto"><ul id="8ef5549d-3528-825d-8bfb-0116c9a37f34" class="bulleted-list"><li style="list-style-type:disc">보통 temperature와 top p 중 하나만 조절 </li></ul></div><div style="display:contents" dir="auto"><ul id="5c25549d-3528-82c1-ab95-81202bf83be2" class="bulleted-list"><li style="list-style-type:disc">일관적이고 반복적인 결과를 원하는 경우<div style="display:contents" dir="auto"><ul id="2ef5549d-3528-83a7-b9a6-014d4de17697" class="bulleted-list"><li style="list-style-type:circle">temperature: 0.01 or 0.001</li></ul></div><div style="display:contents" dir="auto"><ul id="2bb5549d-3528-82b7-80c7-01785990b26b" class="bulleted-list"><li style="list-style-type:circle">top p: 0.01 or 0.001 </li></ul></div></li></ul></div></details></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="fe35549d-3528-83f8-9ffc-0135a444665c" class="toggle"><li><details open=""><summary>Image Generation (Diffusion Model)</summary><div style="display:contents" dir="auto"><ul id="3625549d-3528-8374-99ad-81079893d868" class="bulleted-list"><li style="list-style-type:disc">Classifier-Free Guidance(CFG, prompt strength): 텍스트-이미지 생성 모델에서 프롬프트와 생성된 이미지 간의 정렬도를 조절<div style="display:contents" dir="auto"><ul id="3585549d-3528-82aa-b979-817068085f3e" class="bulleted-list"><li style="list-style-type:circle">(예전 방식처럼) 이미지가 텍스트 프롬프트와 얼마나 잘 매칭되는지 판단하는 분류기(Classifier)에 의존하지 않는(free) 방식</li></ul></div><div style="display:contents" dir="auto"><ul id="06a5549d-3528-8388-a79e-011f1c5bb88f" class="bulleted-list"><li style="list-style-type:circle">스케일 값이 높을수록 프롬프트를 더 충실하게 따르는 이미지 생성</li></ul></div><div style="display:contents" dir="auto"><ul id="1865549d-3528-82b5-ba6d-013540935e17" class="bulleted-list"><li style="list-style-type:circle">스케일 값이 낮을수록 프롬프트와의 연관성은 낮아지고 더 자유롭고 창의적인 이미지 생성</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="9105549d-3528-8342-b559-81f3163bcdeb" class="bulleted-list"><li style="list-style-type:disc">Generation step(diffusion steps): 노이즈 제거 반복 횟수를 제어. 스텝이 많을수록 더 상세하고 정교한 이미지 생성</li></ul></div></details></li></ul></div></details></li></ul></div></div></details></div><div style="display:contents" dir="auto"><p id="9db5549d-3528-8216-a461-01c91ca3faa6" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,745 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>AI와 ML의 기초</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c225549d-3528-8266-a850-8112fbda64bb" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">1️⃣</span></div><h1 class="page-title" dir="auto">AI와 ML의 기초</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-relation"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-northeast_gray.svg" style="width:14px;height:14px;display:block"/></span>계산용 관계용 속성</th><td><a href="AI%EC%99%80%20ML%EC%9D%98%20%EA%B8%B0%EC%B4%88%20c225549d35288266a8508112fbda64bb.html"><span class="icon">1️⃣</span>AI와 ML의 기초</a>, <a href="%EC%83%9D%EC%84%B1%ED%98%95%20AI%20%EA%B8%B0%EC%B4%88%201b05549d352882a7bb8a0176dc08eef8.html"><span class="icon">4️⃣</span>생성형 AI 기초</a>, <a href="Responsible%20AI,%20AI%EB%A5%BC%20%EC%B1%85%EC%9E%84%EA%B0%90%EC%9E%88%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B0%A9%EC%8B%9D%206a55549d352882568ac581afc55e9ed2.html"><span class="icon">7️⃣</span>Responsible AI, AI를 책임감있게 만드는 방식</a>, <a href="AI%20%EC%86%94%EB%A3%A8%EC%85%98%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%B3%B4%EC%95%88,%20%EA%B7%9C%EC%A0%95%20%EC%A4%80%EC%88%98,%20%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%208f85549d35288228915301798c5ba83f.html"><span class="icon">8️⃣</span>AI 솔루션을 위한 보안, 규정 준수, 거버넌스</a>, <a href="FM%20%ED%99%9C%EC%9A%A9%EA%B3%BC%20%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8%20%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%20acc5549d352883199ea481da95436968.html"><span class="icon">5️⃣</span>FM 활용과 프롬프트 엔지니어링</a>, , , <a href="FM%20%EC%84%B1%EB%8A%A5%20%ED%8F%89%EA%B0%80%20%EB%B0%A9%EB%B2%95%20bd65549d35288268ad6c0161817fff5c.html"><span class="icon">6️⃣</span>FM 성능 평가 방법</a>, </td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>문제수</th><td>60</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>분류</th><td><span class="selected-value select-value-color-pink">콘텐츠</span></td></tr><tr class="property-row property-row-formula"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/formula_gray.svg" style="width:14px;height:14px;display:block"/></span>비중</th><td>17.6%</td></tr><tr class="property-row property-row-rollup"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/search_gray.svg" style="width:14px;height:14px;display:block"/></span>합계</th><td>340</td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0945549d-3528-8389-a85c-81881b99d7fe"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="3075549d-3528-8268-b0e9-012b77001be0" class="">여러분은 오늘 아침에 무슨 일들을 하셨나요?</p></div><div style="display:contents" dir="auto"><ul id="91a5549d-3528-834d-bdce-016abe79b838" class="bulleted-list"><li style="list-style-type:disc">스마트폰 얼굴 인식으로 잠금 해제하기</li></ul></div><div style="display:contents" dir="auto"><ul id="e6d5549d-3528-828b-a7ef-8134b42f4ba8" class="bulleted-list"><li style="list-style-type:disc">음악 앱에서 &quot;오늘의 추천&quot; 재생하기</li></ul></div><div style="display:contents" dir="auto"><ul id="ac95549d-3528-83bf-9b51-8161a59ecaf9" class="bulleted-list"><li style="list-style-type:disc">번역기로 영어 과제 검토하기</li></ul></div><div style="display:contents" dir="auto"><p id="6545549d-3528-835c-9297-0135b83dbcfc" class="">이렇게 AI는 이미 우리의 일상 깊숙이 스며들어 있습니다. 그런데 이 모든 것의 시작은 하나의 질문에서 출발합니다. &quot;기계도 생각할 수 있을까?&quot; 지금부터 AI가 정확히 무엇이고, 어떤 종류가 있는지 그 기초부터 차근차근 알아보겠습니다.</p></div></div></figure></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">인공지능의 분류(AI vs. ML vs. DL)</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="a875549d-3528-82ed-8aba-81439008180b" class="bulleted-list"><li style="list-style-type:disc"><strong>AI(Artificial Inteligence)</strong>는 말 그대로 인간이 만드는(Artificial, 인공) 지능(Inteligence)입니다. 인간만이 가지고 있다고 여겨지는 지능을 구현하려는 시도를 전부 AI라고 부를 수 있습니다. <div style="display:contents" dir="auto"><ul id="7415549d-3528-837d-9ce2-016372646d8e" class="bulleted-list"><li style="list-style-type:circle">사람이 아닌 것, 주로 기계나 컴퓨터가 사람처럼 ‘생각’하고 ‘행동’하는 것을 의미</li></ul></div><div style="display:contents" dir="auto"><ul id="1b55549d-3528-82ea-acc6-81cf43832251" class="bulleted-list"><li style="list-style-type:circle">예: 자율주행 자동차의 보행자 인식과 정지 판단</li></ul></div><div style="display:contents" dir="ltr"><figure id="c0c5549d-3528-82a0-8292-8145cd51958b" class="image"><a href="image%201.png"><img style="width:707.9948120117188px" src="image%201.png"/></a><figcaption>인공지능의 분류</figcaption></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="ed35549d-3528-82aa-b7ba-815c2b5b5578" class="bulleted-list"><li style="list-style-type:disc">인간의 지성을 구현하는 방법은 다양합니다. 전문가 시스템(Expert systems)과 규칙 기반 시스템(Rule-based systems)이 대표적입니다. 카페나 음식점에서 주문할 때 키오스크를 쓰지는 않으셨나요? 주문에 필요한 규칙들은 비교적 간단해서 점점 더 많은 곳에 주문을 자동화하고 있습니다.<div style="display:contents" dir="auto"><ul id="f6f5549d-3528-82ac-83d2-8158a16b15ea" class="bulleted-list"><li style="list-style-type:circle">예: 은행 대출 심사 초기 시스템<div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e4f5549d-3528-8214-b3b7-01adf7184ba0" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">if 연소득 &gt; 5000만원 and 신용등급 &gt; 800:
+    대출_승인 = True</code></pre></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="d715549d-3528-833a-a305-810b6c618567" class="bulleted-list"><li style="list-style-type:disc"><strong>머신러닝 (ML, Machine Learning)</strong>은 전문가 시스템, 규칙 기반 시스템과 마찬가지로 AI를 구현하는 방식 중 하나입니다. 머신(기계), 즉 컴퓨터가 경험을 통해 ‘학습’하는 것을 뜻합니다. 이때 경험은 데이터를 말합니다. 마치 여러분이 문제를 많이 풀면 실력이 늘어나는 것과 비슷합니다.<div style="display:contents" dir="auto"><ul id="5555549d-3528-82b1-a89f-010936c10c4f" class="bulleted-list"><li style="list-style-type:circle">컴퓨터가 <mark class="highlight-red"><strong>데이터</strong></mark>를 통해 &#x27;학습&#x27;하는 방법</li></ul></div><div style="display:contents" dir="auto"><ul id="2485549d-3528-82c5-b1f3-81c75a08223e" class="bulleted-list"><li style="list-style-type:circle">예: 스팸 메일 필터링, 신용카드 이상 거래 탐지</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="bf85549d-3528-82a0-ba5d-019262dcf744" class="bulleted-list"><li style="list-style-type:disc"><strong>딥러닝 (Deep Learning)</strong>은 머신러닝의 특별한 방식입니다. 인간의 뉴런 구조를 모방(<mark class="highlight-red"><strong>신경망</strong></mark>)하여 복잡한 패턴을 학습할 수 있습니다.<div style="display:contents" dir="auto"><ul id="8c15549d-3528-8272-acd2-011a9166c596" class="bulleted-list"><li style="list-style-type:circle">사람의 뇌 구조를 모방한 방식 (사람 뇌처럼 생각하며 배우기)</li></ul></div><div style="display:contents" dir="auto"><ul id="3065549d-3528-8305-8880-01ec5928999d" class="bulleted-list"><li style="list-style-type:circle">블랙박스 모델로 해석 가능성(Interpretability)이 가장 낮음</li></ul></div><div style="display:contents" dir="auto"><ul id="8d05549d-3528-826a-a29c-015e7eeb9544" class="bulleted-list"><li style="list-style-type:circle">예: 얼굴 인식, 음성 인식, 컴퓨터 비전, 자연어 처리(NLP), 시계열 예측(Time series forecasting, 예: <mark class="highlight-red"><strong>DeepAR</strong></mark><mark class="highlight-default">)</mark></li></ul></div></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">ML 분류</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="b315549d-3528-830b-b7fe-01f5d72dc1c1" class="toggle"><li><details open=""><summary>학습 방식에 따른 ML 분류</summary><div style="display:contents" dir="ltr"><table id="41d5549d-3528-839a-8538-01c5fafe72f4" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2625549d-3528-8209-bb40-01dd52f6bc44"><td id="oVgB" class="" style="width:125.35714721679688px">학습 방식</td><td id="WqnN" class="" style="width:306.6875px">설명</td><td id="e&lt;If" class="" style="width:653px">종류와 예시</td></tr></div><div style="display:contents" dir="ltr"><tr id="9165549d-3528-82e9-b9be-016d597ad7b9"><td id="oVgB" class="" style="width:125.35714721679688px">지도 학습<br/>(Supervised learning)</td><td id="WqnN" class="" style="width:306.6875px">레이블이 달린 데이터로 학습<br/>입력 데이터와 해당 정답(레이블)이 주어진 상태에서 학습을 수행하는 방식</td><td id="e&lt;If" class="" style="width:653px"><mark class="highlight-red"><strong>1. 회귀(Regression)</strong></mark>: 매출, 집값, 온도 등 연속적인 <mark class="highlight-red"><strong>수치 예측</strong></mark>(선형 회귀, Linear Regression)<br/> - 독립 변수와 종속 변수 간의 관계를 모델링<br/> - 명시적인 가중치(weight) 파라미터 존재, 도메인 지식을 바탕으로 가중치 조정(adjust) 가능<br/> - 설명가능성(explainability)이 가장 높음<br/><mark class="highlight-red"><strong>2. 분류(Classification)</strong></mark>: 카테고리 예측<br/> - 심장 질환 위험을 예측하는 ML 모델을 개발 + 데이터셋에 심장 질환 유무(레이블)이 있는 경우<br/> - 이진 분류: 이메일이 스팸인지 아닌지 분류, 대출 신청 위험 평가(0 또는 1로 분류, Binary Classification, Logistic Regression)  <br/> - 다중 분류(Multi-class classification): 3개 이상의 클래스로 분류(예: 동물을 개, 새, 고양이 등으로 분류. 리뷰를 긍정, 부정, 중립으로 분류)<br/><mark class="highlight-red"><strong>3. 의사 결정 트리(Decision Tree)</strong></mark>: 예/아니오 질문을 통해 답을  찾는 알고리즘<br/> - 스무고개(20 Questions)의 원리를 수학적으로 확장하여 자동화한 것<br/> - 회귀와 분류 모두 가능<br/> - <mark class="highlight-red"><strong>다중 클래스 분류 </strong></mark>문제에도 활용 가능<br/><mark class="highlight-red"><strong>4. KNN(K-최근접 이웃, K-Nearest Neighbors)</strong></mark>: 새로운 데이터가 주어지면, <mark class="highlight-red"><strong>사전 정의된 카테고리(레이블) 중</strong></mark> 가장 가까운 K개를 찾아 그 다수결로 분류</td></tr></div><div style="display:contents" dir="ltr"><tr id="f915549d-3528-8222-ada5-813499e0a894"><td id="oVgB" class="" style="width:125.35714721679688px">비지도 학습<br/>(Unsupervised learning)</td><td id="WqnN" class="" style="width:306.6875px">레이블이 없는 데이터로 학습<br/>데이터의 패턴을 스스로 학습하여 그룹화하거나 이상치를 탐지하는 방식</td><td id="e&lt;If" class="" style="width:653px"><mark class="highlight-red"><strong>1. 군집화(K-means, Clustering)</strong></mark>: 데이터의 패턴을 분석하여 비슷한 데이터끼리 <strong>자동으로 그룹(클러스터)</strong>화<br/> - 세그멘테이션(segmentation): 고객의 인구 통계 및 구매 패턴을 기반으로 고객 그룹을 식별<br/><mark class="highlight-red"><strong>2. 차원 축소(Dimension reduction)</strong></mark>: 복잡한 정보를 간단하게 줄이기 <br/>3. 군집 분석(Cluster analysis)<br/><mark class="highlight-red"><strong>4. 이상 탐지(Anomaly Detection)</strong></mark>: <mark class="highlight-red"><strong>무작위 절단 포레스트(RCF, Random Cut Forest), Autoencoder</strong></mark><br/>5. 밀도 추정(Density estimation)<br/>6. 자기 지도 학습(Self-supervised learning): 준지도 학습으로 분류되기도 함 </td></tr></div><div style="display:contents" dir="ltr"><tr id="f5c5549d-3528-82fc-9498-81957d1c4f1e"><td id="oVgB" class="" style="width:125.35714721679688px">준지도 학습<br/>(Semi-supervised learning)</td><td id="WqnN" class="" style="width:306.6875px">정답이 있는 문제와 없는 문제를 섞어서 학습</td><td id="e&lt;If" class="" style="width:653px">1. 사기 거래 찾기(Fraud identification)<br/>2. 감정 분석(Sentiment analysis)<br/>3. 문서 분류(Document classification)</td></tr></div><div style="display:contents" dir="ltr"><tr id="afd5549d-3528-8391-bd9f-019cc4db1e45"><td id="oVgB" class="" style="width:125.35714721679688px">강화 학습<br/>(Reinforcement learning)</td><td id="WqnN" class="" style="width:306.6875px">보상 시스템을 통해 최적의 행동을 학습하는 방식<br/>시행 착오를 통해 학습</td><td id="e&lt;If" class="" style="width:653px">1. 행동의 가치를 계산해 최고의 선택하기(예:미로에서 보상이 가장 큰 경로 찾기)<br/>2. 상황에 따른 최적의 행동 방침 학습하기(예:알파고가 바둑에서 최적의 수를 찾는 과정, 로봇의 길찾기)<br/>3. 행동을 선택하는 배우와 평가하는 비평가 조합(예: 게임에서 전략을 세우고 결과를 평가하며 개선하기)<br/>4. 환경 모델을 만들어 계획적으로 행동하기(예: 체스나 바둑에서 수를 미리 생각하고 두기)</td></tr></div><div style="display:contents" dir="ltr"><tr id="4275549d-3528-828c-850b-81aee8943aed"><td id="oVgB" class="" style="width:125.35714721679688px">전이 학습<br/>(Transfer learning)</td><td id="WqnN" class="" style="width:306.6875px">사전 학습된 모델의 지식을 활용하여 새로운 관련 작업을 해결하는 학습<br/>개발 노력이 감소</td><td id="e&lt;If" class="" style="width:653px">1. 강아지와 고양이를 구분하는 모델을 활용하여 다른 동물(예: 여우, 늑대)도 구별하는 모델로 확장<br/>2. 영어-프랑스어 번역 모델을 활용하여 영어-독일어 번역 모델을 개선<br/>3. 사전 학습된 딥러닝 모델을 사용하여 데이터셋에 대해 모델을 미세 조정</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><ul id="d365549d-3528-83a0-85c5-01ad1d61a1bc" class="toggle"><li><details open=""><summary>KNN vs. K-Means</summary><div style="display:contents" dir="ltr"><table id="ff25549d-3528-8334-b9b5-8105770c7410" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="6cf5549d-3528-82d6-864c-01eddfa32954"><td id=":T}m" class="" style="width:349.0000305175781px"><strong>K-NN (K-최근접 이웃, K-Nearest Neighbors)</strong></td><td id="wL`O" class="" style="width:470.3020935058594px"><strong>K-means (군집화, Clustering)</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="ac75549d-3528-827a-8912-012683cf2347"><td id=":T}m" class="" style="width:349.0000305175781px">기존 그룹에 속하게 하기</td><td id="wL`O" class="" style="width:470.3020935058594px">새로운 그룹을 만들기 (사전 정의된 그룹이 없는 경우)</td></tr></div><div style="display:contents" dir="ltr"><tr id="c105549d-3528-82cc-a8bb-01ccd2e51acc"><td id=":T}m" class="" style="width:349.0000305175781px">예제1: 특정 고객이 기존의 어느 고객 그룹에 속하는지 예측<br/>예제2: 새로운 전학생이 왔을 때 기존 그룹에 배정하기</td><td id="wL`O" class="" style="width:470.3020935058594px">예제1: 고객의 인구 통계, 구매 패턴 등을 기반으로 비슷한 고객을 자동으로 분류<br/>예제2: 반 친구들을 비슷한 관심사(게임, 운동 등)를 보고 자동으로 그룹을 나눠줌</td></tr></div><div style="display:contents" dir="ltr"><tr id="2d05549d-3528-8272-8166-014d85e92308"><td id=":T}m" class="" style="width:349.0000305175781px">기존에 그룹이 이미 존재해야 사용 가능<br/>기존 그룹: 학습 데이터에 정답(레이블)이 필요</td><td id="wL`O" class="" style="width:470.3020935058594px">데이터에 레이블이 없고, 그룹을 사전에 모르는 경우에 사용.</td></tr></div><div style="display:contents" dir="ltr"><tr id="95a5549d-3528-8387-a629-817c7a45bd8b"><td id=":T}m" class="" style="width:349.0000305175781px">지도 학습</td><td id="wL`O" class="" style="width:470.3020935058594px">비지도</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="3a55549d-3528-8252-863a-816f75982075" class=""><strong>1. K-means (군집화, Clustering) - 비지도 학습</strong></h3></div><div style="display:contents" dir="auto"><ul id="a975549d-3528-8389-8016-8183209253a4" class="bulleted-list"><li style="list-style-type:disc">데이터의 패턴을 분석하여 비슷한 데이터끼리 <strong>자동으로 그룹(클러스터)</strong> 을 만듦.</li></ul></div><div style="display:contents" dir="auto"><ul id="76b5549d-3528-8235-8518-817ac8f80ffd" class="bulleted-list"><li style="list-style-type:disc">데이터에 레이블이 없고, 그룹을 사전에 모르는 경우에 사용.</li></ul></div><div style="display:contents" dir="auto"><ul id="2aa5549d-3528-83ff-9cab-81d0e49b6ffe" class="bulleted-list"><li style="list-style-type:disc"><strong>예제:</strong> 고객의 구매 패턴을 기반으로 비슷한 고객을 자동으로 분류.</li></ul></div><div style="display:contents" dir="auto"><h3 id="8325549d-3528-8338-b144-0129c157fc84" class=""><strong>1. K-NN (K-최근접 이웃, K-Nearest Neighbors) - 지도 학습</strong></h3></div><div style="display:contents" dir="auto"><ul id="0a15549d-3528-8369-ac15-0133f510ce01" class="bulleted-list"><li style="list-style-type:disc">학습 데이터에 정답(레이블)이 필요하고, 새로운 데이터가 주어질 때 <strong>기존 데이터와 비교</strong> 해서 분류.</li></ul></div><div style="display:contents" dir="auto"><ul id="ef05549d-3528-82c0-90e1-01cc62010abc" class="bulleted-list"><li style="list-style-type:disc"><strong>예제:</strong> 특정 고객이 <strong>기존의 어느 고객 그룹에 속하는지</strong> 예측.</li></ul></div></details></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="b165549d-3528-82bd-9e8d-8168035b90e5" class="toggle"><li><details open=""><summary>학습 아키텍처에 따른 ML 분류</summary><div style="display:contents" dir="ltr"><table id="2f35549d-3528-8267-841f-01a065d5c586" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="3eb5549d-3528-82f1-87b1-810bf6249d05"><td id="oVgB" class="" style="width:163.3551025390625px">학습 방식</td><td id="WqnN" class="" style="width:610.6761169433594px">설명</td></tr></div><div style="display:contents" dir="ltr"><tr id="d7b5549d-3528-8379-8f71-81fa9a19380f"><td id="oVgB" class="" style="width:163.3551025390625px">중앙 집중식 학습<br/>(Centralized Learning)</td><td id="WqnN" class="" style="width:610.6761169433594px">- 모든 데이터를 하나의 중앙 서버나 데이터 센터로 모아 모델을 학습시키는 전통적인 방식 <br/>- 데이터 관리와 모델 훈련이 용이하지만, 데이터 전송 비용과 프라이버시 침해 위험이 존재<br/>- 가장 일반적인 방식</td></tr></div><div style="display:contents" dir="ltr"><tr id="2945549d-3528-8275-b96f-0110fbe6e112"><td id="oVgB" class="" style="width:163.3551025390625px">연합 학습<br/>(Federated Learning)</td><td id="WqnN" class="" style="width:610.6761169433594px">- 데이터를 중앙 서버로 보내지 않고, 각 사용자의 기기(로컬 환경)에서 모델을 학습<br/>- 이후 <mark class="highlight-red"><strong>학습된 결과(모델 가중치)만을 중앙 서버로 보내 통합</strong></mark>하여 전체 모델을 개선<br/>- <mark class="highlight-red"><strong>데이터 규정 준수와 개인정보 보호 보장 가능</strong></mark></td></tr></div><div style="display:contents" dir="ltr"><tr id="97b5549d-3528-82b0-bc0a-01795057b7d2"><td id="oVgB" class="" style="width:163.3551025390625px">스플릿 학습<br/>(Split Learning)</td><td id="WqnN" class="" style="width:610.6761169433594px">- 하나의 딥러닝 모델을 앞단(클라이언트)과 뒷단(서버)으로 나누어 분할 학습하는 방식<br/>- 로컬 장치에서는 입력 데이터 → 중간 표현까지만 계산 후 서버로 전달하고, 서버는 뒤쪽 모델을 학습<br/>- 원본 데이터가 외부로 나가지 않아 의료·금융 등 민감 데이터 협업 학습에 적합</td></tr></div><div style="display:contents" dir="ltr"><tr id="ecf5549d-3528-8311-b6b2-017ffd8aa7f4"><td id="oVgB" class="" style="width:163.3551025390625px">온라인 학습<br/>(Online Learning)</td><td id="WqnN" class="" style="width:610.6761169433594px">- 새로운 데이터가 실시간으로 들어올 때마다 순차적으로 모델을 업데이트하는 방식<br/>- 데이터 전체를 다시 학습하지 않고 빠르게 반영할 수 있어 스트리밍 환경에 유리<br/>- 최신 패턴을 잘 반영할 수 있지만, 오래된 정보가 잊히거나 노이즈에 민감할 수 있음</td></tr></div></tbody></table></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="e3e5549d-3528-83e2-88ac-8169e07cf7c0" class="toggle"><li><details open=""><summary>상황별 ML 학습 방법 선택 예시</summary><div style="display:contents" dir="ltr"><table id="2995549d-3528-8247-b19f-8117b9755e06" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="b155549d-3528-8297-a128-01a3255cbd10"><td id="kW_T" class="" style="width:560.9910888671875px">상황</td><td id="AQwl" class="" style="width:314px">알고리즘</td></tr></div><div style="display:contents" dir="ltr"><tr id="4df5549d-3528-83fe-b5f2-81a6e825ed44"><td id="kW_T" class="" style="width:560.9910888671875px">유전자 특성에 따라 인간 유전자를 <mark class="highlight-red"><strong>20가지 범주로 분류</strong></mark></td><td id="AQwl" class="" style="width:314px">다중 클래스, 의사 결정 트리</td></tr></div><div style="display:contents" dir="ltr"><tr id="15f5549d-3528-8307-a909-01256725a647"><td id="kW_T" class="" style="width:560.9910888671875px"><mark class="highlight-red"><strong>레이블이 지정되지 않은</strong></mark> 고객 데이터를 보유 + 고객을 등급별로 <strong>분류</strong>하여 회사 제품을 광고하고 홍보</td><td id="AQwl" class="" style="width:314px">비지도 학습(군집화)</td></tr></div><div style="display:contents" dir="ltr"><tr id="c105549d-3528-837e-a513-817ce2a77599"><td id="kW_T" class="" style="width:560.9910888671875px">처음부터 새 모델을 만드는 것을 피하고, <mark class="highlight-red"><strong>사전 학습된 모델을 조정</strong></mark>하여 새로운 모델을 만들길 희망</td><td id="AQwl" class="" style="width:314px">전이학습</td></tr></div><div style="display:contents" dir="ltr"><tr id="8d35549d-3528-8384-bcde-81330b8eeedc"><td id="kW_T" class="" style="width:560.9910888671875px">들어오는 IP 주소를 분석하고 트래픽 패턴을 기반으로 IP <mark class="highlight-red"><strong>이상 탐지</strong></mark> 시스템 개발<br/>특정 IP가 의심스러운 출처에서 온 것인지 확인 필요</td><td id="AQwl" class="" style="width:314px">이상 탐지</td></tr></div><div style="display:contents" dir="ltr"><tr id="9605549d-3528-83ef-8198-81e06c68b073"><td id="kW_T" class="" style="width:560.9910888671875px">수작업 없이 사진 속 동물을 자동으로 식별하고 분류</td><td id="AQwl" class="" style="width:314px">신경망(물체 감지)</td></tr></div><div style="display:contents" dir="ltr"><tr id="5185549d-3528-82de-b100-01f6a06268af"><td id="kW_T" class="" style="width:560.9910888671875px">소프트웨어 개발 생산성을 높이기 위해 AI를 사용</td><td id="AQwl" class="" style="width:314px">자연어 처리(NLP) 또는 LLM을 사용하여 코드를 생성</td></tr></div><div style="display:contents" dir="ltr"><tr id="bcf5549d-3528-8266-82ec-8121f97aa8a3"><td id="kW_T" class="" style="width:560.9910888671875px">제조 회사에서 AI를 사용하여 제품을 검사하고 손상이나 결함을 탐지</td><td id="AQwl" class="" style="width:314px">컴퓨터 비전(신경망)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2ce5549d-3528-8379-a1b1-81e411b874d3"><td id="kW_T" class="" style="width:560.9910888671875px">교육용 게임에서 확률 예측 + <mark class="highlight-red"><strong>최소한의 운영 오버헤드</strong></mark><br/>(예: 빨간색 구슬 6개, 녹색 구슬 4개 등 여러 색이 있는 항아리에서 녹색 구슬 선택할 확률은?)</td><td id="AQwl" class="" style="width:314px">간단한 규칙과 계산을 사용하여 확률 계산 코드 작성 <br/>AI 모델을 만드는 것은 운영 오버헤드가 존재</td></tr></div><div style="display:contents" dir="ltr"><tr id="8425549d-3528-8227-8a15-01d56a539fef"><td id="kW_T" class="" style="width:560.9910888671875px">AI 모델을 훈련할 때 데이터 규정 준수와 개인정보 보호를 보장하는 ML 기법</td><td id="AQwl" class="" style="width:314px">연합 학습(Federated Learning)</td></tr></div></tbody></table></div></details></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">AWS의 AI 서비스 살펴보기</summary><div class="indented"><div style="display:contents" dir="ltr"><table id="efb5549d-3528-829b-989f-817a28f72efd" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2125549d-3528-833b-aa58-81ba1de5df89"><td id="`xaS" class="" style="width:116px">구분</td><td id="nRxJ" class="" style="width:107.74005126953125px">서비스</td><td id="=fP|" class="" style="width:493.87213134765625px">설명</td><td id="O}?Q" class="" style="width:230.30397033691406px">예시</td></tr></div><div style="display:contents" dir="ltr"><tr id="f2d5549d-3528-83d5-a99a-01b193ef5784"><td id="`xaS" class="" style="width:116px">번역</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Translate</td><td id="=fP|" class="" style="width:493.87213134765625px">신경망 <mark class="highlight-red"><strong>기계 번역</strong></mark>(NMT) 서비스. 사용자 지정 용어(브랜드명 등)를 일관되게 처리하는 기능 지원</td><td id="O}?Q" class="" style="width:230.30397033691406px">웹사이트 및 콘텐츠의 현지화(Localization)<br/>실시간 고객 지원 채팅/이메일 번역</td></tr></div><div style="display:contents" dir="ltr"><tr id="e9a5549d-3528-838b-849f-81be3d98df99"><td id="`xaS" class="" style="width:116px">이미지, 비디오</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Rekognition</td><td id="=fP|" class="" style="width:493.87213134765625px"><mark class="highlight-red"><strong>이미지 및 비디오 분석</strong></mark>을 위한 컴퓨터 비전 서비스. 객체, 사람, 텍스트, 장면 및 활동 감지 기능 </td><td id="O}?Q" class="" style="width:230.30397033691406px">보안 카메라 영상 분석<br/>SNS 부적절 콘텐츠 필터링<br/>상품 이미지 자동 분류</td></tr></div><div style="display:contents" dir="ltr"><tr id="4275549d-3528-83ce-a9df-81a214ee2831"><td id="`xaS" class="" style="width:116px">텍스트</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Textract</td><td id="=fP|" class="" style="width:493.87213134765625px">문서(PDF, 이미지)에서 <mark class="highlight-red"><strong>텍스트, 양식, 표</strong></mark> 등의 데이터를 자동으로 <mark class="highlight-red"><strong>추출</strong></mark>하는 서비스. <br/>OCR 기능을 통해 스캔된 문서에서 데이터 추출, 분류, 포맷팅 자동화 가능 → 지능형 문서 처리(IDP, Intelligent Document Processing)</td><td id="O}?Q" class="" style="width:230.30397033691406px">송장/영수증 자동 처리<br/>양식 데이터 추출</td></tr></div><div style="display:contents" dir="ltr"><tr id="3a55549d-3528-820f-9c6b-81801944a8fa"><td id="`xaS" class="" style="width:116px"></td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Comprehend</td><td id="=fP|" class="" style="width:493.87213134765625px"><mark class="highlight-red"><strong>자연어 처리</strong></mark>(NLP)를 사용한 텍스트 분석 서비스. 감정 분석, 독성(toxicity) 감지, 엔티티 인식, 키 구문 추출 등. <mark class="highlight-red"><strong>텍스트 생성 기능은 없음</strong></mark></td><td id="O}?Q" class="" style="width:230.30397033691406px">댓글에서 유해한 언어 식별<br/>리뷰 감정 분석</td></tr></div><div style="display:contents" dir="ltr"><tr id="d015549d-3528-83c1-8e6d-01d8034246fb"><td id="`xaS" class="" style="width:116px">음성</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Transcribe</td><td id="=fP|" class="" style="width:493.87213134765625px"><mark class="highlight-red"><strong>오디오를</strong></mark> 텍스트로 변환하는 서비스. 변환된 텍스트에서 주요 정보(Named Entity) 등을 추출하여 분석</td><td id="O}?Q" class="" style="width:230.30397033691406px">강의 자막 생성<br/>회의록 자동 작성<br/>콜센터 통화 내용 분석</td></tr></div><div style="display:contents" dir="ltr"><tr id="e925549d-3528-8336-ab6a-81a86c436ff6"><td id="`xaS" class="" style="width:116px"></td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon Polly</td><td id="=fP|" class="" style="width:493.87213134765625px"><mark class="highlight-red"><strong>텍스트를</strong></mark> 생생한 음성으로 변환하는 서비스</td><td id="O}?Q" class="" style="width:230.30397033691406px">오디오북 제작<br/>교육 콘텐츠 음성 변환<br/>안내 방송 시스템</td></tr></div><div style="display:contents" dir="ltr"><tr id="8805549d-3528-826d-bb97-8178f3314f12"><td id="`xaS" class="" style="width:116px">추천</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Personalize</td><td id="=fP|" class="" style="width:493.87213134765625px">개인화된 <mark class="highlight-red"><strong>추천</strong></mark>을 위한 기계 학습 서비스. 사용자 행동 데이터를 기반으로 맞춤형 추천 제공</td><td id="O}?Q" class="" style="width:230.30397033691406px"></td></tr></div><div style="display:contents" dir="ltr"><tr id="a405549d-3528-8226-8ee3-817b15918306"><td id="`xaS" class="" style="width:116px">문서 검색</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Kendra</td><td id="=fP|" class="" style="width:493.87213134765625px">지능형 엔터프라이즈 <mark class="highlight-red"><strong>검색</strong></mark> 서비스. 대량의 문서에서 자연어 질의로 정확한 답변 검색</td><td id="O}?Q" class="" style="width:230.30397033691406px"></td></tr></div><div style="display:contents" dir="ltr"><tr id="3b45549d-3528-8287-8765-019e84fd1911"><td id="`xaS" class="" style="width:116px">챗봇</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Lex</td><td id="=fP|" class="" style="width:493.87213134765625px"><mark class="highlight-red"><strong>대화형 인터페이스</strong></mark> 구축을 위한 서비스. 음성 및 텍스트 기반 챗봇 개발 지원. 아마존의 AI 스피커 A<mark class="highlight-red"><strong>lex</strong></mark>a의 기반 기술</td><td id="O}?Q" class="" style="width:230.30397033691406px"></td></tr></div><div style="display:contents" dir="ltr"><tr id="0195549d-3528-8310-9e67-010edef42146"><td id="`xaS" class="" style="width:116px">헬스케어</td><td id="nRxJ" class="" style="width:107.74005126953125px">AWS <br/>HealthScribe</td><td id="=fP|" class="" style="width:493.87213134765625px">환자-의료진 간 <mark class="highlight-red"><strong>대화</strong></mark>를 <mark class="highlight-red"><strong>음성 인식 및 생성형 AI</strong></mark>를 활용해 자동으로 <mark class="highlight-red"><strong>임상 문서</strong></mark>로 생성하는 서비스<br/>대화 내 역할 식별, 의학 용어 추출, 메모 생성 등 수행</td><td id="O}?Q" class="" style="width:230.30397033691406px">진료 기록 자동화<br/>의료 상담 녹취 분석<br/>초안 진료 노트 생성</td></tr></div><div style="display:contents" dir="ltr"><tr id="08b5549d-3528-82f0-b9d1-81394512f50e"><td id="`xaS" class="" style="width:116px"></td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Comprehend<br/>Medical</td><td id="=fP|" class="" style="width:493.87213134765625px">의료 문서(진료 기록, 처방전 등)에서 <mark class="highlight-red"><strong>의학 용어, 진단명, 약물, 개인건강정보(PHI) 등을 추출</strong></mark>하고 분석하는 자연어 처리 서비스</td><td id="O}?Q" class="" style="width:230.30397033691406px"></td></tr></div><div style="display:contents" dir="ltr"><tr id="9ac5549d-3528-8297-8de8-81be07241eeb"><td id="`xaS" class="" style="width:116px">인간 검토(Human Review)</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon A2I <br/>(Augmented AI)</td><td id="=fP|" class="" style="width:493.87213134765625px">ML 예측 결과에 사람의 검토(<mark class="highlight-red"><strong>Human Review</strong></mark>) 과정을 통합하는 서비스<br/>모델의 신뢰도(Confidence)가 낮을 때 <mark class="highlight-red"><strong>사람이 직접 개입</strong></mark>하여 결과를 수정하고 정확성을 확보함</td><td id="O}?Q" class="" style="width:230.30397033691406px">흐릿하거나 손상된 문서의 텍스트 추출 검증 <br/>애매한 유해 콘텐츠(이미지/영상) 판별 </td></tr></div><div style="display:contents" dir="ltr"><tr id="e1f5549d-3528-8351-8921-81eee5a13d36"><td id="`xaS" class="" style="width:116px">그래프 분석</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Neptune</td><td id="=fP|" class="" style="width:493.87213134765625px">관계와 연결 패턴을 분석하는 관리형<strong> </strong><mark class="highlight-red"><strong>그래프 데이터베이스</strong></mark><mark class="highlight-red"> </mark>서비스. <mark class="highlight-red"><strong>그래프 기반 ML</strong></mark> 기능이 내장되어 데이터 간의 관계를 시각화하고 패턴을 탐지. 엔티티 간 복잡한 관계를 모델링하고 분석하는 데 특화 </td><td id="O}?Q" class="" style="width:230.30397033691406px">사기 행위 패턴 분석 및 조사<br/>소셜 네트워크 분석<br/>지식 그래프 구축</td></tr></div><div style="display:contents" dir="ltr"><tr id="1195549d-3528-82a9-8d5b-01bc7e8f2924"><td id="`xaS" class="" style="width:116px">ML 플랫폼</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>SageMaker</td><td id="=fP|" class="" style="width:493.87213134765625px"><mark class="highlight-red"><strong>머신러닝의 모든 과정</strong></mark>을 지원하는 서비스</td><td id="O}?Q" class="" style="width:230.30397033691406px"></td></tr></div><div style="display:contents" dir="ltr"><tr id="42d5549d-3528-833c-bd04-81512673e47f"><td id="`xaS" class="" style="width:116px">Gen AI 플랫폼</td><td id="nRxJ" class="" style="width:107.74005126953125px">Amazon <br/>Bedrock</td><td id="=fP|" class="" style="width:493.87213134765625px"><mark class="highlight-red"><strong>다양한 기초 모델(FM), LLM</strong></mark>을 제공<br/>생성형 AI 애플리케이션을 구축하고 확장</td><td id="O}?Q" class="" style="width:230.30397033691406px">일관된 작문 스타일로 웹사이트용 설명 생성</td></tr></div></tbody></table></div></div></details></div><div style="display:contents" dir="auto"><p id="ead5549d-3528-83f4-884e-0129d51db5b7" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

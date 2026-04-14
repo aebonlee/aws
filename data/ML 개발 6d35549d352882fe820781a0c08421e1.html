@@ -1,0 +1,768 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>ML 개발</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6d35549d-3528-82fe-8207-81a0c08421e1" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">2️⃣</span></div><h1 class="page-title" dir="auto">ML 개발</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-relation"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-northeast_gray.svg" style="width:14px;height:14px;display:block"/></span>계산용 관계용 속성</th><td><a href="ML%20%EA%B0%9C%EB%B0%9C%206d35549d352882fe820781a0c08421e1.html"><span class="icon">2️⃣</span>ML 개발</a>, <a href="%EC%83%9D%EC%84%B1%ED%98%95%20AI%20%EA%B8%B0%EC%B4%88%201b05549d352882a7bb8a0176dc08eef8.html"><span class="icon">4️⃣</span>생성형 AI 기초</a>, <a href="Responsible%20AI,%20AI%EB%A5%BC%20%EC%B1%85%EC%9E%84%EA%B0%90%EC%9E%88%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B0%A9%EC%8B%9D%206a55549d352882568ac581afc55e9ed2.html"><span class="icon">7️⃣</span>Responsible AI, AI를 책임감있게 만드는 방식</a>, <a href="AI%20%EC%86%94%EB%A3%A8%EC%85%98%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%B3%B4%EC%95%88,%20%EA%B7%9C%EC%A0%95%20%EC%A4%80%EC%88%98,%20%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%208f85549d35288228915301798c5ba83f.html"><span class="icon">8️⃣</span>AI 솔루션을 위한 보안, 규정 준수, 거버넌스</a>, <a href="FM%20%ED%99%9C%EC%9A%A9%EA%B3%BC%20%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8%20%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%20acc5549d352883199ea481da95436968.html"><span class="icon">5️⃣</span>FM 활용과 프롬프트 엔지니어링</a>, , , <a href="FM%20%EC%84%B1%EB%8A%A5%20%ED%8F%89%EA%B0%80%20%EB%B0%A9%EB%B2%95%20bd65549d35288268ad6c0161817fff5c.html"><span class="icon">6️⃣</span>FM 성능 평가 방법</a>, </td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>문제수</th><td>46</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>분류</th><td><span class="selected-value select-value-color-pink">콘텐츠</span></td></tr><tr class="property-row property-row-formula"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/formula_gray.svg" style="width:14px;height:14px;display:block"/></span>비중</th><td>14.1%</td></tr><tr class="property-row property-row-rollup"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/search_gray.svg" style="width:14px;height:14px;display:block"/></span>합계</th><td>326</td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="31e5549d-3528-8397-a265-81c408c1126c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="8d85549d-3528-835c-987b-01334cea34ec" class="">좋은 요리를 만들려면 신선한 재료와 좋은 주방 도구가 필요하듯이, 좋은 AI 모델을 만들려면 양질의 데이터와 적절한 컴퓨팅 파워가 필요합니다. 여기서는 ML 모델을 실제로 개발하는 과정을 처음부터 끝까지 살펴보겠습니다. 어떤 컴퓨터가 필요한지, 데이터는 어떻게 준비하는지, 그리고 모델은 어떻게 훈련시키는지 하나씩 알아볼게요.</p></div></div></figure></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">ML 개발을 위한 컴퓨팅 파워</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="4aa5549d-3528-8370-ad40-8169a653e642" class="bulleted-list"><li style="list-style-type:disc">Amazon EC2는 클라우드에서 사용할 수 있는 가상 컴퓨터입니다. 여러분이 게임용 PC를 고를 때처럼, AI 개발에도 목적에 맞는 성능의 컴퓨터가 필요합니다. AWS는 다양한 종류의 인스턴스를 제공하는 데, 비슷한 종류를 묶어 패밀리라고 부릅니다. 다양한 패밀리 중에서도 AI 개발과 관련된 패밀리를 소개하면 아래와 같습니다.<div style="display:contents" dir="ltr"><table id="38d5549d-3528-8338-9bb1-013fe9f962e3" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="ef75549d-3528-831a-9011-81273cfaedf4"><td id="bysv" class="" style="width:94px">EC2 패밀리</td><td id="btnb" class="" style="width:432px">설명</td><td id="~r\s" class="">적합한 작업</td></tr></div><div style="display:contents" dir="ltr"><tr id="4fd5549d-3528-82f3-ac8e-81fc73b8677c"><td id="bysv" class="" style="width:94px">C series</td><td id="btnb" class="" style="width:432px">컴퓨팅 최적화 인스턴스로, 고성능 컴퓨팅이 필요한 워크로드(작업)에 적합<br/>CPU 성능이 중요한 애플리케이션을 위해 설계됨</td><td id="~r\s" class="">데이터 전처리<br/>간단한 ML 모델 학습/추론<br/>일반적인 연산 작업</td></tr></div><div style="display:contents" dir="ltr"><tr id="1d25549d-3528-833f-962b-0120a2f085ff"><td id="bysv" class="" style="width:94px">G series</td><td id="btnb" class="" style="width:432px"><mark class="highlight-red"><strong>GPU 탑재</strong></mark>로 그래픽 처리와 기계 학습 워크로드에 적합<br/>고성능 GPU를 활용한 연산에 특화됨</td><td id="~r\s" class="">이미지 처리<br/>비디오 분석<br/>중간 규모 딥러닝</td></tr></div><div style="display:contents" dir="ltr"><tr id="a095549d-3528-837d-a158-815148b7fed0"><td id="bysv" class="" style="width:94px">P series</td><td id="btnb" class="" style="width:432px"><mark class="highlight-red"><strong>최고급 GPU</strong></mark>를 탑재한 <mark class="highlight-red"><strong>고성능</strong></mark> AI<br/>딥 러닝 훈련과 같은 대규모 병렬 처리가 필요한 워크로드에 이상적</td><td id="~r\s" class="">대규모 딥러닝<br/>복잡한 AI 모델 학습<br/>실시간 영상 처리</td></tr></div><div style="display:contents" dir="ltr"><tr id="5655549d-3528-82f0-bb08-01412433847d"><td id="bysv" class="" style="width:94px">Trn series</td><td id="btnb" class="" style="width:432px"><mark class="highlight-red"><strong>AWS Trainium 칩</strong></mark>을 사용하여 AI 학습에 최적화된 특수 설계<br/><mark class="highlight-red"><strong>에너지 효율적</strong></mark>이고, 환경 영향을 최소화하면서도 <mark class="highlight-red"><strong>LLM 학습에 최적화</strong></mark></td><td id="~r\s" class="">대형 언어 모델 학습/추론</td></tr></div></tbody></table></div></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">ML 시스템 개발 프로세스</summary><div class="indented"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="4d95549d-3528-8239-abab-0157c48f2e28"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="9be5549d-3528-8201-b16d-81ba3c21a60d" class="">(영화 추천 서비스 개발 사례를 중심으로)<br/></p></div><div style="display:contents" dir="auto"><p id="9045549d-3528-832d-8e26-0197fe7b188d" class=""><strong>머신러닝의 본질적 개념</strong><br/>머신러닝은 <mark class="highlight-red"><strong>데이터</strong></mark>를 기반으로 패턴을 <mark class="highlight-red"><strong>학습</strong></mark>하고 이를 통해 <mark class="highlight-red"><strong>새로운 상황에서 의사결정</strong></mark>을 수행하는 시스템입니다. 전통적인 프로그래밍이 명시적인 규칙을 통해 동작하는 것과 달리, 머신러닝은 데이터에서 자동으로 규칙을 도출하여 문제를 해결합니다.<br/></p></div><div style="display:contents" dir="auto"><p id="50e5549d-3528-82b7-a6c1-8196bbb904e8" class=""><strong>개발 프로세스의 주요 단계</strong></p></div><div style="display:contents" dir="auto"><ul id="f695549d-3528-82bd-8809-0175d4c19bd1" class="toggle"><li><details open=""><summary><strong>1. 데이터 엔지니어링</strong></summary><div style="display:contents" dir="auto"><p id="f6c5549d-3528-8234-8363-81a194d5a376" class="">데이터는 머신러닝 시스템의 기반이 되며, 시스템의 성능을 좌우하는 핵심 요소입니다(feat. Garbage in, Garbage out). 영화 추천 서비스의 경우 사용자의 시청 기록, 평점 데이터, 콘텐츠 메타데이터 등이 주요 데이터가 됩니다. 이 단계에서는 <mark class="highlight-red"><strong>데이터 수집, 전처리(pre-processing), 탐색적 데이터 분석(Exploratory data analysis), 피처(Feature, 특성, 변수) 엔지니어링</strong></mark> 등이 수행됩니다. </p></div><div style="display:contents" dir="auto"><p id="0115549d-3528-8275-9047-010d8b974899" class=""><strong>1.1. 데이터의 주요 유형 (Data Types)</strong></p></div><div style="display:contents" dir="auto"><p id="9be5549d-3528-8277-b315-8141eb8cc8d0" class="">해결하려는 문제의 성격에 따라 수집해야 하는 데이터의 형태가 달라집니다. ML 모델 학습을 위해서는 적절한 데이터 유형을 선택하는 것이 필수적입니다.</p></div><div style="display:contents" dir="ltr"><table id="9325549d-3528-83d3-8f83-81b46d26b12b" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="0e95549d-3528-8233-8cf5-8132c78911dd"><th id="QCGT" class="simple-table-header-color simple-table-header" style="width:158.15000915527344px">유형</th><th id="`;k_" class="simple-table-header-color simple-table-header" style="width:799.9943237304688px">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="0505549d-3528-83a3-a53f-01581fad69ec"><td id="QCGT" class="" style="width:158.15000915527344px">정형 데이터 <br/>(Tabular Data)</td><td id="`;k_" class="" style="width:799.9943237304688px"><mark class="highlight-red"><strong>행(Row)과 열(Column)</strong></mark>로 구성된 구조화된 데이터(예: 엑셀)<br/>고객의 인구통계 정보나 구매 이력을 기반으로 한 광고 최적화 등에 사용됩니다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="06e5549d-3528-8219-a18a-81e19963f48c"><td id="QCGT" class="" style="width:158.15000915527344px">시계열 데이터 <br/>(Time Series Data)</td><td id="`;k_" class="" style="width:799.9943237304688px"><mark class="highlight-red"><strong>시간의 순서</strong></mark>대로 기록된 데이터<br/>주가 예측이나 시간대별 인터넷 속도 변화 분석처럼 트렌드와 패턴 파악이 중요할 때 사용됩니다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="18e5549d-3528-83d0-969d-01917673283c"><td id="QCGT" class="" style="width:158.15000915527344px">텍스트 데이터 <br/>(Text Data)</td><td id="`;k_" class="" style="width:799.9943237304688px"><mark class="highlight-red"><strong>자연어로 된 비정형</strong></mark> 데이터<br/>소셜 미디어 감성 분석이나, AI 어시스턴트를 위한 대화형 데이터(전문 용어 포함) 학습에 필요합니다.</td></tr></div><div style="display:contents" dir="ltr"><tr id="58c5549d-3528-82ce-9eff-812de826c8bd"><td id="QCGT" class="" style="width:158.15000915527344px">이미지 데이터 <br/>(Image Data)</td><td id="`;k_" class="" style="width:799.9943237304688px">시각 정보 데이터<br/>자율주행(교통 표지판 인식)이나 의료 영상 분석 등에 활용됩니다.</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="f205549d-3528-8355-a9e1-01ffbceae7b4" class=""><strong>1.2. 주요 데이터 준비 및 전처리 단계 (Data Preparation Steps)</strong></p></div><div style="display:contents" dir="auto"><p id="3fd5549d-3528-8280-b002-81ba4568c548" class="">데이터 수집 후 모델이 학습할 수 있는 상태로 만드는 과정입니다. 각 단계의 목적을 구분하는 것이 중요합니다.</p></div><div style="display:contents" dir="ltr"><table id="7005549d-3528-8302-9c6e-81a8da7c11e7" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="b075549d-3528-837b-aebc-01ab81cc0d64"><th id="QCGT" class="simple-table-header-color simple-table-header" style="width:153.1392059326172px">특성</th><th id="`;k_" class="simple-table-header-color simple-table-header" style="width:384.9801025390625px">정의</th><th id="p]y&gt;" class="simple-table-header-color simple-table-header" style="width:416.98577880859375px">예시</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="a565549d-3528-82cf-b3ae-818fd40e838c"><td id="QCGT" class="" style="width:153.1392059326172px">데이터 레이블링<br/>(Labeling)</td><td id="`;k_" class="" style="width:384.9801025390625px">지도 학습을 위해 데이터(입력)에 정답(태그, 카테고리)을 부여하는 작업</td><td id="p]y&gt;" class="" style="width:416.98577880859375px">거래 내역에 &#x27;개인&#x27; 또는 &#x27;기업&#x27;이라는 분류를 삽입하는 것<br/>사진에 &#x27;고양이&#x27;라고 태그를 다는 것.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2935549d-3528-83e9-a979-0134f192cfc4"><td id="QCGT" class="" style="width:153.1392059326172px">데이터 인코딩 <br/>(Encoding)</td><td id="`;k_" class="" style="width:384.9801025390625px">컴퓨터가 이해할 수 있도록 문자(텍스트) 데이터를 숫자(수치) 데이터로 변환하는 작업</td><td id="p]y&gt;" class="" style="width:416.98577880859375px">&#x27;Red, Green, Blue&#x27; 색상 정보를 <code>[1, 0, 0]</code>, <code>[0, 1, 0]</code> 처럼 0과 1의 숫자로 변경(One-hot encoding).</td></tr></div><div style="display:contents" dir="ltr"><tr id="bca5549d-3528-83e1-a0b7-01aeba960e54"><td id="QCGT" class="" style="width:153.1392059326172px">데이터 정규화 <br/>(Normalization)</td><td id="`;k_" class="" style="width:384.9801025390625px">서로 다른 범위(Scale)를 가진 수치형 데이터들의 단위를 일정하게 맞추는(스케일링) 작업</td><td id="p]y&gt;" class="" style="width:416.98577880859375px">나이(0~100세)와 연봉(0~1억 원)을 모두 <strong>0과 1 사이의 값</strong>으로 변환하여, 특정 변수가 학습에 과도한 영향을 미치는 것을 방지함</td></tr></div><div style="display:contents" dir="ltr"><tr id="a9d5549d-3528-824b-b59c-010d53971189"><td id="QCGT" class="" style="width:153.1392059326172px">데이터 밸런싱 <br/>(Balancing)</td><td id="`;k_" class="" style="width:384.9801025390625px">특정 클래스의 데이터가 너무 적거나 많을 때, 비율을 맞춰주는 작업</td><td id="p]y&gt;" class="" style="width:416.98577880859375px">암 환자 데이터와 정상인 데이터의 비율이 1:99일 때, 암 환자 데이터를 늘리거나(Oversampling) 정상인 데이터를 줄여서(Undersampling) 균형을 맞춤</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><blockquote id="11e5549d-3528-82b9-8b67-012122413bda" class="">💡 대규모 데이터의 자동 레이블링 방법<br/> 대량의 레이블이 없는 데이터를 보유한 경우, 다음과 같은 자동화된 방법으로 레이블을 생성할 수 있습니다.<div style="display:contents" dir="ltr"><table id="2f95549d-3528-820c-9544-8140637a17db" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="7725549d-3528-8236-b60b-01df4c5fabe8"><th id="QCGT" class="simple-table-header-color simple-table-header" style="width:158.15000915527344px">방법</th><th id="`;k_" class="simple-table-header-color simple-table-header" style="width:433.36505126953125px">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="8c45549d-3528-8261-af67-010d84600eac"><td id="QCGT" class="" style="width:158.15000915527344px">배치 추론<br/>(Batch Inference)</td><td id="`;k_" class="" style="width:433.36505126953125px">사전 학습된 모델을 사용하여 대규모 데이터에 자동으로 레이블을 생성. 대량 처리에 적합</td></tr></div><div style="display:contents" dir="ltr"><tr id="d465549d-3528-83cd-b158-0193aecb36a3"><td id="QCGT" class="" style="width:158.15000915527344px">SageMaker AI 레이블링</td><td id="`;k_" class="" style="width:433.36505126953125px">인간 검토자 또는 자동화된 워크플로를 통해 데이터를 레이블링하는 관리형 서비스</td></tr></div></tbody></table></div></blockquote></div><div style="display:contents" dir="auto"><p id="ba15549d-3528-8355-8a72-818bb57dd691" class=""><strong>1.3. 데이터셋 품질 평가 기준</strong></p></div><div style="display:contents" dir="auto"><p id="7c95549d-3528-82ca-8606-81644d0a9f80" class="">수집된 데이터의 품질을 평가하는 것은 모델 성능에 직접적인 영향을 미치므로 매우 중요합니다. 주요 평가 기준은 다음과 같습니다.</p></div><div style="display:contents" dir="ltr"><table id="9ca5549d-3528-83fb-b844-014a30c68216" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="3d75549d-3528-83fc-9115-014e0bc4e61d"><th id="QCGT" class="simple-table-header-color simple-table-header" style="width:158.15000915527344px">특성</th><th id="`;k_" class="simple-table-header-color simple-table-header" style="width:250px">설명</th><th id="p]y&gt;" class="simple-table-header-color simple-table-header" style="width:403px">체크포인트</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="8b35549d-3528-821e-929f-01c70a9ad193"><td id="QCGT" class="" style="width:158.15000915527344px">Accuracy(정확성)</td><td id="`;k_" class="" style="width:250px">데이터가 실제를 정확히 반영하는가</td><td id="p]y&gt;" class="" style="width:403px">오타, 측정 오류, 잘못된 레이블</td></tr></div><div style="display:contents" dir="ltr"><tr id="17c5549d-3528-8354-960e-81abb9c67904"><td id="QCGT" class="" style="width:158.15000915527344px">Diversity(다양성)</td><td id="`;k_" class="" style="width:250px">모든 그룹/시나리오를 포괄하는가</td><td id="p]y&gt;" class="" style="width:403px">전 연령대, 모든 지역, 다양한 인종</td></tr></div><div style="display:contents" dir="ltr"><tr id="1635549d-3528-836b-9f90-01605af2b22b"><td id="QCGT" class="" style="width:158.15000915527344px">Completeness(완전성)</td><td id="`;k_" class="" style="width:250px">필요한 모든 데이터가 존재하는가</td><td id="p]y&gt;" class="" style="width:403px">결측값(Missing values) 비율. 필수 속성의 누락 여부</td></tr></div><div style="display:contents" dir="ltr"><tr id="b785549d-3528-828a-84b9-011ad96a77f4"><td id="QCGT" class="" style="width:158.15000915527344px">Consistency(일관성)</td><td id="`;k_" class="" style="width:250px">데이터 간 모순이 없는가</td><td id="p]y&gt;" class="" style="width:403px">형식 통일(예: 날짜 YYYY-MM-DD). 동일 항목의 중복 데이터 일치</td></tr></div><div style="display:contents" dir="ltr"><tr id="7605549d-3528-8358-ad38-81433b6d15d2"><td id="QCGT" class="" style="width:158.15000915527344px">Timeliness(적시성)</td><td id="`;k_" class="" style="width:250px">적절한 시점의 데이터인가</td><td id="p]y&gt;" class="" style="width:403px">최신 트렌드 반영 여부. 너무 오래된 데이터는 현재 패턴 반영 못함</td></tr></div><div style="display:contents" dir="ltr"><tr id="bd15549d-3528-8235-876b-8140b335adc8"><td id="QCGT" class="" style="width:158.15000915527344px">Relevance(관련성)</td><td id="`;k_" class="" style="width:250px">목적에 맞는 데이터인가</td><td id="p]y&gt;" class="" style="width:403px">불필요한 노이즈 데이터 제거. 예측 목표와 직접 관련된 속성 여부</td></tr></div><div style="display:contents" dir="ltr"><tr id="bc05549d-3528-8269-83de-015c7b394ad4"><td id="QCGT" class="" style="width:158.15000915527344px">Reliability(신뢰성)</td><td id="`;k_" class="" style="width:250px">데이터 수집 과정의 일관성과 재현 가능성</td><td id="p]y&gt;" class="" style="width:403px">신뢰할 수 있는 출처. 수집 방법의 표준화. 같은 조건 → 같은 결과</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><blockquote id="4ab5549d-3528-82e1-9c7f-81b127dcae35" class="">💡 Recency Bias 주의: 특정 시점(주로 최근) 데이터에 치우치면 계절성이나 장기 트렌드를 놓칠 수 있습니다. 예: 코로나 기간 데이터만으로 일반적인 소비 패턴 예측</blockquote></div><div style="display:contents" dir="auto"><p id="e005549d-3528-8284-803d-81db0e02d3f1" class=""><br/>예를 들어, 영화 추천 시스템을 만들기 위해 사용자 시청 기록을 수집하고, 영화 정보 데이터베이스를 구축하고, 평점 데이터를 정리하는 작업 등이 이 단계에 해당합니다. <br/></p></div><div style="display:contents" dir="auto"><p id="d5b5549d-3528-83f8-b489-0185aa07595d" class="">수집된 데이터는 학습용(training set)과 평가용(test set)으로 분할됩니다. 일반적으로 8:2 비율이 사용되며, 이는 과적합(overfitting) 검증을 위한 필수적인 과정입니다.</p></div><div style="display:contents" dir="auto"><ul id="6d15549d-3528-83cb-9de2-018fb274922a" class="bulleted-list"><li style="list-style-type:disc">이러한 데이터 전처리 과정에서 <strong>AWS Glue</strong> 같은 도구를 활용하면 더욱 효율적으로 작업할 수 있습니다.<div style="display:contents" dir="auto"><ul id="6215549d-3528-82cf-9600-016f59d5ad01" class="bulleted-list"><li style="list-style-type:circle">AWS Glue는 <mark class="highlight-red"><strong>완전 관리형 ETL(Extract-Transform-Load) 서비스</strong></mark>로, 다양한 데이터 소스에서 데이터를 추출하고 변환하여 머신러닝에 적합한 형태로 로드하는 작업을 자동화합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="48b5549d-3528-834d-b714-01c60d500653" class="bulleted-list"><li style="list-style-type:circle"><strong>서버리스(Serverless) 아키텍처</strong> 기반으로 동작하여 인프라를 직접 관리할 필요 없이 확장성이 뛰어나며, 데이터 정제 및 스키마 추론, 데이터 카탈로그 생성 등의 기능을 제공합니다</li></ul></div><div style="display:contents" dir="auto"><ul id="cb05549d-3528-835c-b846-010170cbf83c" class="bulleted-list"><li style="list-style-type:circle">예를 들어, 비정형/비구조화 데이터(JSON, 로그 파일 등)를 AWS Glue를 활용하여 <strong>구조화된 데이터(Parquet, CSV 등)로 변환</strong>하면 머신러닝 모델 학습에 더욱 적합하게 사용할 수 있습니다.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="34c5549d-3528-82c8-9a9e-01ffb9b1bdfc" class=""><strong>1.4. 모델 선택(Model Selection)</strong></p></div><div style="display:contents" dir="auto"><p id="14d5549d-3528-8240-acba-0140772539be" class="">학습에 사용할 모델을 선택할 때는 비즈니스 요구 사항에 따라 여러 요소를 고려해야 합니다.</p></div><div style="display:contents" dir="ltr"><table id="7445549d-3528-82b2-a12e-015051c1f49b" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="7065549d-3528-83a8-ad68-01c22303e22b"><th id="x;fy" class="simple-table-header-color simple-table-header" style="width:109.25283813476562px">고려 요소</th><th id="xN;Y" class="simple-table-header-color simple-table-header" style="width:322.4559631347656px">설명</th><th id="DQt|" class="simple-table-header-color simple-table-header" style="width:230.53834533691406px">예시</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="e245549d-3528-820d-a415-818ed78d7eac"><td id="x;fy" class="" style="width:109.25283813476562px">모델 크기<br/>(Model Size)</td><td id="xN;Y" class="" style="width:322.4559631347656px">모델이 클수록 정확도는 높아질 수 있지만, <strong>추론 지연시간이 증가</strong> <br/>실시간 응답이 필요한 경우 작은 모델이 유리</td><td id="DQt|" class="" style="width:230.53834533691406px">차량 충돌 감지 후 30초 내 긴급 서비스 연락 <br/>→ 작은 모델 선택</td></tr></div><div style="display:contents" dir="ltr"><tr id="0a45549d-3528-82ac-93b1-81244ccb69dd"><td id="x;fy" class="" style="width:109.25283813476562px">모델 비용<br/>(Model Cost)</td><td id="xN;Y" class="" style="width:322.4559631347656px">모델 학습 및 추론에 드는 비용<br/>비즈니스 ROI와 비교하여 판단</td><td id="DQt|" class="" style="width:230.53834533691406px">대규모 GPU 비용 vs. 비즈니스 가치</td></tr></div><div style="display:contents" dir="ltr"><tr id="acc5549d-3528-834b-8f92-8132a7165f4c"><td id="x;fy" class="" style="width:109.25283813476562px">모델 커스터마이징<br/>(Customization)</td><td id="xN;Y" class="" style="width:322.4559631347656px">사전 학습 모델을 그대로 사용할지, 추가 학습이 필요한지 여부</td><td id="DQt|" class="" style="width:230.53834533691406px">사전 훈련 모델을 추가 학습 없이 사용 <br/>→ 커스터마이징 불필요</td></tr></div></tbody></table></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="d265549d-3528-8340-8a2d-810e0ae36abf" class="toggle"><li><details open=""><summary><strong>2. 모델 학습(Training/Learning)</strong></summary><div style="display:contents" dir="auto"><p id="4ea5549d-3528-83d6-9e4f-019769568634" class="">이 단계는 알고리즘(모델)을 선택하고, 실제로 (선택된) 모델이 데이터로부터 패턴을 학습하는 과정입니다. </p></div><div style="display:contents" dir="ltr"><figure id="6c15549d-3528-82ed-a251-01137697f74a" class="image"><a href="image.png"><img style="width:960px" src="image.png"/></a><figcaption>모델(알고리즘)이 데이터와 만나서 훈련된 모델이 됩니다. 학생이 공부를 열심히 해서 성적이 오르는 것과 비슷합니다.</figcaption></figure></div><div style="display:contents" dir="auto"><p id="d305549d-3528-83ec-9e77-816edf819cca" class="">전체 데이터셋을 한 번 학습하는 것을 1 에포크(epoch)라고 하며, 충분한 학습을 위해 여러 번의 에포크가 필요합니다. 마치 학생이 시험을 위해 교과서를 여러 번 읽는 것처럼, 모델도 더 나은 성능을 위해 데이터를 반복적으로 학습합니다. 에포크 외에도 여러 하이퍼 파라미터가 있는데, 이를 조정하여 최적의 모델을 찾아갑니다.</p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1a05549d-3528-83e0-a52c-8149e25a25df" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># 학습 과정 예시
+for epoch in range(num_epochs):  # 여러 번 반복
+    for data in training_data:   # 데이터로 학습
+        predict = model(data)    # 예측
+        loss = calculate_loss(predict, true_value)  # 얼마나 틀렸는지 확인
+        optimize(loss)           # 개선</code></pre></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="9f15549d-3528-831f-813e-812f12881e70" class="toggle"><li><details open=""><summary><strong>3. 평가 및 검증</strong></summary><div style="display:contents" dir="auto"><p id="aa95549d-3528-8244-8037-017089e5f241" class="">학습된 모델의 실제 성능을 검증하는 단계입니다. 영화 추천 시스템의 경우, 새로운 사용자나 특정 시청 이력(예: 20개의 영화를 시청한 사용자)을 가진 고객에게 적절한 영화를 추천할 수 있는지 테스트합니다. 이때 모델이 새로운 입력 데이터에 대해 결과를 도출하는 과정을 추론(inference) 또는 예측(prediction)이라고 합니다. 즉, 평가는 모델 추론 또는 예측의 정확도를 검토하는 단계입니다. 이 단계에서 발견된 문제점들은 모델 재학습이나 파라미터 조정을 통해 개선됩니다.</p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5795549d-3528-83fb-8099-81161eaf162f" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># 실제 평가 예시: 영화 추천 시스템
+user = &quot;20개의 액션 영화를 본 대학생&quot;
+recommendations = model.predict(user)
+
+# 평가 지표
+accuracy = 추천 영화 중 실제로 본 영화의 비율
+diversity = 추천 영화의 다양성
+relevance = 사용자 취향과의 일치도</code></pre></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="9675549d-3528-838c-8458-0115e422800e" class="toggle"><li><details open=""><summary><strong>4. 배포(Deploy) 및 서빙</strong></summary><div style="display:contents" dir="auto"><p id="91d5549d-3528-8304-a1cc-810edc18daf4" class="">검증이 완료된 모델을 실제 서비스 환경에 설치하는 과정입니다. 마치 완성된 자판기를 매장에 설치하는 것처럼, 학습된 모델을 사용자들이 실제로 이용할 수 있는 환경에 구축합니다. 이 단계에서는 시스템의 안정성, 성능, 확장성 등이 중요하게 고려됩니다. 또한 지속적인 모니터링을 통해 모델의 성능 저하나 편향성 문제를 감지하고 대응합니다.</p></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="59f5549d-3528-8272-bd4e-01d288d5445f" class="toggle"><li><details open=""><summary><strong>5. MLOps</strong></summary><div style="display:contents" dir="auto"><p id="3c75549d-3528-83b8-b2e4-019ab56ea151" class="">MLOps(ML Operations)는 ML 모델의 개발, 배포, 운영을 체계적으로 관리하는 모범 사례입니다. 소프트웨어 개발의 DevOps와 유사한 개념으로, ML 시스템의<br/>지속적인 품질 유지를 목표로 합니다.</p></div><div style="display:contents" dir="ltr"><table id="4d55549d-3528-8290-9a08-816f29d9184b" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2d75549d-3528-83d2-a289-0181ef1a167f"><th id="YCla" class="simple-table-header-color simple-table-header" style="width:129.55113220214844px"><strong>MLOps 핵심 관행</strong></th><th id="G`he" class="simple-table-header-color simple-table-header" style="width:461.6666666666667px"><strong>설명</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="9fe5549d-3528-8332-8ec1-817bf358d96a"><td id="YCla" class="" style="width:129.55113220214844px">지속적 모니터링</td><td id="G`he" class="" style="width:461.6666666666667px">프로덕션 환경에서 모델 출력을 지속적으로 모니터링하여 성능 저하, 데이터 드리프트를 감지</td></tr></div><div style="display:contents" dir="ltr"><tr id="aae5549d-3528-8322-b401-8153f99bc224"><td id="YCla" class="" style="width:129.55113220214844px">모델 재학습</td><td id="G`he" class="" style="width:461.6666666666667px">새로운 데이터가 축적되거나 성능이 저하되면 모델을 재학습하여 최신 패턴 반영</td></tr></div><div style="display:contents" dir="ltr"><tr id="8dd5549d-3528-83b2-8e77-812d6aab6051"><td id="YCla" class="" style="width:129.55113220214844px">실험 관리</td><td id="G`he" class="" style="width:461.6666666666667px">다양한 모델, 하이퍼파라미터, 데이터셋 조합을 체계적으로 추적하고 비교</td></tr></div><div style="display:contents" dir="ltr"><tr id="1045549d-3528-832e-8cca-015d2cb1ecf5"><td id="YCla" class="" style="width:129.55113220214844px">반복 가능한 파이프라인</td><td id="G`he" class="" style="width:461.6666666666667px">데이터 수집부터 배포까지의 과정을 자동화하여 일관성 확보</td></tr></div><div style="display:contents" dir="ltr"><tr id="f5f5549d-3528-825c-a961-012808e22727"><td id="YCla" class="" style="width:129.55113220214844px">기술 부채 관리</td><td id="G`he" class="" style="width:461.6666666666667px">코드, 데이터, 모델의 복잡성을 지속적으로 관리하여 유지보수 비용 절감</td></tr></div></tbody></table></div></details></li></ul></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c515549d-3528-827e-a6e2-0126fac99e43" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">graph LR
+A[모델 준비] --&gt; B[테스트]
+B --&gt; C[배포]
+C --&gt; D[모니터링]
+D --&gt; E[개선]
+E --&gt; A</code></pre></div></div></figure></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">ML 모델 성능 평가</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="b845549d-3528-82b5-b35f-813015604438" class="toggle"><li><details open=""><summary>모델 성능 측정 지표(Performance Metrics)</summary><div style="display:contents" dir="ltr"><table id="b6f5549d-3528-8356-b87a-81c1f41a0190" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="a955549d-3528-83a3-b5cc-011287ca3437"><td id="IsDb" class="">지표 종류</td><td id="Jz}R" class="" style="width:380.9895935058594px">설명</td><td id="I=Ef" class="" style="width:722.4625244140625px">예시</td></tr></div><div style="display:contents" dir="ltr"><tr id="c685549d-3528-8220-b79f-8150d0045ded"><td id="IsDb" class="">회귀 분석용 지표<br/>(Regression Metrics)</td><td id="Jz}R" class="" style="width:380.9895935058594px">모델이 예측한 수치가 정답과 얼마나 차이가 나느냐, <br/>즉 오차를 통해 성능 측정<br/>수치니까 평균 내고, 제곱하고, 백분율을 따지는 것</td><td id="I=Ef" class="" style="width:722.4625244140625px">1. MAE(Mean Absolute Error, 평균 절대 오차)<br/>2. MAPE(Mean Absolute Percentage Error, 평균 절대 백분율 오차)<br/>3. RMSE(Root Mean Squared Error, 평균 제곱근 오차)</td></tr></div><div style="display:contents" dir="ltr"><tr id="1665549d-3528-83f5-b5af-0132e3d4cfc7"><td id="IsDb" class="">분류용 지표<br/>(Classification Metrics)</td><td id="Jz}R" class="" style="width:380.9895935058594px">모델이 데이터를 제대로 분류했느냐 안 했느냐가 핵심<br/>예1. 암 환자인 A라는 사람을 암 환자로 예측했는지<br/>예2. 암 환자가 아닌 B라는 사람을 암 환자가 아니라고 예측했는지</td><td id="I=Ef" class="" style="width:722.4625244140625px">1. Accuracy(정확도): 올바른 예측. <mark class="highlight-red"><strong>정확하게(맞는 건 맞다, 아닌 건 아니다) 예측</strong></mark>한 비율. (TP + TN) / (TP + FP + TN + FN)<br/>2. Precision(정밀도): 예측의 정확성. <mark class="highlight-red"><strong>모델이 예측한 양성 중</strong></mark> 실제 양성의 비율. TP / (TP + FP)<br/>3. Recall(재현율): 실제 양성을 놓치지 않는 능력. <mark class="highlight-red"><strong>실제 양성 중</strong></mark> 모델이 양성이라고 예측한 비율. TP / (TP + FN)<br/>4. F1-score(F1-점수): 정밀도와 재현율의 조화평균으로, 모델 성능의 <mark class="highlight-red"><strong>균형</strong></mark>잡힌 측정치<br/>* Confusion Matrix(오차행렬): 분류 예측의 성능을 측정하기 위한 표 (위 4가지 수치를 계산 가능)<br/> - <a href="https://leedakyeong.tistory.com/entry/%EB%B6%84%EB%A5%98-%EB%AA%A8%EB%8D%B8-%EC%84%B1%EB%8A%A5-%ED%8F%89%EA%B0%80-%EC%A7%80%ED%91%9C-Confusion-Matrix%EB%9E%80-%EC%A0%95%ED%99%95%EB%8F%84Accuracy-%EC%A0%95%EB%B0%80%EB%8F%84Precision-%EC%9E%AC%ED%98%84%EB%8F%84Recall-F1-Score">참고 자료</a></td></tr></div><div style="display:contents" dir="ltr"><tr id="1755549d-3528-8284-8e9e-011311c19677"><td id="IsDb" class="">지연 시간<br/>(Latency)</td><td id="Jz}R" class="" style="width:380.9895935058594px">모델이 예측하는 데 걸리는 시간으로, 실용적 성능의 중요한 척도<br/>실시간 서비스에서 사용자 경험의 핵심 요소</td><td id="I=Ef" class="" style="width:722.4625244140625px">1. 평균 응답 시간: 모델이 입력을 받은 후 결과를 생성하는데 걸리는 시간<br/>2. 평균 통화 시간<br/>3. 추론 속도</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><ul id="6065549d-3528-83c3-aa61-0124875492e1" class="toggle"><li><details open=""><summary>지표 예시</summary><div style="display:contents" dir="auto"><ul id="25a5549d-3528-82ed-9670-01978d9fca04" class="bulleted-list"><li style="list-style-type:disc">회귀 분석용 지표<div style="display:contents" dir="auto"><ul id="e935549d-3528-830f-bfc3-012de5ef99db" class="bulleted-list"><li style="list-style-type:circle">시험 점수를 얼마나 맞출지, 집값이 어떻게 될지 등 수치를 예측</li></ul></div><div style="display:contents" dir="auto"><ul id="7685549d-3528-83f9-94e8-01519d814340" class="bulleted-list"><li style="list-style-type:circle"><strong>MAE (평균 절대 오차)</strong><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="aea5549d-3528-82e2-8171-819742613b9d" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">예시: 집값 예측
+실제 가격: 5억원
+예측 가격: 4.7억원
+오차: 0.3억원</code></pre></div></li></ul></div><div style="display:contents" dir="auto"><ul id="bc65549d-3528-835b-af60-819ffa583741" class="bulleted-list"><li style="list-style-type:circle"><strong>RMSE (평균 제곱근 오차)</strong><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5135549d-3528-822e-a481-01429be90dbb" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">실제 값: [100, 150, 200]
+예측 값: [95, 160, 190]
+RMSE = 8.7  
+# 큰 오차에 더 민감</code></pre></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="80e5549d-3528-83b8-9052-0118f1f9fc93" class="bulleted-list"><li style="list-style-type:disc">분류용 지표<div style="display:contents" dir="auto"><ul id="0a55549d-3528-8327-888e-01d77be0fa90" class="bulleted-list"><li style="list-style-type:circle">시험 합격/불합격 예측, 암 진단처럼 O/X 문제의 정확도를 평가</li></ul></div><div style="display:contents" dir="auto"><ul id="59b5549d-3528-838e-ba1c-01a3fc632376" class="bulleted-list"><li style="list-style-type:circle">정확도(Accuracy) vs. 정밀도(Precision)<div style="display:contents" dir="ltr"><table id="c7e5549d-3528-83a6-8999-01373fd20bf6" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="bf75549d-3528-822b-900e-81aa17d9a1da"><td id="TnzB" class="" style="width:102.328125px">지표</td><td id="Ux~T" class="" style="width:691.328125px"> 설명</td></tr></div><div style="display:contents" dir="ltr"><tr id="56d5549d-3528-839c-88fa-01dc55176d9c"><td id="TnzB" class="" style="width:102.328125px">정확도<br/>(Accuracy)</td><td id="Ux~T" class="" style="width:691.328125px">- 전체 100명 중 90명의 합격/불합격을 맞춤 → 정확도 90%<br/>- &#x27;<strong>올바르게 분류된 항목과 잘못 분류된 항목의 총합</strong>&#x27; 대비 &#x27;<strong>올바르게 분류된 항목의 수</strong>&#x27;의 비율(the ratio of the number of correctly classified items to the total number of correctly and incorrectly classified items)<br/></td></tr></div><div style="display:contents" dir="ltr"><tr id="6e55549d-3528-83bc-ab1e-013a2e19aee4"><td id="TnzB" class="" style="width:102.328125px">정밀도<br/>(Precision)</td><td id="Ux~T" class="" style="width:691.328125px">- 합격(양성)이라고 예측한 80명 중 실제 합격자는 70명 → 정밀도 87.5%<br/>- 실제로는 사기(양성)가 아니지만 사기로 표시된 사례를 검토하는 데 소요되는 시간을 최소화 (minimize the amount of time the employees spend reviewing flagged fraud cases that are not actually fraudulent)</td></tr></div></tbody></table></div></li></ul></div></li></ul></div></details></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="63c5549d-3528-832f-afee-81e9cd54b767" class="bulleted-list"><li style="list-style-type:disc">상황별 지표 예시<div style="display:contents" dir="ltr"><table id="0af5549d-3528-83ce-9c86-01df638fc67c" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="fbf5549d-3528-829c-950a-0186ae377e97"><td id="kW_T" class="" style="width:517.9971313476562px">상황</td><td id="AQwl" class="" style="width:370.9886169433594px">알고리즘</td></tr></div><div style="display:contents" dir="ltr"><tr id="88d5549d-3528-83eb-87df-013160339c69"><td id="kW_T" class="" style="width:517.9971313476562px">모델이 <mark class="highlight-red"><strong>올바르게</strong></mark> <mark class="highlight-red"><strong>분류</strong></mark>한 이미지의 수를 평가</td><td id="AQwl" class="" style="width:370.9886169433594px">정확도</td></tr></div><div style="display:contents" dir="ltr"><tr id="f255549d-3528-82ca-a93a-811382cf6db6"><td id="kW_T" class="" style="width:517.9971313476562px">운영 AI 모델의 <mark class="highlight-red"><strong>런타임 </strong></mark><mark class="highlight-default">효율성</mark> 측정</td><td id="AQwl" class="" style="width:370.9886169433594px">평균 응답 시간(Average response time)</td></tr></div><div style="display:contents" dir="ltr"><tr id="9035549d-3528-83b7-bfb6-01991adc732b"><td id="kW_T" class="" style="width:517.9971313476562px">LLM 챗봇 구축으로 <mark class="highlight-red"><strong>콜센터 직원의 응답 조치 수</strong></mark>를 줄이려고 할 때, 챗봇의 효과를 평가하기 위한 지표</td><td id="AQwl" class="" style="width:370.9886169433594px">평균 통화 시간</td></tr></div><div style="display:contents" dir="ltr"><tr id="1e75549d-3528-832b-b795-0197d3cee7b2"><td id="kW_T" class="" style="width:517.9971313476562px">애플리케이션이 사용자에게 <mark class="highlight-red"><strong>실시간으로 응답을 제공</strong></mark>해야 할 때 고려해야 하는 모델의 특성</td><td id="AQwl" class="" style="width:370.9886169433594px">추론 속도</td></tr></div><div style="display:contents" dir="ltr"><tr id="0905549d-3528-828b-8642-819b61e0f33b"><td id="kW_T" class="" style="width:517.9971313476562px">이커머스 회사의 ML 지표<br/>1. 제품을 제대로 추천하는가<br/>2. 제품 구매액에 얼마나 영향을 미치는가<br/>3. 사용자가 재구매, 재방문하는가 </td><td id="AQwl" class="" style="width:370.9886169433594px">1. 클릭률(CTR, Click-through rate)<br/>2. 평균 주문 금액(AOV, Average order value)<br/>3. 유지율(Retention rate)</td></tr></div><div style="display:contents" dir="ltr"><tr id="9a05549d-3528-8291-b3d4-81153836962d"><td id="kW_T" class="" style="width:517.9971313476562px">AI 솔루션이 매출에 미치는 영향을 평가</td><td id="AQwl" class="" style="width:370.9886169433594px">전환율(Conversion rate)</td></tr></div><div style="display:contents" dir="ltr"><tr id="b1b5549d-3528-82d9-9a55-014549d7551f"><td id="kW_T" class="" style="width:517.9971313476562px">AI 어시스턴트가 판매 성과에 미치는 직접적인 영향을 측정</td><td id="AQwl" class="" style="width:370.9886169433594px">전환율(Conversion rate)</td></tr></div><div style="display:contents" dir="ltr"><tr id="7775549d-3528-83ac-82f3-81beac892bfd"><td id="kW_T" class="" style="width:517.9971313476562px">AI 어시스턴트가 고객 문의를 자동 응대하여 <mark class="highlight-red"><strong>상담원의 노력을 줄이려 할 때</strong></mark> 비즈니스 목표에 대한 평가 지표</td><td id="AQwl" class="" style="width:370.9886169433594px">첫 번째 연락 해결률(FCR, First Contact Resolution Rate)</td></tr></div></tbody></table></div></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">ML 모델 성능 개선</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="09c5549d-3528-8208-8c5f-01281f280770" class="toggle"><li><details open=""><summary>모델 개선을 위한 기본 방법</summary><div style="display:contents" dir="auto"><ul id="4665549d-3528-8349-a473-81e4c0184293" class="bulleted-list"><li style="list-style-type:disc">특성 공학(Feature engineering): 예측 모델을 만들 때 데이터의 속성이나 변수를 선택하고 변환하는 방법. 훈련 데이터셋의 변수 수를 증가시켜 데이터를 풍부하게 만들고, 궁극적으로 모델의 성능을 향상. 마치 요리사가 같은 재료라도 다양한 방식으로 가공하고 조합하여 더 맛있는 요리를 만드는 것과 유사<div style="display:contents" dir="auto"><ul id="4d25549d-3528-8356-8925-019d7bd6921f" class="bulleted-list"><li style="list-style-type:circle">특성 생성: 기존 데이터로부터 새로운 특성을 만들어내는 과정</li></ul></div><div style="display:contents" dir="auto"><ul id="5b05549d-3528-8336-8ccc-811f51c13885" class="bulleted-list"><li style="list-style-type:circle">특성 변환: 기존 특성을 더 유용한 형태로 변환하는 과정</li></ul></div><div style="display:contents" dir="auto"><ul id="4715549d-3528-8379-b188-81a207b12a96" class="bulleted-list"><li style="list-style-type:circle">특성 추출: 데이터에서 중요한 특성을 뽑아내는 과정</li></ul></div><div style="display:contents" dir="auto"><ul id="7af5549d-3528-820e-892f-013adcec5aac" class="bulleted-list"><li style="list-style-type:circle">특성 선택: 가장 유용한 특성들을 선별하는 과정</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="6a95549d-3528-824e-ba95-01c2f5864ca8" class="bulleted-list"><li style="list-style-type:disc">하이퍼파라미터 튜닝(Hyperparameter tuning): ML 알고리즘의 <mark class="highlight-red"><strong>학습 방식을 미세 조정</strong></mark>하는 과정. 마치 요리사가 온도와 시간, 재료의 양을 조절하며 최적의 조리 방법을 찾는 것과 유사. 알고리즘이 학습하는 방식에 영향을 미치는 다양한 매개변수들을 조정</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="c7c5549d-3528-8285-9ae1-01e1574b01ca" class="toggle"><li><details open=""><summary>모델 성능 저하의 주요 원인</summary><div style="display:contents" dir="auto"><ul id="b785549d-3528-821a-a178-818a25334075" class="toggle"><li><details open=""><summary>편향(Bias): 모델이 데이터셋의 중요한 특성을 놓치고 있다는 의미. 데이터가 너무 단순할 때 발생. 과소적합(underfitting)이라고 함. 훈련 데이터조차 제대로 학습하지 못한 상태. 마치 너무 단순한 공식으로 복잡한 문제를 해결하려는 것과 비슷</summary><div style="display:contents" dir="ltr"><table id="98d5549d-3528-8298-a0e0-813c9cb56140" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="0195549d-3528-8320-a198-012bacfb68f0"><td id="~]Ff" class="" style="width:150.42857360839844px">측정 편향<br/>(Measurement bias)</td><td id="@zxH" class="" style="width:555.0000305175781px">측정 과정 자체의 문제로 발생하는 체계적 오류<br/>데이터를 수집하거나 레이블링하는 방식 자체에 문제가 있을 때 발생<br/>예. 체중계가 항상 실제보다 2kg 더 무겁게 측정</td></tr></div><div style="display:contents" dir="ltr"><tr id="95c5549d-3528-8391-8792-0132a33bc956"><td id="~]Ff" class="" style="width:150.42857360839844px">표본 편향<br/>(Sampling bias)</td><td id="@zxH" class="" style="width:555.0000305175781px">데이터가 전체 모집단을 제대로 대표하지 못할 때 발생<br/>예1. 서울에서만 설문조사를 하고 전국 의견이라고 말하는 것<br/>예2. AI 모델이 특정 그룹의 데이터만 과도하게 학습하여, 다른 그룹에 대해서는 부정확한 결과를 내는 것(특정 인종 집단에 속한 사람들을 불균형하게 신고)</td></tr></div><div style="display:contents" dir="ltr"><tr id="6005549d-3528-83e9-afec-018c48c0f030"><td id="~]Ff" class="" style="width:150.42857360839844px">관찰자 편향<br/>(Observer bias)</td><td id="@zxH" class="" style="width:555.0000305175781px">관찰자의 주관적 기대나 선입견이 결과 해석에 영향을 미치는 경우<br/>예. 연구자가 자신의 가설을 확인하고 싶은 나머지 데이터를 선택적으로 해석하는 것</td></tr></div><div style="display:contents" dir="ltr"><tr id="dfe5549d-3528-8357-94f4-811632f150d8"><td id="~]Ff" class="" style="width:150.42857360839844px">확증 편향<br/>(Confirmation bias)</td><td id="@zxH" class="" style="width:555.0000305175781px">자신의 기존 신념이나 가설을 지지하는 정보만 선택적으로 받아들이는 경향<br/>예. 다이어트 효과를 연구할 때 성공 사례만 모으고 실패 사례는 무시하는 것</td></tr></div></tbody></table></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="3d55549d-3528-8275-9d16-8192ba10e977" class="toggle"><li><details open=""><summary>과적합(Overfitting): 낮은 편향과 높은 분산(variance)이 특징. 모델이 훈련 데이터를 너무 잘 기억한 나머지, 새로운 데이터에 대해서는 성능이 떨어지는 현상. 마치 시험문제의 답만 외우고 실제 문제 해결 능력은 부족한 상태와 비슷 (예. 조금만 변형된 문제가 나오면 풀지 못하는 학생)</summary><div style="display:contents" dir="auto"><ul id="3335549d-3528-83ee-a8c1-8171bc93ce40" class="bulleted-list"><li style="list-style-type:disc">편향이 낮다: 모델이 학습 데이터에 대해 잘못된 가정을 하지 않고 있다는 것 (그러나 ‘분산이 높아’ 데이터의 노이즈까지 너무 세세하게 학습하여 과적합에 이른 것)</li></ul></div><div style="display:contents" dir="auto"><ul id="afa5549d-3528-8203-93a5-818db9a5fe1a" class="bulleted-list"><li style="list-style-type:disc">분산이 높다: 모델이 학습 데이터에 너무 익숙해져서 해당 데이터에 대해서는 매우 높은 정확도로 예측할 수 있게 된 상태이지만, 새로운 데이터를 모델에 입력하면 정확도가 크게 떨어짐</li></ul></div></details></li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="59b5549d-3528-82c1-90b7-814e5728d358" class="toggle"><li><details open=""><summary>과적합 해결을 위한 방법들</summary><div style="display:contents" dir="ltr"><table id="c015549d-3528-83eb-97fa-01ce3894bdc1" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="ff45549d-3528-83db-bcfb-014dca672158"><td id="cqiW" class="" style="width:303px">해결 방법</td><td id="Wu&lt;S" class="" style="width:649px"> 설명</td></tr></div><div style="display:contents" dir="ltr"><tr id="b555549d-3528-832d-a777-817afba983e1"><td id="cqiW" class="" style="width:303px">훈련 데이터 증가(Increase the training data)</td><td id="Wu&lt;S" class="" style="width:649px">모델의 학습 범위를 넓히는 방법</td></tr></div><div style="display:contents" dir="ltr"><tr id="9735549d-3528-82a1-8a7b-8159909677e5"><td id="cqiW" class="" style="width:303px">데이터 증강(Data augmentation)</td><td id="Wu&lt;S" class="" style="width:649px">데이터셋의 다양성을 높이는 방법</td></tr></div><div style="display:contents" dir="ltr"><tr id="2385549d-3528-8292-a823-01e6776e1ba9"><td id="cqiW" class="" style="width:303px">조기 종료(Early stopping)</td><td id="Wu&lt;S" class="" style="width:649px">모델이 데이터를 과도하게 암기하지 않도록 학습을 일찍 멈추는 방법</td></tr></div><div style="display:contents" dir="ltr"><tr id="c345549d-3528-8290-9609-812c2bac087a"><td id="cqiW" class="" style="width:303px">하이퍼 파라미터 조정(Adjust hyperparameters)</td><td id="Wu&lt;S" class="" style="width:649px">모델의 학습 방식을 조정(기존 하이퍼 파라미터만 조정)<br/>학습률(learning rate), 배치 크기(batch size) 등을 조절<br/>하이퍼 파라미터를 추가하는 게 아님</td></tr></div><div style="display:contents" dir="ltr"><tr id="6875549d-3528-824d-a8c7-81090d41077a"><td id="cqiW" class="" style="width:303px">정규화(Regularization)</td><td id="Wu&lt;S" class="" style="width:649px">극단적인 가중치 값에 패널티를 부여하여 선형 모델의 과적합 방지<br/>모델이 특정 특성에 과도하게 의존하는 것을 막음</td></tr></div><div style="display:contents" dir="ltr"><tr id="bb15549d-3528-82da-92cd-81c632c73471"><td id="cqiW" class="" style="width:303px">교차 검증(Cross Validation)</td><td id="Wu&lt;S" class="" style="width:649px">과적합 탐지를 위한 테스트 방법<br/>데이터를 여러 부분으로 나누어 반복적으로 검증하여 모델의 일반화 성능을 평가</td></tr></div><div style="display:contents" dir="ltr"><tr id="2c05549d-3528-82e0-98c7-0145847ab87c"><td id="cqiW" class="" style="width:303px">단순한 모델 사용(Simpler models)</td><td id="Wu&lt;S" class="" style="width:649px">모델 구조 단순화. 필요 이상으로 복잡한 모델은 불필요한 패턴까지 학습할 수 있음</td></tr></div><div style="display:contents" dir="ltr"><tr id="a895549d-3528-82d7-b0d5-01a4a5b99a16"><td id="cqiW" class="" style="width:303px">차원 축소(Dimension reduction)</td><td id="Wu&lt;S" class="" style="width:649px">데이터의 중요한 정보는 유지하면서 차원(특성의 수)을 줄이는 기법(예. PCA, Principal Component Analysis)<br/>불필요한 특성을 제거하여 과적합 위험 감소</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><ul id="9d25549d-3528-82ef-ac61-016c80daba50" class="toggle"><li><details open=""><summary>훈련 데이터 증가(Increase the training data)vs. 데이터 증강(Data augmentation)</summary><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2605549d-3528-83c2-a249-812a66fc4393"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="70f5549d-3528-8343-a6b8-81db368ba5fc" class="">일반적으로 다양한 학습 데이터가 모델에 주는 이점은 아래와 같습니다. </p></div><div style="display:contents" dir="auto"><p id="1ea5549d-3528-83ea-9812-018f2da741ec" class="">첫째, 다양한 학습 데이터는 모델이 더 넓은 패턴을 학습하고 실제 환경(프로덕션)의 새로운 데이터에 대해 더 나은 일반화 능력을 갖게 해줍니다. 이는 마치 학생이 다양한 유형의 문제를 풀어봄으로써 시험에서 처음 보는 문제도 잘 해결할 수 있게 되는 것과 비슷합니다.</p></div><div style="display:contents" dir="auto"><p id="a235549d-3528-8399-bda2-01e48c6cbacf" class="">둘째, 과적합 위험이 줄어듭니다. 실제 환경에서 성능이 크게 떨어지는 것은 학습 데이터에 과적합되었다는 신호입니다. 데이터의 양을 늘리면 모델이 제한된 데이터셋의 특정 패턴을 단순 암기하는 대신, 실제로 예측에 도움이 되는 더 견고한 특성들을 학습할 수 있습니다.</p></div><div style="display:contents" dir="auto"><p id="9dc5549d-3528-8227-bb63-8197ae300d86" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1515549d-3528-8367-92d7-817a877f10fb" class="">학습 데이터를 다양하게 만드는 방법은 훈련 데이터의 양을 늘리거나, 데이터를 증강하는 것입니다.</p></div><div style="display:contents" dir="auto"><p id="76e5549d-3528-826b-b337-0193eaa8e40b" class="">훈련 데이터 증가는 실제로 새로운 데이터를 더 수집하는 것입니다. 예를 들어, 고객 리뷰 분석을 위한 모델을 만든다면, 실제 고객들로부터 더 많은 리뷰를 수집하는 것입니다.</p></div><div style="display:contents" dir="auto"><p id="8225549d-3528-8397-a4c8-011fd4db4516" class="">반면, 데이터 증강은 기존 데이터를 변형하여 인공적으로 새로운 데이터를 만들어내는 기법입니다. 예를 들어,</p></div><div style="display:contents" dir="auto"><ul id="72c5549d-3528-82f1-b6e3-81891f580b91" class="bulleted-list"><li style="list-style-type:disc">이미지 데이터의 경우: 회전, 반전, 밝기 조절, 자르기 등을 통해 하나의 이미지로 여러 개의 새로운 이미지를 만들어냅니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="7815549d-3528-82b4-8a73-8173ef004d10" class="bulleted-list"><li style="list-style-type:disc">텍스트 데이터의 경우: 동의어 치환, 문장 구조 변경 등을 통해 같은 의미지만 다른 형태의 텍스트를 생성합니다.</li></ul></div><div style="display:contents" dir="auto"><p id="e355549d-3528-828e-93de-01bb7c1defef" class="">이 두 방법의 핵심적인 차이</p></div><div style="display:contents" dir="auto"><ul id="2d95549d-3528-8302-be38-817bf280bd72" class="bulleted-list"><li style="list-style-type:disc">훈련 데이터 증가는 실제 새로운 데이터를 추가하는 것</li></ul></div><div style="display:contents" dir="auto"><ul id="42c5549d-3528-8233-9794-816b0594e6cc" class="bulleted-list"><li style="list-style-type:disc">데이터 증강은 기존 데이터를 변형하여 다양성을 높이는 것</li></ul></div><div style="display:contents" dir="auto"><p id="1dc5549d-3528-8335-9559-81b98c31c11f" class="">데이터 증강은 특히 데이터 수집이 어렵거나 비용이 많이 드는 상황에서 유용한 대안이 될 수 있습니다. 하지만 인위적으로 만들어진 데이터이므로, 실제 데이터의 특성을 완벽하게 반영하지 못할 수 있다는 한계도 있습니다.</p></div></div></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="6105549d-3528-83fb-acfb-813cac20c9b3" class="bulleted-list"><li style="list-style-type:disc">상황별 예시<div style="display:contents" dir="ltr"><table id="2095549d-3528-8399-a838-8127d9bc2a2c" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="f005549d-3528-828b-84c8-81eb2b116f87"><td id="kW_T" class="" style="width:423px">상황</td><td id="AQwl" class="" style="width:409px">방법</td></tr></div><div style="display:contents" dir="ltr"><tr id="2bf5549d-3528-83fb-8ee3-01f71100e8ab"><td id="kW_T" class="" style="width:423px">모델의 정확도를 특정 허용 수준까지 높이길 희망 </td><td id="AQwl" class="" style="width:409px">에포크 늘리기</td></tr></div><div style="display:contents" dir="ltr"><tr id="7675549d-3528-823c-82d2-01f1e7ec6cb9"><td id="kW_T" class="" style="width:423px">프로덕션에 배포했을 때 모델의 성능이 크게 하락한 문제 완화</td><td id="AQwl" class="" style="width:409px">학습에 사용되는 데이터의 양 늘리기</td></tr></div><div style="display:contents" dir="ltr"><tr id="0905549d-3528-827d-9998-81aa0ab025ec"><td id="kW_T" class="" style="width:423px">입력 데이터가 편향되어 있고 특정 속성이 이미지 생성에 영향</td><td id="AQwl" class="" style="width:409px">불균형 클래스의 데이터 증대</td></tr></div><div style="display:contents" dir="ltr"><tr id="bc35549d-3528-834a-9719-81772ae4ca09"><td id="kW_T" class="" style="width:423px">고객에게 부정적인 영향을 미칠 수 있는 편향성을 최소화하기 위해 AI 모델을 책임감 있게 구축하고 사용하기 희망</td><td id="AQwl" class="" style="width:409px">데이터의 불균형이나 격차를 감지(SageMaker Clarify)<br/>이해관계자들에게 투명성을 제공할 수 있도록 모델의 행동을 평가</td></tr></div></tbody></table></div></li></ul></div></details></li></ul></div></div></details></div><div style="display:contents" dir="auto"><p id="f385549d-3528-82b0-ba88-8170a3398b98" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

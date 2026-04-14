@@ -1,0 +1,745 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Responsible AI, AI를 책임감있게 만드는 방식</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6a55549d-3528-8256-8ac5-81afc55e9ed2" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">7️⃣</span></div><h1 class="page-title" dir="auto"><strong>Responsible AI, AI를 책임감있게 만드는 방식</strong></h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-relation"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-northeast_gray.svg" style="width:14px;height:14px;display:block"/></span>계산용 관계용 속성</th><td><a href="AI%EC%99%80%20ML%EC%9D%98%20%EA%B8%B0%EC%B4%88%20c225549d35288266a8508112fbda64bb.html"><span class="icon">1️⃣</span>AI와 ML의 기초</a>, <a href="%EC%83%9D%EC%84%B1%ED%98%95%20AI%20%EA%B8%B0%EC%B4%88%201b05549d352882a7bb8a0176dc08eef8.html"><span class="icon">4️⃣</span>생성형 AI 기초</a>, <a href="Responsible%20AI,%20AI%EB%A5%BC%20%EC%B1%85%EC%9E%84%EA%B0%90%EC%9E%88%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B0%A9%EC%8B%9D%206a55549d352882568ac581afc55e9ed2.html"><span class="icon">7️⃣</span>Responsible AI, AI를 책임감있게 만드는 방식</a>, <a href="AI%20%EC%86%94%EB%A3%A8%EC%85%98%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%B3%B4%EC%95%88,%20%EA%B7%9C%EC%A0%95%20%EC%A4%80%EC%88%98,%20%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%208f85549d35288228915301798c5ba83f.html"><span class="icon">8️⃣</span>AI 솔루션을 위한 보안, 규정 준수, 거버넌스</a>, <a href="Amazon%20SageMaker%20a015549d352882439f6701b2f401abad.html"><span class="icon">3️⃣</span>Amazon SageMaker</a>, , , <a href="ML%20%EA%B0%9C%EB%B0%9C%206d35549d352882fe820781a0c08421e1.html"><span class="icon">2️⃣</span>ML 개발</a>, <a href="FM%20%ED%99%9C%EC%9A%A9%EA%B3%BC%20%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8%20%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%20acc5549d352883199ea481da95436968.html"><span class="icon">5️⃣</span>FM 활용과 프롬프트 엔지니어링</a>, , , <a href="FM%20%EC%84%B1%EB%8A%A5%20%ED%8F%89%EA%B0%80%20%EB%B0%A9%EB%B2%95%20bd65549d35288268ad6c0161817fff5c.html"><span class="icon">6️⃣</span>FM 성능 평가 방법</a>, </td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>문제수</th><td>37</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>분류</th><td><span class="selected-value select-value-color-pink">콘텐츠</span></td></tr><tr class="property-row property-row-formula"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/formula_gray.svg" style="width:14px;height:14px;display:block"/></span>비중</th><td>8.7%</td></tr><tr class="property-row property-row-rollup"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/search_gray.svg" style="width:14px;height:14px;display:block"/></span>합계</th><td>424</td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ff55549d-3528-8266-aab0-01fd357012df"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="0f55549d-3528-8220-a489-017f11363fab" class="">&quot;큰 힘에는 큰 책임이 따른다(<strong>With great power comes great responsibility</strong>).&quot; 영화 속 대사지만, AI 시대에 딱 맞는 말이기도 합니다.</p></div><div style="display:contents" dir="auto"><p id="0875549d-3528-8331-8fdf-0198441ca176" class="">상상해 보세요. 여러분이 열심히 준비한 입사 지원서를 AI가 단 몇 초 만에 거절했다면 어떤 기분이 들까요? 또는 AI가 대출 신청을 거절했는데, 그 이유를 전혀 설명해주지 않는다면요? 이런 일들은 실제로 일어나고 있습니다. AI가 특정 성별이나 인종에 대해 편향된 판단을 내리거나, 불투명한 결정을 하는 경우가 있죠.</p></div><div style="display:contents" dir="auto"><p id="eda5549d-3528-82c7-a95d-818c69699ce8" class="">그래서 등장한 것이 <strong>Responsible AI</strong> — 공정하고, 투명하고, 안전한 AI를 만들기 위한 원칙입니다. 여기서는 이 원칙들이 무엇이고, 실제로 어떻게 실천하는지 알아보겠습니다.</p></div></div></figure></div><div style="display:contents" dir="auto"><p id="f425549d-3528-83e2-8c10-010c32385484" class="">
+</p></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">책임감있는 AI의 주요 기준</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="ee25549d-3528-83ac-ad36-010b0b807690" class="bulleted-list"><li style="list-style-type:disc">Responsible AI(책임감 있는 AI): AI를 안전하고 올바르게 사용하기 위한 약속. AI 활용 시 발생할 수 있는 위험과 부작용을 줄이고 책임감 있게 사용하기 위한 기준<div style="display:contents" dir="ltr"><table id="1535549d-3528-83d1-9d12-81742dbf9e73" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2115549d-3528-8314-af36-01709db2fed3"><td id="xB}@" class="" style="width:142px">기준</td><td id="VNFP" class="" style="width:538.982177734375px">설명</td><td id="{u=&lt;" class="" style="width:357.98577880859375px">관련 개념, 방법</td></tr></div><div style="display:contents" dir="ltr"><tr id="8d15549d-3528-839b-a42d-01e3fa8abea5"><td id="xB}@" class="" style="width:142px">공정성<br/>(Fairness)</td><td id="VNFP" class="" style="width:538.982177734375px">편향(bias)되지 않은 ML 모델을 개발하는 것<br/>시스템이 모든 사용자와 그룹을 차별 없이 동등하게 대우하는 것<br/>특정 집단이나 개인에 대한 편향성 없이 일관된 결과를 제공하는 능력</td><td id="{u=&lt;" class="" style="width:357.98577880859375px">공정성 지표(fairness metrics)<br/>데이터셋을 다양한 데이터로 구성(학습 데이터 편향 제거)<br/>데이터 클래스 불균형을 측정하고 적절하게 훈련 과정 조정<br/>Human-in-the-loop (독성, 편향 감소)</td></tr></div><div style="display:contents" dir="ltr"><tr id="9b45549d-3528-82b3-83eb-01af09529d48"><td id="xB}@" class="" style="width:142px">투명성<br/>(Transparency)</td><td id="VNFP" class="" style="width:538.982177734375px">유리창처럼 속이 들여다보듯 AI가 <mark class="highlight-red"><strong>무엇</strong></mark>을 하는지 누구나 볼 수 있게 공개하는 것<br/>이해관계자들과 관리자들이 AI 솔루션에 대해 정보에 기반한 결정을 내릴 수 있게 도와주는 것</td><td id="{u=&lt;" class="" style="width:357.98577880859375px">부분 의존도 차트(PDPs, Partial Dependence Plots) <br/>Shapley 값(SHAP)</td></tr></div><div style="display:contents" dir="ltr"><tr id="4e45549d-3528-82ec-b595-818ffb5bed5b"><td id="xB}@" class="" style="width:142px">설명 가능성<br/>(Explainability)</td><td id="VNFP" class="" style="width:538.982177734375px">AI가 <mark class="highlight-red"><strong>왜</strong></mark> 그 결정을 내렸는지 사람이 이해할 수 있게 설명하는 능력<br/>모델의 내부 동작 과정에 대한 설명 또는 근거를 (인간의 용어로) 제공할 수 있는 능력<br/>모델 복잡성(Model complexity)이 높을수록 그만큼 설명 가능성도 낮아짐</td><td id="{u=&lt;" class="" style="width:357.98577880859375px">부분 의존도 차트(PDPs, Partial Dependence Plots) <br/>Shapley 값(SHAP)</td></tr></div><div style="display:contents" dir="ltr"><tr id="0f15549d-3528-827d-8deb-8179fbb2af75"><td id="xB}@" class="" style="width:142px">해석 가능성<br/>(Interpretability)</td><td id="VNFP" class="" style="width:538.982177734375px">AI 모델 <mark class="highlight-red"><strong>내부의 작동 방식</strong></mark>과 예측 과정을 직접 이해하는 것<br/>AI의 내부 작동 방식을 자세히 들여다보는 것<br/>구체적인 계산 과정과 작동 원리에 초점(<mark class="highlight-red"><strong>어떻게</strong></mark> 작동하는지)</td><td id="{u=&lt;" class="" style="width:357.98577880859375px">모델 트레이닝 코드</td></tr></div><div style="display:contents" dir="ltr"><tr id="1965549d-3528-83e1-af04-0169ab3cd9f4"><td id="xB}@" class="" style="width:142px">개인정보 보호와 보안<br/>(Privacy and security)</td><td id="VNFP" class="" style="width:538.982177734375px">개인정보와 민감한 데이터를 안전하게 보호하고 관리하는 것<br/>무단 접근과 데이터 유출을 방지하기 위한 체계적인 보안 조치 구현<br/>학습 데이터 정제 원칙<br/>- 기밀 데이터가 추론의 근거가 되는 것을 원천 차단하는 것이 가장 효과적<br/>- 학습이나 입력 단계에서 기밀 데이터를 제거<br/>- Fine-tuning이나 모델 학습 전 PII 및 기밀 데이터 사전 제거<br/>- 모델이 민감한 정보를 ‘기억’하고 ‘재생산’하는 것을 원천 차단<br/>- Privacy by Design: <mark class="highlight-red"><strong>사후 필터링(Guardrails, Masking)보다 사전 예방 우선</strong></mark></td><td id="{u=&lt;" class="" style="width:357.98577880859375px">데이터 암호화 및 접근 제어<br/>보안 감사 및 모니터링<br/>PII 제거/마스킹 (학습 전 단계)<br/>기밀 데이터가 포함된 모델의 완전 재훈련<br/>Bedrock Guardrails (추론 시점 필터링 - 보조적 수단)</td></tr></div><div style="display:contents" dir="ltr"><tr id="0655549d-3528-828c-a1c1-018c910cb89a"><td id="xB}@" class="" style="width:142px">견고성<br/>(Robustness)</td><td id="VNFP" class="" style="width:538.982177734375px">예상치 못한 상황이나 입력에도 안정적으로 작동하는 능력<br/>다양한 환경과 조건에서도 일관된 성능을 유지하는 특성<br/>오류와 예외 상황에 대한 적절한 대응 메커니즘 보유</td><td id="{u=&lt;" class="" style="width:357.98577880859375px">스트레스 테스트<br/>예외 처리 메커니즘<br/>성능 안정성 평가</td></tr></div><div style="display:contents" dir="ltr"><tr id="65f5549d-3528-83e1-9f53-817c98398754"><td id="xB}@" class="" style="width:142px">관리체계<br/>(Governance)</td><td id="VNFP" class="" style="width:538.982177734375px">AI 시스템의 개발, 배포, 운영에 관한 체계적인 <mark class="highlight-red"><strong>정책과 절차</strong></mark><strong><br/></strong>위험 관리와 품질 보증을 위한 종합적인 프레임워크<br/>책임과 권한의 명확한 정의 및 할당</td><td id="{u=&lt;" class="" style="width:357.98577880859375px">정책 및 절차 수립<br/>리스크 관리 체계<br/>품질 관리 프로세스</td></tr></div><div style="display:contents" dir="ltr"><tr id="9295549d-3528-82ac-ab4d-01b6bbce52ee"><td id="xB}@" class="" style="width:142px">안전성<br/>(Safety)</td><td id="VNFP" class="" style="width:538.982177734375px">AI 시스템이 인간과 환경에 해를 끼치지 않도록 보장하는 것<br/>잠재적 위험을 사전에 식별하고 예방하는 능력<br/>안전 관련 규제와 표준을 준수하는 운영 체계</td><td id="{u=&lt;" class="" style="width:357.98577880859375px">안전성 평가 및 인증<br/>위험 분석 및 대응<br/>안전 기준 준수 검증<br/>중재(Moderation) API:<br/> - 유해 콘텐츠를 사전에 식별하여 예방<br/> - 위험을 분석하고 필터링</td></tr></div><div style="display:contents" dir="ltr"><tr id="a8e5549d-3528-83e4-81b0-01ceca68ccb1"><td id="xB}@" class="" style="width:142px">통제 가능성<br/>(Controllability)</td><td id="VNFP" class="" style="width:538.982177734375px">AI 시스템의 동작을 인간이 원하는 방향으로 제어할 수 있는 능력<br/>필요시 시스템을 중지하거나 수정할 수 있는 메커니즘 보유<br/>시스템의 행동 범위를 명확히 정의하고 제한하는 기능</td><td id="{u=&lt;" class="" style="width:357.98577880859375px">수동 개입 메커니즘<br/>행동 제약 설정<br/>긴급 중지 시스템</td></tr></div></tbody></table></div></li></ul></div><div style="display:contents" dir="auto"><ul id="7cc5549d-3528-82dd-9753-811bb6e136f5" class="toggle"><li><details open=""><summary>투명성 vs. 설명 가능성 vs. 해석 가능성</summary><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2935549d-3528-8278-87e0-81992ce79cbd"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="e595549d-3528-8372-ad92-814eed2b800f" class="">주식 투자 AI </p></div><div style="display:contents" dir="auto"><p id="ad95549d-3528-8349-9de1-81028c0c2f6c" class=""><strong>투명성: 무엇을(WHAT)</strong></p></div><div style="display:contents" dir="auto"><ul id="89c5549d-3528-823d-ae53-019023e3232f" class="bulleted-list"><li style="list-style-type:disc">&quot;이 AI는 주식 데이터를 분석해서 투자 추천을 해줍니다.&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="3fd5549d-3528-83ee-82f3-01b1d9e57f4e" class="bulleted-list"><li style="list-style-type:disc">AI가 무엇을 하는지 전체적으로 공개하는 것</li></ul></div><div style="display:contents" dir="auto"><ul id="41f5549d-3528-8234-90fc-0164f3428664" class="bulleted-list"><li style="list-style-type:disc">마치 식당 메뉴판처럼 하는 일을 명확히 보여주는 것</li></ul></div><div style="display:contents" dir="auto"><p id="7175549d-3528-832c-be89-81308df387ce" class=""><strong>설명 가능성: 왜(WHY)</strong></p></div><div style="display:contents" dir="auto"><ul id="4f85549d-3528-8237-ae5d-0154c60089e7" class="bulleted-list"><li style="list-style-type:disc">&quot;삼성전자를 추천한 이유는 최근 실적이 좋고 신제품 출시가 예정되어 있기 때문입니다.&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="7795549d-3528-8225-a346-812680fc84ca" class="bulleted-list"><li style="list-style-type:disc">AI의 결정 이유를 사람이 이해할 수 있게 설명하는 것</li></ul></div><div style="display:contents" dir="auto"><ul id="9825549d-3528-8215-8a40-818609ad23ba" class="bulleted-list"><li style="list-style-type:disc">결과의 &#x27;이유&#x27;에 초점</li></ul></div><div style="display:contents" dir="auto"><p id="f915549d-3528-8331-b007-818d8499a913" class=""><strong>해석 가능성: 어떻게(HOW)</strong></p></div><div style="display:contents" dir="auto"><ul id="98d5549d-3528-8221-98d5-018ba4af254a" class="bulleted-list"><li style="list-style-type:disc">&quot;AI는 1,000개의 주식 데이터를 분석하고, 각 항목별로 가중치를 부여한 뒤...&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="27c5549d-3528-827b-bfa8-815538fa2072" class="bulleted-list"><li style="list-style-type:disc">AI의 내부 작동 방식을 자세히 들여다보는 것</li></ul></div><div style="display:contents" dir="auto"><ul id="11e5549d-3528-8296-a061-01d91af83150" class="bulleted-list"><li style="list-style-type:disc">구체적인 계산 과정과 작동 원리에 초점</li></ul></div></div></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="1305549d-3528-8261-b593-015af227a3c2" class="toggle"><li><details open=""><summary>부분 의존도 차트(PDPs, Partial Dependence Plots), Shapley 값(SHAP, Shapley Additive exPlanations)</summary><div style="display:contents" dir="ltr"><table id="1b45549d-3528-8249-8caf-01a3a3fb24c3" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="1575549d-3528-839a-b7e4-8191c6e29e60"><td id="|^X{" class="" style="width:265.7585144042969px">부분 의존도<br/>(PDPs, Partial Dependence Plots)</td><td id="@s_f" class="" style="width:811.9886169433594px">- 입력(특성)과 출력(예측)의 관계를 이해하는 데 유용한 방법으로, 하나 혹은 두 개의 변수가 예측 결과에 미치는 영향을 보여주는 그래프. PDPs는 모델의 <mark class="highlight-red"><strong>내부 작동을 깊이 이해하지 않고도</strong></mark> 예측에 대한 개별 기능의 영향을 시각적으로 보여주기 때문에 이해관계자에게 특히 유용<br/>- 예: 소득이 오르면 대출 승인율이 전반적으로 올라가는가 (전체적인 경향성)</td></tr></div><div style="display:contents" dir="ltr"><tr id="9ae5549d-3528-83bf-80f2-014673a12475"><td id="|^X{" class="" style="width:265.7585144042969px">Shapley 값<br/>(SHAP, Shapley Additive exPlanations)</td><td id="@s_f" class="" style="width:811.9886169433594px">- 게임 이론에 기반하여 <mark class="highlight-red"><strong>각 특성(Feature)이 개별 예측 결과에 얼마나 기여했는지를 수치로 계산하여 설명</strong></mark>하는 방법. SHAP은 모델이 예측한 최종 값을 각 변수의 영향력(양수 또는 음수의 기여도)으로 분해하여 보여주기 때문에, 복잡한 모델이라도 ‘왜(Why) 이 건에 대해 그런 결과가 나왔는지’를 구체적이고 일관성 있게 설명할 수 있어 투명성 확보에 필수적<br/>- 예: 철수의 대출이 거절된 결정적인 이유는 소득 때문인가, 연체 이력 때문인가? (개별 건에 대한 구체적 이유)</td></tr></div></tbody></table></div></details></li></ul></div></div></details></div><div style="display:contents" dir="auto"><p id="95a5549d-3528-8269-b50c-01119fb18fce" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
