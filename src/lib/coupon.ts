@@ -25,6 +25,27 @@ export interface CouponRedemption {
   applied_discount_percent: number | null
 }
 
+export interface CouponRedemptionWithUser {
+  redemption_id: string
+  coupon_id: string
+  coupon_code: string
+  coupon_type: 'discount' | 'period'
+  coupon_value: number
+  user_id: string
+  user_email: string
+  user_name: string
+  redeemed_at: string
+  period_expires_at: string | null
+  applied_discount_percent: number | null
+}
+
+export interface CouponStats {
+  total: number
+  active: number
+  totalRedemptions: number
+  usageRate: number
+}
+
 // ── Validation ──
 
 export async function validateCouponCode(
@@ -141,6 +162,23 @@ export async function toggleCouponActive(id: string, isActive: boolean) {
     .update({ is_active: isActive })
     .eq('id', id)
   if (error) throw new Error(error.message)
+}
+
+// ── Admin Dashboard ──
+
+export async function getRedemptionsForAdmin(): Promise<CouponRedemptionWithUser[]> {
+  const { data, error } = await supabase.rpc('get_coupon_redemptions_with_users')
+  if (error) throw new Error(error.message)
+  return (data || []) as CouponRedemptionWithUser[]
+}
+
+export function getCouponStats(coupons: Coupon[]): CouponStats {
+  const total = coupons.length
+  const active = coupons.filter(c => c.is_active).length
+  const totalRedemptions = coupons.reduce((sum, c) => sum + c.used_count, 0)
+  const totalMaxUses = coupons.reduce((sum, c) => sum + c.max_uses, 0)
+  const usageRate = totalMaxUses > 0 ? Math.round((totalRedemptions / totalMaxUses) * 100) : 0
+  return { total, active, totalRedemptions, usageRate }
 }
 
 // ── Helpers ──

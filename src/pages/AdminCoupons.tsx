@@ -6,16 +6,26 @@ import {
   listCoupons,
   toggleCouponActive,
   generateCouponCode,
+  getRedemptionsForAdmin,
+  getCouponStats,
   type Coupon,
+  type CouponRedemptionWithUser,
+  type CouponStats,
 } from '../lib/coupon'
 import '../styles/coupon.css'
+
+type DashboardTab = 'coupons' | 'history'
 
 export default function AdminCoupons() {
   const { user } = useAuth()
   const admin = isAdmin(user)
 
   const [coupons, setCoupons] = useState<Coupon[]>([])
+  const [redemptions, setRedemptions] = useState<CouponRedemptionWithUser[]>([])
+  const [stats, setStats] = useState<CouponStats>({ total: 0, active: 0, totalRedemptions: 0, usageRate: 0 })
   const [loading, setLoading] = useState(true)
+  const [activeTab, setActiveTab] = useState<DashboardTab>('coupons')
+  const [expandedCouponId, setExpandedCouponId] = useState<string | null>(null)
 
   // Form state
   const [type, setType] = useState<'discount' | 'period'>('discount')
@@ -26,17 +36,22 @@ export default function AdminCoupons() {
   const [submitting, setSubmitting] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
 
-  const loadCoupons = async () => {
+  const loadData = async () => {
     try {
-      const data = await listCoupons()
-      setCoupons(data)
+      const [couponData, redemptionData] = await Promise.all([
+        listCoupons(),
+        getRedemptionsForAdmin().catch(() => [] as CouponRedemptionWithUser[]),
+      ])
+      setCoupons(couponData)
+      setRedemptions(redemptionData)
+      setStats(getCouponStats(couponData))
     } finally {
       setLoading(false)
     }
   }
 
   useEffect(() => {
-    if (admin) loadCoupons()
+    if (admin) loadData()
     else setLoading(false)
   }, [admin])
 
@@ -64,7 +79,7 @@ export default function AdminCoupons() {
       setValue(type === 'discount' ? 30 : 1)
       setMaxUses(1)
       setExpiresAt('')
-      await loadCoupons()
+      await loadData()
     } catch (err: any) {
       setMessage({ type: 'error', text: err.message || '쿠폰 생성에 실패했습니다.' })
     } finally {
@@ -75,11 +90,20 @@ export default function AdminCoupons() {
   const handleToggle = async (coupon: Coupon) => {
     try {
       await toggleCouponActive(coupon.id, !coupon.is_active)
-      await loadCoupons()
+      await loadData()
     } catch {
       alert('상태 변경에 실패했습니다.')
     }
   }
+
+  const getRedemptionsForCoupon = (couponId: string) =>
+    redemptions.filter(r => r.coupon_id === couponId)
+
+  const formatDateTime = (iso: string) =>
+    new Date(iso).toLocaleString('ko-KR', {
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit',
+    })
 
   if (!admin) {
     return <div className="admin-no-access">권한이 없습니다.</div>
@@ -89,6 +113,28 @@ export default function AdminCoupons() {
     <div className="admin-coupons-page">
       <div className="container">
         <h1>쿠폰 관리</h1>
+
+        {/* Stats Cards */}
+        {!loading && (
+          <div className="coupon-stats-grid">
+            <div className="coupon-stat-card">
+              <span className="coupon-stat-value">{stats.total}</span>
+              <span className="coupon-stat-label">총 쿠폰 수</span>
+            </div>
+            <div className="coupon-stat-card">
+              <span className="coupon-stat-value">{stats.active}</span>
+              <span className="coupon-stat-label">활성 쿠폰</span>
+            </div>
+            <div className="coupon-stat-card">
+              <span className="coupon-stat-value">{stats.totalRedemptions}</span>
+              <span className="coupon-stat-label">총 사용 횟수</span>
+            </div>
+            <div className="coupon-stat-card">
+              <span className="coupon-stat-value">{stats.usageRate}%</span>
+              <span className="coupon-stat-label">사용률</span>
+            </div>
+          </div>
+        )}
 
         {/* Create form */}
         <form className="admin-coupon-form" onSubmit={handleSubmit}>
@@ -172,47 +218,156 @@ export default function AdminCoupons() {
           </button>
         </form>
 
-        {/* Coupon list */}
-        <h2>쿠폰 목록</h2>
-        {loading ? (
-          <p>로딩 중...</p>
-        ) : coupons.length === 0 ? (
-          <p style={{ color: 'var(--text-secondary)' }}>생성된 쿠폰이 없습니다.</p>
-        ) : (
+        {/* Tab Navigation */}
+        <div className="coupon-dashboard-tabs">
+          <button
+            className={`coupon-dashboard-tab ${activeTab === 'coupons' ? 'active' : ''}`}
+            onClick={() => setActiveTab('coupons')}
+          >
+            쿠폰 목록
+          </button>
+          <button
+            className={`coupon-dashboard-tab ${activeTab === 'history' ? 'active' : ''}`}
+            onClick={() => setActiveTab('history')}
+          >
+            전체 사용 내역
+          </button>
+        </div>
+
+        {/* Tab: Coupon list with accordion */}
+        {activeTab === 'coupons' && (
+          <>
+            {loading ? (
+              <p>로딩 중...</p>
+            ) : coupons.length === 0 ? (
+              <p style={{ color: 'var(--text-secondary)' }}>생성된 쿠폰이 없습니다.</p>
+            ) : (
+              <div className="dashboard-table-wrap">
+                <table className="admin-coupon-table">
+                  <thead>
+                    <tr>
+                      <th>코드</th>
+                      <th>타입</th>
+                      <th>값</th>
+                      <th>사용/한도</th>
+                      <th>만료일</th>
+                      <th>생성일</th>
+                      <th>상태</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {coupons.map(c => {
+                      const couponRedemptions = getRedemptionsForCoupon(c.id)
+                      const isExpanded = expandedCouponId === c.id
+                      return (
+                        <tr key={c.id} className="coupon-row-group">
+                          <td colSpan={7} style={{ padding: 0, border: 'none' }}>
+                            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                              <tbody>
+                                <tr
+                                  className={`coupon-row-clickable ${isExpanded ? 'expanded' : ''}`}
+                                  onClick={() => setExpandedCouponId(isExpanded ? null : c.id)}
+                                  title="클릭하여 사용자 목록 보기"
+                                >
+                                  <td><code>{c.code}</code></td>
+                                  <td>{c.type === 'discount' ? '할인' : '기간'}</td>
+                                  <td>{c.type === 'discount' ? `${c.value}%` : `${c.value}일`}</td>
+                                  <td>
+                                    {c.used_count}/{c.max_uses}
+                                    {couponRedemptions.length > 0 && (
+                                      <span className="coupon-expand-icon">{isExpanded ? '▲' : '▼'}</span>
+                                    )}
+                                  </td>
+                                  <td>{c.expires_at ? new Date(c.expires_at).toLocaleDateString('ko-KR') : '-'}</td>
+                                  <td>{new Date(c.created_at).toLocaleDateString('ko-KR')}</td>
+                                  <td>
+                                    <button
+                                      className={`admin-coupon-toggle ${c.is_active ? 'active' : 'inactive'}`}
+                                      onClick={(e) => { e.stopPropagation(); handleToggle(c) }}
+                                    >
+                                      {c.is_active ? '활성' : '비활성'}
+                                    </button>
+                                  </td>
+                                </tr>
+                                {isExpanded && (
+                                  <tr className="coupon-accordion-row">
+                                    <td colSpan={7}>
+                                      <div className="coupon-accordion-content">
+                                        {couponRedemptions.length === 0 ? (
+                                          <p className="coupon-no-users">아직 사용한 회원이 없습니다.</p>
+                                        ) : (
+                                          <table className="coupon-users-table">
+                                            <thead>
+                                              <tr>
+                                                <th>이메일</th>
+                                                <th>이름</th>
+                                                <th>사용일시</th>
+                                                <th>{c.type === 'period' ? '이용권 만료일' : '적용 할인율'}</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              {couponRedemptions.map(r => (
+                                                <tr key={r.redemption_id}>
+                                                  <td>{r.user_email}</td>
+                                                  <td>{r.user_name || '-'}</td>
+                                                  <td>{formatDateTime(r.redeemed_at)}</td>
+                                                  <td>
+                                                    {c.type === 'period'
+                                                      ? (r.period_expires_at ? formatDateTime(r.period_expires_at) : '-')
+                                                      : (r.applied_discount_percent ? `${r.applied_discount_percent}%` : '-')
+                                                    }
+                                                  </td>
+                                                </tr>
+                                              ))}
+                                            </tbody>
+                                          </table>
+                                        )}
+                                      </div>
+                                    </td>
+                                  </tr>
+                                )}
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </>
+        )}
+
+        {/* Tab: Full redemption history */}
+        {activeTab === 'history' && (
           <div className="dashboard-table-wrap">
-            <table className="admin-coupon-table">
-              <thead>
-                <tr>
-                  <th>코드</th>
-                  <th>타입</th>
-                  <th>값</th>
-                  <th>사용/한도</th>
-                  <th>만료일</th>
-                  <th>생성일</th>
-                  <th>상태</th>
-                </tr>
-              </thead>
-              <tbody>
-                {coupons.map(c => (
-                  <tr key={c.id}>
-                    <td><code>{c.code}</code></td>
-                    <td>{c.type === 'discount' ? '할인' : '기간'}</td>
-                    <td>{c.type === 'discount' ? `${c.value}%` : `${c.value}일`}</td>
-                    <td>{c.used_count}/{c.max_uses}</td>
-                    <td>{c.expires_at ? new Date(c.expires_at).toLocaleDateString('ko-KR') : '-'}</td>
-                    <td>{new Date(c.created_at).toLocaleDateString('ko-KR')}</td>
-                    <td>
-                      <button
-                        className={`admin-coupon-toggle ${c.is_active ? 'active' : 'inactive'}`}
-                        onClick={() => handleToggle(c)}
-                      >
-                        {c.is_active ? '활성' : '비활성'}
-                      </button>
-                    </td>
+            {redemptions.length === 0 ? (
+              <p style={{ color: 'var(--text-secondary)' }}>사용 내역이 없습니다.</p>
+            ) : (
+              <table className="coupon-history-table">
+                <thead>
+                  <tr>
+                    <th>쿠폰코드</th>
+                    <th>타입</th>
+                    <th>회원이메일</th>
+                    <th>회원이름</th>
+                    <th>사용일시</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {redemptions.map(r => (
+                    <tr key={r.redemption_id}>
+                      <td><code>{r.coupon_code}</code></td>
+                      <td>{r.coupon_type === 'discount' ? `할인 ${r.coupon_value}%` : `기간 ${r.coupon_value}일`}</td>
+                      <td>{r.user_email}</td>
+                      <td>{r.user_name || '-'}</td>
+                      <td>{formatDateTime(r.redeemed_at)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
         )}
       </div>

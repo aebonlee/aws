@@ -83,6 +83,17 @@
 [data-theme="dark"] .period-pass-banner { background: rgba(16,185,129,0.1); }
 [data-theme="dark"] .period-pass-banner-float { background: var(--bg); }
 [data-theme="dark"] .dashboard-coupon-card { background: rgba(16,185,129,0.1); }
+[data-theme="dark"] .coupon-stat-card { background: var(--bg-section); border-color: var(--border); }
+[data-theme="dark"] .coupon-dashboard-tabs { border-bottom-color: var(--border); }
+[data-theme="dark"] .coupon-dashboard-tab { color: var(--text-secondary); }
+[data-theme="dark"] .coupon-dashboard-tab.active { color: var(--primary); }
+[data-theme="dark"] .coupon-row-clickable:hover { background: rgba(255,153,0,0.06); }
+[data-theme="dark"] .coupon-row-clickable.expanded { background: rgba(255,153,0,0.08); }
+[data-theme="dark"] .coupon-accordion-content { background: rgba(255,153,0,0.04); border-top-color: var(--border); }
+[data-theme="dark"] .coupon-users-table th { color: var(--text-secondary); }
+[data-theme="dark"] .coupon-users-table td { border-bottom-color: var(--border); }
+[data-theme="dark"] .coupon-history-table th { background: #1c2129; }
+[data-theme="dark"] .coupon-history-table td { border-bottom-color: var(--border); }
 
 /* Section status bar dark mode */
 [data-theme="dark"] .section-status-bar { background: var(--bg-section); }
