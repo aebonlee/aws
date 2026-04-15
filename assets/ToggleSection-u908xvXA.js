@@ -1,0 +1,1 @@
+import{j as e}from"./index-BAp_2PJX.js";function l({title:s,children:o}){return e.jsxs("div",{className:"toggle-section",children:[e.jsxs("div",{className:"toggle-header",children:[e.jsx("span",{className:"toggle-arrow open",children:"▶"}),s]}),e.jsx("div",{className:"toggle-body",children:o})]})}export{l as T};
