@@ -8,6 +8,7 @@ import { CouponProvider } from './contexts/CouponContext'
 import PublicLayout from './layouts/PublicLayout'
 import ProtectedRoute from './components/ProtectedRoute'
 import FreeTrialGuard from './components/FreeTrialGuard'
+import AdminGuard from './components/AdminGuard'
 
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
@@ -36,6 +37,7 @@ const Dashboard = lazy(() => import('./pages/Dashboard'))
 const Pricing = lazy(() => import('./pages/Pricing'))
 const Library = lazy(() => import('./pages/Library'))
 const AdminCoupons = lazy(() => import('./pages/AdminCoupons'))
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'))
 const Notices = lazy(() => import('./pages/community/Notices'))
 const NoticeDetail = lazy(() => import('./pages/community/NoticeDetail'))
 const Board = lazy(() => import('./pages/community/Board'))
@@ -91,6 +93,7 @@ function App() {
             <Route path="/stamp" element={<FreeTrialGuard><StampBreaking /></FreeTrialGuard>} />
             <Route path="/practice" element={<FreeTrialGuard><Practice /></FreeTrialGuard>} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/admin" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
             <Route path="/admin/coupons" element={<ProtectedRoute><AdminCoupons /></ProtectedRoute>} />
             <Route path="/community/notices" element={<ProtectedRoute><Notices /></ProtectedRoute>} />
             <Route path="/community/notices/:id" element={<ProtectedRoute><NoticeDetail /></ProtectedRoute>} />

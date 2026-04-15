@@ -1,11 +1,13 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { Session, User } from '@supabase/supabase-js'
 import { supabase } from '../lib/supabase'
+import { ADMIN_EMAILS } from '../config/admin'
 
 interface AuthContextType {
   session: Session | null
   user: User | null
   loading: boolean
+  isAdmin: boolean
   signInWithGoogle: () => Promise<void>
   signInWithKakao: () => Promise<void>
   signOut: () => Promise<void>
@@ -52,11 +54,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await supabase.auth.signOut()
   }
 
+  const user = session?.user ?? null
+  const allEmails = [
+    user?.email,
+    user?.user_metadata?.email as string | undefined,
+    (user?.identities?.[0]?.identity_data as Record<string, unknown> | undefined)?.email as string | undefined,
+  ].filter((e): e is string => Boolean(e)).map((e) => e.toLowerCase())
+  const isAdmin = allEmails.some((e) => ADMIN_EMAILS.includes(e))
+
   return (
     <AuthContext.Provider value={{
       session,
-      user: session?.user ?? null,
+      user,
       loading,
+      isAdmin,
       signInWithGoogle,
       signInWithKakao,
       signOut,
