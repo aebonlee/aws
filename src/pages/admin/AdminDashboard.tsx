@@ -5,7 +5,7 @@ import '../../styles/admin.css'
 interface MemberRow {
   id: string
   email: string
-  full_name: string
+  display_name: string
   role: string
   created_at: string
   last_sign_in_at: string | null
@@ -39,10 +39,10 @@ export default function AdminDashboard() {
     try {
       let query = supabase
         .from('user_profiles')
-        .select('id,email,full_name,role,created_at,last_sign_in_at,signup_domain', { count: 'exact' })
+        .select('id,email,display_name,role,created_at,last_sign_in_at,signup_domain', { count: 'exact' })
 
       if (search) {
-        query = query.or(`email.ilike.%${search}%,full_name.ilike.%${search}%`)
+        query = query.or(`email.ilike.%${search}%,display_name.ilike.%${search}%`)
       }
       if (roleFilter !== 'all') {
         query = query.eq('role', roleFilter)
@@ -186,7 +186,7 @@ export default function AdminDashboard() {
                     {members.map((m) => (
                       <tr key={m.id}>
                         <td>{m.email}</td>
-                        <td>{m.full_name || '-'}</td>
+                        <td>{m.display_name || '-'}</td>
                         <td>
                           <span className={`badge ${m.role === 'admin' ? 'badge-admin' : 'badge-member'}`}>
                             {m.role}

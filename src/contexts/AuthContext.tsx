@@ -20,31 +20,53 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   const ensureProfile = useCallback(async (authUser: User) => {
-    try {
-      const { data: existing } = await supabase
-        .from('user_profiles')
-        .select('id')
-        .eq('id', authUser.id)
-        .single()
+    // 프로필 존재 확인
+    const { data: existing } = await supabase
+      .from('user_profiles')
+      .select('id')
+      .eq('id', authUser.id)
+      .maybeSingle()
 
-      if (!existing) {
-        const meta = authUser.user_metadata || {}
-        await supabase
-          .from('user_profiles')
-          .insert({
-            id: authUser.id,
-            name: meta.full_name || meta.name || '',
-            email: authUser.email || '',
-            gender: '',
-            phone: '',
-            usertype: 0
-          })
+    // 트리거 미작동 시 수동 생성 (upsert로 안전하게)
+    if (!existing) {
+      const meta = authUser.user_metadata || {}
+      const { error } = await supabase
+        .from('user_profiles')
+        .upsert({
+          id: authUser.id,
+          email: authUser.email || '',
+          display_name: meta.full_name || meta.name || meta.preferred_username || '',
+          avatar_url: meta.avatar_url || meta.picture || '',
+          provider: meta.provider || authUser.app_metadata?.provider || 'email',
+          role: 'member',
+          signup_domain: window.location.hostname,
+          visited_sites: [window.location.hostname],
+        }, { onConflict: 'id' })
+      if (error) {
+        console.error('ensureProfile upsert error:', error)
       }
-    } catch {
-      // user_profiles 테이블 없거나 RLS 이슈 시 무시
+    } else {
+      // 기존 프로필: visited_sites 업데이트
+      const { data: profileData } = await supabase
+        .from('user_profiles')
+        .select('visited_sites')
+        .eq('id', authUser.id)
+        .maybeSingle()
+
+      const sites = Array.isArray(profileData?.visited_sites) ? profileData.visited_sites as string[] : []
+      const hostname = window.location.hostname
+      if (!sites.includes(hostname)) {
+        supabase.from('user_profiles')
+          .update({
+            visited_sites: [...sites, hostname],
+            last_sign_in_at: new Date().toISOString(),
+          })
+          .eq('id', authUser.id)
+          .then(() => {})
+      }
     }
 
-    // 도메인 추적
+    // 계정 상태 체크
     try {
       await supabase.rpc('check_user_status', {
         target_user_id: authUser.id,
@@ -56,12 +78,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      setSession(session)
-      if (session?.user) {
-        await ensureProfile(session.user)
-      }
-      if (!session) {
+    let mounted = true
+
+    supabase.auth.getSession().then(async ({ data: { session: s } }) => {
+      if (!mounted) return
+      setSession(s)
+      if (s?.user) {
+        if (s.refresh_token) setSharedSession(s.refresh_token)
+        await ensureProfile(s.user)
+      } else {
         // SSO 쿠키로 세션 복원 시도
         const rt = getSharedSession()
         if (rt) {
@@ -78,26 +103,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           }
         }
       }
-      setLoading(false)
+      if (mounted) setLoading(false)
     })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (!mounted) return
       setSession(session)
       if (session?.refresh_token) setSharedSession(session.refresh_token)
       if (_event === 'SIGNED_OUT') clearSharedSession()
       if (session?.user) {
         await ensureProfile(session.user)
       }
+      if (_event === 'SIGNED_IN' || _event === 'TOKEN_REFRESHED') {
+        setLoading(false)
+      }
     })
 
-    return () => subscription.unsubscribe()
+    return () => {
+      mounted = false
+      subscription.unsubscribe()
+    }
   }, [ensureProfile])
 
   const signInWithGoogle = async () => {
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: window.location.origin,
       },
     })
   }
@@ -106,13 +138,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await supabase.auth.signInWithOAuth({
       provider: 'kakao',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: window.location.origin,
       },
     })
   }
 
   const signOut = async () => {
-    await supabase.auth.signOut()
+    await supabase.auth.signOut({ scope: 'local' })
     clearSharedSession()
   }
 
