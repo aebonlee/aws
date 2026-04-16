@@ -4,13 +4,18 @@ import { useAuth } from '../contexts/AuthContext'
 
 export default function AuthCallback() {
   const navigate = useNavigate()
-  const { loading } = useAuth()
+  const { user, loading } = useAuth()
 
   useEffect(() => {
     if (!loading) {
-      navigate('/', { replace: true })
+      if (user) {
+        navigate('/', { replace: true })
+      } else {
+        // 세션 파싱 실패 시 로그인 페이지로
+        navigate('/login', { replace: true })
+      }
     }
-  }, [loading, navigate])
+  }, [loading, user, navigate])
 
   return (
     <section className="community-page">

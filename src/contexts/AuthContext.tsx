@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react'
 import { Session, User } from '@supabase/supabase-js'
-import { supabase } from '../lib/supabase'
+import { supabase, setSharedSession, getSharedSession, clearSharedSession } from '../lib/supabase'
 import { ADMIN_EMAILS } from '../config/admin'
 
 interface AuthContextType {
@@ -19,18 +19,79 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
   const [loading, setLoading] = useState(true)
 
+  const ensureProfile = useCallback(async (authUser: User) => {
+    try {
+      const { data: existing } = await supabase
+        .from('user_profiles')
+        .select('id')
+        .eq('id', authUser.id)
+        .single()
+
+      if (!existing) {
+        const meta = authUser.user_metadata || {}
+        await supabase
+          .from('user_profiles')
+          .insert({
+            id: authUser.id,
+            name: meta.full_name || meta.name || '',
+            email: authUser.email || '',
+            gender: '',
+            phone: '',
+            usertype: 0
+          })
+      }
+    } catch {
+      // user_profiles 테이블 없거나 RLS 이슈 시 무시
+    }
+
+    // 도메인 추적
+    try {
+      await supabase.rpc('check_user_status', {
+        target_user_id: authUser.id,
+        current_domain: window.location.hostname,
+      })
+    } catch {
+      // check_user_status 미존재 시 무시
+    }
+  }, [])
+
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       setSession(session)
+      if (session?.user) {
+        await ensureProfile(session.user)
+      }
+      if (!session) {
+        // SSO 쿠키로 세션 복원 시도
+        const rt = getSharedSession()
+        if (rt) {
+          try {
+            const { data } = await supabase.auth.refreshSession({ refresh_token: rt })
+            if (data.session) {
+              setSession(data.session)
+              await ensureProfile(data.session.user)
+            } else {
+              clearSharedSession()
+            }
+          } catch {
+            clearSharedSession()
+          }
+        }
+      }
       setLoading(false)
     })
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setSession(session)
+      if (session?.refresh_token) setSharedSession(session.refresh_token)
+      if (_event === 'SIGNED_OUT') clearSharedSession()
+      if (session?.user) {
+        await ensureProfile(session.user)
+      }
     })
 
     return () => subscription.unsubscribe()
-  }, [])
+  }, [ensureProfile])
 
   const signInWithGoogle = async () => {
     await supabase.auth.signInWithOAuth({
@@ -52,6 +113,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signOut = async () => {
     await supabase.auth.signOut()
+    clearSharedSession()
   }
 
   const user = session?.user ?? null
