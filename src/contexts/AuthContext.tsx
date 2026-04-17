@@ -80,12 +80,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let mounted = true
 
+    const safeEnsureProfile = async (authUser: User) => {
+      try {
+        await Promise.race([
+          ensureProfile(authUser),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('profile timeout')), 5000)),
+        ])
+      } catch (e) {
+        console.warn('ensureProfile timeout/error, continuing:', e)
+      }
+    }
+
     supabase.auth.getSession().then(async ({ data: { session: s } }) => {
       if (!mounted) return
       setSession(s)
       if (s?.user) {
         if (s.refresh_token) setSharedSession(s.refresh_token)
-        await ensureProfile(s.user)
+        await safeEnsureProfile(s.user)
       } else {
         // SSO 쿠키로 세션 복원 시도
         const rt = getSharedSession()
@@ -94,7 +105,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const { data } = await supabase.auth.refreshSession({ refresh_token: rt })
             if (data.session) {
               setSession(data.session)
-              await ensureProfile(data.session.user)
+              await safeEnsureProfile(data.session.user)
             } else {
               clearSharedSession()
             }
@@ -112,7 +123,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (session?.refresh_token) setSharedSession(session.refresh_token)
       if (_event === 'SIGNED_OUT') clearSharedSession()
       if (session?.user) {
-        await ensureProfile(session.user)
+        await safeEnsureProfile(session.user)
       }
       if (_event === 'SIGNED_IN' || _event === 'TOKEN_REFRESHED') {
         setLoading(false)
