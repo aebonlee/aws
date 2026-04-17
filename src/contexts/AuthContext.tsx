@@ -2,6 +2,8 @@ import { createContext, useContext, useState, useEffect, useCallback, ReactNode 
 import { Session, User } from '@supabase/supabase-js'
 import { supabase, setSharedSession, getSharedSession, clearSharedSession } from '../lib/supabase'
 import { ADMIN_EMAILS } from '../config/admin'
+import { useToast } from './ToastContext'
+import { useIdleTimeout } from '../hooks/useIdleTimeout'
 
 interface AuthContextType {
   session: Session | null
@@ -18,6 +20,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
   const [loading, setLoading] = useState(true)
+  const { showToast } = useToast()
 
   const ensureProfile = useCallback(async (authUser: User) => {
     // 프로필 존재 확인
@@ -91,6 +94,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     }
 
+    // 글로벌 안전장치: 7초 후에도 loading이면 강제 해제
+    const safetyTimer = setTimeout(() => {
+      if (mounted) {
+        setLoading(prev => {
+          if (prev) console.warn('Auth: 7s safety timeout, forcing loading=false')
+          return false
+        })
+      }
+    }, 7000)
+
     supabase.auth.getSession().then(async ({ data: { session: s } }) => {
       if (!mounted) return
       setSession(s)
@@ -115,15 +128,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       }
       if (mounted) setLoading(false)
+    }).catch(() => {
+      // 네트워크 오류 등에서도 안전하게 로딩 해제
+      if (mounted) {
+        setSession(null)
+        setLoading(false)
+      }
     })
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (!mounted) return
       setSession(session)
       if (session?.refresh_token) setSharedSession(session.refresh_token)
       if (_event === 'SIGNED_OUT') clearSharedSession()
       if (session?.user) {
-        await safeEnsureProfile(session.user)
+        // fire-and-forget (await 제거하여 hang 방지)
+        safeEnsureProfile(session.user)
       }
       if (_event === 'SIGNED_IN' || _event === 'TOKEN_REFRESHED') {
         setLoading(false)
@@ -132,34 +152,64 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     return () => {
       mounted = false
+      clearTimeout(safetyTimer)
       subscription.unsubscribe()
     }
   }, [ensureProfile])
 
   const signInWithGoogle = async () => {
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: window.location.origin,
-      },
-    })
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: window.location.origin },
+      })
+      if (error) {
+        console.error('Google login error:', error.message)
+        showToast('Google 로그인에 실패했습니다.', 'error')
+      }
+    } catch (err) {
+      console.error('Google login error:', err)
+      showToast('Google 로그인에 실패했습니다.', 'error')
+    }
   }
 
   const signInWithKakao = async () => {
-    await supabase.auth.signInWithOAuth({
-      provider: 'kakao',
-      options: {
-        redirectTo: window.location.origin,
-      },
-    })
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'kakao',
+        options: { redirectTo: window.location.origin },
+      })
+      if (error) {
+        console.error('Kakao login error:', error.message)
+        showToast('카카오 로그인에 실패했습니다.', 'error')
+      }
+    } catch (err) {
+      console.error('Kakao login error:', err)
+      showToast('카카오 로그인에 실패했습니다.', 'error')
+    }
   }
 
   const signOut = async () => {
-    await supabase.auth.signOut({ scope: 'local' })
-    clearSharedSession()
+    try {
+      await supabase.auth.signOut({ scope: 'local' })
+      clearSharedSession()
+    } catch (err) {
+      console.error('Logout error:', err)
+      clearSharedSession()
+    }
   }
 
   const user = session?.user ?? null
+
+  // 10분 무동작 세션 타임아웃
+  useIdleTimeout({
+    enabled: !!user,
+    onTimeout: () => {
+      supabase.auth.signOut({ scope: 'local' })
+      clearSharedSession()
+    },
+  })
+
   const allEmails = [
     user?.email,
     user?.user_metadata?.email as string | undefined,

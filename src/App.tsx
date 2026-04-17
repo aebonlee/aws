@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
+import { ToastProvider } from './contexts/ToastContext'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { ProgressProvider } from './contexts/ProgressContext'
@@ -54,6 +55,7 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
   return (
+    <ToastProvider>
     <AuthProvider>
     <CouponProvider>
     <ThemeProvider>
@@ -115,6 +117,7 @@ function App() {
     </ThemeProvider>
     </CouponProvider>
     </AuthProvider>
+    </ToastProvider>
   )
 }
 
