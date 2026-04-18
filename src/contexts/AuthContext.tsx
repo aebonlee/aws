@@ -4,6 +4,7 @@ import { supabase, setSharedSession, getSharedSession, clearSharedSession } from
 import { ADMIN_EMAILS } from '../config/admin'
 import { useToast } from './ToastContext'
 import { useIdleTimeout } from '../hooks/useIdleTimeout'
+import ProfileCompleteModal from '../components/ProfileCompleteModal';
 
 interface AuthContextType {
   session: Session | null
@@ -21,6 +22,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
   const [loading, setLoading] = useState(true)
   const { showToast } = useToast()
+
+  
+  // ─── 프로필 완성 체크용 user_profiles 로드 ───
+  const [_userProfile, _setUserProfile] = useState<any>(null);
+  const _loadUserProfile = useCallback(async (uid: string) => {
+    try {
+      const { data } = await supabase!.from('user_profiles').select('name,phone').eq('id', uid).maybeSingle();
+      _setUserProfile(data);
+    } catch { _setUserProfile(null); }
+  }, []);
 
   const ensureProfile = useCallback(async (authUser: User) => {
     // 프로필 존재 확인
@@ -78,6 +89,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch {
       // check_user_status 미존재 시 무시
     }
+    await _loadUserProfile(authUser.id);
   }, [])
 
   useEffect(() => {
@@ -216,6 +228,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     (user?.identities?.[0]?.identity_data as Record<string, unknown> | undefined)?.email as string | undefined,
   ].filter((e): e is string => Boolean(e)).map((e) => e.toLowerCase())
   const isAdmin = allEmails.some((e) => ADMIN_EMAILS.includes(e))
+  const refreshProfile = useCallback(async () => { if (user) await _loadUserProfile(user.id); }, [user, _loadUserProfile]);
+  const needsProfileCompletion = !!user && !!_userProfile && (!_userProfile.name || !_userProfile.phone);
+
 
   return (
     <AuthContext.Provider value={{
@@ -228,6 +243,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       signOut,
     }}>
       {children}
+      {needsProfileCompletion && user && (
+        <ProfileCompleteModal user={user} onComplete={refreshProfile} />
+      )}
     </AuthContext.Provider>
   )
 }
