@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
@@ -6,6 +6,7 @@ export default function Login() {
   const { user, loading, signInWithGoogle, signInWithKakao } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
+  const [activeTab, setActiveTab] = useState<'login' | 'register'>('login')
 
   useEffect(() => {
     if (!loading && user) {
@@ -14,12 +15,36 @@ export default function Login() {
     }
   }, [user, loading, navigate, location.state])
 
+  const tabDesc = activeTab === 'login'
+    ? '소셜 계정으로 간편하게 로그인하세요.'
+    : '처음 방문이라면 소셜 로그인으로 바로 가입됩니다.'
+
   return (
     <section className="community-page">
       <div className="container">
         <div className="login-box">
-          <h1>로그인</h1>
-          <p>소셜 계정으로 간편하게 로그인하세요.</p>
+          <h1>AWS 자격증 스터디</h1>
+
+          {/* Tabs */}
+          <div className="login-tabs">
+            <button
+              type="button"
+              className={`login-tab${activeTab === 'login' ? ' active' : ''}`}
+              onClick={() => setActiveTab('login')}
+            >
+              로그인
+            </button>
+            <button
+              type="button"
+              className={`login-tab${activeTab === 'register' ? ' active' : ''}`}
+              onClick={() => setActiveTab('register')}
+            >
+              회원가입
+            </button>
+          </div>
+
+          <p className="login-tab-desc">{tabDesc}</p>
+
           <div className="login-social-buttons">
             <button className="login-social-btn login-google" onClick={signInWithGoogle}>
               <svg viewBox="0 0 24 24" width="20" height="20">
@@ -28,15 +53,22 @@ export default function Login() {
                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
               </svg>
-              Google로 로그인
+              {activeTab === 'login' ? 'Google로 로그인' : 'Google로 가입하기'}
             </button>
             <button className="login-social-btn login-kakao" onClick={signInWithKakao}>
               <svg viewBox="0 0 24 24" width="20" height="20">
                 <path d="M12 3C6.48 3 2 6.36 2 10.44c0 2.62 1.75 4.93 4.37 6.24-.19.7-.69 2.54-.79 2.93-.12.49.18.48.38.35.15-.1 2.44-1.66 3.43-2.33.52.08 1.06.12 1.61.12 5.52 0 10-3.36 10-7.31S17.52 3 12 3z" fill="#3C1E1E"/>
               </svg>
-              Kakao로 로그인
+              {activeTab === 'login' ? 'Kakao로 로그인' : 'Kakao로 가입하기'}
             </button>
           </div>
+
+          {activeTab === 'register' && (
+            <p className="login-tab-note">
+              소셜 계정으로 처음 로그인하면 자동으로 회원 가입이 완료됩니다.<br />
+              별도의 회원가입 절차 없이 바로 이용하실 수 있습니다.
+            </p>
+          )}
         </div>
       </div>
     </section>
