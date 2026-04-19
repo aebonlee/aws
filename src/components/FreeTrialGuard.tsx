@@ -35,7 +35,7 @@ export default function FreeTrialGuard({ children }: { children: React.ReactNode
   }, [user, hasFullAccess, location.pathname, isAlreadyViewed, isOverLimit])
 
   if (loading) return <div className="loading-spinner">...</div>
-  if (!user) return <Navigate to="/login" replace />
+  if (!user) return <Navigate to="/login" state={{ from: location }} replace />
   if (isOverLimit) return <Navigate to="/pricing" replace state={{ fromTrial: true }} />
 
   return (

@@ -1,16 +1,18 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
 export default function Login() {
   const { user, loading, signInWithGoogle, signInWithKakao } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     if (!loading && user) {
-      navigate('/', { replace: true })
+      const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/'
+      navigate(from, { replace: true })
     }
-  }, [user, loading, navigate])
+  }, [user, loading, navigate, location.state])
 
   return (
     <section className="community-page">
