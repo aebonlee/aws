@@ -1,0 +1,1 @@
+import{j as i}from"./index-SJWM3p61.js";function r({tabs:l,active:t,onChange:a}){return i.jsx("div",{className:"community-filter-tabs",children:l.map(e=>i.jsx("button",{className:`community-filter-tab${t===e.value?" active":""}`,onClick:()=>a(e.value),children:e.label},e.value))})}export{r as F};
