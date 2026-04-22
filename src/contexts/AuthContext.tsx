@@ -6,6 +6,7 @@ import { useToast } from './ToastContext'
 import { useIdleTimeout } from '../hooks/useIdleTimeout'
 import ProfileCompleteModal from '../components/ProfileCompleteModal';
 
+import PaymentNudgePopup from '../components/PaymentNudgePopup';
 interface AuthContextType {
   session: Session | null
   user: User | null
@@ -246,6 +247,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       {needsProfileCompletion && user && (
         <ProfileCompleteModal user={user} onComplete={refreshProfile} />
       )}
+    {!!user && !needsProfileCompletion && (
+      <PaymentNudgePopup user={user} siteSlug="aws" />
+    )}
     </AuthContext.Provider>
   )
 }
