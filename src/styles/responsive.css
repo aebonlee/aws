@@ -131,3 +131,18 @@
     .color-picker-wrapper { order: 8; }
     .theme-toggle { order: 9; }
 }
+
+/* ── Table Mobile Overflow [2026-04-25] ── */
+@media (max-width: 768px) {
+  .table-responsive,
+  .table-container,
+  .content-body table,
+  .guide-content table,
+  .lesson-content table,
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+}
