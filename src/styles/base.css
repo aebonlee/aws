@@ -35,6 +35,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
 
 a { color: var(--primary-dark); text-decoration: none; transition: color var(--transition); }

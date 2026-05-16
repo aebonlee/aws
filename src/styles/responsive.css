@@ -13,6 +13,11 @@
   .features-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
+  /* Touch target minimum size */
+  .btn, .nav-login-btn, button:not(.mobile-toggle) {
+      min-height: 44px;
+  }
+
   .categories-grid, .stamp-grid, .practice-cat-grid { grid-template-columns: 1fr; }
   .hero h1, .about-hero h1 { font-size: 1.8rem; }
   .hero { padding: 80px 0 60px; }
